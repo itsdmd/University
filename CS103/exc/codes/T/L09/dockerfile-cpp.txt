@@ -1,0 +1,6 @@
+FROM gcc:4.9
+COPY BT_06.cpp C:/Personal/Projects/Docker/CS103/L09/06/
+WORKDIR C:\\Personal\\Projects\\Docker\\CS103\\L09\\06
+LABEL Name=CS103-L09-06 Version=1.0
+RUN g++ -std=c++11 -o 103-09-06 BT_06.cpp
+CMD ["./103-09-06"]

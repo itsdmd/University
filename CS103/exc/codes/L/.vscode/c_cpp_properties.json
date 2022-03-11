@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "G++ Compiler",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
+            "intelliSenseMode": "${default}",
+            "windowsSdkVersion": "10.0.22000.0"
+        }
+    ],
+    "version": 4
+}

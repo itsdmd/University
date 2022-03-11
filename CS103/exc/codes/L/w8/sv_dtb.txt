@@ -1,0 +1,25 @@
+6
+sv f
+123aaa
+17
+6.2
+sv a
+123abc
+17
+8
+sv b
+123abd
+17
+5
+sv c
+123acb
+17
+9
+sv e
+123bac
+17
+7.5
+sv d
+124abc
+17
+5
