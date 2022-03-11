@@ -1,0 +1,14 @@
+﻿Xét lần lượt ký tự từ trái sang phải của biểu thức trung tố
+
+Nếu ‘(‘ => push ‘(‘
+
+Nếu số/chữ => enqueue
+
+Nếu Operator X (+ - * / ^) =>
+	==> Nếu đỉnh Stack là một Operator Y
+	====> Nếu X <= Y : pop (Y) => enqueue (Y)
+								=> push (X)
+
+Nếu )’ : pop => enqueue cho đến khi gặp
+						ký tự ‘(‘ thì dừng
+xóa ‘(‘

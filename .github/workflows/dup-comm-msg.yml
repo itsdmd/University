@@ -1,0 +1,93 @@
+name: C++ Commit Message Verifier
+
+on:
+  push:
+    paths:
+      - 'Courses/CS102/**'
+      - 'Courses/CS104/exc/L/**'
+      - 'Courses/CS104/exc/T/**'
+
+jobs:
+  check-cmsg:
+    name: Check commit message
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    
+    steps:
+      - name: ↧ Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+        
+      - name: 💬 Get commit message
+        uses: rlespinasse/git-commit-data-action@v1
+        
+      - name: 🗒 Get commit message history
+        id: cmsg-history
+        run: git log > cmsg.txt
+        
+        
+      - name: 🔎 Regex check
+        id: regex
+        uses: AsasInnab/regex-action@v1
+        with:
+          regex_pattern: '^[0-9]+\.(?:[LT]\.)?[0-9]+([+-]?(?=\.\d|\d)(?:\d+)?(?:\.?\d*))(?:[eE]([+-]?\d+))?$'
+          regex_flags: 'gim'
+          search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
+          
+      - name: ✏ Prepare issue body (regex)
+        id: issue-body-reg
+        if: steps.regex.outputs.first_match == ''
+        run: head -5 cmsg.txt > issue.txt
+          
+      - name: ✍ Create new issue (regex)
+        id: issuer-reg
+        if: steps.issue-body-reg.outcome == 'success'
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          title: "Regex: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
+          content-filepath: issue.txt
+          labels: cm-reg
+          
+      - name: ⛔ Failed regex check
+        if: steps.issuer-reg.outcome == 'success'
+        run: exit 1
+        
+          
+      - name: 👓 Search through cmsg.txt
+        id: search
+        continue-on-error: true
+        run: |
+          msg=$(cat cmsg.txt)
+          count=+
+          for line in $msg
+          do
+            if [[ "$line" =~ "${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}" ]]
+            then
+              count=$count+
+              
+              if [[ "$count" = "+++" ]]
+              then
+                exit 1
+              fi
+            fi
+          done
+          
+      - name: ✏ Prepare issue body (duplication)
+        id: issue-body-dup
+        if: steps.search.outcome == 'failure'
+        run: head -5 cmsg.txt > issue.txt
+          
+      - name: ✍ Create new issue (duplication)
+        id: issuer-dup
+        if: steps.issue-body-dup.outcome == 'success'
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          title: "Duplication: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
+          content-filepath: issue.txt
+          labels: cm-dup
+          
+      - name: ⛔ Found Duplicate
+        if: steps.issuer-dup.outcome == 'success'
+        run: exit 1
+      

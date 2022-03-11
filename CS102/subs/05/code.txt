@@ -1,0 +1,50 @@
+Name: Đào Minh Đức
+ID: 2159003
+
+Queries' output screenshot: https://imgur.com/a/Ac3fjGJ
+
+1.
+SELECT  customers.customerid,
+        customers.firstname,
+        customers.lastname,
+        COUNT(items_ordered.customerid) total_orders,
+        SUM(items_ordered.price*items_ordered.quantity) total_value
+FROM    customers
+        LEFT JOIN items_ordered
+        ON customers.customerid = items_ordered.customerid
+GROUP   BY customers.customerid,
+        customers.firstname,
+        customers.lastname
+ORDER BY total_value DESC;
+
+2.
+SELECT  customers.customerid,
+        customers.firstname,
+        customers.lastname,
+        SUM(items_ordered.price*items_ordered.quantity) total_value
+FROM    customers
+        LEFT JOIN items_ordered
+        ON customers.customerid = items_ordered.customerid
+GROUP   BY customers.customerid,
+        customers.firstname,
+        customers.lastname
+HAVING 	(total_value > 20) AND ((state LIKE "Oregon") OR (state LIKE "Arizona"))
+ORDER BY total_value DESC;
+
+3.
+SELECT  customers.customerid,
+        customers.firstname,
+        customers.lastname,
+        SUM(items_ordered.price*items_ordered.quantity) total_value,
+		SUM(CASE WHEN (items_ordered.price BETWEEN 20 AND 50) THEN (items_ordered.price - items_ordered.price*0.1)*items_ordered.quantity
+			 WHEN (items_ordered.price > 50) THEN (items_ordered.price - 10)*items_ordered.quantity
+			 ELSE items_ordered.price*items_ordered.quantity
+		END) discounted
+FROM    customers
+        LEFT JOIN items_ordered
+        ON customers.customerid = items_ordered.customerid
+GROUP   BY customers.customerid,
+        customers.firstname,
+        customers.lastname
+HAVING	total_value <> discounted
+ORDER BY total_value DESC;

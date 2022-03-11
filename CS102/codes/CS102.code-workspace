@@ -1,0 +1,39 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "xprotocol"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 3306,
+				"driver": "MySQL",
+				"name": "W - Local - Testbed",
+				"database": "Testbed",
+				"username": "root",
+				"password": "123qwe",
+				"connectionTimeout": 30
+			},
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 3306,
+				"driver": "MySQL",
+				"name": "L - Local - Testbed",
+				"database": "mysql",
+				"username": "dmd",
+				"password": "123qwe",
+				"connectionTimeout": 30
+			}
+		]
+	}
+}
