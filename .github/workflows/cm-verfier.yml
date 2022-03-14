@@ -1,4 +1,4 @@
-name: C++ CM Verifier
+name: Submission CM Verifier
 
 on:
   push:
