@@ -1,4 +1,4 @@
-name: Generic Commit Message Verifier
+name: Generic CM Verifier
 
 on:
   push:
@@ -42,7 +42,7 @@ jobs:
         if: steps.issue-body-reg.outcome == 'success'
         uses: peter-evans/create-issue-from-file@v3
         with:
-          title: "Regex: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
+          title: "GCMV - Regex: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
           content-filepath: issue.txt
           labels: cm-reg
           
