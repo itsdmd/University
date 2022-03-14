@@ -1,4 +1,4 @@
-name: C++ Commit Message Verifier
+name: C++ CM Verifier
 
 on:
   push:
@@ -65,7 +65,7 @@ jobs:
         if: steps.issue-body-reg.outcome == 'success'
         uses: peter-evans/create-issue-from-file@v3
         with:
-          title: "Regex: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
+          title: "CCMV - Regex: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
           content-filepath: issue.txt
           labels: cm-reg
           
@@ -103,11 +103,10 @@ jobs:
         if: steps.issue-body-dup.outcome == 'success'
         uses: peter-evans/create-issue-from-file@v3
         with:
-          title: "Duplication: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
+          title: "CCMV - Duplication: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
           content-filepath: issue.txt
           labels: cm-dup
           
       - name: ⛔ Found Duplicate
         if: steps.issuer-dup.outcome == 'success'
         run: exit 1
-      
