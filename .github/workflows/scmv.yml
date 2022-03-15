@@ -3,9 +3,9 @@ name: Submission CM Verifier
 on:
   push:
     paths:
-      - 'Courses/CS102/**'
-      - 'Courses/CS104/exc/L/**'
-      - 'Courses/CS104/exc/T/**'
+      - 'CS102/**'
+      - 'CS104/exc/L/**'
+      - 'CS104/exc/T/**'
 
 jobs:
   check-cmsg:
