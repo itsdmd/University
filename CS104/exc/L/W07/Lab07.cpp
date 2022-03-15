@@ -2,6 +2,8 @@
   Họ và tên SV: Đào Minh Đức
   MSSV: 2159003
 */
+
+
 #include <iostream>
 #include <stdlib.h>
 
@@ -11,6 +13,7 @@ void printArray(int a[], int n) {
     for (int i = 0; i < n; i++) {
         cout << a[i] << " ";
     }
+    
     cout << endl;
 }
 
@@ -97,11 +100,11 @@ int main() {
     srand (time(NULL));
     int n = 10;
     int a[100];
+    
     for (int i = 0; i < n; i++)
     {
         a[i] = rand() % 100 + 1;
     }
-    
     
     
     /*Hoàn thiện hàm main để sắp xếp bằng các thuật toán trên*/
