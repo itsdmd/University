@@ -265,7 +265,7 @@ int countCond(NODE *pRoot)
     
     else
     {
-        if ((pRoot->pRight == NULL) && (pRoot->pLeft != NULL) || (pRoot->pLeft == NULL) && (pRoot->pRight != NULL))
+        if (((pRoot->pRight == NULL) && (pRoot->pLeft != NULL)) || ((pRoot->pLeft == NULL) && (pRoot->pRight != NULL)))
             return 1;
 
         else
