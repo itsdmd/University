@@ -6,7 +6,6 @@ on:
       - 'CS102/**'
       - 'CS104/exc/L/**'
       - 'CS104/exc/T/**'
-      - '.github/**'
 
 jobs:
   check-cmsg:
@@ -85,7 +84,7 @@ jobs:
         if: steps.issue-body-reg.outcome == 'success'
         uses: peter-evans/create-issue-from-file@v3
         with:
-          title: "CCMV - Regex: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
+          title: "SCMV - Regex: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
           content-filepath: issue.txt
           labels: cm-reg
           
