@@ -122,7 +122,7 @@ jobs:
         if: steps.issue-body-dup.outcome == 'success'
         uses: peter-evans/create-issue-from-file@v3
         with:
-          title: "CCMV - Duplication: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
+          title: "SCMV - Duplication: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
           content-filepath: issue.txt
           labels: cm-dup
           
