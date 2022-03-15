@@ -3,6 +3,7 @@ name: C++ Linter
 on:
   push:
     paths: "**.cpp"
+    paths-ignore: "**-og**"
 
 jobs:
   linter:
