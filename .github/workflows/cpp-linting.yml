@@ -2,7 +2,9 @@ name: C++ Linter
 
 on:
   push:
-    paths: "**.cpp"
+    paths:
+      - "**.cpp"
+      - '!**-og**'
 
 jobs:
   linter:
