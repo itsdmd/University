@@ -12,7 +12,7 @@ using namespace std;
 
 struct ARRAY
 {
-	int arr[100];
+	int arr[100] =  {26,42,5,44,92,59,40,36,12};
 };
 
 void PrintArray(const ARRAY &, int);
@@ -29,19 +29,23 @@ int main()
 {
 	int size;
 	
-	cout << "Hash table size: ";
-	cin >> size;
+	size = 11;
+	
+	// cout << "Hash table size: ";
+	// cin >> size;
 	
 	ARRAY input;
-	for (int i = 0; i < size; i++)
-	{
-		cout << "Enter number " << i + 1 << ": ";
-		cin >> input.arr[i];
-	}
+	// for (int i = 0; i < size; i++)
+	// {
+	// 	cout << "Enter number " << i + 1 << ": ";
+	// 	cin >> input.arr[i];
+	// }
 	
-	PrintArray(LinearProbing(input, size), size);
-	PrintArray(QuadraticProbing(input, size), size);
-	PrintArray(DoubleHashing(input, size), size);
+	DoubleHashing(input, size);
+	
+	// PrintArray(LinearProbing(input, size), size);
+	// PrintArray(QuadraticProbing(input, size), size);
+	// PrintArray(DoubleHashing(input, size), size);
 	
 	return 0;
 }
@@ -50,11 +54,11 @@ void PrintArray(const ARRAY &arr, int size)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (arr.arr[i] == -1) cout << "N" << " ";
+		if (arr.arr[i] == -1) cout << "--" << " ";
 		else cout << arr.arr[i] << " ";
 	}
 	
-	cout << endl;
+	cout << "\n\n";
 }
 
 ARRAY LinearProbing(const ARRAY &input, int size)
@@ -70,16 +74,16 @@ ARRAY LinearProbing(const ARRAY &input, int size)
 	{
 		if (input.arr[i] == -1) continue;
 		
-		int pos = input.arr[i] % size;
+		int h1 = input.arr[i] % size;
 		
-		if (output.arr[pos] == -1)
+		if (output.arr[h1] == -1)
 		{
-			output.arr[pos] = input.arr[i];
+			output.arr[h1] = input.arr[i];
 		}
 		
 		else
 		{
-			if (output.arr[pos] == input.arr[i])
+			if (output.arr[h1] == input.arr[i])
 			{
 				continue;
 			}
@@ -90,22 +94,22 @@ ARRAY LinearProbing(const ARRAY &input, int size)
 				
 				do
 				{
-					pos++;
+					h1++;
 					
-					if (output.arr[pos] == input.arr[i])
+					if (output.arr[h1] == input.arr[i])
 					{
 						dup = true;
 						break;
 					}
 					
-					if (pos >= size)
+					if (h1 >= size)
 					{
-						pos = 0;
+						h1 = 0;
 					}
 				}
-				while (output.arr[pos] != -1);
+				while (output.arr[h1] != -1);
 				
-				if (dup == false) output.arr[pos] = input.arr[i];
+				if (dup == false) output.arr[h1] = input.arr[i];
 			}
 		}
 	}
@@ -126,16 +130,16 @@ ARRAY QuadraticProbing(const ARRAY &input, int size)
 	{
 		if (input.arr[i] == -1) continue;
 		
-		int pos = input.arr[i] % size;
+		int h1 = input.arr[i] % size;
 		
-		if (output.arr[pos] == -1)
+		if (output.arr[h1] == -1)
 		{
-			output.arr[pos] = input.arr[i];
+			output.arr[h1] = input.arr[i];
 		}
 		
 		else
 		{
-			if (output.arr[pos] == input.arr[i])
+			if (output.arr[h1] == input.arr[i])
 			{
 				continue;
 			}
@@ -144,7 +148,7 @@ ARRAY QuadraticProbing(const ARRAY &input, int size)
 			{
 				for (int j = 0; j < size; j++)
 				{
-					int x = (pos + j * j) % size;
+					int x = (h1 + j * j) % size;
 					
 					if (output.arr[x] == input.arr[i])
 					{
@@ -175,36 +179,48 @@ ARRAY DoubleHashing(const ARRAY &input, int size)
 	
 	for (int i = 0; i < size; i++)
 	{
-		if (input.arr[i] == -1) continue;
-		
-		int pos = input.arr[i] % size;
-		
-		if (output.arr[pos] == -1)
+		if (input.arr[i] == -1)
 		{
-			output.arr[pos] = input.arr[i];
+			PrintArray(output, size);
+			continue;
+		}
+		
+		
+		int h1 = input.arr[i] % size;
+		
+		if (output.arr[h1] == -1)
+		{
+			output.arr[h1] = input.arr[i];
+			PrintArray(output, size);
 		}
 		
 		else
 		{
-			if (output.arr[pos] == input.arr[i])
+			if (output.arr[h1] == input.arr[i])
 			{
+				PrintArray(output, size);
 				continue;
 			}
 			
 			else
 			{
-				for (int j = 0; j < size; j++)
+				for (int j = 1; j < size; j++)
 				{
-					int x = (pos + j*((pos % 9) + 1)) % size;
+					int h2 = (h1 + j*((input.arr[i] % 9) + 1)) % size;
 					
-					if (output.arr[x] == input.arr[i])
+					if (output.arr[h2] == input.arr[i])
 					{
+						PrintArray(output, size);
+						// cout << "\tx=" << x << "\tpos=" << pos << "\tj=" << j << "\n";
 						break;
 					}
 					
-					else if (output.arr[x] == -1)
+					else if (output.arr[h2] == -1)
 					{
-						output.arr[x] = input.arr[i];
+						output.arr[h2] = input.arr[i];
+						
+						PrintArray(output, size);
+						// cout << "\tx=" << x << "\tpos=" << pos << "\tj=" << j << "\n";
 						break;
 					}
 				}
