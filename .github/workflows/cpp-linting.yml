@@ -16,16 +16,18 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: ⚙️ Install cppcheck
-        if: steps.cache-cmake.outputs.cache-hit != 'true'
-        run: sudo apt install cppcheck
-        
       - name: 🗒 Get changed files
         id: targets
         uses: tj-actions/changed-files@v17.3
         with:
           files: |
             **/*.cpp
+            !**-og**
+
+      - name: ⚙️ Install cppcheck
+        if: steps.cache-cmake.outputs.cache-hit != 'true'
+        run: sudo apt install cppcheck
+        
           
       - name: 🔎 Linting
         id: linter

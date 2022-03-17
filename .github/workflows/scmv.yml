@@ -48,7 +48,7 @@ jobs:
         #     - [mod] 104.T.05.21
         #     - 104.l.02.01
         #     - 104.X.02.03
-        #     - [delete] 42069.LT.2.112
+        #     - [del] 42069.LT.2.112
         
       - name: 🔎 Regex check 1
         id: regex-1
