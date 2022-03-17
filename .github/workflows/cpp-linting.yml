@@ -49,7 +49,7 @@ jobs:
         if: steps.get-cm.outcome == 'failure'
         uses: peter-evans/create-issue-from-file@v3
         with:
-          title: "Linting error: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
+          title: "Linting error: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} | ${{ env.GIT_COMMIT_SHORT_SHA }}"
           content-filepath: lint.txt
           labels: lint
           
