@@ -51,7 +51,7 @@ jobs:
         if: steps.issue-body-reg.outcome == 'success'
         uses: peter-evans/create-issue-from-file@v3
         with:
-          title: "GCMV - Regex: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
+          title: "GCMV - Regex: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} | ${{ env.GIT_COMMIT_SHORT_SHA }}"
           content-filepath: issue.txt
           labels: cm-reg
           
