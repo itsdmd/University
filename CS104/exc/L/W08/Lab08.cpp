@@ -3,8 +3,6 @@
 
 using namespace std;
 
-// 26,42,5,44,92,59,40,36,12
-
 
 /// ------------------------------------------------------------------------ ///
 ///                               Declarations                               ///
@@ -12,7 +10,8 @@ using namespace std;
 
 struct ARRAY
 {
-	int arr[100] =  {26,42,5,44,92,59,40,36,12};
+	// int arr[100] =  {26,42,5,44,92,59,40,36,12,-1,-1};
+	int arr[100];
 };
 
 void PrintArray(const ARRAY &, int);
@@ -29,23 +28,19 @@ int main()
 {
 	int size;
 	
-	size = 11;
-	
-	// cout << "Hash table size: ";
-	// cin >> size;
+	cout << "Hash table size: ";
+	cin >> size;
 	
 	ARRAY input;
-	// for (int i = 0; i < size; i++)
-	// {
-	// 	cout << "Enter number " << i + 1 << ": ";
-	// 	cin >> input.arr[i];
-	// }
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Enter number " << i + 1 << ": ";
+		cin >> input.arr[i];
+	}
 	
-	DoubleHashing(input, size);
-	
-	// PrintArray(LinearProbing(input, size), size);
-	// PrintArray(QuadraticProbing(input, size), size);
-	// PrintArray(DoubleHashing(input, size), size);
+	PrintArray(LinearProbing(input, size), size);
+	PrintArray(QuadraticProbing(input, size), size);
+	PrintArray(DoubleHashing(input, size), size);
 	
 	return 0;
 }
@@ -72,7 +67,7 @@ ARRAY LinearProbing(const ARRAY &input, int size)
 	
 	for (int i = 0; i < size; i++)
 	{
-		if (input.arr[i] == -1) continue;
+		if (input.arr[i] == -1) break;
 		
 		int h1 = input.arr[i] % size;
 		
@@ -181,8 +176,7 @@ ARRAY DoubleHashing(const ARRAY &input, int size)
 	{
 		if (input.arr[i] == -1)
 		{
-			PrintArray(output, size);
-			continue;
+			break;
 		}
 		
 		
@@ -191,14 +185,14 @@ ARRAY DoubleHashing(const ARRAY &input, int size)
 		if (output.arr[h1] == -1)
 		{
 			output.arr[h1] = input.arr[i];
-			PrintArray(output, size);
+			
+			// PrintArray(output, size);
 		}
 		
 		else
 		{
 			if (output.arr[h1] == input.arr[i])
 			{
-				PrintArray(output, size);
 				continue;
 			}
 			
@@ -210,8 +204,6 @@ ARRAY DoubleHashing(const ARRAY &input, int size)
 					
 					if (output.arr[h2] == input.arr[i])
 					{
-						PrintArray(output, size);
-						// cout << "\tx=" << x << "\tpos=" << pos << "\tj=" << j << "\n";
 						break;
 					}
 					
@@ -219,8 +211,8 @@ ARRAY DoubleHashing(const ARRAY &input, int size)
 					{
 						output.arr[h2] = input.arr[i];
 						
-						PrintArray(output, size);
-						// cout << "\tx=" << x << "\tpos=" << pos << "\tj=" << j << "\n";
+						// PrintArray(output, size);
+						// cout << "\th1=" << h1 << "\th2=" << h2 << "\tj=" << j << "\n";
 						break;
 					}
 				}
