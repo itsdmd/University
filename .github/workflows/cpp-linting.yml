@@ -17,9 +17,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
-        
-      - name: 💬 Get commit message
-        uses: rlespinasse/git-commit-data-action@v1
 
       - name: 🗒 Get changed files
         id: targets
@@ -43,8 +40,13 @@ jobs:
             cppcheck --enable=all --inconclusive --library=posix --std=c++20 --error-exitcode=1 --output-file="lint.txt" "${changed_file}"
           done
         
-      - name: ✏ Create new issue
+      - name: 💬 Get commit message
+        id: get-cm
         if: steps.linter.outcome == 'failure'
+        uses: rlespinasse/git-commit-data-action@v1
+        
+      - name: ✏ Create new issue
+        if: steps.get-cm.outcome == 'failure'
         uses: peter-evans/create-issue-from-file@v3
         with:
           title: "Linting error: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} (${{ env.GIT_COMMIT_SHORT_SHA }})"
