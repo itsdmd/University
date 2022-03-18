@@ -3,14 +3,14 @@ name: C++ Linter
 on:
   push:
     paths:
-      - "**.cpp"
+      - '**.cpp'
       - '!**-og**'
 
 jobs:
   linter:
     name: ☑ Linter
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 1
     
     steps:
       - name: ↧ Checkout
@@ -27,7 +27,6 @@ jobs:
             !**-og**
 
       - name: ⚙️ Install cppcheck
-        if: steps.cache-cmake.outputs.cache-hit != 'true'
         run: sudo apt install cppcheck
         
           
