@@ -1,20 +1,29 @@
-# Write a program that asks the user for a number n and prints the sum of prime numbers 1 to n
+# Write a program that print the second largest number in an integer array without using native functions
 
-def IsPrime(n):
-    if n <= 1:
-        return False
-    for i in range(2, n):
-        if n % i == 0:
-            return False
-    return True
+arr = [301, 302, 303, 304, 305]
 
-def SumOfPrimes(n):
-    sum = 0
-    for i in range(1, n + 1):
-        if IsPrime(i):
-            sum += i
-    return sum
+def Find(arr):
+    
+    if len(arr) == 1:
+        return arr[0]
+    
+    if len(arr) == 2:
+        if arr[0] > arr[1]: return arr[1]
+        else: return arr[0]
+    
+    first = arr[0]
+    second = arr[1]
+    
+    for i in range(2, len(arr)):
+        if arr[i] > first:
+            second = first
+            first = arr[i]
+        elif arr[i] > second:
+            second = arr[i]
+    
+    return second
 
 def main():
-    n = int(input("n: "))
-    print("Sum of prime numbers from 1 to n: ", SumOfPrimes(n))
+    print("Second largest number: ", Find(arr))
+    
+main()
