@@ -71,7 +71,7 @@ jobs:
           
       - name: 🔎 Regex check 3
         id: regex-3
-        if: steps.regex-2.outputs.first_match == ''
+        if: steps.regex-1.outputs.first_match == '' && steps.regex-2.outputs.first_match == ''
         uses: AsasInnab/regex-action@v1
         with:
           regex_pattern: '(\[(rnm|mrg)\]\ (?=.*\>.*))'
