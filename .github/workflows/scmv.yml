@@ -6,6 +6,8 @@ on:
       - 'CS102/**'
       - 'CS104/exc/L/**'
       - 'CS104/exc/T/**'
+      - '!**test**'
+      - '!**-og**"'
 
 jobs:
   check-cmsg:
