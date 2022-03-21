@@ -74,7 +74,7 @@ jobs:
         if: steps.regex-2.outputs.first_match == ''
         uses: AsasInnab/regex-action@v1
         with:
-          regex_pattern: '(\[rnm\]\ (?=.*\>.*))'
+          regex_pattern: '(\[(rnm|mrg)\]\ (?=.*\>.*))'
           regex_flags: 'gm'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
           
