@@ -1,22 +1,23 @@
 #include <iostream>
-#include <string>
+#include <vector>
 
-using namespace std;
 
 
 /// ------------------------------------------------------------------------ ///
 ///                               Declarations                               ///
 /// ------------------------------------------------------------------------ ///
 
-struct ARRAY
+struct VECTOR
 {
-	// int arr[100] =  {26,42,5,44,92,59,40,36,12,-1,-1};
-	int arr[100];
+	std::vector<int> keys;
 };
 
-void PrintArray(const ARRAY &, int);
+void 	PrintVct(const VECTOR &);
 
-ARRAY LinearProbing(const ARRAY &, int), QuadraticProbing(const ARRAY &, int), DoubleHashing(const ARRAY &, int);
+VECTOR	NewVct(),
+		LinearProbing(const VECTOR &),
+		QuadraticProbing(const VECTOR &),
+		DoubleHashing(const VECTOR &);
 
 
 
@@ -28,57 +29,84 @@ int main()
 {
 	int size;
 	
-	cout << "Hash table size: ";
-	cin >> size;
+	std::cout << "Hash table size: ";
+	std::cin >> size;
 	
-	ARRAY input;
+	VECTOR input;
 	for (int i = 0; i < size; i++)
 	{
-		cout << "Enter number " << i + 1 << ": ";
-		cin >> input.arr[i];
+		int inp;
+		
+		std::cout << "Enter number " << i + 1 << " (-1 to stop): ";
+		std::cin >> inp;
+		
+		if (inp == -1)
+		{
+			for (int j = 0; j < (size - i); j++)
+			{
+				input.keys.push_back(-1);
+			}
+			
+			break;
+		}
+		
+		else input.keys.push_back(inp);
 	}
 	
-	PrintArray(LinearProbing(input, size), size);
-	PrintArray(QuadraticProbing(input, size), size);
-	PrintArray(DoubleHashing(input, size), size);
+	PrintVct(LinearProbing(input));
+	PrintVct(QuadraticProbing(input));
+	PrintVct(DoubleHashing(input));
 	
 	return 0;
 }
 
-void PrintArray(const ARRAY &arr, int size)
+void PrintVct(const VECTOR &vct)
 {
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < vct.keys.size(); i++)
 	{
-		if (arr.arr[i] == -1) cout << "--" << " ";
-		else cout << arr.arr[i] << " ";
+		if (vct.keys[i] == -1) std::cout << "--" << " ";
+		else std::cout << vct.keys[i] << " ";
 	}
 	
-	cout << "\n\n";
+	std::cout << "\n\n";
 }
 
-ARRAY LinearProbing(const ARRAY &input, int size)
+VECTOR NewVct()
 {
-	ARRAY output;
+	VECTOR vct;
+	
+	for (int i = 0; i < 100; i++)
+	{
+		vct.keys.push_back(-1);
+	}
+	
+	return vct;
+}
+
+VECTOR LinearProbing(const VECTOR &input)
+{
+	VECTOR output;
+	int size = input.keys.size();
 	
 	for (int i = 0; i < size; i++)
 	{
-		output.arr[i] = -1;
+		output.keys.push_back(-1);
 	}
 	
 	for (int i = 0; i < size; i++)
 	{
-		if (input.arr[i] == -1) break;
+		if (input.keys[i] == -1) break;
 		
-		int h1 = input.arr[i] % size;
+		int h1 = input.keys[i] % size;
 		
-		if (output.arr[h1] == -1)
+		if (output.keys[h1] == -1)
 		{
-			output.arr[h1] = input.arr[i];
+			output.keys[h1] = input.keys[i];
 		}
 		
 		else
 		{
-			if (output.arr[h1] == input.arr[i])
+			if (output.keys[h1] == input.keys[i])
 			{
 				continue;
 			}
@@ -91,7 +119,7 @@ ARRAY LinearProbing(const ARRAY &input, int size)
 				{
 					h1++;
 					
-					if (output.arr[h1] == input.arr[i])
+					if (output.keys[h1] == input.keys[i])
 					{
 						dup = true;
 						break;
@@ -102,9 +130,9 @@ ARRAY LinearProbing(const ARRAY &input, int size)
 						h1 = 0;
 					}
 				}
-				while (output.arr[h1] != -1);
+				while (output.keys[h1] != -1);
 				
-				if (dup == false) output.arr[h1] = input.arr[i];
+				if (dup == false) output.keys[h1] = input.keys[i];
 			}
 		}
 	}
@@ -112,29 +140,30 @@ ARRAY LinearProbing(const ARRAY &input, int size)
 	return output;
 }
 
-ARRAY QuadraticProbing(const ARRAY &input, int size)
+VECTOR QuadraticProbing(const VECTOR &input)
 {
-	ARRAY output;
+	VECTOR output;
+	int size = input.keys.size();
 	
 	for (int i = 0; i < size; i++)
 	{
-		output.arr[i] = -1;
+		output.keys.push_back(-1);
 	}
 	
 	for (int i = 0; i < size; i++)
 	{
-		if (input.arr[i] == -1) continue;
+		if (input.keys[i] == -1) continue;
 		
-		int h1 = input.arr[i] % size;
+		int h1 = input.keys[i] % size;
 		
-		if (output.arr[h1] == -1)
+		if (output.keys[h1] == -1)
 		{
-			output.arr[h1] = input.arr[i];
+			output.keys[h1] = input.keys[i];
 		}
 		
 		else
 		{
-			if (output.arr[h1] == input.arr[i])
+			if (output.keys[h1] == input.keys[i])
 			{
 				continue;
 			}
@@ -145,14 +174,14 @@ ARRAY QuadraticProbing(const ARRAY &input, int size)
 				{
 					int x = (h1 + j * j) % size;
 					
-					if (output.arr[x] == input.arr[i])
+					if (output.keys[x] == input.keys[i])
 					{
 						break;
 					}
 					
-					else if (output.arr[x] == -1)
+					else if (output.keys[x] == -1)
 					{
-						output.arr[x] = input.arr[i];
+						output.keys[x] = input.keys[i];
 						break;
 					}
 				}
@@ -163,35 +192,36 @@ ARRAY QuadraticProbing(const ARRAY &input, int size)
 	return output;
 }
 
-ARRAY DoubleHashing(const ARRAY &input, int size)
+VECTOR DoubleHashing(const VECTOR &input)
 {
-	ARRAY output;
+	VECTOR output;
+	int size = input.keys.size();
 	
 	for (int i = 0; i < size; i++)
 	{
-		output.arr[i] = -1;
+		output.keys.push_back(-1);
 	}
 	
 	for (int i = 0; i < size; i++)
 	{
-		if (input.arr[i] == -1)
+		if (input.keys[i] == -1)
 		{
 			break;
 		}
 		
 		
-		int h1 = input.arr[i] % size;
+		int h1 = input.keys[i] % size;
 		
-		if (output.arr[h1] == -1)
+		if (output.keys[h1] == -1)
 		{
-			output.arr[h1] = input.arr[i];
+			output.keys[h1] = input.keys[i];
 			
-			// PrintArray(output, size);
+			// PrintVct(output, size);
 		}
 		
 		else
 		{
-			if (output.arr[h1] == input.arr[i])
+			if (output.keys[h1] == input.keys[i])
 			{
 				continue;
 			}
@@ -200,19 +230,20 @@ ARRAY DoubleHashing(const ARRAY &input, int size)
 			{
 				for (int j = 1; j < size; j++)
 				{
-					int h2 = (h1 + j*((input.arr[i] % 9) + 1)) % size;
+					//? Secondary hash function
+					int h2 = (h1 + j*((input.keys[i] % 9) + 1)) % size;
 					
-					if (output.arr[h2] == input.arr[i])
+					if (output.keys[h2] == input.keys[i])
 					{
 						break;
 					}
 					
-					else if (output.arr[h2] == -1)
+					else if (output.keys[h2] == -1)
 					{
-						output.arr[h2] = input.arr[i];
+						output.keys[h2] = input.keys[i];
 						
-						// PrintArray(output, size);
-						// cout << "\th1=" << h1 << "\th2=" << h2 << "\tj=" << j << "\n";
+						// PrintVct(output, size);
+						// std::cout << "\th1=" << h1 << "\th2=" << h2 << "\tj=" << j << "\n";
 						break;
 					}
 				}
