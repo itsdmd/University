@@ -6,24 +6,27 @@
   2. So sánh thời gian chạy của mỗi thuật toán và điền kết quả bên dưới
 Đầu vào lấy dữ liệu từ file input.txt, file chứa 10000 phần tử số nguyên cách nhau bởi kí tự xuống dòng
 Điền thời gian chạy mỗi thuật toán vào phần sau đây:
-- interchange Sort : 0.301821
-- selection Sort   : 0.108895
-- heap Sort        : 0.002027
-- quick Sort       :
-- merge Sort       : 0.001422
+- interchange Sort : 0.307814
+- selection Sort   : 0.112652
+- heap Sort        : 0.002074
+- quick Sort       : 0.001728
+- merge Sort       : 0.001638
   3. So sánh thời gian chạy của mỗi thuật toán và điền kết quả bên dưới
 Đầu vào lấy dữ liệu từ file f_input.txt, file chứa 10000 phần tử số thực cách nhau bởi kí tự xuống dòng
 Điền kết quả vào phần sau đây:
-- interchange Sort : 0.274266
-- selection Sort   : 0.110184
-- heap Sort        : 0.002115
-- quick Sort       :
-- merge Sort       : 0.001647
+- interchange Sort : 0.275871
+- selection Sort   : 0.110269
+- heap Sort        : 0.002121
+- quick Sort       : 0.001630
+- merge Sort       : 0.001700
 */
 #include <iostream>
 #include <fstream>
 
 
+/// ------------------------------------------------------------------------ ///
+///                               Array-related                              ///
+/// ------------------------------------------------------------------------ ///
 template <typename T>
 void printArray(T a[], int n) {
     std::cout << "\nMang gom cac phan tu sau:\n";
@@ -45,12 +48,17 @@ bool testArray(T a[], int n) {
     return true;
 }
 
+
+/// ------------------------------------------------------------------------ ///
+///                                   swap1                                  ///
+/// ------------------------------------------------------------------------ ///
 template <typename T>
 void swap1(T& a, T& b) {
     T t = a;
     a = b;
     b = t;
 }
+
 
 /// ------------------------------------------------------------------------ ///
 ///                             Interchange Sort                             ///
@@ -62,6 +70,7 @@ void interchangeSort(T a[], int n) {
             if (a[i] > a[j])
                 swap1(a[i], a[j]);
 }
+
 
 /// ------------------------------------------------------------------------ ///
 ///                              Selection Sort                              ///
@@ -77,21 +86,23 @@ void selectionSort(T a[], int n) {
     }
 }
 
+
 /// ------------------------------------------------------------------------ ///
 ///                                 Heap Sort                                ///
 /// ------------------------------------------------------------------------ ///
+/// ----------------------------- From 104.L.07 ---------------------------- ///
 template <typename T, typename U>
-void heapify(T a[], U n, int i) {
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
+void heapify(T a[], U n, U m) {
+    int left = 2 * m + 1;
+    int right = 2 * m + 2;
 
-    int max = i;
-    
+    int max = m;
+
     if (left < n && a[left] > a[max]) max = left;
     if (right < n && a[right] > a[max]) max = right;
-    
-    if(max != i) {
-        swap1(a[i], a[max]);
+
+    if(max != m) {
+        swap1(a[m], a[max]);
         heapify(a, n, max);
     }
 }
@@ -100,29 +111,49 @@ template <typename T>
 void heapSort(T a[], int n) {
     for (int i = n / 2 - 1; i >= 0; i--)
         heapify(a, n, i);
-        
+
     for (int i = n - 1; i >= 0; i--) {
         swap1(a[0], a[i]);
         heapify(a, i, 0);
     }
 }
 
+
 /// ------------------------------------------------------------------------ ///
 ///                                Quick Sort                                ///
 /// ------------------------------------------------------------------------ ///
 template <typename T>
-void quickSort(T a[], int n) {
-    if (n <= 1) return;
-    int pivot = a[0];
-    int i = 0, j = n - 1;
-    while (i < j) {
-        while (i < j && a[j] >= pivot) j--;
-        a[i] = a[j];
-        while (i < j && a[i] <= pivot) i++;
-        a[j] = a[i];
+void quickSort(T a[], int l, int r)
+{
+    if (l >= r) return;
+    
+    int pv = a[l],      // Head pos pivot
+        count = 0;      // No. of to-be-swapped elements
+    
+    for (int i = l + 1; i <= r; i++) {
+        if (a[i] <= pv)
+            count++;
     }
-    a[i] = pivot;
-    quickSort(a, i);
+    
+    // Init pivot index
+    int pv_idx = l + count;
+    swap1(a[pv_idx], a[l]);
+    
+    
+    int i = l, j = r;
+
+    while (i < pv_idx && pv_idx < j) {
+        while (a[i] <= pv)
+            i++;
+
+        while (a[j] > pv) j--;
+
+        if (i < pv_idx && j > pv_idx)
+            swap1(a[i++], a[j--]);
+    }
+ 
+    quickSort(a, l, pv_idx - 1);
+    quickSort(a, pv_idx + 1, r);
 }
 
 
@@ -130,65 +161,87 @@ void quickSort(T a[], int n) {
 ///                                Merge Sort                                ///
 /// ------------------------------------------------------------------------ ///
 template <typename T>
-void mergeSort(T a[], int n, int m) {
-    if (n <= 1) return;
-    int mid = n / 2;
+void merger(T a[], int n, int l, int m, int r) {
+    T tmp_l[n],
+      tmp_r[n];
+    int x = 0,
+        y = 0;
     
-    mergeSort(a, mid, m);
-    mergeSort(a + mid, n - mid, m);
+    for (int i = l; i <= m; i++)
+        tmp_l[x++] = a[i];
+    for (int i = m + 1; i <= r; i++)
+        tmp_r[y++] = a[i];
     
-    T *b = new T[n];
-    int i = 0, j = mid, k = 0;
+    int i = 0,
+        j = 0,
+        k = l;
     
-    while (i < mid && j < n) {
-        if (a[i] < a[j])
-            b[k++] = a[i++];
+    while (i < x && j < y) {
+        if (tmp_l[i] <= tmp_r[j])
+            a[k++] = tmp_l[i++];
         else
-            b[k++] = a[j++];
+            a[k++] = tmp_r[j++];
     }
-    
-    while (i < mid) b[k++] = a[i++];
-    while (j < n) b[k++] = a[j++];
-    for (i = 0; i < n; i++) a[i] = b[i];
-    
-    delete[] b;
+    while (i < x)
+        a[k++] = tmp_l[i++];
+    while (j < y)
+        a[k++] = tmp_r[j++];
 }
 
 template <typename T>
-void SortCollection(T inp[], int n, int mode){
+void mergeSort(T a[], int n, int l, int r) {
+    if (l >= r) return;
+    
+    int m = (l + r) / 2;
+    mergeSort(a, n, l, m);           // L
+    mergeSort(a, n, m + 1, r);       // R
+
+    merger(a, n, l, m, r);
+}
+
+
+/// ------------------------------------------------------------------------ ///
+///                              SortCollection                              ///
+/// ------------------------------------------------------------------------ ///
+template <typename T>
+void SortCollection(T inp[], int n, int mode, bool print){
     clock_t t;
     t = clock();
-    
+
     switch(mode){
         case 1:
             std::cout << "\n========== Interchange Sort ==========\n";
             interchangeSort(inp, n);
-            std::cout << testArray(inp, n);
+            // std::cout << "Success: " << testArray(inp, n);
+            if (print) printArray(inp, n);
             break;
         case 2:
             std::cout << "\n========== Selection Sort ==========\n";
             selectionSort(inp, n);
-            std::cout << testArray(inp, n);
+            // std::cout << "Success: " << testArray(inp, n);
+            if (print) printArray(inp, n);
             break;
         case 3:
             std::cout << "\n========== Heap Sort ==========\n";
             heapSort(inp, n);
-            std::cout << testArray(inp, n);
+            // std::cout << "Success: " << testArray(inp, n);
+            if (print) printArray(inp, n);
             break;
         case 4:
             std::cout << "\n========== Quick Sort ==========\n";
-            quickSort(inp, n);
-            std::cout << testArray(inp, n);
+            quickSort(inp, 0, n);
+            // std::cout << "Success: " << testArray(inp, n);      //* Ignore 0 for float array
+            if (print) printArray(inp, n);
             break;
         case 5:
             std::cout << "\n========== Merge Sort ==========\n";
-            mergeSort(inp, n, n / 2);
-            std::cout << testArray(inp, n);
+            mergeSort(inp, n, 0, n);
+            // std::cout << "Success: " << testArray(inp, n);
+            if (print) printArray(inp, n);
             break;
         default: break;
     }
-    
-    // printArray(inp, n);
+
     t = clock() - t;
     std::cout << "\nThoi gian thuc hien sap xep voi ";
     switch (mode){
@@ -209,49 +262,55 @@ void SortCollection(T inp[], int n, int mode){
             break;
         default: break;
     }
-    std::cout <<": " << ((float)t) / CLOCKS_PER_SEC;
+    std::cout <<": " << ((float)t) / CLOCKS_PER_SEC << "\n";
 }
 
 
-
+/// ------------------------------------------------------------------------ ///
+///                                   main                                   ///
+/// ------------------------------------------------------------------------ ///
 int main() {
     int n = 10000;
     int a_i[10000], t_i[10000];
     float a_f[10000], t_f[10000];
     
+    /// ------------------------------ Arrays init ----------------------------- ///
     std::fstream f_i, f_f;
-    //f.open("input.txt", std::ios::in); //đọc dữ liệu số nguyên
+    // f_i.open("input.txt", std::ios::in); //đọc dữ liệu số nguyên
     f_i.open("/home/dmd/Documents/University/CS104/exc/L/W08/input.txt", std::ios::in); //đọc dữ liệu số nguyên
     if (f_i.fail()) {
         std::cout << "Khong mo dc file";
         return 0;
     }
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
         f_i >> a_i[i];
     }
     f_i.close();
 
-    //f.open("f_input.txt", ios::in); //đọc dữ liệu số thực
+    // f_f.open("f_input.txt", std::ios::in); //đọc dữ liệu số thực
     f_f.open("/home/dmd/Documents/University/CS104/exc/L/W08/f_input.txt", std::ios::in); //đọc dữ liệu số thực
     if (f_f.fail()) {
         std::cout << "Khong mo dc file";
         return 0;
     }
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
         f_f >> a_f[i];
     }
     f_f.close();
-    
-    
-    
+
+
+    /// -------------------------------- Sorting ------------------------------- ///
     for (int i = 1; i <= 5; i++) {
+        // Change to 'true' to print the array after each sort
+        bool print = false;
+        
         copyArray(a_i, n, t_i);
         copyArray(a_f, n, t_f);
-        
-        SortCollection(t_i, n, i);
-        SortCollection(t_f, n, i);
+
+        SortCollection(t_i, n, i, print);
+        SortCollection(t_f, n, i, print);
     }
-    
+
 
     return 0;
 }
