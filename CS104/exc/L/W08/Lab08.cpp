@@ -1,25 +1,26 @@
 ﻿/*Họ và tên SV: Đào Minh Đức
   MSSV: 2159003
 
-  1. Viết chương trình C++ cài đặt 5 thuật toán sắp xếp: interchange Sort, selection Sort, heap Sort, quick Sort, merge Sort
-  Cài đặt với kiểu dữ liệu trừu tượng để có thể thực hiện được câu 2 và câu 3 bên dưới chỉ bằng cách đổi file đầu vào
-  2. So sánh thời gian chạy của mỗi thuật toán và điền kết quả bên dưới
-Đầu vào lấy dữ liệu từ file input.txt, file chứa 10000 phần tử số nguyên cách nhau bởi kí tự xuống dòng
-Điền thời gian chạy mỗi thuật toán vào phần sau đây:
-- interchange Sort : 0.307814
-- selection Sort   : 0.112652
-- heap Sort        : 0.002074
-- quick Sort       : 0.001728
-- merge Sort       : 0.001638
-  3. So sánh thời gian chạy của mỗi thuật toán và điền kết quả bên dưới
-Đầu vào lấy dữ liệu từ file f_input.txt, file chứa 10000 phần tử số thực cách nhau bởi kí tự xuống dòng
-Điền kết quả vào phần sau đây:
-- interchange Sort : 0.275871
-- selection Sort   : 0.110269
-- heap Sort        : 0.002121
-- quick Sort       : 0.001630
-- merge Sort       : 0.001700
+    1. Viết chương trình C++ cài đặt 5 thuật toán sắp xếp: interchange Sort, selection Sort, heap Sort, quick Sort, merge Sort
+    Cài đặt với kiểu dữ liệu trừu tượng để có thể thực hiện được câu 2 và câu 3 bên dưới chỉ bằng cách đổi file đầu vào
+    2. So sánh thời gian chạy của mỗi thuật toán và điền kết quả bên dưới
+        Đầu vào lấy dữ liệu từ file input.txt, file chứa 10000 phần tử số nguyên cách nhau bởi kí tự xuống dòng
+        Điền thời gian chạy mỗi thuật toán vào phần sau đây:
+            - interchange Sort : 0.307814
+            - selection Sort   : 0.112652
+            - heap Sort        : 0.002074
+            - quick Sort       : 0.001728
+            - merge Sort       : 0.001638
+        3. So sánh thời gian chạy của mỗi thuật toán và điền kết quả bên dưới
+        Đầu vào lấy dữ liệu từ file f_input.txt, file chứa 10000 phần tử số thực cách nhau bởi kí tự xuống dòng
+        Điền kết quả vào phần sau đây:
+            - interchange Sort : 0.275871
+            - selection Sort   : 0.110269
+            - heap Sort        : 0.002121
+            - quick Sort       : 0.001630
+            - merge Sort       : 0.001700
 */
+
 #include <iostream>
 #include <fstream>
 #include <typeinfo>     // Get var type
