@@ -51,36 +51,27 @@ jobs:
         #     - 104.l.02.01
         #     - 104.X.02.03
         #     - [del] 42069.LT.2.112
-        
+          
       - name: 🔎 Regex check 1
         id: regex-1
         uses: AsasInnab/regex-action@v1
         with:
-          regex_pattern: '([0-9]{3}\.[LT]\.[0-9]{2}\.[0-9]{2}(?<!^\[(add|del|rnm|mov|rft)\]\ ))'
+          regex_pattern: '(\[(add|del|rft)\]\ (?=[0-9]{3}\.[LT]\.[0-9]{2}[^\.]*$))'
           regex_flags: 'gm'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
           
       - name: 🔎 Regex check 2
         id: regex-2
-        if: steps.regex-1.outputs.first_match == ''
+        if: steps.regex-2.outputs.first_match == ''
         uses: AsasInnab/regex-action@v1
         with:
-          regex_pattern: '(\[(add|del|mov|rft)\]\ (?=[0-9]{3}\.[LT]\.[0-9]{2}[^\.]*$))'
-          regex_flags: 'gm'
-          search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
-          
-      - name: 🔎 Regex check 3
-        id: regex-3
-        if: steps.regex-1.outputs.first_match == '' && steps.regex-2.outputs.first_match == ''
-        uses: AsasInnab/regex-action@v1
-        with:
-          regex_pattern: '(\[(rnm|mrg)\]\ (?=.*\>.*))'
+          regex_pattern: '(\[(rnm|mov|mrg)\]\ (?=.*\>.*))'
           regex_flags: 'gm'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
           
       - name: ✏ Prepare issue body (regex)
         id: issue-body-reg
-        if: steps.regex-1.outputs.first_match == '' && steps.regex-2.outputs.first_match == '' && steps.regex-3.outputs.first_match == ''
+        if: steps.regex-1.outputs.first_match == '' && steps.regex-2.outputs.first_match == ''
         run: head -5 cmsg.txt > issue.txt
           
       - name: ✍ Create new issue (regex)
