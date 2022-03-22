@@ -93,15 +93,15 @@ void selectionSort(T a[], int n) {
 ///                                 Heap Sort                                ///
 /// ------------------------------------------------------------------------ ///
 /// ----------------------------- From 104.L.07 ---------------------------- ///
-template <typename T, typename U>
-void heapify(T a[], U n, U m) {
-    int left = 2 * m + 1;
-    int right = 2 * m + 2;
+template <typename T>
+void heapify(T a[], int n, int m) {
+    int l = 2 * m + 1;
+    int r = 2 * m + 2;
 
     int max = m;
 
-    if (left < n && a[left] > a[max]) max = left;
-    if (right < n && a[right] > a[max]) max = right;
+    if (l < n && a[l] > a[max]) max = l;
+    if (r < n && a[r] > a[max]) max = r;
 
     if(max != m) {
         swap1(a[m], a[max]);
@@ -282,7 +282,7 @@ int main() {
     // f_i.open("input.txt", std::ios::in); //đọc dữ liệu số nguyên
     f_i.open("/home/dmd/Documents/University/CS104/exc/L/W08/input.txt", std::ios::in); //đọc dữ liệu số nguyên
     if (f_i.fail()) {
-        std::cout << "Khong mo dc file";
+        std::cout << "Khong mo duoc file";
         return 0;
     }
     for (int i = 0; i < n; i++) {
@@ -293,7 +293,7 @@ int main() {
     // f_f.open("f_input.txt", std::ios::in); //đọc dữ liệu số thực
     f_f.open("/home/dmd/Documents/University/CS104/exc/L/W08/f_input.txt", std::ios::in); //đọc dữ liệu số thực
     if (f_f.fail()) {
-        std::cout << "Khong mo dc file";
+        std::cout << "Khong mo duoc file";
         return 0;
     }
     for (int i = 0; i < n; i++) {
