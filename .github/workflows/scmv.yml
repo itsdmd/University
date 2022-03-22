@@ -51,12 +51,12 @@ jobs:
         #     - 104.l.02.01
         #     - 104.X.02.03
         #     - [del] 42069.LT.2.112
-          
+      
       - name: 🔎 Regex check 1
         id: regex-1
         uses: AsasInnab/regex-action@v1
         with:
-          regex_pattern: '(\[(add|del|rft)\]\ (?=[0-9]{3}\.[LT]\.[0-9]{2}[^\.]*$))'
+          regex_pattern: '((\[(add|del|mod|rft)\]\ )(?=[0-9]{3}\.[LT]\.[0-9]{2}([^\.]*)?$))'
           regex_flags: 'gm'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
           
