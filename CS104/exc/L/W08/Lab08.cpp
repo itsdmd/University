@@ -247,23 +247,23 @@ void SortCollection(T inp[], int n, int type, bool print){
     std::cout << "\nThoi gian thuc hien sap xep voi ";
     switch (type){
         case 1:
-            std::cout << "Interchange Sort";
+            std::cout << "Interchange Sort (" << typeid(inp[0]).name() << ")";
             break;
         case 2:
-            std::cout << "Selection Sort";
+            std::cout << "Selection Sort (" << typeid(inp[0]).name() << ")";
             break;
         case 3:
-            std::cout << "Heap Sort";
+            std::cout << "Heap Sort (" << typeid(inp[0]).name() << ")";
             break;
         case 4:
-            std::cout << "Quick Sort";
+            std::cout << "Quick Sort (" << typeid(inp[0]).name() << ")";
             break;
         case 5:
-            std::cout << "Merge Sort";
+            std::cout << "Merge Sort (" << typeid(inp[0]).name() << ")";
             break;
         default: break;
     }
-    std::cout <<": " << ((float)t) / CLOCKS_PER_SEC << "\n";
+    std::cout <<": " << ((float)t) / CLOCKS_PER_SEC << "s\n";
 }
 
 
@@ -275,7 +275,8 @@ int main() {
     int a_i[10000], t_i[10000];
     float a_f[10000], t_f[10000];
     
-    /// ------------------------------ Arrays init ----------------------------- ///
+    
+    /// ------------------------------- Read data ------------------------------ ///
     std::fstream f_i, f_f;
     // f_i.open("input.txt", std::ios::in); //đọc dữ liệu số nguyên
     f_i.open("/home/dmd/Documents/University/CS104/exc/L/W08/input.txt", std::ios::in); //đọc dữ liệu số nguyên
@@ -287,7 +288,7 @@ int main() {
         f_i >> a_i[i];
     }
     f_i.close();
-
+    
     // f_f.open("f_input.txt", std::ios::in); //đọc dữ liệu số thực
     f_f.open("/home/dmd/Documents/University/CS104/exc/L/W08/f_input.txt", std::ios::in); //đọc dữ liệu số thực
     if (f_f.fail()) {
@@ -298,8 +299,8 @@ int main() {
         f_f >> a_f[i];
     }
     f_f.close();
-
-
+    
+    
     /// -------------------------------- Sorting ------------------------------- ///
     for (int i = 1; i <= 5; i++) {
         // Change to 'true' to print the array after each sort
