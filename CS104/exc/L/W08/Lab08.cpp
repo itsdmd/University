@@ -6,19 +6,19 @@
   2. So sánh thời gian chạy của mỗi thuật toán và điền kết quả bên dưới
 Đầu vào lấy dữ liệu từ file input.txt, file chứa 10000 phần tử số nguyên cách nhau bởi kí tự xuống dòng
 Điền thời gian chạy mỗi thuật toán vào phần sau đây:
-- interchange Sort : 0.30913
-- selection Sort   : 0.27133
-- heap Sort        :
+- interchange Sort : 0.301821
+- selection Sort   : 0.108895
+- heap Sort        : 0.002027
 - quick Sort       :
-- merge Sort       :
+- merge Sort       : 0.001422
   3. So sánh thời gian chạy của mỗi thuật toán và điền kết quả bên dưới
 Đầu vào lấy dữ liệu từ file f_input.txt, file chứa 10000 phần tử số thực cách nhau bởi kí tự xuống dòng
 Điền kết quả vào phần sau đây:
-- interchange Sort : 0.27133
-- selection Sort   : 0.27133
-- heap Sort        :
+- interchange Sort : 0.274266
+- selection Sort   : 0.110184
+- heap Sort        : 0.002115
 - quick Sort       :
-- merge Sort       :
+- merge Sort       : 0.001647
 */
 #include <iostream>
 #include <fstream>
@@ -35,6 +35,14 @@ template <typename T>
 void copyArray(T a[], int n, T b[]) {
     for (int i = 0; i < n; i++)
         b[i] = a[i];
+}
+
+template <typename T>
+bool testArray(T a[], int n) {
+    for (int i = 0; i < n - 1; i++)
+        if (a[i] > a[i + 1])
+            return false;
+    return true;
 }
 
 template <typename T>
@@ -72,8 +80,8 @@ void selectionSort(T a[], int n) {
 /// ------------------------------------------------------------------------ ///
 ///                                 Heap Sort                                ///
 /// ------------------------------------------------------------------------ ///
-template <typename T>
-void heapify(T a[], T n, int i) {
+template <typename T, typename U>
+void heapify(T a[], U n, int i) {
     int left = 2 * i + 1;
     int right = 2 * i + 2;
 
@@ -123,20 +131,27 @@ void quickSort(T a[], int n) {
 /// ------------------------------------------------------------------------ ///
 template <typename T>
 void mergeSort(T a[], int n, int m) {
-    T i = 0, j = n - m, k = 0;
-    T *temp = new T[n];
+    if (n <= 1) return;
+    int mid = n / 2;
     
-    while (i < n && j < n) {
-        if (a[i] < a[j]) temp[k++] = a[i++];
-        else temp[k++] = a[j++];
+    mergeSort(a, mid, m);
+    mergeSort(a + mid, n - mid, m);
+    
+    T *b = new T[n];
+    int i = 0, j = mid, k = 0;
+    
+    while (i < mid && j < n) {
+        if (a[i] < a[j])
+            b[k++] = a[i++];
+        else
+            b[k++] = a[j++];
     }
     
-    while (i < n) temp[k++] = a[i++];
-    while (j < n) temp[k++] = a[j++];
+    while (i < mid) b[k++] = a[i++];
+    while (j < n) b[k++] = a[j++];
+    for (i = 0; i < n; i++) a[i] = b[i];
     
-    for (i = 0; i < n; i++) a[i] = temp[i];
-    
-    delete[] temp;
+    delete[] b;
 }
 
 template <typename T>
@@ -148,23 +163,28 @@ void SortCollection(T inp[], int n, int mode){
         case 1:
             std::cout << "\n========== Interchange Sort ==========\n";
             interchangeSort(inp, n);
+            std::cout << testArray(inp, n);
             break;
         case 2:
             std::cout << "\n========== Selection Sort ==========\n";
             selectionSort(inp, n);
+            std::cout << testArray(inp, n);
             break;
-        // case 3:
-        //     std::cout << "\n========== Heap Sort ==========\n";
-        //     heapSort(inp, n);
-        //     break;
-        // case 4:
-        //     std::cout << "\n========== Quick Sort ==========\n";
-        //     quickSort(inp, n);
-        //     break;
-        // case 5:
-        //     std::cout << "\n========== Merge Sort ==========\n";
-        //     mergeSort(inp, n, n / 2);
-        //     break;
+        case 3:
+            std::cout << "\n========== Heap Sort ==========\n";
+            heapSort(inp, n);
+            std::cout << testArray(inp, n);
+            break;
+        case 4:
+            std::cout << "\n========== Quick Sort ==========\n";
+            quickSort(inp, n);
+            std::cout << testArray(inp, n);
+            break;
+        case 5:
+            std::cout << "\n========== Merge Sort ==========\n";
+            mergeSort(inp, n, n / 2);
+            std::cout << testArray(inp, n);
+            break;
         default: break;
     }
     
@@ -201,7 +221,6 @@ int main() {
     
     std::fstream f_i, f_f;
     //f.open("input.txt", std::ios::in); //đọc dữ liệu số nguyên
-    //f.open("f_input.txt", ios::in); //đọc dữ liệu số thực
     f_i.open("/home/dmd/Documents/University/CS104/exc/L/W08/input.txt", std::ios::in); //đọc dữ liệu số nguyên
     if (f_i.fail()) {
         std::cout << "Khong mo dc file";
@@ -212,7 +231,7 @@ int main() {
     }
     f_i.close();
 
-
+    //f.open("f_input.txt", ios::in); //đọc dữ liệu số thực
     f_f.open("/home/dmd/Documents/University/CS104/exc/L/W08/f_input.txt", std::ios::in); //đọc dữ liệu số thực
     if (f_f.fail()) {
         std::cout << "Khong mo dc file";
