@@ -47,7 +47,7 @@ Generic commits must start its message with one of the following prefixes:
 - ```[del]``` : Delete
 - ```[mod]``` : Modify *(non-versioning CMs only)*
 - ```[rnm] <old> > <new>``` : Rename
-- ```[mov]``` : Move
+- ```[mov] <old_dir> > <new_dir>``` : Move
 - ```[rft]``` : Directory refactor
 - ```[mrg] <from> > <to>``` : Branch merging
 
