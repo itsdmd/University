@@ -22,6 +22,7 @@
 */
 #include <iostream>
 #include <fstream>
+#include <typeinfo>     // Get var type
 
 
 /// ------------------------------------------------------------------------ ///
@@ -204,37 +205,37 @@ void mergeSort(T a[], int n, int l, int r) {
 ///                              SortCollection                              ///
 /// ------------------------------------------------------------------------ ///
 template <typename T>
-void SortCollection(T inp[], int n, int mode, bool print){
+void SortCollection(T inp[], int n, int type, bool print){
     clock_t t;
     t = clock();
 
-    switch(mode){
+    switch(type){
         case 1:
-            std::cout << "\n========== Interchange Sort ==========\n";
+            std::cout << "\n========== Interchange Sort (" << typeid(inp[0]).name() << ") ==========\n";
             interchangeSort(inp, n);
             // std::cout << "Success: " << testArray(inp, n);
             if (print) printArray(inp, n);
             break;
         case 2:
-            std::cout << "\n========== Selection Sort ==========\n";
+            std::cout << "\n========== Selection Sort (" << typeid(inp[0]).name() << ") ==========\n";
             selectionSort(inp, n);
             // std::cout << "Success: " << testArray(inp, n);
             if (print) printArray(inp, n);
             break;
         case 3:
-            std::cout << "\n========== Heap Sort ==========\n";
+            std::cout << "\n========== Heap Sort (" << typeid(inp[0]).name() << ") ==========\n";
             heapSort(inp, n);
             // std::cout << "Success: " << testArray(inp, n);
             if (print) printArray(inp, n);
             break;
         case 4:
-            std::cout << "\n========== Quick Sort ==========\n";
+            std::cout << "\n========== Quick Sort (" << typeid(inp[0]).name() << ") ==========\n";
             quickSort(inp, 0, n);
             // std::cout << "Success: " << testArray(inp, n);      //* Ignore 0 for float array
             if (print) printArray(inp, n);
             break;
         case 5:
-            std::cout << "\n========== Merge Sort ==========\n";
+            std::cout << "\n========== Merge Sort (" << typeid(inp[0]).name() << ") ==========\n";
             mergeSort(inp, n, 0, n);
             // std::cout << "Success: " << testArray(inp, n);
             if (print) printArray(inp, n);
@@ -244,7 +245,7 @@ void SortCollection(T inp[], int n, int mode, bool print){
 
     t = clock() - t;
     std::cout << "\nThoi gian thuc hien sap xep voi ";
-    switch (mode){
+    switch (type){
         case 1:
             std::cout << "Interchange Sort";
             break;
