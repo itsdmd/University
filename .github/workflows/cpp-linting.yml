@@ -17,32 +17,52 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
+        
+      - name: 💬 Get commit message
+        id: get-cm
+        if: steps.linter.outcome == 'failure'
+        uses: rlespinasse/git-commit-data-action@v1
+        
+        
+      - name: 🔎 Check for [del] in CM
+        id: regex-del
+        uses: AsasInnab/regex-action@v1
+        with:
+          regex_pattern: '\[del\]\ '
+          regex_flags: 'gm'
+          search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
+          
+      - name: ⛔ CM contains [del]
+        id: del-exit
+        if: steps.regex-del.outputs.first_match != ''
+        continue-on-error: true
+        run: exit 1
+        
 
       - name: 🗒 Get changed files
         id: targets
+        if: steps.del-exit.outcome == 'success'
         uses: tj-actions/changed-files@v17.3
         with:
           files: |
             **/*.cpp
             !**-og**
+      
 
       - name: ⚙️ Install cppcheck
+        id: instl
+        if: steps.targets.outcome == 'success' && ${{ steps.targets.outputs.any_changed }}
         run: sudo apt install cppcheck
         
-          
       - name: 🔎 Linting
         id: linter
-        if: ${{ steps.targets.outputs.any_changed }}
+        if: steps.instl.outcome == 'success'
         continue-on-error: true
         run: |
           for changed_file in ${{ steps.targets.outputs.all_changed_files }}; do
             cppcheck --enable=all --inconclusive --library=posix --std=c++20 --error-exitcode=1 --output-file="lint.txt" "${changed_file}"
           done
         
-      - name: 💬 Get commit message
-        id: get-cm
-        if: steps.linter.outcome == 'failure'
-        uses: rlespinasse/git-commit-data-action@v1
         
       - name: ✏ Create new issue
         if: steps.linter.outcome == 'failure'
