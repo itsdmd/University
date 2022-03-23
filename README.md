@@ -24,17 +24,17 @@ General hierarchy (only folder's level matters):
 	- **exc** ................. *for homework assignments*
 		- └ **.vscode** + Workspace file
 		- └ **L** .................. *Lab*
-		- └ **T**....................*Theory*
+		- └ **T** ...................*Theory*
 		
 			- └ - **codes** ............... *Code submission*
-			- └ - **subs** .................. *Other submission*
+			- └ - **subs** ................. *Other submission*
 			
 				- └ -- **W\*\*** .................. *Week \*\* submission, ex: W03*
 	---
 	- **lec** .................... *for lecture materials*
-		- └ **W-\*\*** ................. *Week \*\* lecture*
-		- └ **L-\*\*** .................. *Week \*\* Lab lecture*
-		- └ **T-\*\***....................*Week \*\* Theory lecture*
+		- └ **w\*\*** .................. *Week \*\* lecture*
+		- └ **L-w\*\*** ............... *Week \*\* Lab lecture*
+		- └ **T-w\*\*** ............... *Week \*\* Theory lecture*
 
 ## 3. 📄 Files
 **For material files**: Descriptive and no whitespace
