@@ -105,12 +105,16 @@ jobs:
         if: steps.regex-2.outputs.first_match != ''
         continue-on-error: true
         run: |
+          msgog="${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}"
+          msgmod="${msgog//\[/\\\[}"
+          msgmod="${msgmod//\]/\\\]}"
+          echo $msgmod
           touch dupfd.sh
           echo "#\!/bin/bash" >> dupfd.sh
           echo "count=+" >> dupfd.sh
           echo "cat cmsg.txt | while read line" >> dupfd.sh
           echo "do" >> dupfd.sh
-          echo "if [[ \$line = *\"${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}\"* ]]" >> dupfd.sh
+          echo "if [[ \$line = *\"$msgmod\"* ]]" >> dupfd.sh
           echo "then" >> dupfd.sh
           echo "count=\$count+" >> dupfd.sh
           echo "if [ \"\$count\" = \"+++\" ]" >> dupfd.sh
