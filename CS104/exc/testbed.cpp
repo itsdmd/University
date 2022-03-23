@@ -1,15 +1,5 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
-
-
-
-// struct NODE
-// {
-//     int key;
-//     NODE* p_Next;
-// };
-
 
 
 int main()
