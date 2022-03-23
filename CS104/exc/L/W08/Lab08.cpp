@@ -21,7 +21,7 @@
             - merge Sort       : 0.001700
 */
 
-// Test CM dup detection #01
+// Test CM dup detection #02
 
 #include <iostream>
 #include <fstream>
