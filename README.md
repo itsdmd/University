@@ -32,9 +32,9 @@ General hierarchy (only folder's level matters):
 				- └ -- **W\*\*** .................. *Week \*\* submission, ex: W03*
 	---
 	- **lec** .................... *for lecture materials*
-		- └ **w\*\*** .................. *Week \*\* lecture*
-		- └ **L-w\*\*** ............... *Week \*\* Lab lecture*
-		- └ **T-w\*\*** ............... *Week \*\* Theory lecture*
+		- └ **W\*\*** .................. *Week \*\* lecture*
+		- └ **L-W\*\*** ............... *Week \*\* Lab lecture*
+		- └ **T-W\*\*** ............... *Week \*\* Theory lecture*
 
 ## 3. 📄 Files
 **For material files**: Descriptive and no whitespace
