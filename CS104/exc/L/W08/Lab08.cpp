@@ -280,10 +280,10 @@ int main() {
     /// ------------------------------- Read data ------------------------------ ///
     std::fstream f_i, f_f;
     // f_i.open("input.txt", std::ios::in); //đọc dữ liệu số nguyên
-    f_i.open("/home/dmd/Documents/University/CS104/exc/L/W08/input.txt", std::ios::in); //đọc dữ liệu số nguyên
+    f_i.open("./res/input.txt", std::ios::in);  //* Use Run instead of Debug
     if (f_i.fail()) {
         std::cout << "Khong mo duoc file";
-        return 0;
+        return 1;
     }
     for (int i = 0; i < n; i++) {
         f_i >> a_i[i];
@@ -291,10 +291,10 @@ int main() {
     f_i.close();
     
     // f_f.open("f_input.txt", std::ios::in); //đọc dữ liệu số thực
-    f_f.open("/home/dmd/Documents/University/CS104/exc/L/W08/f_input.txt", std::ios::in); //đọc dữ liệu số thực
+    f_f.open("./res/f_input.txt", std::ios::in);
     if (f_f.fail()) {
         std::cout << "Khong mo duoc file";
-        return 0;
+        return 1;
     }
     for (int i = 0; i < n; i++) {
         f_f >> a_f[i];
