@@ -3,14 +3,20 @@
 
 # 📜 Table of Contents
 - **[🏷️ Naming Schemes](#%EF%B8%8F-naming-schemes)**
-	- **[1. 📁 Folders](#1--folders)**
-	- **[2. 📄 Files](#2--files)**
-	- **[3. 💬 Commit Messages](#3--commit-messages)**
+	- **[1. 🌿 Branches](#1--branches)**
+	- **[2. 📁 Folders](#2--folders)**
+	- **[3. 📄 Files](#3--files)**
+	- **[4. 💬 Commit Messages](#4--commit-messages)**
 		- **[a. 📚 Generic](#a--generic)**
 		- **[b. ✍ Submission](#b--submission)**
 
 # 🏷️ Naming Schemes
-## 1. 📁 Folders
+## 1. 🌿 Branches
+Follow format: ```<year>.<semester>```
+
+Eg.: First year, second semester will be ```1.2```
+
+## 2. 📁 Folders
 There should be a folder for each course. The name of the folder should be the course code.
 
 General hierarchy (only folder's level matters):
@@ -30,12 +36,12 @@ General hierarchy (only folder's level matters):
 		- └ **L-\*\*** .................. *Week \*\* Lab lecture*
 		- └ **T-\*\***....................*Week \*\* Theory lecture*
 
-## 2. 📄 Files
+## 3. 📄 Files
 **For material files**: Descriptive and no whitespace
 
 **For submission files**: Follow lecturer's naming scheme
 
-## 3. 💬 Commit Messages
+## 4. 💬 Commit Messages
 There are 2 types of commits: ***Generic*** and ***Submission***.
 - **[Generic](#a--generic)**: For files that are not submissions. Check using GMCV workflow.
 - **[Submission](#b--submission)**: For files that are for homework submission. Check using SCMV workflow.
