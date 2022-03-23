@@ -43,8 +43,8 @@ General hierarchy (only folder's level matters):
 
 ## 4. 💬 Commit Messages
 There are 2 types of commits: ***Generic*** and ***Submission***.
-- **[Generic](#a--generic)**: For files that are not submissions. Check using GMCV workflow.
-- **[Submission](#b--submission)**: For files that are for homework submission. Check using SCMV workflow.
+- **[Generic](#a--generic)**: For files that are not submissions. Check using [GMCV workflow](https://github.com/itsdmd/University/actions/workflows/gcmv.yml).
+- **[Submission](#b--submission)**: For files that are for homework submission. Check using [SCMV workflow](https://github.com/itsdmd/University/actions/workflows/scmv.yml).
 
 ### a. 📚 Generic
 Generic commits must start its message with one of the following prefixes:
