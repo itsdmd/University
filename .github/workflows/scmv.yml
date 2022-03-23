@@ -108,23 +108,22 @@ jobs:
           msgog="${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}"
           msgmod="${msgog//\[/\\\[}"
           msgmod="${msgmod//\]/\\\]}"
-          echo "Modded: $msgmod"
-          touch dupfd.sh
-          echo "#\!/bin/bash" >> dupfd.sh
-          echo "count=+" >> dupfd.sh
-          echo "cat cmsg.txt | while read line" >> dupfd.sh
-          echo "do" >> dupfd.sh
-          echo "if [[ \$line = *\"\$msgmod\"* ]]" >> dupfd.sh
-          echo "then" >> dupfd.sh
-          echo "count=\$count+" >> dupfd.sh
-          echo "if [ \"\$count\" = \"+++\" ]" >> dupfd.sh
-          echo "then" >> dupfd.sh
-          echo "exit 1" >> dupfd.sh
-          echo "fi" >> dupfd.sh
-          echo "fi" >> dupfd.sh
-          echo "done" >> dupfd.sh
-          chmod +x dupfd.sh
-          ./dupfd.sh
+          echo "Modded:$msgmod"
+          count=+
+          declare -i lctr=1
+          cat cmsg.txt | while read line
+          do
+            if [[ $line = *"$msgmod"* ]]
+            then
+              count=$count+
+              if [ $count = "+++" ]
+              then
+                echo "Found at $lctr"
+                exit 1
+              fi
+              lctr=$(( lctr + 1 ))
+            fi
+          done
           
       - name: ✏ Prepare issue body (duplication)
         id: issue-body-dup
