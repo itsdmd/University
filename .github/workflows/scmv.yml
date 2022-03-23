@@ -101,20 +101,22 @@ jobs:
         id: search
         continue-on-error: true
         run: |
-          msg=$(cat cmsg.txt)
-          count=+
-          for line in $msg
-          do
-            if [[ "$line" =~ "${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}" ]]
-            then
-              count=$count+
-              
-              if [[ "$count" = "+++" ]]
-              then
-                exit 1
-              fi
-            fi
-          done
+          touch dupfd.sh
+          echo "#\!/bin/bash" >> dupfd.sh
+          echo "count=+" >> dupfd.sh
+          echo "cat cmsg.txt | while read line" >> dupfd.sh
+          echo "do" >> dupfd.sh
+          echo "if [[ \$line = *\"${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}\"* ]]" >> dupfd.sh
+          echo "then" >> dupfd.sh
+          echo "count=\$count+" >> dupfd.sh
+          echo "if [ \"\$count\" = \"+++\" ]" >> dupfd.sh
+          echo "then" >> dupfd.sh
+          echo "exit 1" >> dupfd.sh
+          echo "fi" >> dupfd.sh
+          echo "fi" >> dupfd.sh
+          echo "done" >> dupfd.sh
+          chmod +x dupfd.sh
+          ./dupfd.sh
           
       - name: ✏ Prepare issue body (duplication)
         id: issue-body-dup
