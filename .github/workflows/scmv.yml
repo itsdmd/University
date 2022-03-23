@@ -52,6 +52,7 @@ jobs:
         #     - 104.X.02.03
         #     - [del] 42069.LT.2.112
       
+      # Casual
       - name: 🔎 Regex check 1
         id: regex-1
         uses: AsasInnab/regex-action@v1
@@ -60,6 +61,7 @@ jobs:
           regex_flags: 'gm'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
       
+      # Versioned
       - name: 🔎 Regex check 2
         id: regex-2
         if: steps.regex-1.outputs.first_match == ''
@@ -68,7 +70,8 @@ jobs:
           regex_pattern: '((?<!.)([0-9]{3}\.[LT]\.[0-9]{2}\.[0-9]{2}$))'
           regex_flags: 'gm'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
-          
+      
+      # With '>'
       - name: 🔎 Regex check 3
         id: regex-3
         if: steps.regex-2.outputs.first_match == ''
@@ -99,6 +102,7 @@ jobs:
           
       - name: 👓 Search through cmsg.txt
         id: search
+        if: steps.regex-2.outputs.first_match != ''
         continue-on-error: true
         run: |
           touch dupfd.sh
