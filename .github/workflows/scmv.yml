@@ -110,7 +110,6 @@ jobs:
           msgmod="${msgmod//\]/\\\]}"
           echo "Modded:$msgmod"
           count=+
-          declare -i lctr=1
           cat cmsg.txt | while read line
           do
             if [[ $line = *"$msgmod"* ]]
@@ -118,10 +117,8 @@ jobs:
               count=$count+
               if [ $count = "+++" ]
               then
-                echo "Found at $lctr"
                 exit 1
               fi
-              lctr=$(( lctr + 1 ))
             fi
           done
           
