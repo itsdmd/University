@@ -100,7 +100,7 @@ jobs:
         run: exit 1
         
           
-      - name: 👓 Search through cmsg.txt
+      - name: 👓 Duplication check
         id: search
         if: steps.regex-2.outputs.first_match != ''
         continue-on-error: true
@@ -108,13 +108,13 @@ jobs:
           msgog="${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}"
           msgmod="${msgog//\[/\\\[}"
           msgmod="${msgmod//\]/\\\]}"
-          echo $msgmod
+          echo "Modded: $msgmod"
           touch dupfd.sh
           echo "#\!/bin/bash" >> dupfd.sh
           echo "count=+" >> dupfd.sh
           echo "cat cmsg.txt | while read line" >> dupfd.sh
           echo "do" >> dupfd.sh
-          echo "if [[ \$line = *\"$msgmod\"* ]]" >> dupfd.sh
+          echo "if [[ \$line = *\"\$msgmod\"* ]]" >> dupfd.sh
           echo "then" >> dupfd.sh
           echo "count=\$count+" >> dupfd.sh
           echo "if [ \"\$count\" = \"+++\" ]" >> dupfd.sh
