@@ -23,9 +23,26 @@ jobs:
         
       - name: 💬 Get commit message
         uses: rlespinasse/git-commit-data-action@v1
+      
+        
+      - name: 🔎 Check for [del] in CM
+        id: regex-del
+        uses: AsasInnab/regex-action@v1
+        with:
+          regex_pattern: '\[del\]\ '
+          regex_flags: 'gm'
+          search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
+          
+      - name: ⛔ CM contains [del]
+        id: del-exit
+        if: steps.regex-del.outputs.first_match != ''
+        continue-on-error: true
+        run: exit 1
+        
         
       - name: 🗒 Get commit message history
         id: cmsg-history
+        if: steps.del-exit.outcome == 'success'
         run: git log > cmsg.txt
         
         
@@ -55,9 +72,10 @@ jobs:
       # Casual
       - name: 🔎 Regex check 1
         id: regex-1
+        if: steps.cmsg-history.outcome == 'success'
         uses: AsasInnab/regex-action@v1
         with:
-          regex_pattern: '((\[(add|del|mod|rft)\]\ )(?=[0-9]{3}\.[LT]\.[0-9]{2}([^\.]|$)(.*)?$))'
+          regex_pattern: '((\[(add|mod|rft)\]\ )(?=[0-9]{3}\.[LT]\.[0-9]{2}([^\.]|$)(.*)?$))'
           regex_flags: 'gm'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
       
