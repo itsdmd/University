@@ -21,8 +21,6 @@
             - merge Sort       : 0.001700
 */
 
-// Test CM dup detection #02
-
 #include <iostream>
 #include <fstream>
 #include <typeinfo>     // Get var type
