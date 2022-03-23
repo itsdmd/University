@@ -72,7 +72,9 @@ Generic commits must start its message with one of the following prefixes:
 ```
 
 ✅ Match:
+- ```102.02.01```
 - ```104.L.02.01```
+- ```[add] 102.05```
 - ```[add] 104.T.05```
 - ```[add] 104.T.05-og```
 - ```[rnm] 104.T.05 > 104.T.06.31```
