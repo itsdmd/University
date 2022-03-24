@@ -27,7 +27,7 @@ jobs:
         id: regex-del
         uses: AsasInnab/regex-action@v1
         with:
-          regex_pattern: '\[del\]\ '
+          regex_pattern: '(\[del\]\ )'
           regex_flags: 'gm'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
           
