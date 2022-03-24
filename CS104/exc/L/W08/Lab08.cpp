@@ -67,10 +67,13 @@ void swap1(T& a, T& b) {
 /// ------------------------------------------------------------------------ ///
 template <typename T>
 void interchangeSort(T a[], int n) {
-    for (int i = 0; i < n - 1; i++)
-        for (int j = i + 1; j < n; j++)
-            if (a[i] > a[j])
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (a[i] > a[j]) {
                 swap1(a[i], a[j]);
+            }
+        }
+    }
 }
 
 
@@ -81,9 +84,12 @@ template <typename T>
 void selectionSort(T a[], int n) {
     for (int i = 0; i < n - 1; i++) {
         int min = i;
-        for (int j = i + 1; j < n; j++)
+        
+        for (int j = i + 1; j < n; j++) {
             if (a[j] < a[min])
                 min = j;
+        }
+        
         swap1(a[i], a[min]);
     }
 }
