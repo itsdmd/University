@@ -161,8 +161,8 @@ void kruskalAlgorithm(Graph g) {
             break;
         }
     }
-
-    //In cây khung ra màn hình
+    
+    
     std::cout << "[Kruskal] Cay khung co trong so nho nhat:\n";
     for (int i = 0; i < n_ST; i++) {
         std::cout << ST[i].x << " " << ST[i].y << " " << ST[i].w << "\n";
