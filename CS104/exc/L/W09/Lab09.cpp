@@ -16,7 +16,7 @@
 /// ------------------------------------------------------------------------ ///
 struct Graph {
     int NumOfVertex;                        //Số đỉnh của đồ thị
-    int Data[MAX_VERTEX][MAX_VERTEX];         //Ma trận kề của đồ thị
+    int Data[MAX_VERTEX][MAX_VERTEX];       //Ma trận kề của đồ thị
 };
 
 struct Edge {                               //Cấu trúc mô tả một cạnh của đồ thị
@@ -72,6 +72,9 @@ void printEdges(Graph g) {
     std::cout << "\n";
 }
 
+/// ------------------------------------------------------------------------ ///
+///                            Graph Calculations                            ///
+/// ------------------------------------------------------------------------ ///
 int totalWeight(Edge e[], int n) {
     int totalWeight = 0;
     
@@ -82,6 +85,31 @@ int totalWeight(Edge e[], int n) {
     return totalWeight;
 }
 
+int totalEdges(Edge e[], int n) {
+    #define N n
+    
+    int edges = 0;
+    bool counted[N][N];
+    
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            counted[i][j] = false;
+        }
+    }
+    
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (e[i].w != 0 && !counted[i][j] && e[i].x == e[j].x && e[i].y == e[j].y) {
+                edges++;
+                counted[i][j] = true;
+                counted[j][i] = true;
+            }
+        }
+    }
+    
+    return edges;
+}
+
 
 /// ------------------------------------------------------------------------ ///
 ///                                   Prim                                   ///
@@ -90,7 +118,7 @@ void primAlgorithm(Graph g){
     int n_ST = 0;
     Edge ST[MAX_EDGE];
 
-    bool visited[MAX_EDGE];
+    bool visited[MAX_VERTEX];
     
     
     for (int i = 0; i < g.NumOfVertex; i++) {
@@ -99,6 +127,8 @@ void primAlgorithm(Graph g){
     
     //Xét từng đỉnh của đồ thị
     for (int i = 0; i < g.NumOfVertex; i++) {
+        if (n_ST >= g.NumOfVertex) break;
+        
         int minW = INT_MAX;
         int minW_index = 0;
         
@@ -110,7 +140,7 @@ void primAlgorithm(Graph g){
             }
         }
         
-        if (minW != INT_MAX)               // == INT_MAX là trường hợp không tìm thấy cạnh nào nối đỉnh đang xét với đồ thị
+        if (minW != INT_MAX)               //== INT_MAX là trường hợp không tìm thấy cạnh nào nối đỉnh đang xét với đồ thị
         {
             ST[n_ST].x = i;
             ST[n_ST].y = minW_index;
@@ -136,29 +166,85 @@ void primAlgorithm(Graph g){
 ///                                  Kruskal                                 ///
 /// ------------------------------------------------------------------------ ///
 void kruskalAlgorithm(Graph g) {
+    #define VERTICES g.NumOfVertex
+    
     int n_ST = 0;
     Edge ST[MAX_EDGE];
     Edge graphEdges[MAX_EDGE];
     
+    int child[VERTICES];                            //Mảng chứa đỉnh con của đỉnh tại index n (eg. child[2] = 4 tức đỉnh 2 có con là đỉnh 4)
+    bool visitedEdges[VERTICES][VERTICES];          //Mảng chứa trạng thái đã xét của các cạnh
     
-    for (int i = 0; i < g.NumOfVertex; i++) {
-        for (int j = i + 1; j < g.NumOfVertex; j++) {
-            if (g.Data[i][j] < g.Data[j][i] && g.Data[i][j] != 0) {
-                int temp = g.Data[i][j];
-                g.Data[i][j] = g.Data[j][i];
-                g.Data[j][i] = temp;
+    for (int i = 0; i < VERTICES; i++) {
+        child[i] = i;
+    }
+    
+    for (int i = 0; i < VERTICES; i++) {
+        for (int j = 0; j < VERTICES; j++) {
+            visitedEdges[i][j] = false;
+        }
+    }
+    
+    
+    //Lưu các cạnh của đồ thị vào mảng graphEdges
+    int n = 0;
+    for (int i = 0; i < VERTICES; i++) {
+        for (int j = 0; j < VERTICES; j++) {
+            if (g.Data[i][j] != 0) {
+                graphEdges[n].x = i;
+                graphEdges[n].y = j;
+                graphEdges[n].w = g.Data[i][j];
+                
+                n++;
             }
         }
     }
     
-    for (int i = 0; i < MAX_EDGE; i++) {
-        if (n_ST < g.NumOfVertex - 1) {
-            ST[n_ST] = graphEdges[i];
-            n_ST++;
+    //Sắp xếp các cạnh theo thứ tự tăng dần theo trọng số
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (graphEdges[i].w > graphEdges[j].w) {
+                Edge temp = graphEdges[i];
+                graphEdges[i] = graphEdges[j];
+                graphEdges[j] = temp;
+            }
+        }
+    }
+    
+    
+    int edges = totalEdges(graphEdges, VERTICES);
+    for (int i = 0; i < edges*2; i++) {                             //edges*2 do mỗi cặp điểm tạo ra một cặp cạnh giống nhau
+        if (n_ST >= g.NumOfVertex) break;
+        
+        bool valid = true;
+        
+        if (graphEdges[i].w == 0) {
+            valid = false;
         }
         
-        else {
-            break;
+        else if (visitedEdges[graphEdges[i].x][graphEdges[i].y] == true) {
+            valid = false;
+        }
+        
+        else if (child[graphEdges[i].x] == child[graphEdges[i].y]) {
+            valid = false;
+        }
+        
+        else if (graphEdges[i].w == INT_MAX) {
+            valid = false;
+        }
+        
+        
+        if (valid) {
+            ST[n_ST].x = graphEdges[i].x;
+            ST[n_ST].y = graphEdges[i].y;
+            ST[n_ST].w = graphEdges[i].w;
+            n_ST++;
+            
+            child[graphEdges[i].x] = graphEdges[i].y;
+            child[graphEdges[i].y] = graphEdges[i].x;
+            visitedEdges[graphEdges[i].x][graphEdges[i].y] = true;
+            visitedEdges[graphEdges[i].y][graphEdges[i].x] = true;
         }
     }
     
