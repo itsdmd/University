@@ -115,40 +115,63 @@ int totalEdges(Edge e[], int n) {
 ///                                   Prim                                   ///
 /// ------------------------------------------------------------------------ ///
 void primAlgorithm(Graph g){
+    #define VERTICES g.NumOfVertex
+    
     int n_ST = 0;
-    Edge ST[MAX_EDGE];
-
-    bool visited[MAX_VERTEX];
+    Edge ST[15];
     
+    bool visited[VERTICES][VERTICES];               //Mảng chứa trạng thái đã xét của các cạnh
     
-    for (int i = 0; i < g.NumOfVertex; i++) {
-        visited[i] = false;
+    for (int i = 0; i < VERTICES; i++) {
+        for (int j = 0; j < VERTICES; j++) {
+            visited[i][j] = false;
+        }
     }
     
-    //Xét từng đỉnh của đồ thị
+    //Xét từng đỉnh của đồ thị thoe thứ tự
     for (int i = 0; i < g.NumOfVertex; i++) {
-        if (n_ST >= g.NumOfVertex) break;
+        if (n_ST >= (g.NumOfVertex - 1)) break;
         
         int minW = INT_MAX;
         int minW_index = 0;
+        bool valid = true;
         
-        //Xét từng cạnh của đồ thị
         for (int j = 0; j < g.NumOfVertex; j++) {
-            if ((visited[i] == false || visited[j] == false) && g.Data[i][j] < minW && g.Data[i][j] > 0) {
+            valid = true;
+            
+            if (i == j) continue;
+            
+            else if (g.Data[i][j] == 0) {
+                valid = false;
+            }
+            
+            if (valid && g.Data[i][j] < minW) {
                 minW = g.Data[i][j];
                 minW_index = j;
             }
         }
+            
+        if (minW == INT_MAX) {
+            valid = false;
+        }
         
-        if (minW != INT_MAX)               //== INT_MAX là trường hợp không tìm thấy cạnh nào nối đỉnh đang xét với đồ thị
+        else if (visited[i][minW_index] || visited[minW_index][i]) {
+            valid = false;
+        }
+        
+        else {
+            valid = true;
+        }
+        
+        if (valid)
         {
             ST[n_ST].x = i;
             ST[n_ST].y = minW_index;
             ST[n_ST].w = minW;
             n_ST++;
             
-            visited[minW_index] = true;
-            visited[i] = true;
+            visited[i][minW_index] = true;
+            visited[minW_index][i] = true;
         }
     }
     
@@ -172,16 +195,11 @@ void kruskalAlgorithm(Graph g) {
     Edge ST[MAX_EDGE];
     Edge graphEdges[MAX_EDGE];
     
-    int child[VERTICES];                            //Mảng chứa đỉnh con của đỉnh tại index n (eg. child[2] = 4 tức đỉnh 2 có con là đỉnh 4)
-    bool visitedEdges[VERTICES][VERTICES];          //Mảng chứa trạng thái đã xét của các cạnh
-    
-    for (int i = 0; i < VERTICES; i++) {
-        child[i] = i;
-    }
+    bool visited[VERTICES][VERTICES];               //Mảng chứa trạng thái đã xét của các cạnh
     
     for (int i = 0; i < VERTICES; i++) {
         for (int j = 0; j < VERTICES; j++) {
-            visitedEdges[i][j] = false;
+            visited[i][j] = 0;
         }
     }
     
@@ -213,8 +231,8 @@ void kruskalAlgorithm(Graph g) {
     
     
     int edges = totalEdges(graphEdges, VERTICES);
-    for (int i = 0; i < edges*2; i++) {                             //edges*2 do mỗi cặp điểm tạo ra một cặp cạnh giống nhau
-        if (n_ST >= g.NumOfVertex) break;
+    for (int i = 0; i < edges*2; i++) {                             //edges*2 do mỗi cặp điểm tạo ra một cặp cạnh giống nhau, ngược chiều
+        if (n_ST >= g.NumOfVertex - 1) break;
         
         bool valid = true;
         
@@ -222,16 +240,22 @@ void kruskalAlgorithm(Graph g) {
             valid = false;
         }
         
-        else if (visitedEdges[graphEdges[i].x][graphEdges[i].y] == true) {
-            valid = false;
-        }
-        
-        else if (child[graphEdges[i].x] == child[graphEdges[i].y]) {
+        else if (visited[graphEdges[i].x][graphEdges[i].y] == true) {
             valid = false;
         }
         
         else if (graphEdges[i].w == INT_MAX) {
             valid = false;
+        }
+        
+        else {
+            //Kiểm tra cây có phát sinh chu trình nếu dùng cạnh đang xét (cả 2 đỉnh đều có cạnh với đỉnh chung thứ 3)
+            for (int j = 0; j < VERTICES; j++) {
+                if (visited[graphEdges[i].x][j] == visited[graphEdges[i].y][j] && visited[graphEdges[i].x][j] != 0) {
+                    valid = false;
+                    break;
+                }
+            }
         }
         
         
@@ -241,10 +265,8 @@ void kruskalAlgorithm(Graph g) {
             ST[n_ST].w = graphEdges[i].w;
             n_ST++;
             
-            child[graphEdges[i].x] = graphEdges[i].y;
-            child[graphEdges[i].y] = graphEdges[i].x;
-            visitedEdges[graphEdges[i].x][graphEdges[i].y] = true;
-            visitedEdges[graphEdges[i].y][graphEdges[i].x] = true;
+            visited[graphEdges[i].x][graphEdges[i].y] = true;
+            visited[graphEdges[i].y][graphEdges[i].x] = true;
         }
     }
     
