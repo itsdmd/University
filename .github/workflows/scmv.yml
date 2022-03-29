@@ -111,27 +111,27 @@ jobs:
           msgmod="${msgog//\[/\\\[}"
           msgmod="${msgmod//\]/\\\]}"
           echo "Modded:$msgmod"
+          declare -i n=0
           count=+
           cat cmsg.txt | while read line
           do
-            if [[ $line = *"$msgmod"* ]]
+          n=$(( n + 1 ))
+          if [[ $line = *"$msgmod"* ]]
+          then
+            count=$count+
+            if [ $count = "+++" ]
             then
-              count=$count+
-              if [ $count = "+++" ]
-              then
-                exit 1
-              fi
+              echo "Collided with:" > issue.txt
+              echo "" >> issue.txt
+              tail -n+$(( n - 4 )) cmsg.txt | head -n6 >> issue.txt
+              exit 1
             fi
+          fi
           done
-          
-      - name: ✏ Prepare issue body (duplication)
-        id: issue-body-dup
-        if: steps.search.outcome == 'failure'
-        run: head -5 cmsg.txt > issue.txt
           
       - name: ✍ Create new issue (duplication)
         id: issuer-dup
-        if: steps.issue-body-dup.outcome == 'success'
+        if: steps.search.outcome == 'failure'
         uses: peter-evans/create-issue-from-file@v3
         with:
           title: "SCMV - Duplication: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} | ${{ env.GIT_COMMIT_SHORT_SHA }}"
