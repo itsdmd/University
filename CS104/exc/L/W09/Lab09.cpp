@@ -19,7 +19,7 @@ struct Graph {
     int Data[MaxVertex][MaxVertex];         //Ma trận kề của đồ thị
 };
 
-struct Edge {   //Cấu trúc mô tả một cạnh của đồ thị
+struct Edge {                               //Cấu trúc mô tả một cạnh của đồ thị
     int x;
     int y;
     int w;
@@ -76,6 +76,7 @@ int totalWeight(Edge e[], int n) {
     
     return totalWeight;
 }
+
 
 /// ------------------------------------------------------------------------ ///
 ///                                   Prim                                   ///
