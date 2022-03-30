@@ -127,7 +127,7 @@ void primAlgorithm(Graph g){
     visited[0] = true;
     
     
-    while (n_ST < VERTICES - 1) {
+    while (n_ST < (VERTICES - 1)) {
         int min = INT_MAX;
         int vtx_i = 0;                  //Visited
         int vtx_j = 0;                  //Un-visited
@@ -136,7 +136,7 @@ void primAlgorithm(Graph g){
         for (int i = 0; i < VERTICES; i++) {
             if (visited[i]) {
                 for (int j = 0; j < VERTICES; j++) {
-                    if (visited[j] == false && g.Data[i][j] < min && g.Data[i][j] > 0) {
+                    if ((visited[j] == false) && (g.Data[i][j] < min) && (g.Data[i][j] > 0)) {
                         min = g.Data[i][j];
                         vtx_i = i;
                         vtx_j = j;
@@ -227,7 +227,7 @@ void kruskalAlgorithm(Graph g) {
         else {
             //Check if graph create cycle (2 about-to-be-connected vertices connect to the same third vertice)
             for (int j = 0; j < VERTICES; j++) {
-                if (visited[graphEdges[i].x][j] == visited[graphEdges[i].y][j] && visited[graphEdges[i].x][j] != 0) {
+                if ((visited[graphEdges[i].x][j] == visited[graphEdges[i].y][j]) && (visited[graphEdges[i].x][j] != 0)) {
                     valid = false;
                     break;
                 }
@@ -263,13 +263,13 @@ void kruskalAlgorithm(Graph g) {
 int main() {
     Graph g;
     
-    // inputGraph("/home/dmd/Documents/University/CS104/exc/L/W09/graph.txt", g);
-    inputGraph("graph.txt", g);
+    inputGraph("/home/dmd/Documents/University/CS104/exc/L/W09/graph.txt", g);
+    // inputGraph("graph.txt", g);
     
     std::cout << "Input:\n";
     printGraph(g);
-    // std::cout << "-----\nEdges:\n";
-    // printEdges(g);
+    std::cout << "-----\nEdges:\n";
+    printEdges(g);
     std::cout << "\n";
     
     primAlgorithm(g);
