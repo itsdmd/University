@@ -15,14 +15,12 @@
 ///                                  structs                                 ///
 /// ------------------------------------------------------------------------ ///
 struct Graph {
-    int NumOfVertex;                        //Số đỉnh của đồ thị
-    int Data[MAX_VERTEX][MAX_VERTEX];       //Ma trận kề của đồ thị
+    int NumOfVertex;
+    int Data[MAX_VERTEX][MAX_VERTEX];
 };
 
-struct Edge {                               //Cấu trúc mô tả một cạnh của đồ thị
-    int x;
-    int y;
-    int w;
+struct Edge {
+    int x, y, w;
 };
 
 
@@ -120,7 +118,7 @@ void primAlgorithm(Graph g){
     int n_ST = 0;
     Edge ST[MAX_EDGE];
     
-    bool visited[VERTICES];             //Mảng chứa trạng thái đã xét của các đỉnh
+    bool visited[VERTICES];
     
     for (int i = 0; i < VERTICES; i++) {
         visited[i] = false;
@@ -131,10 +129,10 @@ void primAlgorithm(Graph g){
     
     while (n_ST < VERTICES - 1) {
         int min = INT_MAX;
-        int vtx_i = 0;                  //Đỉnh đã xét
-        int vtx_j = 0;                  //Đỉnh chưa xét
+        int vtx_i = 0;                  //Visited
+        int vtx_j = 0;                  //Un-visited
         
-        //Xét tất cả các cạnh nối từ các đỉnh đã xét đến đỉnh chưa xét
+        //Check all visited vertices that connect to un-visited vertices
         for (int i = 0; i < VERTICES; i++) {
             if (visited[i]) {
                 for (int j = 0; j < VERTICES; j++) {
@@ -156,12 +154,12 @@ void primAlgorithm(Graph g){
     }
     
     
-    std::cout << "[Prim] Cay khung co trong so nho nhat:\n";
+    std::cout << "[Prim] Minimum spanning tree:\n";
     for (int i = 0; i < n_ST; i++) {
         std::cout << ST[i].x + 1 << " " << ST[i].y + 1 << " " << ST[i].w << "\n";
     }
     
-    std::cout << "Tong trong cua cay khung nho nhat: " << totalWeight(ST, n_ST) << "\n";
+    std::cout << "MST weight: " << totalWeight(ST, n_ST) << "\n";
 }
 
 
@@ -183,7 +181,7 @@ void kruskalAlgorithm(Graph g) {
         }
     }
     
-    //Gán tất cả các cạnh của đồ thị vào mảng graphEdges
+    //Add all edges to graphEdges
     int n = 0;
     for (int i = 0; i < g.NumOfVertex; i++) {
         for (int j = 0; j < g.NumOfVertex; j++) {
@@ -196,7 +194,7 @@ void kruskalAlgorithm(Graph g) {
         }
     }
     
-    //Sắp xếp các cạnh theo thứ tự tăng dần theo trọng số
+    //Sort edges by weight, increment
     for (int i = 0; i < (n - 1); i++) {
         for (int j = i + 1; j < n; j++) {
             if (graphEdges[i].w > graphEdges[j].w) {
@@ -209,7 +207,7 @@ void kruskalAlgorithm(Graph g) {
     
     
     int edges = totalEdges(graphEdges, VERTICES);
-    for (int i = 0; i < edges*2; i++) {                             //edges*2 do mỗi cặp điểm tạo ra một cặp cạnh giống nhau, ngược chiều
+    for (int i = 0; i < edges*2; i++) {                             //edges*2 since each edge is added twice, (i,j) and (j,i)
         if (n_ST >= g.NumOfVertex - 1) break;
         
         bool valid = true;
@@ -227,7 +225,7 @@ void kruskalAlgorithm(Graph g) {
         }
         
         else {
-            //Kiểm tra cây có phát sinh chu trình nếu dùng cạnh đang xét (cả 2 đỉnh đều có cạnh với đỉnh chung thứ 3)
+            //Check if graph create cycle (2 about-to-be-connected vertices connect to the same third vertice)
             for (int j = 0; j < VERTICES; j++) {
                 if (visited[graphEdges[i].x][j] == visited[graphEdges[i].y][j] && visited[graphEdges[i].x][j] != 0) {
                     valid = false;
@@ -249,12 +247,12 @@ void kruskalAlgorithm(Graph g) {
     }
     
     
-    std::cout << "[Kruskal] Cay khung co trong so nho nhat:\n";
+    std::cout << "[Kruskal] Minimum spanning tree:\n";
     for (int i = 0; i < n_ST; i++) {
         std::cout << ST[i].x + 1 << " " << ST[i].y + 1 << " " << ST[i].w << "\n";
     }
     
-    std::cout << "Tong trong cua cay khung nho nhat: " << totalWeight(ST, n_ST) << "\n";
+    std::cout << "MST weight: " << totalWeight(ST, n_ST) << "\n";
 }
 
 
