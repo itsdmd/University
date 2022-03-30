@@ -118,67 +118,47 @@ void primAlgorithm(Graph g){
     #define VERTICES g.NumOfVertex
     
     int n_ST = 0;
-    Edge ST[15];
+    Edge ST[MAX_EDGE];
     
-    bool visited[VERTICES][VERTICES];               //Mảng chứa trạng thái đã xét của các cạnh
+    bool visited[VERTICES];             //Mảng chứa trạng thái đã xét của các đỉnh
     
     for (int i = 0; i < VERTICES; i++) {
-        for (int j = 0; j < VERTICES; j++) {
-            visited[i][j] = false;
-        }
+        visited[i] = false;
     }
     
-    //Xét từng đỉnh của đồ thị thoe thứ tự
-    for (int i = 0; i < g.NumOfVertex; i++) {
-        if (n_ST >= (g.NumOfVertex - 1)) break;
+    visited[0] = true;
+    
+    
+    while (n_ST < VERTICES - 1) {
+        int min = INT_MAX;
+        int vtx_i = 0;                  //Đỉnh đã xét
+        int vtx_j = 0;                  //Đỉnh chưa xét
         
-        int minW = INT_MAX;
-        int minW_index = 0;
-        bool valid = true;
-        
-        for (int j = 0; j < g.NumOfVertex; j++) {
-            valid = true;
-            
-            if (i == j) continue;
-            
-            else if (g.Data[i][j] == 0) {
-                valid = false;
-            }
-            
-            if (valid && g.Data[i][j] < minW) {
-                minW = g.Data[i][j];
-                minW_index = j;
+        //Xét tất cả các cạnh nối từ các đỉnh đã xét đến đỉnh chưa xét
+        for (int i = 0; i < VERTICES; i++) {
+            if (visited[i]) {
+                for (int j = 0; j < VERTICES; j++) {
+                    if (visited[j] == false && g.Data[i][j] < min && g.Data[i][j] > 0) {
+                        min = g.Data[i][j];
+                        vtx_i = i;
+                        vtx_j = j;
+                    }
+                }
             }
         }
-            
-        if (minW == INT_MAX) {
-            valid = false;
-        }
         
-        else if (visited[i][minW_index] || visited[minW_index][i]) {
-            valid = false;
-        }
+        ST[n_ST].x = vtx_i;
+        ST[n_ST].y = vtx_j;
+        ST[n_ST].w = min;
         
-        else {
-            valid = true;
-        }
-        
-        if (valid)
-        {
-            ST[n_ST].x = i;
-            ST[n_ST].y = minW_index;
-            ST[n_ST].w = minW;
-            n_ST++;
-            
-            visited[i][minW_index] = true;
-            visited[minW_index][i] = true;
-        }
+        n_ST++;
+        visited[vtx_j] = true;
     }
     
     
     std::cout << "[Prim] Cay khung co trong so nho nhat:\n";
     for (int i = 0; i < n_ST; i++) {
-        std::cout << ST[i].x << " " << ST[i].y << " " << ST[i].w << "\n";
+        std::cout << ST[i].x + 1 << " " << ST[i].y + 1 << " " << ST[i].w << "\n";
     }
     
     std::cout << "Tong trong cua cay khung nho nhat: " << totalWeight(ST, n_ST) << "\n";
@@ -203,23 +183,21 @@ void kruskalAlgorithm(Graph g) {
         }
     }
     
-    
-    //Lưu các cạnh của đồ thị vào mảng graphEdges
+    //Gán tất cả các cạnh của đồ thị vào mảng graphEdges
     int n = 0;
-    for (int i = 0; i < VERTICES; i++) {
-        for (int j = 0; j < VERTICES; j++) {
-            if (g.Data[i][j] != 0) {
+    for (int i = 0; i < g.NumOfVertex; i++) {
+        for (int j = 0; j < g.NumOfVertex; j++) {
+            if (g.Data[i][j] > 0) {
                 graphEdges[n].x = i;
                 graphEdges[n].y = j;
                 graphEdges[n].w = g.Data[i][j];
-                
                 n++;
             }
         }
     }
     
     //Sắp xếp các cạnh theo thứ tự tăng dần theo trọng số
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < (n - 1); i++) {
         for (int j = i + 1; j < n; j++) {
             if (graphEdges[i].w > graphEdges[j].w) {
                 Edge temp = graphEdges[i];
@@ -273,11 +251,12 @@ void kruskalAlgorithm(Graph g) {
     
     std::cout << "[Kruskal] Cay khung co trong so nho nhat:\n";
     for (int i = 0; i < n_ST; i++) {
-        std::cout << ST[i].x << " " << ST[i].y << " " << ST[i].w << "\n";
+        std::cout << ST[i].x + 1 << " " << ST[i].y + 1 << " " << ST[i].w << "\n";
     }
     
     std::cout << "Tong trong cua cay khung nho nhat: " << totalWeight(ST, n_ST) << "\n";
 }
+
 
 
 /// ------------------------------------------------------------------------ ///
