@@ -112,7 +112,7 @@ int totalEdges(Edge e[], int n) {
 /// ------------------------------------------------------------------------ ///
 ///                                   Prim                                   ///
 /// ------------------------------------------------------------------------ ///
-void primAlgorithm(Graph g){
+void primAlgorithm(Graph g) {
     #define VERTICES g.NumOfVertex
     
     int n_ST = 0;
@@ -154,7 +154,7 @@ void primAlgorithm(Graph g){
     }
     
     
-    std::cout << "[Prim] Minimum spanning tree:\n";
+    std::cout << "[Prim] MST:\n";
     for (int i = 0; i < n_ST; i++) {
         std::cout << ST[i].x + 1 << " " << ST[i].y + 1 << " " << ST[i].w << "\n";
     }
@@ -207,7 +207,9 @@ void kruskalAlgorithm(Graph g) {
     
     
     int edges = totalEdges(graphEdges, VERTICES);
-    for (int i = 0; i < edges*2; i++) {                             //edges*2 since each edge is added twice, (i,j) and (j,i)
+    
+    //edges*2 since each edge is added twice, (i,j) and (j,i)
+    for (int i = 0; i < edges*2; i++) {
         if (n_ST >= g.NumOfVertex - 1) break;
         
         bool valid = true;
@@ -247,7 +249,7 @@ void kruskalAlgorithm(Graph g) {
     }
     
     
-    std::cout << "[Kruskal] Minimum spanning tree:\n";
+    std::cout << "[Kruskal] MST:\n";
     for (int i = 0; i < n_ST; i++) {
         std::cout << ST[i].x + 1 << " " << ST[i].y + 1 << " " << ST[i].w << "\n";
     }
