@@ -173,7 +173,7 @@ void kruskalAlgorithm(Graph g) {
     Edge ST[MAX_EDGE];
     Edge graphEdges[MAX_EDGE];
     
-    bool visited[VERTICES][VERTICES];               //Mảng chứa trạng thái đã xét của các cạnh
+    bool visited[VERTICES][VERTICES];
     
     for (int i = 0; i < VERTICES; i++) {
         for (int j = 0; j < VERTICES; j++) {
@@ -263,13 +263,13 @@ void kruskalAlgorithm(Graph g) {
 int main() {
     Graph g;
     
-    inputGraph("/home/dmd/Documents/University/CS104/exc/L/W09/graph.txt", g);
-    // inputGraph("graph.txt", g);
+    // inputGraph("/home/dmd/Documents/University/CS104/exc/L/W09/graph.txt", g);
+    inputGraph("graph.txt", g);
     
     std::cout << "Input:\n";
     printGraph(g);
-    std::cout << "-----\nEdges:\n";
-    printEdges(g);
+    // std::cout << "-----\nEdges:\n";
+    // printEdges(g);
     std::cout << "\n";
     
     primAlgorithm(g);
