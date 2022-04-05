@@ -74,7 +74,12 @@
 			"queue": "cpp",
 			"*.snippet": "cpp",
 			"fstream": "cpp",
-			"numbers": "cpp"
+			"numbers": "cpp",
+			"complex": "cpp",
+			"any": "cpp",
+			"chrono": "cpp",
+			"ratio": "cpp",
+			"valarray": "cpp"
 		},
 		"sqltools.connections": [
 			{
