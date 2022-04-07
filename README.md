@@ -1,5 +1,7 @@
 # ✅ Status
-[![Generic CM Verifier](https://github.com/itsdmd/University/actions/workflows/gcmv.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/gcmv.yml) &emsp; [![Submission CM Verifier](https://github.com/itsdmd/University/actions/workflows/scmv.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/scmv.yml) &emsp; [![C++ Linter](https://github.com/itsdmd/University/actions/workflows/cpp-linting.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/cpp-linting.yml)
+[![Generic CM Verifier](https://github.com/itsdmd/University/actions/workflows/gcmv.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/gcmv.yml) &emsp; [![Submission CM Verifier](https://github.com/itsdmd/University/actions/workflows/scmv.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/scmv.yml)
+
+[![C++ Linter](https://github.com/itsdmd/University/actions/workflows/cpp-linting.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/cpp-linting.yml) &emsp; [![CodeFactor](https://www.codefactor.io/repository/github/itsdmd/university/badge)](https://www.codefactor.io/repository/github/itsdmd/university)
 
 # 📜 Table of Contents
 - **[🏷️ Naming Schemes](#%EF%B8%8F-naming-schemes)**
