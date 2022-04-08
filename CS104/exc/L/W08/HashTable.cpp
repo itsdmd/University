@@ -14,8 +14,7 @@ struct VECTOR
 
 void 	PrintVct(const VECTOR &);
 
-VECTOR	NewVct(),
-		LinearProbing(const VECTOR &),
+VECTOR	LinearProbing(const VECTOR &),
 		QuadraticProbing(const VECTOR &),
 		DoubleHashing(const VECTOR &);
 
@@ -65,16 +64,6 @@ void PrintVct(const VECTOR &vct) {
 	}
 	
 	std::cout << "\n\n";
-}
-
-VECTOR NewVct() {
-	VECTOR vct;
-	
-	for (int i = 0; i < 100; i++) {
-		vct.keys.push_back(-1);
-	}
-	
-	return vct;
 }
 
 
