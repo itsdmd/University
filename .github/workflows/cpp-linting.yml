@@ -5,6 +5,7 @@ on:
     paths:
       - '**.cpp'
       - '!**-og**'
+      - '**.cpp'
 
 jobs:
   linter:
@@ -59,7 +60,7 @@ jobs:
         continue-on-error: true
         run: |
           for changed_file in ${{ steps.targets.outputs.all_changed_files }}; do
-            cppcheck --enable=all --inconclusive --library=posix --std=c++20 --error-exitcode=1 --output-file="lint.txt" "${changed_file}"
+            cppcheck --enable=all --inconclusive --library=posix --std=c++20 --error-exitcode=1 --suppress=missingIncludeSystem --suppress=unmatchedSuppression --output-file="lint.txt" "${changed_file}"
           done
         
         
