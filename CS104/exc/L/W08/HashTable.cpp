@@ -25,25 +25,22 @@ VECTOR	NewVct(),
 ///                                 Functions                                ///
 /// ------------------------------------------------------------------------ ///
 
-int main()
-{
+/// --------------------------------- main --------------------------------- ///
+int main() {
 	int size;
 	
 	std::cout << "Hash table size: ";
 	std::cin >> size;
 	
 	VECTOR input;
-	for (int i = 0; i < size; i++)
-	{
+	for (int i = 0; i < size; i++) {
 		int inp;
 		
 		std::cout << "Enter number " << i + 1 << " (-1 to stop): ";
 		std::cin >> inp;
 		
-		if (inp == -1)
-		{
-			for (int j = 0; j < (size - i); j++)
-			{
+		if (inp == -1) {
+			for (int j = 0; j < (size - i); j++) {
 				input.keys.push_back(-1);
 			}
 			
@@ -60,10 +57,9 @@ int main()
 	return 0;
 }
 
-void PrintVct(const VECTOR &vct)
-{
-	for (int i = 0; i < vct.keys.size(); i++)
-	{
+/// -------------------------------- Vector -------------------------------- ///
+void PrintVct(const VECTOR &vct) {
+	for (int i = 0; i < vct.keys.size(); i++) {
 		if (vct.keys[i] == -1) std::cout << "--" << " ";
 		else std::cout << vct.keys[i] << " ";
 	}
@@ -71,62 +67,52 @@ void PrintVct(const VECTOR &vct)
 	std::cout << "\n\n";
 }
 
-VECTOR NewVct()
-{
+VECTOR NewVct() {
 	VECTOR vct;
 	
-	for (int i = 0; i < 100; i++)
-	{
+	for (int i = 0; i < 100; i++) {
 		vct.keys.push_back(-1);
 	}
 	
 	return vct;
 }
 
-VECTOR LinearProbing(const VECTOR &input)
-{
+
+/// -------------------------------- Hashing ------------------------------- ///
+VECTOR LinearProbing(const VECTOR &input) {
 	VECTOR output;
 	int size = input.keys.size();
 	
-	for (int i = 0; i < size; i++)
-	{
+	for (int i = 0; i < size; i++) {
 		output.keys.push_back(-1);
 	}
 	
-	for (int i = 0; i < size; i++)
-	{
+	for (int i = 0; i < size; i++) {
 		if (input.keys[i] == -1) break;
 		
 		int h1 = input.keys[i] % size;
 		
-		if (output.keys[h1] == -1)
-		{
+		if (output.keys[h1] == -1) {
 			output.keys[h1] = input.keys[i];
 		}
 		
-		else
-		{
-			if (output.keys[h1] == input.keys[i])
-			{
+		else {
+			if (output.keys[h1] == input.keys[i]) {
 				continue;
 			}
 			
-			else
-			{
+			else {
 				bool dup = false;
 				
-				do
-				{
+				do {
 					h1++;
 					
-					if (output.keys[h1] == input.keys[i])
-					{
+					if (output.keys[h1] == input.keys[i]) {
 						dup = true;
 						break;
 					}
 					
-					if (h1 >= size)
-					{
+					if (h1 >= size) {
 						h1 = 0;
 					}
 				}
@@ -140,47 +126,38 @@ VECTOR LinearProbing(const VECTOR &input)
 	return output;
 }
 
-VECTOR QuadraticProbing(const VECTOR &input)
-{
+
+VECTOR QuadraticProbing(const VECTOR &input) {
 	VECTOR output;
 	int size = input.keys.size();
 	
-	for (int i = 0; i < size; i++)
-	{
+	for (int i = 0; i < size; i++) {
 		output.keys.push_back(-1);
 	}
 	
-	for (int i = 0; i < size; i++)
-	{
+	for (int i = 0; i < size; i++) {
 		if (input.keys[i] == -1) continue;
 		
 		int h1 = input.keys[i] % size;
 		
-		if (output.keys[h1] == -1)
-		{
+		if (output.keys[h1] == -1) {
 			output.keys[h1] = input.keys[i];
 		}
 		
-		else
-		{
-			if (output.keys[h1] == input.keys[i])
-			{
+		else {
+			if (output.keys[h1] == input.keys[i]) {
 				continue;
 			}
 			
-			else
-			{
-				for (int j = 0; j < size; j++)
-				{
+			else {
+				for (int j = 0; j < size; j++) {
 					int x = (h1 + j * j) % size;
 					
-					if (output.keys[x] == input.keys[i])
-					{
+					if (output.keys[x] == input.keys[i]) {
 						break;
 					}
 					
-					else if (output.keys[x] == -1)
-					{
+					else if (output.keys[x] == -1) {
 						output.keys[x] = input.keys[i];
 						break;
 					}
@@ -192,54 +169,44 @@ VECTOR QuadraticProbing(const VECTOR &input)
 	return output;
 }
 
-VECTOR DoubleHashing(const VECTOR &input)
-{
+
+VECTOR DoubleHashing(const VECTOR &input) {
 	VECTOR output;
 	int size = input.keys.size();
 	
-	for (int i = 0; i < size; i++)
-	{
+	for (int i = 0; i < size; i++) {
 		output.keys.push_back(-1);
 	}
 	
-	for (int i = 0; i < size; i++)
-	{
-		if (input.keys[i] == -1)
-		{
+	for (int i = 0; i < size; i++) {
+		if (input.keys[i] == -1) {
 			break;
 		}
 		
 		
 		int h1 = input.keys[i] % size;
 		
-		if (output.keys[h1] == -1)
-		{
+		if (output.keys[h1] == -1) {
 			output.keys[h1] = input.keys[i];
 			
 			// PrintVct(output, size);
 		}
 		
-		else
-		{
-			if (output.keys[h1] == input.keys[i])
-			{
+		else {
+			if (output.keys[h1] == input.keys[i]) {
 				continue;
 			}
 			
-			else
-			{
-				for (int j = 1; j < size; j++)
-				{
+			else {
+				for (int j = 1; j < size; j++) {
 					//? Secondary hash function
 					int h2 = (h1 + j*((input.keys[i] % 10) + 1)) % size;
 					
-					if (output.keys[h2] == input.keys[i])
-					{
+					if (output.keys[h2] == input.keys[i]) {
 						break;
 					}
 					
-					else if (output.keys[h2] == -1)
-					{
+					else if (output.keys[h2] == -1) {
 						output.keys[h2] = input.keys[i];
 						
 						// PrintVct(output, size);
