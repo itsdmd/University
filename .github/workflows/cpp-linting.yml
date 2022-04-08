@@ -40,7 +40,7 @@ jobs:
 
       - name: 🗒 Get changed files
         id: targets
-        if: steps.regex-del.outputs.first_match = ''
+        if: steps.regex-del.outputs.first_match == ''
         uses: tj-actions/changed-files@v18.6
         with:
           files: |
