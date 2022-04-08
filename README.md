@@ -1,6 +1,8 @@
 # ✅ Status
+## 💬 CMs Format
 [![Generic CM Verifier](https://github.com/itsdmd/University/actions/workflows/gcmv.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/gcmv.yml) &emsp; [![Submission CM Verifier](https://github.com/itsdmd/University/actions/workflows/scmv.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/scmv.yml)
 
+## 💎 Code Quality
 [![C++ Linter](https://github.com/itsdmd/University/actions/workflows/cpp-linting.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/cpp-linting.yml) &emsp; [![CodeFactor](https://www.codefactor.io/repository/github/itsdmd/university/badge)](https://www.codefactor.io/repository/github/itsdmd/university)
 
 <a href="https://app.codiga.io/public/user/github/itsdmd">
