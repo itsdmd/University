@@ -178,7 +178,7 @@ VECTOR DoubleHashing(const VECTOR &input) {
 		if (output.keys[h1] == -1) {
 			output.keys[h1] = input.keys[i];
 			
-			// PrintVct(output, size);
+			// PrintVct(output);
 		}
 		
 		else {
@@ -198,7 +198,7 @@ VECTOR DoubleHashing(const VECTOR &input) {
 					else if (output.keys[h2] == -1) {
 						output.keys[h2] = input.keys[i];
 						
-						// PrintVct(output, size);
+						// PrintVct(output);
 						// std::cout << "\th1=" << h1 << "\th2=" << h2 << "\tj=" << j << "\n";
 						break;
 					}
