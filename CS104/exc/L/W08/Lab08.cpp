@@ -131,37 +131,51 @@ void heapSort(T a[], int n) {
 ///                                Quick Sort                                ///
 /// ------------------------------------------------------------------------ ///
 template <typename T>
-void quickSort(T a[], int l, int r)
+int qsPartition(T arr[], int start, int end)
 {
-    if (l >= r) return;
-    
-    int pv = a[l],      // Head pos pivot
-        count = 0;      // No. of to-be-swapped elements
-    
-    for (int i = l + 1; i <= r; i++) {
-        if (a[i] <= pv)
+ 
+    int pivot = arr[start];
+ 
+    int count = 0;
+    for (int i = start + 1; i <= end; i++) {
+        if (arr[i] <= pivot)
             count++;
     }
-    
-    // Init pivot index
-    int pv_idx = l + count;
-    swap1(a[pv_idx], a[l]);
-    
-    
-    int i = l, j = r;
-
-    while (i < pv_idx && pv_idx < j) {
-        while (a[i] <= pv)
-            i++;
-
-        while (a[j] > pv) j--;
-
-        if (i < pv_idx && j > pv_idx)
-            swap1(a[i++], a[j--]);
-    }
  
-    quickSort(a, l, pv_idx - 1);
-    quickSort(a, pv_idx + 1, r);
+    // Giving pivot element its correct position
+    int pivotIndex = start + count;
+    swap1(arr[pivotIndex], arr[start]);
+ 
+    // Sorting left and right parts of the pivot element
+    int i = start, j = end;
+ 
+    while (i < pivotIndex && j > pivotIndex) {
+        while (arr[i] <= pivot) {
+            i++;
+        }
+        
+        while (arr[j] > pivot) {
+            j--;
+        }
+        
+        if (i < pivotIndex && j > pivotIndex) {
+            swap1(arr[i++], arr[j--]);
+        }
+    }
+    
+    return pivotIndex;
+}
+
+template <typename T>
+void quickSort(T arr[], int start, int end)
+{
+    if (start >= end)
+        return;
+ 
+    int p = qsPartition(arr, start, end);
+ 
+    quickSort(arr, start, p - 1);
+    quickSort(arr, p + 1, end);
 }
 
 
