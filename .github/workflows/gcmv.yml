@@ -1,0 +1,60 @@
+name: Generic CM Verifier
+
+on:
+  push:
+    paths-ignore:
+      - 'CS102/**'
+      - 'CS104/exc/L/**'
+      - 'CS104/exc/T/**'
+      - '.github/**'
+
+jobs:
+  check-cmsg:
+    name: Check commit message
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    
+    steps:
+      - name: ↧ Checkout
+        uses: actions/checkout@v3
+        
+      - name: 💬 Get commit message
+        uses: rlespinasse/git-commit-data-action@v1
+      
+      - name: 🗒 Get commit message log
+        run: git log -1 > cmsg.txt
+        
+      - name: 🔎 Regex check 1
+        id: regex-1
+        uses: AsasInnab/regex-action@v1
+        with:
+          regex_pattern: '\[(add|del|mod|rft)\]'
+          regex_flags: 'g'
+          search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
+        
+      - name: 🔎 Regex check 2
+        id: regex-2
+        if: steps.regex-1.outputs.first_match == ''
+        uses: AsasInnab/regex-action@v1
+        with:
+          regex_pattern: '\[(rnm|mov|mrg)\](?=\ .*\>\ .*)'
+          regex_flags: 'g'
+          search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
+          
+      - name: ✏ Prepare issue body
+        id: issue-body-reg
+        if: steps.regex-1.outputs.first_match == '' && steps.regex-2.outputs.first_match == ''
+        run: head -5 cmsg.txt > issue.txt
+
+      - name: ✍ Create new issue (regex)
+        id: issuer-reg
+        if: steps.issue-body-reg.outcome == 'success'
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          title: "GCMV - Regex: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} | ${{ env.GIT_COMMIT_SHORT_SHA }}"
+          content-filepath: issue.txt
+          labels: cm-reg
+          
+      - name: ⛔ Failed regex check
+        if: steps.issuer-reg.outcome == 'success'
+        run: exit 1

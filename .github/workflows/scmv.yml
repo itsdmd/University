@@ -1,0 +1,143 @@
+name: Submission CM Verifier
+
+on:
+  push:
+    paths:
+      - 'CS102/**'
+      - 'CS104/exc/L/**'
+      - 'CS104/exc/T/**'
+      - '!**test**'
+      - '!**-og**"'
+
+jobs:
+  check-cmsg:
+    name: Check commit message
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    
+    steps:
+      - name: ↧ Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+        
+      - name: 💬 Get commit message
+        uses: rlespinasse/git-commit-data-action@v1
+        
+      - name: 🗒 Get commit message history
+        id: cmsg-history
+        run: git log > cmsg.txt
+        
+        
+        # Pattern explanation:
+        #               (1)             |                                  (2)                                      |          (3)
+        # ------------------------------+---------------------------------------------------------------------------+------------------------
+        #      req. if (3) is missing   |                                required                                   | only if (1) is missing
+        # ------------------------------+---------------------------------------------------------------------------+------------------------
+        #     [|3 characters|]|*space*  |  3 digits|*dot*|'L' OR 'T'|*dot*|2 digits AND characters that's not '.'   |    |*dot*|2 digits|
+        #                               |                                               if (1) exists (optional)    |
+        #
+        #   Match:
+        #     - 102.02.01
+        #     - 104.L.02.01
+        #     - [add] 102.05
+        #     - [add] 104.T.05
+        #     - [add] 104.T.05-og
+        #     - [rnm] 104.T.05 > 104.T.06.31
+        #
+        #   Won't match:
+        #     - 104.T.03
+        #     - [xyz] 104.T.05
+        #     - [rnm] 104.T.05
+        #     - [mod] 104.T.05.21
+        #     - 104.l.02.01
+        #     - 104.X.02.03
+        #     - [del] 42069.LT.2.112
+      
+      # Casual
+      - name: 🔎 Regex check 1
+        id: regex-1
+        uses: AsasInnab/regex-action@v1
+        with:
+          regex_pattern: '((\[(add|del|mod|rft)\]\ )(?=[0-9]{3}\.([LT]\.)?[0-9]{2}([^\.]|$)(.*)?$))'
+          regex_flags: 'gm'
+          search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
+      
+      # Versioned
+      - name: 🔎 Regex check 2
+        id: regex-2
+        if: steps.regex-1.outputs.first_match == ''
+        uses: AsasInnab/regex-action@v1
+        with:
+          regex_pattern: '((?<!.)([0-9]{3}\.([LT]\.)?[0-9]{2}\.[0-9]{2}$))'
+          regex_flags: 'gm'
+          search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
+      
+      # With '>'
+      - name: 🔎 Regex check 3
+        id: regex-3
+        if: steps.regex-2.outputs.first_match == ''
+        uses: AsasInnab/regex-action@v1
+        with:
+          regex_pattern: '(\[(rnm|mov|mrg)\]\ (?=.*\>.*))'
+          regex_flags: 'gm'
+          search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
+          
+      - name: ✏ Prepare issue body (regex)
+        id: issue-body-reg
+        if: steps.regex-1.outputs.first_match == '' && steps.regex-2.outputs.first_match == '' && steps.regex-3.outputs.first_match == ''
+        run: head -5 cmsg.txt > issue.txt
+          
+      - name: ✍ Create new issue (regex)
+        id: issuer-reg
+        if: steps.issue-body-reg.outcome == 'success'
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          title: "SCMV - Regex: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} | ${{ env.GIT_COMMIT_SHORT_SHA }}"
+          content-filepath: issue.txt
+          labels: cm-reg
+          
+      - name: ⛔ Failed regex check
+        if: steps.issuer-reg.outcome == 'success'
+        run: exit 1
+        
+          
+      - name: 👓 Duplication check
+        id: search
+        if: steps.regex-2.outputs.first_match != ''
+        continue-on-error: true
+        run: |
+          msgog="${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}"
+          msgmod="${msgog//\[/\\\[}"
+          msgmod="${msgmod//\]/\\\]}"
+          echo "Modded:$msgmod"
+          declare -i n=0
+          count=+
+          cat cmsg.txt | while read line
+          do
+          n=$(( n + 1 ))
+          if [[ $line = *"$msgmod"* ]]
+          then
+            count=$count+
+            if [ $count = "+++" ]
+            then
+              echo "Collided with:" > issue.txt
+              echo "" >> issue.txt
+              tail -n+$(( n - 4 )) cmsg.txt | head -n6 >> issue.txt
+              exit 1
+            fi
+          fi
+          done
+          
+      - name: ✍ Create new issue (duplication)
+        id: issuer-dup
+        if: steps.search.outcome == 'failure'
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          title: "SCMV - Duplication: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} | ${{ env.GIT_COMMIT_SHORT_SHA }}"
+          content-filepath: issue.txt
+          labels: cm-dup
+          
+      - name: ⛔ Found Duplicate
+        if: steps.issuer-dup.outcome == 'success'
+        run: exit 1

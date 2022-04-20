@@ -1,0 +1,77 @@
+name: C++ Linter
+
+on:
+  push:
+    paths:
+      - '**.cpp'
+      - '!**-og**'
+      - '**.cpp'
+
+jobs:
+  linter:
+    name: ☑ Linter
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    
+    steps:
+      - name: ↧ Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+        
+      - name: 💬 Get commit message
+        id: get-cm
+        uses: rlespinasse/git-commit-data-action@v1
+        
+        
+      - name: 🔎 Check for [del] in CM
+        id: regex-del
+        uses: AsasInnab/regex-action@v1
+        with:
+          regex_pattern: '(\[del\]\ )'
+          regex_flags: 'gm'
+          search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
+          
+      - name: ⛔ CM contains [del]
+        id: del-exit
+        if: steps.regex-del.outputs.first_match != ''
+        continue-on-error: true
+        run: exit 1
+        
+
+      - name: 🗒 Get changed files
+        id: targets
+        if: steps.regex-del.outputs.first_match == ''
+        uses: tj-actions/changed-files@v18.6
+        with:
+          files: |
+            **/*.cpp
+            !**-og**
+      
+
+      - name: ⚙️ Install cppcheck
+        id: instl
+        if: steps.targets.outcome == 'success' && ${{ steps.targets.outputs.any_changed }}
+        run: sudo apt install cppcheck
+        
+      - name: 🔎 Linting
+        id: linter
+        if: steps.instl.outcome == 'success'
+        continue-on-error: true
+        run: |
+          for changed_file in ${{ steps.targets.outputs.all_changed_files }}; do
+            cppcheck --enable=all --inconclusive --library=posix --std=c++20 --error-exitcode=1 --suppress=missingIncludeSystem --suppress=unmatchedSuppression --output-file="lint.txt" "${changed_file}"
+          done
+        
+        
+      - name: ✏ Create new issue
+        if: steps.linter.outcome == 'failure'
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          title: "Linting error: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} | ${{ env.GIT_COMMIT_SHORT_SHA }}"
+          content-filepath: lint.txt
+          labels: lint
+          
+      - name: ❌ Make job fail
+        if: steps.linter.outcome == 'failure'
+        run: exit 1
