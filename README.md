@@ -3,11 +3,7 @@
 [![Generic CM Verifier](https://github.com/itsdmd/University/actions/workflows/gcmv.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/gcmv.yml) &emsp; [![Submission CM Verifier](https://github.com/itsdmd/University/actions/workflows/scmv.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/scmv.yml)
 
 ## 💎 Code Quality
-[![C++ Linter](https://github.com/itsdmd/University/actions/workflows/cpp-linting.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/cpp-linting.yml) &emsp; [![CodeFactor](https://www.codefactor.io/repository/github/itsdmd/university/badge)](https://www.codefactor.io/repository/github/itsdmd/university)
-
-<a href="https://app.codiga.io/public/user/github/itsdmd">
-	<img src="https://api.codiga.io/public/badge/user/github/itsdmd?style=dark" alt="codiga badge" />
-</a>
+[![C++ Linter](https://github.com/itsdmd/University/actions/workflows/cpp-linting.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/cpp-linting.yml) &emsp; [![CodeFactor](https://www.codefactor.io/repository/github/itsdmd/university/badge)](https://www.codefactor.io/repository/github/itsdmd/university) &emsp; ![CodigaScore](https://api.codiga.io/project/32682/score/svg)
 
 # 📜 Table of Contents
 - **[🏷️ Naming Schemes](#%EF%B8%8F-naming-schemes)**
@@ -30,18 +26,18 @@ There should be a folder for each course. The name of the folder should be the c
 General hierarchy (only folder's level matters):
 - **Course**
 	- **exc** ................. *for homework assignments*
-		- └ **.vscode** + Workspace file
-		- └ **L** .................. *Lab*
+		- ├ **.vscode** + Workspace file
+		- ├ **L** .................. *Lab*
 		- └ **T** ...................*Theory*
 		
-			- └ - **codes** ............... *Code submission*
-			- └ - **subs** ................. *Other submission*
+			- ├ **codes** ............... *Code submission*
+			- └ **subs** ................. *Other submission*
 			
-				- └ -- **W\*\*** .................. *Week \*\* submission, ex: W03*
+				- └ **W\*\*** .................. *Week \*\* submission, ex: W03*
 	---
 	- **lec** .................... *for lecture materials*
-		- └ **W\*\*** .................. *Week \*\* lecture*
-		- └ **L-W\*\*** ............... *Week \*\* Lab lecture*
+		- ├ **W\*\*** .................. *Week \*\* lecture*
+		- ├ **L-W\*\*** ............... *Week \*\* Lab lecture*
 		- └ **T-W\*\*** ............... *Week \*\* Theory lecture*
 
 ## 3. 📄 Files
