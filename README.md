@@ -69,7 +69,7 @@ Generic commits must start its message with one of the following prefixes:
       req. if (3) is missing	|                                required                                   | only if (1) is missing
  -------------------------------+---------------------------------------------------------------------------+------------------------
      [|3 characters|]|*space*	|  3 digits|*dot*|'L' OR 'T'|*dot*|2 digits AND characters that's not '.'   |    |*dot*|2 digits|
-                            	|                                               if (1) exists (optional)    |
+                            	| (+1 char)                                     if (1) exists (optional)    |
  -------------------------------+---------------------------------------------------------------------------+------------------------
               [add]             |                                104.L.01                                   |          .02
         
@@ -78,6 +78,7 @@ Generic commits must start its message with one of the following prefixes:
 ✅ Match:
 - ```102.02.01```
 - ```104.L.02.01```
+- ```105b.T.03.02```
 - ```[add] 102.05```
 - ```[add] 104.T.05```
 - ```[add] 104.T.05-og```
