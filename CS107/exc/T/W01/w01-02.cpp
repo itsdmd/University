@@ -27,7 +27,7 @@ void Swap(T &a, T &b) {
 /// ---------------------- Fraction-related functions ---------------------- ///
 /* #region   */
 template <typename T>
-void InputFrac(Frac<T> &f) {
+void FracInput(Frac<T> &f) {
 	std::cout << "Dividend = ";
 	std::cin >> f.hi;
 
@@ -92,19 +92,19 @@ int FracCmpr(Frac<T> &f1, Frac<T> &f2) {
 }
 
 template <typename T>
-void InputFracVct(int size, std::vector<Frac<T>> &out) {
+void FracVctInput(int size, std::vector<Frac<T>> &out) {
 	for (int i = 0; i < size; i++) {
 		std::cout << "\n[" << i << "]\n";
 		
 		Frac<T> f;
-		InputFrac(f);
+		FracInput(f);
 		
 		out.push_back(f);
 	}
 }
 
 template <typename T>
-void OutputFracVct(std::vector<Frac<T>> v) {
+void FracVctOutput(std::vector<Frac<T>> v) {
 	for (int i = 0; i < v.size(); i++) {
 		std::cout << "\n[" << i << "]: ";
 		
@@ -162,24 +162,23 @@ void Sort(std::vector<Frac<T>> const &in, std::vector<Frac<T>> &out, bool (*Cmpr
 
 
 /// -------------------------------- main() -------------------------------- ///
-int main()
-{
+int main() {
 	std::vector<Frac<int>> f_inp, f_inc, f_dcr;
 	int n_frac;
 	
 	std::cout << "Enter number of fractions to sort: ";
 	std::cin >> n_frac;
 	
-	InputFracVct(n_frac, f_inp);
+	FracVctInput(n_frac, f_inp);
 	
 	
 	std::cout << "\n\nSorted in increasing order:";
 	Sort(f_inp, f_inc, FracIncr);
-	OutputFracVct(f_inc);
+	FracVctOutput(f_inc);
 	
 	std::cout << "\n\nSorted in decreasing order:";
 	Sort(f_inp, f_dcr, FracDecr);
-	OutputFracVct(f_dcr);
+	FracVctOutput(f_dcr);
 	
 	return 0;
 }
