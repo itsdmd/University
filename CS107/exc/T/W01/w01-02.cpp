@@ -31,13 +31,25 @@ void FracInput(Frac<T> &f) {
 	std::cout << "Dividend = ";
 	std::cin >> f.hi;
 
-	std::cout << "Divisor = ";
-	std::cin >> f.lo;
+	do {
+		std::cout << "Divisor = ";
+		std::cin >> f.lo;
+	} while (f.lo == 0);
 }
 
 template <typename T>
-void OutputFrac(Frac<T> const &f) {
-	std::cout << f.hi << "/" << f.lo;
+void FracOutput(Frac<T> f) {
+	if (f.hi >= 0 && f.lo < 0) {
+		f.hi *= -1;
+	}
+	
+	if (f.hi == 0) {
+		std::cout << "0";
+	}
+	
+	else {
+		std::cout << f.hi << "/" << f.lo;
+	}
 }
 
 // > (1), < (-1), = (0)
@@ -78,7 +90,7 @@ void FracVctOutput(std::vector<Frac<T>> const &v) {
 	for (int i = 0; i < v.size(); i++) {
 		std::cout << "\n[" << i << "]: ";
 		
-		OutputFrac(v[i]);
+		FracOutput(v[i]);
 	}
 }
 
@@ -136,7 +148,7 @@ int main() {
 	std::vector<Frac<int>> f_inp, f_inc, f_dcr;
 	int n_frac;
 	
-	std::cout << "Enter number of fractions to sort: ";
+	std::cout << "Enter number of fraction to sort: ";
 	std::cin >> n_frac;
 	
 	FracVctInput(n_frac, f_inp);
