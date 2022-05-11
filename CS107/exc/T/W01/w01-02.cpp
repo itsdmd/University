@@ -1,16 +1,14 @@
 #include <iostream>
 #include <numeric> // std::gcd
-
-
+#include <vector>
 
 /// ------------------------------------------------------------------------ ///
-///                                  Structs                                 ///
+///                                Definitions                               ///
 /// ------------------------------------------------------------------------ ///
 template <typename T>
 struct Frac {
 	T hi, lo; // hi = dividend, lo = divisor
 };
-
 
 
 /// ------------------------------------------------------------------------ ///
@@ -19,20 +17,21 @@ struct Frac {
 
 /// -------------------------------- Swap() -------------------------------- ///
 template <typename T>
-void swap(T &a, T &b) {
+void Swap(T &a, T &b) {
 	T temp = a;
 	a = b;
 	b = temp;
 }
 
+
 /// ---------------------- Fraction-related functions ---------------------- ///
 /* #region   */
 template <typename T>
 void InputFrac(Frac<T> &f) {
-	std::cout << "Input fraction's dividend: ";
+	std::cout << "Dividend = ";
 	std::cin >> f.hi;
 
-	std::cout << "Input fraction's divisor: ";
+	std::cout << "Divisor = ";
 	std::cin >> f.lo;
 }
 
@@ -51,34 +50,39 @@ void FracReduce(Frac<T> &f) {
 
 template <typename T>
 Frac<T> FracInvert(Frac<T> f) {
-	swap(f.hi, f.lo);
+	Swap(f.hi, f.lo);
 	
 	return f;
 }
 
 template <typename T>
 Frac<T> FracAdd(Frac<T> &f1, Frac<T> &f2) {
-	Frac<T> f3;
+	Frac<T> f_res;
 	
 	FracReduce(f1);
 	FracReduce(f2);
 	
-	f3.hi = f1.hi * f2.lo + f2.hi * f1.lo;
-	f3.lo = f1.lo * f2.lo;
+	f_res.hi = f1.hi * f2.lo + f2.hi * f1.lo;
+	f_res.lo = f1.lo * f2.lo;
 	
-	FracReduce(f3);
+	FracReduce(f_res);
 	
-	return f3;
+	return f_res;
 }
 
 // > (1), < (-1), = (0)
 template <typename T>
 int FracCmpr(Frac<T> &f1, Frac<T> &f2) {
-	if ((f1.hi / f1.lo) > (f2.hi / f2.lo)) {
+	double f1_d, f2_d;
+	
+	f1_d = (double)f1.hi / (double)f1.lo;
+	f2_d = (double)f2.hi / (double)f2.lo;
+	
+	if (f1_d > f2_d) {
 		return 1;
 	}
 	
-	else if ((f1.hi / f1.lo) < (f2.hi / f2.lo)) {
+	else if (f1_d < f2_d) {
 		return -1;
 	}
 	
@@ -86,34 +90,39 @@ int FracCmpr(Frac<T> &f1, Frac<T> &f2) {
 		return 0;
 	}
 }
-/* #endregion */
 
-/// -------------------------------- Sort() -------------------------------- ///
-// Condition is passed as a function parameter
-// Algo: Bubble
 template <typename T>
-void Sort(T *arr, int size, bool (*Cmpr)(T, T)) {
-	for (int i = 0; i < size - 1; i++) {
-		for (int j = 0; j < size - 1 - i; j++) {
-			if (!Cmpr(arr[j], arr[j + 1])) {
-				swap(arr[j], arr[j + 1])
-			}
-		}
+void InputFracVct(int size, std::vector<Frac<T>> &out) {
+	for (int i = 0; i < size; i++) {
+		std::cout << "\n[" << i << "]\n";
+		
+		Frac<T> f;
+		InputFrac(f);
+		
+		out.push_back(f);
 	}
 }
 
+template <typename T>
+void OutputFracVct(std::vector<Frac<T>> v) {
+	for (int i = 0; i < v.size(); i++) {
+		std::cout << "\n[" << i << "]: ";
+		
+		OutputFrac(v[i]);
+	}
+}
+
+template <typename T>
+void CopyVct(T in, T &out) {
+	for (int i = 0; i < in.size(); i++) {
+		out.push_back(in[i]);
+	}
+}
+/* #endregion */
+
+
 /// -------------------- Comparision condition funtions -------------------- ///
 /* #region   */
-template <typename T>
-bool Decr(T a, T b) {
-	return (a > b);
-}
-
-template <typename T>
-bool Incr(T a, T b) {
-	return (a < b);
-}
-
 template <typename T>
 bool FracIncr(Frac<T> a, Frac<T> b) {
 	if (FracCmpr(a, b) == 1) {
@@ -134,11 +143,43 @@ bool FracDecr(Frac<T> a, Frac<T> b) {
 /* #endregion */
 
 
+/// -------------------------------- Sort() -------------------------------- ///
+// Condition is passed as a parameter
+// Algo: Bubble
+template <typename T>
+void Sort(std::vector<Frac<T>> const &in, std::vector<Frac<T>> &out, bool (*Cmpr)(Frac<T>, Frac<T>)) {
+	CopyVct(in, out);
+	
+	for (int i = 0; i < in.size() - 1; i++) {
+		for (int j = 0; j < (in.size() - 1 - i); j++) {
+			if (!Cmpr(out[j], out[j + 1])) {
+				Swap(out[j], out[j + 1]);
+			}
+		}
+	}
+}
+
+
 
 /// -------------------------------- main() -------------------------------- ///
 int main()
 {
-	//
+	std::vector<Frac<int>> f_inp, f_inc, f_dcr;
+	int n_frac;
+	
+	std::cout << "Enter number of fractions to sort: ";
+	std::cin >> n_frac;
+	
+	InputFracVct(n_frac, f_inp);
+	
+	
+	std::cout << "\n\nSorted in increasing order:";
+	Sort(f_inp, f_inc, FracIncr);
+	OutputFracVct(f_inc);
+	
+	std::cout << "\n\nSorted in decreasing order:";
+	Sort(f_inp, f_dcr, FracDecr);
+	OutputFracVct(f_dcr);
 	
 	return 0;
 }
