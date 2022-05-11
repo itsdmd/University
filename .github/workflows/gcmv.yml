@@ -3,9 +3,8 @@ name: Generic CM Verifier
 on:
   push:
     paths-ignore:
-      - 'CS102/**'
-      - 'CS104/exc/L/**'
-      - 'CS104/exc/T/**'
+      - 'CS107/**'
+      - 'CS105b/**'
       - '.github/**'
 
 jobs:
