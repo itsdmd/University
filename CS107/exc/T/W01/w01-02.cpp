@@ -2,6 +2,7 @@
 #include <numeric> // std::gcd
 #include <vector>
 
+
 /// ------------------------------------------------------------------------ ///
 ///                                Definitions                               ///
 /// ------------------------------------------------------------------------ ///
@@ -74,30 +75,32 @@ int FracCmpr(Frac<T> const &f1, Frac<T> const &f2) {
 }
 
 template <typename T>
-void FracVctInput(int const &size, std::vector<Frac<T>> &out) {
+void FracVctInput(int const &size, std::vector<Frac<T>> &input) {
 	for (int i = 0; i < size; i++) {
 		std::cout << "\n[" << i << "]\n";
 		
 		Frac<T> f;
 		FracInput(f);
 		
-		out.push_back(f);
+		input.push_back(f);
 	}
 }
 
 template <typename T>
-void FracVctOutput(std::vector<Frac<T>> const &v) {
-	for (int i = 0; i < v.size(); i++) {
+void FracVctOutput(std::vector<Frac<T>> const &output) {
+	for (int i = 0; i < output.size(); i++) {
 		std::cout << "\n[" << i << "]: ";
 		
-		FracOutput(v[i]);
+		FracOutput(output[i]);
 	}
 }
 
 template <typename T>
-void CopyVct(T const &in, T &out) {
-	for (int i = 0; i < in.size(); i++) {
-		out.push_back(in[i]);
+void CopyVct(T const &from, T &to) {
+	to.clear();
+	
+	for (int i = 0; i < from.size(); i++) {
+		to.push_back(from[i]);
 	}
 }
 /* #endregion */
@@ -129,13 +132,13 @@ bool FracDecr(Frac<T> const &a, Frac<T> const &b) {
 // Condition is passed as a parameter
 // Algo: Bubble
 template <typename T>
-void Sort(std::vector<Frac<T>> const &in, std::vector<Frac<T>> &out, bool (*Cmpr)(Frac<T> const &, Frac<T> const &)) {
-	CopyVct(in, out);
+void Sort(std::vector<Frac<T>> const &input, std::vector<Frac<T>> &sorted, bool (*Cmpr)(Frac<T> const &, Frac<T> const &)) {
+	CopyVct(input, sorted);
 	
-	for (int i = 0; i < in.size() - 1; i++) {
-		for (int j = 0; j < (in.size() - 1 - i); j++) {
-			if (!Cmpr(out[j], out[j + 1])) {
-				Swap(out[j], out[j + 1]);
+	for (int i = 0; i < (input.size() - 1); i++) {
+		for (int j = 0; j < (input.size() - 1 - i); j++) {
+			if (!Cmpr(sorted[j], sorted[j + 1])) {
+				Swap(sorted[j], sorted[j + 1]);
 			}
 		}
 	}
@@ -145,22 +148,22 @@ void Sort(std::vector<Frac<T>> const &in, std::vector<Frac<T>> &out, bool (*Cmpr
 
 /// -------------------------------- main() -------------------------------- ///
 int main() {
-	std::vector<Frac<int>> f_inp, f_inc, f_dcr;
-	int n_frac;
+	std::vector<Frac<int>> inp, inc, dcr;
+	int n;
 	
 	std::cout << "Enter number of fraction to sort: ";
-	std::cin >> n_frac;
+	std::cin >> n;
 	
-	FracVctInput(n_frac, f_inp);
+	FracVctInput(n, inp);
 	
 	
 	std::cout << "\n\nSorted in increasing order:";
-	Sort(f_inp, f_inc, FracIncr);
-	FracVctOutput(f_inc);
+	Sort(inp, inc, FracIncr);
+	FracVctOutput(inc);
 	
 	std::cout << "\n\nSorted in decreasing order:";
-	Sort(f_inp, f_dcr, FracDecr);
-	FracVctOutput(f_dcr);
+	Sort(inp, dcr, FracDecr);
+	FracVctOutput(dcr);
 	
 	return 0;
 }
