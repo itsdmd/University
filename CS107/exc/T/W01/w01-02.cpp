@@ -36,43 +36,13 @@ void FracInput(Frac<T> &f) {
 }
 
 template <typename T>
-void OutputFrac(Frac<T> &f) {
+void OutputFrac(Frac<T> const &f) {
 	std::cout << f.hi << "/" << f.lo;
-}
-
-template <typename T>
-void FracReduce(Frac<T> &f) {
-	T gcd = std::gcd(f.hi, f.lo);
-	
-	f.hi /= gcd;
-	f.lo /= gcd;
-}
-
-template <typename T>
-Frac<T> FracInvert(Frac<T> f) {
-	Swap(f.hi, f.lo);
-	
-	return f;
-}
-
-template <typename T>
-Frac<T> FracAdd(Frac<T> &f1, Frac<T> &f2) {
-	Frac<T> f_res;
-	
-	FracReduce(f1);
-	FracReduce(f2);
-	
-	f_res.hi = f1.hi * f2.lo + f2.hi * f1.lo;
-	f_res.lo = f1.lo * f2.lo;
-	
-	FracReduce(f_res);
-	
-	return f_res;
 }
 
 // > (1), < (-1), = (0)
 template <typename T>
-int FracCmpr(Frac<T> &f1, Frac<T> &f2) {
+int FracCmpr(Frac<T> const &f1, Frac<T> const &f2) {
 	double f1_d, f2_d;
 	
 	f1_d = (double)f1.hi / (double)f1.lo;
@@ -92,7 +62,7 @@ int FracCmpr(Frac<T> &f1, Frac<T> &f2) {
 }
 
 template <typename T>
-void FracVctInput(int size, std::vector<Frac<T>> &out) {
+void FracVctInput(int const &size, std::vector<Frac<T>> &out) {
 	for (int i = 0; i < size; i++) {
 		std::cout << "\n[" << i << "]\n";
 		
@@ -104,7 +74,7 @@ void FracVctInput(int size, std::vector<Frac<T>> &out) {
 }
 
 template <typename T>
-void FracVctOutput(std::vector<Frac<T>> v) {
+void FracVctOutput(std::vector<Frac<T>> const &v) {
 	for (int i = 0; i < v.size(); i++) {
 		std::cout << "\n[" << i << "]: ";
 		
@@ -113,7 +83,7 @@ void FracVctOutput(std::vector<Frac<T>> v) {
 }
 
 template <typename T>
-void CopyVct(T in, T &out) {
+void CopyVct(T const &in, T &out) {
 	for (int i = 0; i < in.size(); i++) {
 		out.push_back(in[i]);
 	}
@@ -124,7 +94,7 @@ void CopyVct(T in, T &out) {
 /// -------------------- Comparision condition funtions -------------------- ///
 /* #region   */
 template <typename T>
-bool FracIncr(Frac<T> a, Frac<T> b) {
+bool FracIncr(Frac<T> const &a, Frac<T> const &b) {
 	if (FracCmpr(a, b) == 1) {
 		return false;
 	}
@@ -133,7 +103,7 @@ bool FracIncr(Frac<T> a, Frac<T> b) {
 }
 
 template <typename T>
-bool FracDecr(Frac<T> a, Frac<T> b) {
+bool FracDecr(Frac<T> const &a, Frac<T> const &b) {
 	if (FracCmpr(a, b) == -1) {
 		return false;
 	}
@@ -147,7 +117,7 @@ bool FracDecr(Frac<T> a, Frac<T> b) {
 // Condition is passed as a parameter
 // Algo: Bubble
 template <typename T>
-void Sort(std::vector<Frac<T>> const &in, std::vector<Frac<T>> &out, bool (*Cmpr)(Frac<T>, Frac<T>)) {
+void Sort(std::vector<Frac<T>> const &in, std::vector<Frac<T>> &out, bool (*Cmpr)(Frac<T> const &, Frac<T> const &)) {
 	CopyVct(in, out);
 	
 	for (int i = 0; i < in.size() - 1; i++) {
