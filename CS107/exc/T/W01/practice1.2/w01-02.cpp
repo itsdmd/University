@@ -48,6 +48,10 @@ void FracOutput(Frac<T> f) {
 		std::cout << "0";
 	}
 	
+	else if (f.lo == 1) {
+		std::cout << f.hi;
+	}
+	
 	else {
 		std::cout << f.hi << "/" << f.lo;
 	}
