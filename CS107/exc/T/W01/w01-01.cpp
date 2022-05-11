@@ -70,17 +70,17 @@ Frac<T> FracInvert(Frac<T> f) {
 
 template <typename T>
 Frac<T> FracAdd(Frac<T> f1, Frac<T> f2) {
-	Frac<T> f_res;
+	Frac<T> res;
 	
 	f1 = FracReduce(f1);
 	f2 = FracReduce(f2);
 	
-	f_res.hi = f1.hi * f2.lo + f2.hi * f1.lo;
-	f_res.lo = f1.lo * f2.lo;
+	res.hi = f1.hi * f2.lo + f2.hi * f1.lo;
+	res.lo = f1.lo * f2.lo;
 	
-	FracReduce(f_res);
+	FracReduce(res);
 	
-	return f_res;
+	return res;
 }
 
 // > (1), < (-1), = (0)
