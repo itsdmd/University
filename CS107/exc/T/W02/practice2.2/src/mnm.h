@@ -10,10 +10,10 @@ class Mnm {
 		float getCoef();
 		int getExpo();
 		
-		void setCoef(float const &);
-		void setExpo(int const &);
+		void setCoef(float const &c);
+		void setExpo(int const &e);
 		
-		float evaluate(float const &);
+		float evaluate(float const &x);
 		Mnm derive();
-		Mnm mul(Mnm);
+		Mnm mul(Mnm m);
 };
