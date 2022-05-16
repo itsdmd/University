@@ -1,0 +1,1 @@
+w= && zip -r 'week'$w'_2159003.zip' . -x '*.bin*'
