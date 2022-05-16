@@ -3,8 +3,8 @@ name: Submission CM Verifier
 on:
   push:
     paths:
-      - 'CS107/exc/**'
-      - 'CS105b/exc/**'
+      - 'CS107/**.cpp'
+      - 'CS105b/**.cpp'
       - '!**test**'
       - '!**-og**"'
 
