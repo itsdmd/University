@@ -57,7 +57,6 @@ void Frac::setDenom(int const &d) {
 
 
 /// --------------------------------- algos -------------------------------- ///
-
 Frac Frac::reduce() {
 	int gcd = std::gcd(num, den);
 	
@@ -68,7 +67,14 @@ Frac Frac::reduce() {
 }
 
 Frac Frac::inverse() {
-	swap(num, den);
+	if (num == 0) {
+		cout << "Cannot invert 0\n";
+	}
+	
+	else {
+		swap(num, den);
+	}
+	
 	
 	return *this;
 }
