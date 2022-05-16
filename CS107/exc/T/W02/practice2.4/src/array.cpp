@@ -9,14 +9,16 @@ using std::cin;
 /// ---------------------------------- I/O --------------------------------- ///
 template <typename T>
 void Array::input() {
-	cout << "Enter array size: ";
-	cin >> size;
+	do {
+		cout << "Enter the size of the array: ";
+		cin >> size;
+	} while (size <= 0);
 	
 	arr = new T[size];
 	
-	cout << "Enter array elements: ";
+	cout << "\nEnter array elements: ";
 	for (int i = 0; i < size; i++) {
-		cout << "[" << i << "] ";
+		cout << "[" << i << "] = ";
 		cin >> arr[i];
 	}
 }
@@ -43,12 +45,24 @@ T Array::getElement(int const &index) {
 
 /// ---------------------------------- set --------------------------------- ///
 void Array::setSize(int const &size) {
-	this->size = size;
+	if (size > 0) {
+		this->size = size;
+	}
+	
+	else {
+		cout << "Size must be greater than 0\n";
+	}
 }
 
 template <typename T>
 void Array::setElement(int const &index, T const &element) {
-	arr[index] = element;
+	if (index >= size) {
+		cout << "Index must be less than size\n";
+	}
+	
+	else {
+		arr[index] = element;
+	}
 }
 
 
