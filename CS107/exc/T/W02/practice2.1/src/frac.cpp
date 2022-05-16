@@ -1,6 +1,7 @@
 #include <iostream>
 #include <numeric> // std::gcd
 #include "frac.h"
+#include "swap.cpp"
 
 using std::cout;
 using std::cin;
@@ -56,12 +57,6 @@ void Frac::setDenom(int const &d) {
 
 
 /// --------------------------------- algos -------------------------------- ///
-template <typename T>
-void Swap(T &a, T &b) {
-	T temp = a;
-	a = b;
-	b = temp;
-}
 
 Frac Frac::reduce() {
 	int gcd = std::gcd(num, den);
@@ -73,7 +68,7 @@ Frac Frac::reduce() {
 }
 
 Frac Frac::inverse() {
-	Swap(num, den);
+	swap(num, den);
 	
 	return *this;
 }

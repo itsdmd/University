@@ -10,11 +10,11 @@ class Frac {
 		int getNum();
 		int getDenom();
 		
-		void setNum(int const &);
-		void setDenom(int const &);
+		void setNum(int const &n);
+		void setDenom(int const &d);
 		
 		Frac reduce();
 		Frac inverse();
-		Frac add(Frac const &);
-		int compare(Frac const &);
+		Frac add(Frac const &f);
+		int compare(Frac const &f);
 };
