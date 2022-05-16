@@ -3,13 +3,16 @@
         {
             "type": "cppbuild",
             "label": "Build with g++.exe",
-            "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+            "command": "mkdir",
             "args": [
+                ".bin",
+                "&&",
+                "C:\\msys64\\mingw64\\bin\\g++.exe",
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\.bin\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -24,13 +27,16 @@
         {
             "type": "cppbuild",
             "label": "Build with g++",
-            "command": "/usr/bin/g++",
+            "command": "mkdir",
             "args": [
+                ".bin",
+                "&&",
+                "/usr/bin/g++",
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/.bin/${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "${fileDirname}"
