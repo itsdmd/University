@@ -13,9 +13,9 @@ class Student {
 		void input();
 		void output();
 		
-		void setName(string name);
-		void setLit(float lit);
-		void setMath(float math);
+		void setName(string const &name);
+		void setLit(float const &lit);
+		void setMath(float const &math);
 		
 		string getName();
 		float getLit();

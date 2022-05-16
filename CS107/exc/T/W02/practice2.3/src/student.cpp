@@ -7,21 +7,19 @@ using std::string;
 
 
 /// ---------------------------------- I/O --------------------------------- ///
-void InputHandler(float &target) {
-	do {
-		cin >> target;
-	} while (target < 0.0);
-}
-
 void Student::input() {
 	cout << "Enter student name: ";
 	cin >> name;
 	
-	cout << "Enter student literature point: ";
-	InputHandler(lit);
+	do {
+		cout << "Enter student literature point: ";
+		cin >> lit;
+	} while (lit < 0.0);
 	
-	cout << "Enter student math point: ";
-	InputHandler(math);
+	do {
+		cout << "Enter student math point: ";
+		cin >> math;
+	} while (math < 0.0);
 }
 
 void Student::output() {
@@ -34,16 +32,28 @@ void Student::output() {
 
 
 /// ---------------------------------- set --------------------------------- ///
-void Student::setName(string name) {
+void Student::setName(string const &name) {
 	this->name = name;
 }
 
-void Student::setLit(float lit) {
-	this->lit = lit;
+void Student::setLit(float const &lit) {
+	if (lit >= 0.0) {
+		this->lit = lit;
+	}
+	
+	else {
+		cout << "Literature point must be greater than or equal to 0.0\n";
+	}
 }
 
-void Student::setMath(float math) {
-	this->math = math;
+void Student::setMath(float const &math) {
+	if (math >= 0.0) {
+		this->math = math;
+	}
+	
+	else {
+		cout << "Math point must be greater than or equal to 0.0\n";
+	}
 }
 
 
