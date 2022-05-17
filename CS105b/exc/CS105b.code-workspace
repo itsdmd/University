@@ -73,7 +73,8 @@
 			"locale": "cpp",
 			"queue": "cpp",
 			"*.snippet": "cpp",
-			"fstream": "cpp"
+			"fstream": "cpp",
+			"numbers": "cpp"
 		}
 	}
 }
