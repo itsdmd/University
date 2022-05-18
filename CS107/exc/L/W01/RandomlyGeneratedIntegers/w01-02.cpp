@@ -17,7 +17,7 @@ int main() {
 	size = random(5, 10);
 	
 	cout << "Generating " << size << " random integers: ";
-	rndArr(vt, size, 10, 100);
+	rndVct(vt, size, 10, 100);
 	printVct(vt, all);
 	cout << "\n";
 	
