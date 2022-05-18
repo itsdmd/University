@@ -24,13 +24,13 @@ int main() {
 	
 	cout << "You have entered " << size << " integer";
 	(size > 1) ? (cout << "s: ") : (cout << ": ");
-	printArray(arr, size, all);
+	printArr(arr, size, all);
 	
 	/// --------------------------------- Output -------------------------------- ///
-	beautified("even", arr, size, even);
-	beautified("odd", arr, size, odd);
-	beautified("palindromic", arr, size, palindromic);
-	beautified("square", arr, size, square);
+	printCond("even", arr, size, even);
+	printCond("odd", arr, size, odd);
+	printCond("palindromic", arr, size, palindromic);
+	printCond("square", arr, size, square);
 	
 	return 0;
 }
