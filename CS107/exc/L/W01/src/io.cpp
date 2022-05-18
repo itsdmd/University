@@ -1,12 +1,14 @@
 #include <iostream>
 #include <string>
-#include "algos.cpp"
+#include <vector>
+#include "conditional.cpp"
 
 using std::cin;
 using std::cout;
 using std::getline;
 using std::stoi;
 using std::string;
+using std::vector;
 
 
 void inp_int(int &target, bool &success) {
@@ -64,7 +66,7 @@ void multiInput(int *arr, int const &count, int const &min, int const &max) {
 	}
 }
 
-void printArray(int const *arr, int const &size, bool (*cond)(int const &)) {
+void printArr(int const *arr, int const &size, bool (*cond)(int const &)) {
 	bool first = true;
 	
 	for (int i = 0; i < size; i++) {
@@ -82,8 +84,32 @@ void printArray(int const *arr, int const &size, bool (*cond)(int const &)) {
 	cout << "\n";
 }
 
-void beautified(string const &msg, int const *arr, int const &size, bool (*cond)(int const &)) {
+void printVct(vector<int> const &vt, bool (*cond)(int const &)) {
+	bool first = true;
+	
+	for (int i = 0; i < vt.size(); i++) {
+		if (cond(vt[i])) {
+			if (first) {
+				cout << vt[i];
+				first = false;
+			}
+			
+			else {
+				cout << ", " << vt[i];
+			}
+		}
+	}
+	cout << "\n";
+}
+
+void printCond(string const &msg, int const *arr, int const &size, bool (*cond)(int const &)) {
 	cout << "Found " << countCond(arr, size, cond) << " " << msg << " number";
 	(size > 1) ? (cout << "s: ") : (cout << ": ");
-	printArray(arr, size, cond);
+	printArr(arr, size, cond);
+}
+
+void printCond(string const &msg, vector<int> const &vt, bool (*cond)(int const &)) {
+	cout << "Found " << countCond(vt, cond) << " " << msg << " number";
+	(vt.size() > 1) ? (cout << "s: ") : (cout << ": ");
+	printVct(vt, cond);
 }
