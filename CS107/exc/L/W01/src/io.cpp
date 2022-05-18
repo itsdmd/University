@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "conditional.cpp"
+#include "cond.cpp"
 
 using std::cout;
 using std::getline;

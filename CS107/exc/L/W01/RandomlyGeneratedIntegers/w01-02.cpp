@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "../src/io.cpp"
-#include "../src/randomize.cpp"
+#include "../src/rand.cpp"
 
 using std::cout;
 using std::vector;
@@ -14,7 +14,7 @@ int main() {
 	cout << "Working with randomly generated integers.\n";
 	
 	srand(time(NULL));
-	size = random(5, 10);
+	size = rng(5, 10);
 	
 	cout << "Generating " << size << " random integers: ";
 	rndVct(vt, size, 10, 100);
