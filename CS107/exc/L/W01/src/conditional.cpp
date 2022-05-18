@@ -1,11 +1,10 @@
 #include <cmath>
-#include <iostream>
 #include <string>
+#include <vector>
 
-using std::cin;
-using std::cout;
 using std::stoi;
 using std::string;
+using std::vector;
 
 
 bool all(int const &val) {
@@ -44,6 +43,18 @@ int countCond(int const *arr, int const &size, bool (*cond)(int const &)) {
 
 	for (int i = 0; i < size; i++) {
 		if (cond(arr[i])) {
+			count++;
+		}
+	}
+
+	return count;
+}
+
+int countCond(vector<int> const &vt, bool (*cond)(int const &)) {
+	int count = 0;
+
+	for (int i = 0; i < vt.size(); i++) {
+		if (cond(vt[i])) {
 			count++;
 		}
 	}
