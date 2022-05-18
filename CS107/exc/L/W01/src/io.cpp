@@ -70,14 +70,13 @@ void printArr(int const *arr, int const &size, bool (*cond)(int const &)) {
 	
 	for (int i = 0; i < size; i++) {
 		if (cond(arr[i])) {
-			if (first) {
-				cout << arr[i];
-				first = false;
-			}
+			if (!first)
+				cout << ", ";
 			
-			else {
-				cout << ", " << arr[i];
-			}
+			else
+				first = false;
+			
+			cout << arr[i];
 		}
 	}
 	cout << "\n";
@@ -88,14 +87,13 @@ void printVct(vector<int> const &vt, bool (*cond)(int const &)) {
 	
 	for (int i = 0; i < vt.size(); i++) {
 		if (cond(vt[i])) {
-			if (first) {
-				cout << vt[i];
-				first = false;
-			}
+			if (!first)
+				cout << ", ";
 			
-			else {
-				cout << ", " << vt[i];
-			}
+			else
+				first = false;
+			
+			cout << vt[i];
 		}
 	}
 	cout << "\n";
