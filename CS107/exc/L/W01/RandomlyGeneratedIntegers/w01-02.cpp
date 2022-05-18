@@ -3,11 +3,7 @@
 #include "../src/io.cpp"
 #include "../src/randomize.cpp"
 
-using std::cin;
 using std::cout;
-using std::getline;
-using std::stoi;
-using std::string;
 using std::vector;
 
 
@@ -17,9 +13,10 @@ int main() {
 	
 	cout << "Working with randomly generated integers.\n";
 	
+	srand(time(NULL));
 	size = random(5, 10);
 	
-	cout << "Generating " << size << " random integers:";
+	cout << "Generating " << size << " random integers: ";
 	rndArr(vt, size, 10, 100);
 	printVct(vt, all);
 	cout << "\n";
