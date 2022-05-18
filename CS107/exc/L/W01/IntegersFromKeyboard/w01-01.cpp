@@ -1,11 +1,7 @@
 #include <iostream>
 #include "../src/io.cpp"
 
-using std::cin;
 using std::cout;
-using std::getline;
-using std::stoi;
-using std::string;
 
 
 int main() {
