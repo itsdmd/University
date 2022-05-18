@@ -3,7 +3,6 @@
 #include <vector>
 #include "conditional.cpp"
 
-using std::cin;
 using std::cout;
 using std::getline;
 using std::stoi;
@@ -14,7 +13,7 @@ using std::vector;
 void inp_int(int &target, bool &success) {
 	string buffer;
 
-	getline(cin, buffer);
+	getline(std::cin, buffer);
 	
 	if (buffer == "") {
 		cout << "Error: Empty input.";
@@ -103,13 +102,35 @@ void printVct(vector<int> const &vt, bool (*cond)(int const &)) {
 }
 
 void printCond(string const &msg, int const *arr, int const &size, bool (*cond)(int const &)) {
-	cout << "Found " << countCond(arr, size, cond) << " " << msg << " number";
-	(size > 1) ? (cout << "s: ") : (cout << ": ");
+	int found = countCond(arr, size, cond);
+	
+	cout << "Found " << found << " " << msg << " number";
+	
+	if (found > 1)
+		cout << "s: ";
+	
+	else if (found == 1)
+		cout << ": ";
+	
+	else
+		cout << "";
+	
 	printArr(arr, size, cond);
 }
 
 void printCond(string const &msg, vector<int> const &vt, bool (*cond)(int const &)) {
+	int found = countCond(vt, cond);
+	
 	cout << "Found " << countCond(vt, cond) << " " << msg << " number";
-	(vt.size() > 1) ? (cout << "s: ") : (cout << ": ");
+	
+	if (found > 1)
+		cout << "s: ";
+	
+	else if (found == 1)
+		cout << ": ";
+	
+	else
+		cout << "";
+	
 	printVct(vt, cond);
 }
