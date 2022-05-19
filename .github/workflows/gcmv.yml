@@ -5,6 +5,8 @@ on:
     paths-ignore:
       - 'CS107/**.cpp'
       - 'CS105b/**.cpp'
+      - 'CS107/**.h'
+      - 'CS105b/**.h'
       - '.github/**'
 
 jobs:
