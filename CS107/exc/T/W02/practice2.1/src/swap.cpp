@@ -1,6 +1,7 @@
-template <typename T>
-void swap(T &a, T &b) {
-	T temp = a;
+#include "swap.h"
+
+void swap(int &a, int &b) {
+	int temp = a;
 	a = b;
 	b = temp;
 }

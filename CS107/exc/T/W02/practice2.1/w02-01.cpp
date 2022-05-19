@@ -10,7 +10,7 @@
 
 
 #include <iostream>
-#include "src/frac.cpp"
+#include "src/frac.h"
 
 
 int main() {

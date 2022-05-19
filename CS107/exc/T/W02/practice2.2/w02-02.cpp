@@ -8,7 +8,7 @@
 // - mul: return the product of multiplying two monomials.
 
 #include <iostream>
-#include "src/mnm.cpp"
+#include "src/mnm.h"
 
 
 

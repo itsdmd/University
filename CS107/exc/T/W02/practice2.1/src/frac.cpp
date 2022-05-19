@@ -1,7 +1,7 @@
 #include <iostream>
 #include <numeric> // std::gcd
 #include "frac.h"
-#include "swap.cpp"
+#include "swap.h"
 
 using std::cout;
 using std::cin;

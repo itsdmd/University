@@ -1,3 +1,5 @@
+#pragma once
+
 class Frac {
 	private:
 		int num;

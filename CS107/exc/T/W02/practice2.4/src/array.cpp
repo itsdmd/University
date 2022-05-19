@@ -1,6 +1,6 @@
 #include <iostream>
 #include "array.h"
-#include "swap.cpp"
+#include "swap.h"
 
 using std::cout;
 using std::cin;

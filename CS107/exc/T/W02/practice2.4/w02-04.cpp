@@ -7,7 +7,7 @@
 // - sort: sort array, the sort criteria can be customized.
 
 #include <iostream>
-#include "src/array.cpp"
+#include "src/array.h"
 
 
 

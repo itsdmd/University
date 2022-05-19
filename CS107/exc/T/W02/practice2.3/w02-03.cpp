@@ -10,7 +10,7 @@
 //	C(GPA>=5.0), D(GPA<5)
 
 #include <iostream>
-#include "src/student.cpp"
+#include "src/student.h"
 
 
 
