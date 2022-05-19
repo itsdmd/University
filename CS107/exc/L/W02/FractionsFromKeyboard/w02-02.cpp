@@ -31,7 +31,7 @@ int main() {
 	fracVctSum(vt_f, f_res);
 	
 	cout << "The sum of all entered fractions is: ";
-	printFrac(f_res);
+	printFracMixed(f_res);
 	
 	
 	return 0;
