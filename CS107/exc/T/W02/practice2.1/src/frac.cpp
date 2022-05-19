@@ -42,7 +42,7 @@ int Frac::getNum() {
 	return num;
 }
 
-int Frac::getDenom() {
+int Frac::getDen() {
 	return den;
 }
 
@@ -51,7 +51,7 @@ void Frac::setNum(int const &n) {
 	num = n;
 }
 
-void Frac::setDenom(int const &d) {
+void Frac::setDen(int const &d) {
 	den = d;
 }
 
