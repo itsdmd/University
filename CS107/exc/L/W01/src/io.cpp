@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "cond.cpp"
+#include "cond.h"
 
 using std::cout;
 using std::getline;
