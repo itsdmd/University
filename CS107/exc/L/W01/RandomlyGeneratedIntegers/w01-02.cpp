@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "../src/io.cpp"
-#include "../src/rand.cpp"
+#include "../src/cond.h"
+#include "../src/io.h"
+#include "../src/rand.h"
 
 using std::cout;
 using std::vector;
