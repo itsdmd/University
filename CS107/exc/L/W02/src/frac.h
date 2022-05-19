@@ -62,6 +62,7 @@ class Frac {
 void fracVctGen(vector<int> const &vt1, vector<int> const &vt2, vector<Frac> &vt_f);
 void fracVctSum(vector<Frac> const &vt_inp, Frac &f_res);
 void printFrac(Frac f);
+void printFracMixed(Frac f);
 void printFVct(vector<Frac> const &vt);
 void printFVctReduced(vector<Frac> const &vt);
 void printFVctDec(vector<Frac> const &vt);
