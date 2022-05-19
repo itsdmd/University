@@ -16,6 +16,7 @@ int main() {
 	cout << "Working with randomly generated integers.\n";
 	
 	/// ------------------------------ Generating ------------------------------ ///
+	srand(time(NULL));
 	size = rng(5, 10);
 	
 	rndVct(vt1, size, 10, 100);
