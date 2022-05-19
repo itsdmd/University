@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "cond.h"
+#include "io.h"
 
 using std::cout;
 using std::getline;
@@ -43,7 +44,7 @@ void singleInput(string const &msg, int &val, int const &min, int const &max) {
 	cout << msg;
 	inp_int(val, valid);
 	
-	while ((val <= min) || (val >= max)) {
+	while ((val < min) || (val > max)) {
 		valid ?
 			cout << "Error: The integer must be in the range of [" << min << ", " << max << "]\n"
 			:
