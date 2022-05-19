@@ -1,5 +1,6 @@
 #include <iostream>
-#include "../src/io.cpp"
+#include "../src/cond.h"
+#include "../src/io.h"
 
 using std::cout;
 
