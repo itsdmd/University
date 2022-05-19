@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "../src/frac.cpp"
-#include "../src/rand.cpp"
-#include "../src/io.cpp"
+#include "../src/frac.h"
+#include "../src/rand.h"
 
 using std::cout;
 using std::vector;
