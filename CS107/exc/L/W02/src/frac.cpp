@@ -64,6 +64,16 @@ void fracVctSum(vector<Frac> const &vt_inp, Frac &f_res) {
 }
 
 void printFrac(Frac f) {
+	if (f.getDen() == 1) {
+		cout << f.getNum();
+	}
+	
+	else {
+		cout << f.getNum() << "/" << f.getDen();
+	}
+}
+
+void printFracMixed(Frac f) {
 	int whole = f.getNum() / f.getDen();
 	int new_num = f.getNum() % f.getDen();
 	
@@ -80,16 +90,15 @@ void printFVct(vector<Frac> const &vt) {
 	bool first = true;
 	
 	for (int i = 0; i < vt.size(); i++) {
-		Frac f = vt[i];
-		
 		if (first) {
-			cout << f.getNum() << "/" << f.getDen();
 			first = false;
 		}
 		
 		else {
-			cout << ", " << f.getNum() << "/" << f.getDen();
+			cout << ", ";
 		}
+		
+		printFrac(vt[i]);
 	}
 	
 	cout << "\n";
@@ -102,18 +111,15 @@ void printFVctReduced(vector<Frac> const &vt) {
 		Frac f = vt[i];
 		f = f.reduce();
 		
-		if (!first)
-			cout << ", ";
-		
-		else
+		if (first) {
 			first = false;
-		
-		if (f.getDen() == 1) {
-			cout << f.getNum();
-			continue;
 		}
 		
-		cout << f.getNum() << "/" << f.getDen();
+		else {
+			cout << ", ";
+		}
+		
+		printFracMixed(f);
 	}
 	
 	cout << "\n";
