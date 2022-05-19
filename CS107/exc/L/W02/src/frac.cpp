@@ -42,6 +42,40 @@ void fracVctGen(vector<int> const &vt1, vector<int> const &vt2, vector<Frac> &vt
 	}
 }
 
+void fracVctSum(vector<Frac> const &vt_inp, Frac &f_res) {
+	int temp_n = 0;
+	int temp_d = 1;
+	
+	Frac temp_f = vt_inp[0];
+	f_res.setNum(temp_f.getNum());
+	f_res.setDen(temp_f.getDen());
+	
+	for (int i = 1; i < vt_inp.size(); i++) {
+		temp_f = vt_inp[i];
+		
+		temp_n = (f_res.getNum() * temp_f.getDen()) + (temp_f.getNum() * f_res.getDen());
+		temp_d = (f_res.getDen() * temp_f.getDen());
+		
+		f_res.setNum(temp_n);
+		f_res.setDen(temp_d);
+		
+		f_res.reduce();
+	}
+}
+
+void printFrac(Frac f) {
+	int whole = f.getNum() / f.getDen();
+	int new_num = f.getNum() % f.getDen();
+	
+	if (whole == 0) {
+		cout << new_num << "/" << f.getDen();
+	}
+	
+	else {
+		cout << whole << " " << new_num << "/" << f.getDen();
+	}
+}
+
 void printFVct(vector<Frac> const &vt) {
 	bool first = true;
 	
