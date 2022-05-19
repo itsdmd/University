@@ -59,7 +59,7 @@ jobs:
         id: regex-1
         uses: AsasInnab/regex-action@v1
         with:
-          regex_pattern: '((\[(add|del|mod|rft)\]\ )(?=[0-9]{3}([a-z])?\.([LT]\.)?[0-9]{2}([^\.]|$)(.*)?$))'
+          regex_pattern: '((\[(add|del|mod|rft)\]\ )(?=[0-9]{3}([a-z])?\.([LT]\.)?[0-9]{2}(.*)?$))'
           regex_flags: 'gm'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
       
