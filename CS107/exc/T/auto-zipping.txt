@@ -1,0 +1,1 @@
+w= && z 107 exc T && cd 'W0'$w && rm *.zip & zip -r 'week'$w'_2159003.zip' . -i '*.cpp' '*.h'
