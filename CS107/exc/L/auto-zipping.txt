@@ -1,0 +1,1 @@
+w= && z 107 exc L && cd 'W0'$w && rm *.zip & zip -r '2159003.zip' . -i '*.cpp' '*.h'
