@@ -3,10 +3,10 @@ name: Generic CM Verifier
 on:
   push:
     paths-ignore:
-      - 'CS107/**.cpp'
-      - 'CS105b/**.cpp'
-      - 'CS107/**.h'
-      - 'CS105b/**.h'
+      - 'CS107/exc/L/**'
+      - 'CS105b/exc/L/**'
+      - 'CS107/exc/T/**'
+      - 'CS105b/exc/T/**'
       - '.github/**'
 
 jobs:
