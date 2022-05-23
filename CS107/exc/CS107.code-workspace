@@ -80,7 +80,10 @@
 			"semaphore": "cpp",
 			"stop_token": "cpp",
 			"thread": "cpp",
-			"regex": "cpp"
+			"regex": "cpp",
+			"bitset": "cpp",
+			"map": "cpp",
+			"cinttypes": "cpp"
 		}
 	}
 }
