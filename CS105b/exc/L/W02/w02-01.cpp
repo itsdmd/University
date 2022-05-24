@@ -35,26 +35,26 @@ struct Proc {
 // Each line after is a process with the following format: pid, s, b
 void loadData(string const &filename, vector<Proc> &inp_proc) {
 	std::ifstream inp(filename);
-
+	
 	if (!inp.is_open()) {
 		std::cout << "Error opening file: " << filename << std::endl;
 		return;
 	}
-
+	
 	int n;
-
+	
 	inp >> n;
-
+	
 	for (int i = 0; i < n; i++) {
 		Proc proc;
-
+		
 		inp >> proc.pid;
 		inp >> proc.s;
 		inp >> proc.b;
 
 		inp_proc.push_back(proc);
 	}
-
+	
 	inp.close();
 }
 
@@ -83,11 +83,11 @@ bool compareStartTime(Proc const &p1, Proc const &p2) {
 	if (p1.s < p2.s) {
 		return true;
 	}
-
+	
 	else if (p1.s > p2.s) {
 		return false;
 	}
-
+	
 	return (p1.pid < p2.pid);
 }
 
@@ -96,11 +96,11 @@ bool compareBurstTime(Proc const &p1, Proc const &p2) {
 	if (p1.b < p2.b) {
 		return true;
 	}
-
+	
 	else if (p1.b > p2.b) {
 		return false;
 	}
-
+	
 	return (p1.pid < p2.pid);
 }
 
@@ -110,20 +110,20 @@ bool compareBurstTime(Proc const &p1, Proc const &p2) {
 vector<int> SRTF(vector<Proc> &inp_p) {
 	vector<Proc> temp = inp_p;
 	vector<int> res;
-
+	
 	int time = 0;
-
+	
 	while (!temp.empty()) {
 		sort(temp.begin(), temp.end(), compareBurstTime);
-
+		
 		int i = 0;
-
+		
 		for (; i < temp.size(); i++) {
 			if (temp[i].s <= res.size()) {
 				break;
 			}
 		}
-
+		
 		if (i == temp.size()) {
 			res.push_back(-1);
 			time++;
@@ -145,7 +145,7 @@ vector<int> SRTF(vector<Proc> &inp_p) {
 					}
 				}
 			}
-
+			
 			if (temp[i].b == 0) {
 				for (int j = 0; j < inp_p.size(); j++) {
 					if (inp_p[j].pid == temp[i].pid) {
@@ -157,7 +157,7 @@ vector<int> SRTF(vector<Proc> &inp_p) {
 			}
 		}
 	}
-
+	
 	return res;
 }
 
@@ -167,14 +167,14 @@ int main() {
 	string const inp_file = "processes.txt";
 	vector<Proc> procList_og;
 	vector<Proc> procList_cp;
-
+	
 	loadData(inp_file_full, procList_og);
 	// loadData(inp_file, procList);
-
+	
 	procList_cp = procList_og;
 	vector<int> res_srtf = SRTF(procList_cp);
 	printProcs(res_srtf);
 	printWT(procList_cp);
-
+	
 	return 0;
 }
