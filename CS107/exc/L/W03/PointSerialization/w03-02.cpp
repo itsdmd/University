@@ -14,6 +14,8 @@ using std::string;
 void saveData(string const &filename, PointVct pv) {
 	std::ofstream ofs(filename);
 	
+	ofs << pv.getSize() << std::endl;
+	
 	for (int i = 0; i < pv.getSize(); i++) {
 		ofs << "(" << pv.getData(i).getX() << ", " << pv.getData(i).getY() << ")" << std::endl;
 	}
