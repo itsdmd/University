@@ -1,4 +1,5 @@
 #include <iostream>
+#include <regex>
 #include "io.h"
 #include "../../src/frac.h"
 
@@ -80,6 +81,6 @@ void multiFracInp(FracVct &fvt, int const &size) {
 			singleInput(f, valid);
 		} while (!valid);
 		
-		fvt.addElement(f);
+		fvt.addData(f);
 	}
 }
