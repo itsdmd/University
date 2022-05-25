@@ -12,7 +12,7 @@ using std::vector;
 /// -------------------------------- main() -------------------------------- ///
 int main() {
 	int size;
-	vector<Frac> vt_f;
+	FracVct vt;
 	Frac f_res;
 	
 	cout << "Working with randomly generated integers.\n";
@@ -24,14 +24,14 @@ int main() {
 	cout << "Please enter " << size << " fraction";
 	(size > 1) ? cout << "s:\n" : cout << ":\n";
 	
-	multiInput(vt_f, size);
+	multiFracInp(vt, size);
 	
 
 	/// -------------------------------- Output -------------------------------- ///
-	fracVctSum(vt_f, f_res);
+	Frac f_sum = vt.fracVctSum();
 	
 	cout << "The sum of all entered fractions is: ";
-	printFracMixed(f_res);
+	f_sum.printFracMixed();
 	
 	
 	return 0;
