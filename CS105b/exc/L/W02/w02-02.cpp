@@ -226,6 +226,11 @@ vector<int> RR(vector <Proc> &inp_p, int qt) {
 					// (For finishing a quantum) If process still have burst time left, enqueue it.
 					if (temp[i_t].b > 0) {
 						queue.push_back(queue[0]);
+					
+						queue.erase(queue.begin());
+						qt_counter = 0;
+						
+						continue;
 					}
 					
 					// Else remove it from `temp` and assign turn around time to the according process in `inp_p`.
@@ -235,12 +240,12 @@ vector<int> RR(vector <Proc> &inp_p, int qt) {
 						inp_p[ip_i].w = (inp_p[ip_i].t - inp_p[ip_i].b);
 						
 						temp.erase(temp.begin() + i_t);
+					
+						queue.erase(queue.begin());
+						qt_counter = 0;
+						
+						break;
 					}
-					
-					queue.erase(queue.begin());
-					qt_counter = 0;
-					
-					continue;
 				}
 				
 				// Push to `queue` + Increment waiting time of processes.
