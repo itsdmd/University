@@ -75,10 +75,10 @@ public:
   ~FracVct();
   
   vector<Frac> getVct();
-  Frac getElement(int const &i);
+  Frac getData(int const &i);
   
-  void setElement(int const &i, Frac const &f);
-  void addElement(Frac const &f);
+  void setData(int const &i, Frac const &f);
+  void addData(Frac const &f);
   
   void printFVct();
   void printFVctReduced();
