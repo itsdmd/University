@@ -106,15 +106,15 @@ vector<Frac> FracVct::getVct() {
 	return this->vt;
 }
 
-Frac FracVct::getElement(int const &i) {
+Frac FracVct::getData(int const &i) {
 	return this->vt[i];
 }
 
-void FracVct::setElement(int const &i, Frac const &f) {
+void FracVct::setData(int const &i, Frac const &f) {
 	this->vt[i] = f;
 }
 
-void FracVct::addElement(Frac const &f) {
+void FracVct::addData(Frac const &f) {
 	this->vt.push_back(f);
 }
 
