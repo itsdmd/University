@@ -70,7 +70,7 @@ void singleInput(Frac &f_res, bool &valid) {
 	}
 }
 
-void multiInput(vector<Frac> &vt_f, int const &size) {
+void multiFracInp(FracVct &fvt, int const &size) {
 	Frac f;
 	bool valid = false;
 	
@@ -80,6 +80,6 @@ void multiInput(vector<Frac> &vt_f, int const &size) {
 			singleInput(f, valid);
 		} while (!valid);
 		
-		vt_f.push_back(f);
+		fvt.addElement(f);
 	}
 }
