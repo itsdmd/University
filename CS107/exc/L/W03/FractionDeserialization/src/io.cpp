@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <regex>
 
 #include "io.h"
 
@@ -92,7 +93,7 @@ int loadData(string const &dir, FracVct &fvt) {
 			fracInp(line, f, valid);
 			
 			if (valid) {
-				fvt.addElement(f);
+				fvt.addData(f);
 			}
         }
     }
