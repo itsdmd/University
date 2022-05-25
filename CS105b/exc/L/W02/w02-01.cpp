@@ -11,15 +11,16 @@ using std::setw;
 using std::string;
 using std::vector;
 
+
 /// ------------------------------------------------------------------------ ///
 ///                                  Structs                                 ///
 /// ------------------------------------------------------------------------ ///
 struct Proc {
 	int pid = 0;
-
+	
 	int s = 0; // Start
 	int b = 0; // Burst
-
+	
 	int w = 0; // Waiting
 	int t = 0; // Turn around
 };
@@ -67,9 +68,8 @@ void printProcs(vector<int> const &inp_i) {
 
 // Print list of processes' waiting and turn around times
 void printWT(vector<Proc> const &inp_p) {
-	cout << "PID" << setw(15) << "Waiting time" << setw(20) << "Turn around time"
-		 << "\n";
-
+	cout << "PID" << setw(15) << "Waiting time" << setw(20) << "Turn around time" << "\n";
+	
 	for (auto p : inp_p) {
 		cout << p.pid << setw(10) << p.w << setw(20) << p.t << "\n";
 	}
@@ -110,7 +110,7 @@ int findMatchingPid(Proc const &proc, vector<Proc> const &vt) {
 			return i;
 		}
 	}
-
+	
 	return -1;
 }
 /* #endregion */
@@ -119,20 +119,20 @@ int findMatchingPid(Proc const &proc, vector<Proc> const &vt) {
 vector<int> SRTF(vector<Proc> &inp_p) {
 	vector<Proc> temp = inp_p;
 	vector<int> res;
-
+	
 	int time = 0;
-
+	
 	while (!temp.empty()) {
 		sort(temp.begin(), temp.end(), compareBurstTime);
-
+		
 		int i = 0;
-
+		
 		for (; i < temp.size(); i++) {
 			if (temp[i].s <= res.size()) {
 				break;
 			}
 		}
-
+		
 		if (i == temp.size()) {
 			res.push_back(-1);
 			time++;
@@ -140,17 +140,17 @@ vector<int> SRTF(vector<Proc> &inp_p) {
 			res.push_back(temp[i].pid);
 			temp[i].b--;
 			time++;
-
+			
 			if (temp[i].b == 0) {
 				int ip_i = findMatchingPid(temp[i], inp_p);
 				inp_p[ip_i].t = (time - inp_p[ip_i].s);
 				inp_p[ip_i].w = (inp_p[ip_i].t - inp_p[ip_i].b);
-
+				
 				temp.erase(temp.begin() + i);
 			}
 		}
 	}
-
+	
 	return res;
 }
 
@@ -162,12 +162,13 @@ int main() {
 	vector<Proc> procList_cp;
 	
 	loadData(inp_file_full, procList_og);
-	// loadData(inp_file, procList);
+	// loadData(inp_file, procList_og);
 	
 	procList_cp = procList_og;
 	vector<int> res_srtf = SRTF(procList_cp);
 	printProcs(res_srtf);
 	printWT(procList_cp);
+	
 	
 	return 0;
 }
