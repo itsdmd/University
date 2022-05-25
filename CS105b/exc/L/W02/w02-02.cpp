@@ -11,15 +11,16 @@ using std::setw;
 using std::string;
 using std::vector;
 
+
 /// ------------------------------------------------------------------------ ///
 ///                                  Structs                                 ///
 /// ------------------------------------------------------------------------ ///
 struct Proc {
 	int pid = 0;
-
+	
 	int s = 0; // Start
 	int b = 0; // Burst
-
+	
 	int w = 0; // Waiting
 	int t = 0; // Turn around
 };
@@ -35,26 +36,26 @@ struct Proc {
 // Each line after is a process with the following format: pid, s, b
 void loadData(string const &filename, vector<Proc> &inp_proc) {
 	std::ifstream inp(filename);
-
+	
 	if (!inp.is_open()) {
 		std::cout << "Error opening file: " << filename << std::endl;
 		return;
 	}
-
+	
 	int n;
-
+	
 	inp >> n;
-
+	
 	for (int i = 0; i < n; i++) {
 		Proc proc;
-
+		
 		inp >> proc.pid;
 		inp >> proc.s;
 		inp >> proc.b;
-
+		
 		inp_proc.push_back(proc);
 	}
-
+	
 	inp.close();
 }
 
@@ -67,9 +68,8 @@ void printProcs(vector<int> const &inp_i) {
 
 // Print list of processes' waiting and turn around times
 void printWT(vector<Proc> const &inp_p) {
-	cout << "PID" << setw(15) << "Waiting time" << setw(20) << "Turn around time"
-		 << "\n";
-
+	cout << "PID" << setw(15) << "Waiting time" << setw(20) << "Turn around time" << "\n";
+	
 	for (auto p : inp_p) {
 		cout << p.pid << setw(10) << p.w << setw(20) << p.t << "\n";
 	}
@@ -83,11 +83,11 @@ bool compareStartTime(Proc const &p1, Proc const &p2) {
 	if (p1.s < p2.s) {
 		return true;
 	}
-
+	
 	else if (p1.s > p2.s) {
 		return false;
 	}
-
+	
 	return (p1.pid < p2.pid);
 }
 
@@ -96,11 +96,11 @@ bool compareBurstTime(Proc const &p1, Proc const &p2) {
 	if (p1.b < p2.b) {
 		return true;
 	}
-
+	
 	else if (p1.b > p2.b) {
 		return false;
 	}
-
+	
 	return (p1.pid < p2.pid);
 }
 
@@ -110,7 +110,7 @@ int findMatchingPid(Proc const &proc, vector<Proc> const &vt) {
 			return i;
 		}
 	}
-
+	
 	return -1;
 }
 /* #endregion */
@@ -119,20 +119,20 @@ int findMatchingPid(Proc const &proc, vector<Proc> const &vt) {
 vector<int> SRTF(vector<Proc> &inp_p) {
 	vector<Proc> temp = inp_p;
 	vector<int> res;
-
+	
 	int time = 0;
-
+	
 	while (!temp.empty()) {
 		sort(temp.begin(), temp.end(), compareBurstTime);
-
+		
 		int i = 0;
-
+		
 		for (; i < temp.size(); i++) {
 			if (temp[i].s <= res.size()) {
 				break;
 			}
 		}
-
+		
 		if (i == temp.size()) {
 			res.push_back(-1);
 			time++;
@@ -140,7 +140,7 @@ vector<int> SRTF(vector<Proc> &inp_p) {
 			res.push_back(temp[i].pid);
 			temp[i].b--;
 			time++;
-
+			
 			if (temp[i].b == 0) {
 				int ip_i = findMatchingPid(temp[i], inp_p);
 				inp_p[ip_i].t = (time - inp_p[ip_i].s);
@@ -150,7 +150,7 @@ vector<int> SRTF(vector<Proc> &inp_p) {
 			}
 		}
 	}
-
+	
 	return res;
 }
 
@@ -196,7 +196,7 @@ vector<int> RR(vector <Proc> &inp_p, int qt) {
 		
 		
 		int i = 0;
-
+		
 		for (; i < temp.size(); i++) {
 			if (temp[i].s <= res.size()) {
 				break;
@@ -208,7 +208,7 @@ vector<int> RR(vector <Proc> &inp_p, int qt) {
 			time++;
 		} else {
 			while (temp[i].b > 0) {
-				// Index of the current process in the `temp`.
+				// Index of the current process in `temp`.
 				int i_t = findMatchingPid(queue[0], temp);
 				
 				res.push_back(queue[0].pid);
@@ -216,7 +216,7 @@ vector<int> RR(vector <Proc> &inp_p, int qt) {
 				time++;
 				temp[i_t].b--;
 				
-				// Increment waiting time of waiting processes in the queue.
+				// Increment waiting time of waiting processes in `queue`.
 				for (int j = 1; j < queue.size(); j++) {
 					inp_p[findMatchingPid(queue[j], inp_p)].w++;
 				}
@@ -278,7 +278,6 @@ vector<int> RR(vector <Proc> &inp_p, int qt) {
 					}
 				}
 			}
-			
 		}
 	}
 	
@@ -291,9 +290,9 @@ int main() {
 	string const inp_file = "processes.txt";
 	vector<Proc> procList_og;
 	vector<Proc> procList_cp;
-
+	
 	loadData(inp_file_full, procList_og);
-	// loadData(inp_file, procList);
+	// loadData(inp_file, procList_og);
 	
 	procList_cp = procList_og;
 	vector<int> res_srtf = SRTF(procList_cp);
@@ -318,6 +317,7 @@ int main() {
 	vector<int> res_rr = RR(procList_cp, qt);
 	printProcs(res_rr);
 	printWT(procList_cp);
-
-	return 0;
+	
+	
+return 0;
 }
