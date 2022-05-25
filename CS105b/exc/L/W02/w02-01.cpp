@@ -104,26 +104,35 @@ bool compareBurstTime(Proc const &p1, Proc const &p2) {
 	return (p1.pid < p2.pid);
 }
 
+int findMatchingPid(Proc const &proc, vector<Proc> const &vt) {
+	for (int i = 0; i < vt.size(); i++) {
+		if (vt[i].pid == proc.pid) {
+			return i;
+		}
+	}
+
+	return -1;
+}
 /* #endregion */
 
 // Arrange the processes in order of remaining burst time
 vector<int> SRTF(vector<Proc> &inp_p) {
 	vector<Proc> temp = inp_p;
 	vector<int> res;
-	
+
 	int time = 0;
-	
+
 	while (!temp.empty()) {
 		sort(temp.begin(), temp.end(), compareBurstTime);
-		
+
 		int i = 0;
-		
+
 		for (; i < temp.size(); i++) {
 			if (temp[i].s <= res.size()) {
 				break;
 			}
 		}
-		
+
 		if (i == temp.size()) {
 			res.push_back(-1);
 			time++;
@@ -131,33 +140,17 @@ vector<int> SRTF(vector<Proc> &inp_p) {
 			res.push_back(temp[i].pid);
 			temp[i].b--;
 			time++;
-			
-			// Increment waiting time of processes
-			for (int j = 0; j < temp.size(); j++) {
-				// Find arrived processes except current one in temp
-				//? Use temp since it had been sorted & finished processes had been deleted
-				if ((inp_p[j].s < time) && (temp[j].pid != temp[i].pid)) {
-					// Find matching process in inp_p
-					for (int k = 0; k < inp_p.size(); k++) {
-						if (inp_p[k].pid == temp[j].pid) {
-							inp_p[k].w++;
-						}
-					}
-				}
-			}
-			
+
 			if (temp[i].b == 0) {
-				for (int j = 0; j < inp_p.size(); j++) {
-					if (inp_p[j].pid == temp[i].pid) {
-						inp_p[j].t = time - inp_p[j].s;
-					}
-				}
+				int ip_i = findMatchingPid(temp[i], inp_p);
+				inp_p[ip_i].t = (time - inp_p[ip_i].s);
+				inp_p[ip_i].w = (inp_p[ip_i].t - inp_p[ip_i].b);
 
 				temp.erase(temp.begin() + i);
 			}
 		}
 	}
-	
+
 	return res;
 }
 
