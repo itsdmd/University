@@ -3,22 +3,22 @@
 class Student {
 private:
 	char *name;
-	int math;
-	int lit;
+	float math;
+	float lit;
 	
 public:
 	Student();
-	Student(const char *name, int math, int lit);
+	Student(const char *name, float math, float lit);
 	Student(const Student& other);
 	~Student();
 	
 	void setName(const char *name);
-	void setMath(int const &math);
-	void setLit(int const &lit);
+	void setMath(float const &math);
+	void setLit(float const &lit);
 	
 	const char *getName();
-	int getMath();
-	int getLit();
+	float getMath();
+	float getLit();
 	
-	void print();
+	void prfloat();
 };

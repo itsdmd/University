@@ -15,7 +15,7 @@ Student::Student() {
 	this->lit = 0;
 }
 
-Student::Student(const char *name, int math, int lit) {
+Student::Student(const char *name, float math, float lit) {
 	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
 	
@@ -40,11 +40,11 @@ const char *Student::getName() {
 	return this->name;
 }
 
-int Student::getMath() {
+float Student::getMath() {
 	return this->math;
 }
 
-int Student::getLit() {
+float Student::getLit() {
 	return this->lit;
 }
 
@@ -56,16 +56,16 @@ void Student::setName(const char *name) {
 	strcpy(this->name, name);
 }
 
-void Student::setMath(int const &math) {
+void Student::setMath(float const &math) {
 	this->math = math;
 }
 
-void Student::setLit(int const &lit) {
+void Student::setLit(float const &lit) {
 	this->lit = lit;
 }
 
 /// ---------------------------------- I/O --------------------------------- ///
-void Student::print() {
+void Student::prfloat() {
 	cout << "Name: " << this->name << "\n";
 	cout << "Math: " << this->math << "\n";
 	cout << "Lit: " << this->lit << "\n";
