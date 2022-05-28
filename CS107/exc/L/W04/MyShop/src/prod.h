@@ -13,22 +13,22 @@ private:
 	int _id;
 	string _name;
 	long _price;
-	int _ctg;			// Category ID
+	int _ctgr;			// Category ID
 public:
 	Prod();
 	Prod(Prod const &other);
-	Prod(int const &id, string const &name, long const &price, int const &ctg);
+	Prod(int const &id, string const &name, long const &price, int const &ctgr);
 	~Prod();
 	
 	int get_id();
 	string get_name();
 	long get_price();
-	int get_ctg();
+	int get_ctgr();
 	
 	void set_id(int const &id);
 	void set_name(string const &name);
 	void set_price(long const &price);
-	void set_ctg(int const &ctg);
+	void set_ctgr(int const &ctgr);
 };
 
 /// -------------------------------- ProdVct ------------------------------- ///

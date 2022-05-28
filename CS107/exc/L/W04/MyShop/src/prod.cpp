@@ -14,15 +14,15 @@ Prod::Prod() {
 	this->_id = 0;
 	this->_name = "";
 	this->_price = 0;
-	this->_ctg = 0;
+	this->_ctgr = 0;
 }
 
 //
-Prod::Prod(int const &id, string const &name, long const &price, int const &ctg) {
+Prod::Prod(int const &id, string const &name, long const &price, int const &ctgr) {
 	this->_id = id;
 	this->_name = name;
 	this->_price = price;
-	this->_ctg = ctg;
+	this->_ctgr = ctgr;
 }
 
 //
@@ -30,7 +30,7 @@ Prod::Prod(Prod const &other) {
 	this->_id = other._id;
 	this->_name = other._name;
 	this->_price = other._price;
-	this->_ctg = other._ctg;
+	this->_ctgr = other._ctgr;
 }
 
 //
@@ -38,7 +38,7 @@ Prod::~Prod() {
 	this->_id = 0;
 	this->_name = "";
 	this->_price = 0.0;
-	this->_ctg = 0;
+	this->_ctgr = 0;
 }
 /* #endregion */
 
@@ -60,8 +60,8 @@ long Prod::get_price() {
 }
 
 // Returns the category ID of this prod
-int Prod::get_ctg() {
-	return this->_ctg;
+int Prod::get_ctgr() {
+	return this->_ctgr;
 }
 /* #endregion */
 
@@ -83,8 +83,8 @@ void Prod::set_price(long const &price) {
 }
 
 // Set the category ID for this prod
-void Prod::set_ctg(int const &ctg) {
-	this->_ctg = ctg;
+void Prod::set_ctgr(int const &ctgr) {
+	this->_ctgr = ctgr;
 }
 /* #endregion */
 /* #endregion */
