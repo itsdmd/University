@@ -21,7 +21,7 @@ Prod prod_extract(string const &line) {
 	int id;
 	string name;
 	long price;
-	int ctg;
+	int ctgr;
 	
 	// ID
 	string::size_type pos1 = line.find('=', 0) + 1;
@@ -47,14 +47,14 @@ Prod prod_extract(string const &line) {
 	// Category
 	pos1 = line.find('=', (pos2 + 1)) + 1;
 	pos2 = line.find(',', pos1);
-	ctg = stoi(line.substr(pos1, (pos2 - pos1)));
+	ctgr = stoi(line.substr(pos1, (pos2 - pos1)));
 	
 	
-	return Prod(id, name, price, ctg);
+	return Prod(id, name, price, ctgr);
 }
 
-// Returns a Ctg object from a string
-Ctg ctg_extract(string const &line) {
+// Returns a Ctgr object from a string
+Ctgr ctgr_extract(string const &line) {
 	int id;
 	string name;
 	
@@ -68,7 +68,7 @@ Ctg ctg_extract(string const &line) {
 	pos2 = line.find(',', pos1);
 	name = line.substr(pos1, (pos2 - pos1));
 	
-	return Ctg(id, name);
+	return Ctgr(id, name);
 }
 /* #endregion */
 
@@ -97,7 +97,7 @@ void readProd(ProdVct &pvt, string const &dir) {
 }
 
 // Read categories from a file
-void readCtg(CtgVct &cvt, string const &dir) {
+void readCtgr(CtgrVct &cvt, string const &dir) {
 	std::ifstream inp(dir);
 	
 	if (!inp.is_open()) {
@@ -109,7 +109,7 @@ void readCtg(CtgVct &cvt, string const &dir) {
 		string line;
 		
         if (getline(inp, line)) {
-			cvt.add_ctg(ctg_extract(line));
+			cvt.add_ctgr(ctgr_extract(line));
         }
     }
 	
@@ -162,14 +162,14 @@ vector<Prod> sort_vct(ProdVct pvt) {
 	return sorted_vtp;
 }
 
-// Sort CtgVct by ID
-vector<Ctg> sort_vct(CtgVct cvt) {
-	vector<Ctg> sorted_vct = cvt.get_vct();
+// Sort CtgrVct by ID
+vector<Ctgr> sort_vct(CtgrVct cvt) {
+	vector<Ctgr> sorted_vct = cvt.get_vct();
 	
 	for (int i = 0; i < sorted_vct.size(); i++) {
 		for (int j = 0; j < (sorted_vct.size() - 1); j++) {
 			if (sorted_vct[j].get_id() > sorted_vct[j + 1].get_id()) {
-				Ctg temp = sorted_vct[j];
+				Ctgr temp = sorted_vct[j];
 				sorted_vct[j] = sorted_vct[j + 1];
 				sorted_vct[j + 1] = temp;
 			}
@@ -183,20 +183,20 @@ vector<Ctg> sort_vct(CtgVct cvt) {
 /// --------------------------------- print -------------------------------- ///
 /* #region   */
 // Print formatted data of a Prod object
-void printProd(Prod p, CtgVct cvt) {
-	cout << "Category: " << cvt.get_ctg(p.get_ctg()).get_name()
+void printProd(Prod p, CtgrVct cvt) {
+	cout << "Category: " << cvt.get_ctgr(p.get_ctgr()).get_name()
 			<< ", ID: " << p.get_id()
 			<< ", Name: " << p.get_name()
 			<< ", Price: " << p.get_price() << " d";
 }
 
-// Print formatted data of a Ctg object
-void printCtg(Ctg c) {
+// Print formatted data of a Ctgr object
+void printCtgr(Ctgr c) {
 	cout << "ID: " << c.get_id() << ", Name: " << c.get_name();
 }
 
 // Print formatted data of Prod objects from a search result
-void printSearchRes(vector<Prod> const &vtp, CtgVct const &cvt) {
+void printSearchRes(vector<Prod> const &vtp, CtgrVct const &cvt) {
 	if (vtp.size() == 0) {
 		cout << "\nNo product with given criteria was found.\n";
 		return;
@@ -212,14 +212,14 @@ void printSearchRes(vector<Prod> const &vtp, CtgVct const &cvt) {
 }
 
 // Print formatted data of all categories
-void print_AllCtg(ProdVct pvt, CtgVct cvt) {
+void print_AllCtgr(ProdVct pvt, CtgrVct cvt) {
 	cout << "\n=== List of all categories ===\n";
 	cout << "Found " << cvt.get_vct().size() << " categories.\n";
 	
 	int i = 1;
-	for (Ctg &c : cvt.get_vct()) {
+	for (Ctgr &c : cvt.get_vct()) {
 		cout << i << ". ";
-		printCtg(c);
+		printCtgr(c);
 		cout << "\n";
 		
 		i++;
@@ -233,12 +233,12 @@ void print_AllCtg(ProdVct pvt, CtgVct cvt) {
 		cin >> option;
 	}
 	
-	int ctg_id = cvt.get_vct()[option - 1].get_id();
+	int ctgr_id = cvt.get_vct()[option - 1].get_id();
 	
-	cout << "\n\n=== List of products in \"" << cvt.get_ctg(ctg_id).get_name() << "\" category ===\n";
+	cout << "\n\n=== List of products in \"" << cvt.get_ctgr(ctgr_id).get_name() << "\" category ===\n";
 	i = 1;
 	for (Prod &p : pvt.get_vct()) {
-		if (p.get_ctg() == ctg_id) {
+		if (p.get_ctgr() == ctgr_id) {
 			cout << i << ". ";
 			printProd(p, cvt);
 			cout << "\n";
@@ -249,7 +249,7 @@ void print_AllCtg(ProdVct pvt, CtgVct cvt) {
 }
 
 // Print formatted data of all products that their name contains a given keyword
-void print_ProdByName(ProdVct pvt, CtgVct const &cvt) {
+void print_ProdByName(ProdVct pvt, CtgrVct const &cvt) {
 	string keyword;
 	
 	cout << "Enter the ID of the product you want to find: ";
@@ -262,7 +262,7 @@ void print_ProdByName(ProdVct pvt, CtgVct const &cvt) {
 }
 
 // Print formatted data of all products that their price is within a given value range
-void print_ProdByPriceRange(ProdVct pvt, CtgVct const &cvt) {
+void print_ProdByPriceRange(ProdVct pvt, CtgrVct const &cvt) {
 	long min_price, max_price;
 	
 	cout << "Enter the minimum price: ";
