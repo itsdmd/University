@@ -168,21 +168,21 @@ vector<int> RR(vector <Proc> &inp_p, int qt) {
 	// Use `queue` to store processes that are currently running and waiting.
 	// Loop through each process in `temp`. Process' .w and .t will be calculated when the it's finished.
 	// Two initial conditions for a process to be enqueued:
-	// 			1. If it has different pid as indexing process in temp then:
+	// 			1. If it has different pid as indexing process in temp and:
 	// 					- start time <= current time
 	// 					- still have burst time
 	// 					- total burst time in queue is less than its burst time
 	//			2. Otherwise, it still have burst time after finished the quantum
-	// If ONE out of two (not both) condition is met, then it will be enqueue if it's:
-	// 			- not the running process
-	// 			- not the same as the last process in the queue
-	// 			- not already in queue
+	// If one out of two conditions is met, then it will be enqueue if it's also:
+	// 			- not the running process (running process will be handled separately)
+	// 			- not the same as the last process in the queue (avoid duplications)
 	// The rotate happens when 1 quantum is finished OR the running process' burst reaches 0.
 	// At the rotation:
 	// 			1. If process still have burst time left, enqueue it.
 	// 			2. Else, remove it from `temp` and update turn around time in `inp_p`.
 	// End when `temp` is empty.
 	//! Segmentation error when qt=1
+	
 	while (!temp.empty()) {
 		sort (temp.begin(), temp.end(), compareStartTime);
 		
@@ -233,7 +233,7 @@ vector<int> RR(vector <Proc> &inp_p, int qt) {
 						continue;
 					}
 					
-					// Else remove it from `temp` and assign turn around time to the according process in `inp_p`.
+					// Else remove it from `temp` AND assign turn around time to the according process in `inp_p`.
 					else {
 						int ip_i = findMatchingPid(temp[i_t], inp_p);
 						inp_p[ip_i].t = (time - inp_p[ip_i].s);
@@ -252,7 +252,7 @@ vector<int> RR(vector <Proc> &inp_p, int qt) {
 				for (int j = 0; j < temp.size(); j++) {
 					bool passed = false;
 					
-					// (If it is not the same process and it has arrived and has positive burst time
+					// (If it is not the same process AND it has arrived AND has positive burst time
 					if ((temp[j].pid != temp[i_t].pid) && (temp[j].s <= time) && (temp[j].b > 0)) {
 						int total_queued_burst = 0;					// Process' total queued burst time
 						
@@ -262,20 +262,20 @@ vector<int> RR(vector <Proc> &inp_p, int qt) {
 							}
 						}
 						
-						// and will have burst time left after finished all of its queued)
+						// AND will have burst time left after finished all of its instances in `queue`)
 						if ((temp[j].b - total_queued_burst) > 0) {
 							passed = true;
 						}
 					}
-					// XOR (If it is the same process and still has burst time left after finished the current quantum).
+					// XOR (If it is the same process AND still has burst time left after finished the current quantum).
 					else if ((temp[j].pid == temp[i_t].pid) && (temp[j].b - (qt - qt_counter) > 0)) {
 						passed = true;
 					}
 					
 					if (passed) {
-						// AND It's not the running process (since running process will be handled when [qt_counter == qt] OR [its burst == 0])
+						// AND It's not the running process (since running process will be handled separately)
 						if (temp[j].pid != queue[0].pid) {
-							// AND It's not the same as the last process in `queue` (avoid duplicates).
+							// AND It's not the same as the last process in `queue` (avoid duplications).
 							if (temp[j].pid != queue[queue.size() - 1].pid) {
 								queue.push_back(temp[j]);
 							}
@@ -285,6 +285,7 @@ vector<int> RR(vector <Proc> &inp_p, int qt) {
 			}
 		}
 	}
+	
 	
 	return res;
 }
