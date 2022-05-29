@@ -37,7 +37,7 @@ Prod::Prod(Prod const &other) {
 Prod::~Prod() {
 	this->_id = 0;
 	this->_name = "";
-	this->_price = 0.0;
+	this->_price = 0;
 	this->_ctgr = 0;
 }
 /* #endregion */
