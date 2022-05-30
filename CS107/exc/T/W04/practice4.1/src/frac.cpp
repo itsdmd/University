@@ -1,5 +1,5 @@
-#include <iostream>
 #include <numeric> // std::gcd
+
 #include "frac.h"
 
 using std::cout;
@@ -179,6 +179,8 @@ std::istream& operator >> (std::istream& is, Frac& f) {
 /* #endregion */
 
 
+/// -------------------------------- get/set ------------------------------- ///
+/* #region   */
 int Frac::getNum() {
 	return this->num;
 }
@@ -194,7 +196,9 @@ void Frac::setNum(int const &n) {
 void Frac::setDen(int const &d) {
 	this->den = d;
 }
+/* #endregion */
 
+/// --------------------------------- Algo --------------------------------- ///
 Frac Frac::reduce() {
 	int gcd = std::gcd(num, den);
 	
