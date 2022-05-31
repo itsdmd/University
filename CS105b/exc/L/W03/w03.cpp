@@ -1,9 +1,7 @@
-#include <algorithm>
 #include <fstream>
 #include <iomanip>		// std::setw
 #include <iostream>
 #include <string>
-#include <sstream>
 #include <vector>
 
 using std::cin;
@@ -88,35 +86,6 @@ string readBytes(vector<string> const &bs, int index, int length) {
 }
 
 
-//TODO
-void convertHexToString(string const &hex) {
-	std::stringstream ss;
-	
-	string hex1 = hex.substr(0, 3);
-	string hex2 = hex.substr(4, 7);
-	
-	int val1 = 0;
-	int val2 = 0;
-	
-	ss << hex1;
-	ss >> std::hex >> val1;
-	ss << hex2;
-	ss >> std::hex >> val2;
-	
-	while (val1 != 0) {
-		cout << (char)(val1 % 100);
-		
-		val1 /= 100;
-	}
-	
-	while (val2 != 0) {
-		cout << (char)(val2 % 100);
-		
-		val2 /= 100;
-	}
-}
-
-
 void print(vector<string> const &bs) {
 	string s = readBytes(bs, 0x0B, 2);
 	cout << "Bytes of a sector: " << s << " " << convertHexToDec(s) << "\n";
@@ -138,9 +107,6 @@ void print(vector<string> const &bs) {
 		s = readBytes(bs, 0x20, 4);
 		cout << "Sectors of a volume: " << s << " " << convertHexToDec(s) << "\n";
 	}
-	s = readBytes(bs, 0x36, 8);
-	cout << "FAT type: ";
-	convertHexToString(s);
 }
 
 
@@ -152,6 +118,7 @@ int main() {
 	vector<string> bs;
 	
 	readFile(dir_full, bs);
+	// readFile(dir, bs);
 	
 	for (auto i : bs) {
 		cout << i << std::setw(4);
