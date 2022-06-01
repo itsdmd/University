@@ -1,4 +1,3 @@
-#include <cmath>
 #include <iostream>
 
 #include "point.h"
@@ -60,11 +59,6 @@ void Point2D::setXY(double const &x, double const &y) {
 
 /// --------------------------------- Algos -------------------------------- ///
 /* #region   */
-double Point2D::distance(Point2D const &p) const {
-	return sqrt(pow((this->_x - p.getX()), 2) + pow((this->_y - p.getY()), 2));
-}
-
-
 void Point2D::print() const {
 	std::cout << "(" << this->_x << ", " << this->_y << ")";
 }
@@ -107,7 +101,6 @@ Point3D::~Point3D() {
 
 /// -------------------------------- get/set ------------------------------- ///
 /* #region   */
-//TODO: Find a way to access X, Y
 double Point3D::getZ() const {
 	return this->_z;
 }
@@ -117,8 +110,8 @@ void Point3D::setZ(double const &z) {
 }
 
 void Point3D::setXYZ(double const &x, double const &y, double const &z) {
-	this->setX(x);
-	this->setY(y);
+	this->_x = x;
+	this->_y = y;
 	this->_z = z;
 }
 /* #endregion */
@@ -126,10 +119,6 @@ void Point3D::setXYZ(double const &x, double const &y, double const &z) {
 
 /// --------------------------------- Algos -------------------------------- ///
 /* #region   */
-double Point3D::distance(Point3D const &p) const {
-	return sqrt(pow((this->_x - p.getX()), 2) + pow((this->_y - p.getY()), 2) + pow((this->_z - p.getZ()), 2));
-}
-
 void Point3D::print() const {
 	std::cout << "(" << this->_x << ", " << this->_y << ", " << this->_z << ")";
 }

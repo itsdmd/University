@@ -1,7 +1,7 @@
 #pragma once
 
 class Point2D {
-private:
+protected:
 	double _x;
 	double _y;
 	
@@ -18,14 +18,11 @@ public:
 	void setY(double const &y);
 	void setXY(double const &x, double const &y);
 	
-	double distance(Point2D const &p) const;
-	
 	void print() const;
 };
 
-class Point3D: private Point2D {
-private:
-	Point2D _p2;
+class Point3D: public Point2D {
+protected:
 	double _z;
 
 public:
@@ -34,12 +31,9 @@ public:
 	Point3D(int const &min, int const &max);		// RNG
 	~Point3D();
 	
-	Point2D get2D() const;
 	double getZ() const;
 	void setZ(double const &z);
 	void setXYZ(double const &x, double const &y, double const &z);
-	
-	double distance(Point3D const &p) const;
 	
 	void print() const;
 };
