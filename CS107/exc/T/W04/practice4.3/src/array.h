@@ -17,6 +17,15 @@ public:
 	Array<T>& operator = (const Array& other);
 	bool operator != (const Array& other);
 	T& operator [] (int const &index);
+	operator T*() {
+		T *convrt = new T[m_size];
+		
+		for (int i = 0; i < m_size; ++i) {
+			convrt[i] = m_data[i];
+		}
+		
+		return convrt;
+	};
 	template <typename U> friend std::ostream& operator << (std::ostream& os, const Array<U>& m);
 	template <typename U> friend std::istream& operator >> (std::istream& is, Array<U>& m);
 	
