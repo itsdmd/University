@@ -24,6 +24,8 @@ int main() {
 	
 	cout << f1 << " " << f2 << " " << f3 << " " << f4 << "\n";
 	
+	cout << int(f1) << " || " << float(f2) << "\n";
+	
 	
 	return 0;
 }

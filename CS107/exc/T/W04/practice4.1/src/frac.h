@@ -29,6 +29,8 @@ public:
 	Frac operator ++ (int);
 	Frac& operator -- ();
 	Frac operator -- (int);
+	operator int() const { return (this->num / this->den); };
+	operator float() const { return ((float)this->num / (float)this->den); };
 	friend std::ostream& operator << (std::ostream& os, const Frac& f);
 	friend std::istream& operator >> (std::istream& is, Frac& f);
 	
