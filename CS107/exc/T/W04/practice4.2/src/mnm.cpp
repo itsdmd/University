@@ -144,7 +144,7 @@ Mnm Mnm::operator -- (int) {
 }
 
 // Derive
-Mnm& Mnm::operator ! () {
+Mnm Mnm::operator ! () {
 	this->coef *= this->expo;
 	this->expo -= 1;
 	

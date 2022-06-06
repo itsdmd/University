@@ -27,7 +27,7 @@ public:
 	Mnm operator ++ (int);
 	Mnm& operator -- ();
 	Mnm operator -- (int);
-	Mnm& operator ! ();
+	Mnm operator ! ();
 	friend std::ostream& operator << (std::ostream& os, const Mnm& m);
 	friend std::istream& operator >> (std::istream& is, Mnm& m);
 	
