@@ -17,15 +17,7 @@ public:
 	Array<T>& operator = (const Array& other);
 	bool operator != (const Array& other);
 	T& operator [] (int const &index);
-	operator T*() {
-		T *convrt = new T[m_size];
-		
-		for (int i = 0; i < m_size; ++i) {
-			convrt[i] = m_data[i];
-		}
-		
-		return convrt;
-	};
+	operator T*();
 	template <typename U> friend std::ostream& operator << (std::ostream& os, const Array<U>& m);
 	template <typename U> friend std::istream& operator >> (std::istream& is, Array<U>& m);
 	
@@ -74,12 +66,22 @@ template <typename T>
 Array<T>& Array<T>::operator = (const Array& other) {
 	this->setSize(other.m_size);
 	
+	this->m_data = new T[other.m_size];
+	for (int i = 0; i < other.m_size; i++) {
+		this->m_data[i] = other.m_data[i];
+	}
+	
 	return *this;
 }
 
 template <typename T>
 T& Array<T>::operator [] (int const &index) {
 	return this->m_data[index];
+}
+
+template <typename T>
+Array<T>::operator T*() {
+	return this->m_data;
 }
 /* #endregion */
 
