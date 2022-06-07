@@ -31,6 +31,22 @@ public:
 	};
 	
 	
+	Array<T>& operator = (const Array& other) {
+		if (&other == this) {
+			return *this;
+		}
+		
+		this->setSize(other.m_size);
+		
+		this->m_data = new T[other.m_size];
+		for (int i = 0; i < other.m_size; i++) {
+			this->m_data[i] = other.m_data[i];
+		}
+		
+		return *this;
+	}
+	
+	
 	T &getVal(int const &index) {
 		return this->data[index];
 	};
