@@ -64,6 +64,10 @@ Array<T>::~Array() {
 /* #region   */
 template <typename T>
 Array<T>& Array<T>::operator = (const Array& other) {
+	if (&other == this) {
+		return *this;
+	}
+	
 	this->setSize(other.m_size);
 	
 	this->m_data = new T[other.m_size];
