@@ -15,8 +15,8 @@ Time::Time(int const &hour, int const &minute, int const &second) {
 	this->setTime(hour, minute, second);
 }
 
-Time::Time(int const &seconds) {
-	this->setTimeFromAbsSec(seconds);
+Time::Time(int const &abs_sec) {
+	this->setTimeFromAbsSec(abs_sec);
 }
 
 Time::Time(const Time& other) {
@@ -64,12 +64,14 @@ bool Time::operator != (const Time& other) const {
 
 Time& Time::operator ++ () {
 	this->addSecs(1);
+	
 	return *this;
 }
 
 Time Time::operator ++ (int) {
 	Time temp = *this;
 	this->addSecs(1);
+	
 	return temp;
 }
 
@@ -116,8 +118,56 @@ istream& operator >> (istream& stream, Time& t) {
 	
 	return stream;
 }
+/* #endregion */
+/* #endregion */
+
+/// ------------------------------------------------------------------------ ///
+///                                  Get/Set                                 ///
+/// ------------------------------------------------------------------------ ///
+/* #region   */
+/* #region   */
+int Time::getHour() const {
+	return this->h;
+}
+
+int Time::getMinute() const {
+	return this->m;
+}
+
+int Time::getSecond() const {
+	return this->s;
+}
+
+int Time::getAbsSec() const {
+	return ((this->h * 3600) + (this->m * 60) + this->s);
+}
+/* #endregion */
 
 /* #region   */
+Time& Time::setHour(int hour) {
+	if (hour < 0 || hour > 23) {
+		throw std::invalid_argument("Invalid hour");
+	} else this->h = hour;
+	
+	return *this;
+}
+
+Time& Time::setMinute(int minute) {
+	if (minute < 0 || minute > 59) {
+		throw std::invalid_argument("Invalid minute");
+	} else this->m = minute;
+	
+	return *this;
+}
+
+Time& Time::setSecond(int second) {
+	if (second < 0 || second > 59) {
+		throw std::invalid_argument("Invalid second");
+	} else this->s = second;
+	
+	return *this;
+}
+
 Time& Time::setTime(int hour, int minute, int second) {
 	if (hour < 0 || hour > 23) {
 		throw std::invalid_argument("Invalid hour");
@@ -135,35 +185,16 @@ Time& Time::setTime(int hour, int minute, int second) {
 	return *this;
 }
 
-Time& Time::setHour(int hour) {
-	if (hour < 0 || hour > 23) {
-		throw std::invalid_argument("Invalid hour");
-	} else this->h = hour;
-	
+Time& Time::setTimeFromAbsSec(int abs_sec) {
+	this->h = (abs_sec / 3600);
+	this->m = ((abs_sec % 3600) / 60);
+	this->s = ((abs_sec % 3600) % 60);
 	
 	return *this;
 }
+/* #endregion */
+/* #endregion */
 
-Time& Time::setMinute(int minute) {
-	if (minute < 0 || minute > 59) {
-		throw std::invalid_argument("Invalid minute");
-	} else this->m = minute;
-	
-	
-	return *this;
-}
-
-Time& Time::setSecond(int second) {
-	if (second < 0 || second > 59) {
-		throw std::invalid_argument("Invalid second");
-	} else this->s = second;
-	
-	
-	return *this;
-}
-/* #endregion */
-/* #endregion */
-/* #endregion */
 
 /// ------------------------------------------------------------------------ ///
 ///                                   Algos                                  ///
@@ -182,28 +213,16 @@ int Time::difInSecs(const Time& other) const {
 /* #endregion */
 
 /* #region   */
-int Time::getAbsSec() const {
-	return ((this->h * 3600) + (this->m * 60) + this->s);
+int Time::toTimeHour(int abs_sec) const {
+	return (abs_sec / 3600);
 }
 
-int Time::toTimeHour(int seconds) const {
-	return (seconds / 3600);
+int Time::toTimeMinute(int abs_sec) const {
+	return ((abs_sec % 3600) / 60);
 }
 
-int Time::toTimeMinute(int seconds) const {
-	return ((seconds % 3600) / 60);
-}
-
-int Time::toTimeSecond(int seconds) const {
-	return (seconds % 60);
-}
-
-Time& Time::setTimeFromAbsSec(int seconds) {
-	this->h = (seconds / 3600);
-	this->m = ((seconds % 3600) / 60);
-	this->s = ((seconds % 3600) % 60);
-	
-	return *this;
+int Time::toTimeSecond(int abs_sec) const {
+	return (abs_sec % 60);
 }
 /* #endregion */
 /* #endregion */

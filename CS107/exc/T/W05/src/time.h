@@ -15,7 +15,7 @@ private:
 public:
 	Time();
 	Time(int const &hour, int const &minute, int const &second);
-	Time(int const &seconds);
+	Time(int const &abs_sec);
 	Time(Time const &other);
 	
 	Time operator + (int const &seconds);
@@ -30,21 +30,22 @@ public:
 	friend ostream& operator << (ostream & os, Time const &m);
 	friend istream& operator >> (istream & is, Time & m);
 	
+	int getHour() const;
+	int getMinute() const;
+	int getSecond() const;
+	int getAbsSec() const;
 	
-	Time& setTime(int hour, int minute, int second);
 	Time& setHour(int hour);
 	Time& setMinute(int minute);
 	Time& setSecond(int second);
+	Time& setTime(int hour, int minute, int second);
+	Time& setTimeFromAbsSec(int abs_sec);
 	
 	Time& addSecs(int seconds);
 	int difInSecs(Time const &other) const;
 	
 private:
-	int getAbsSec() const;
-	
-	int toTimeHour(int seconds) const;
-	int toTimeMinute(int seconds) const;
-	int toTimeSecond(int seconds) const;
-	
-	Time& setTimeFromAbsSec(int seconds);
+	int toTimeHour(int abs_sec) const;
+	int toTimeMinute(int abs_sec) const;
+	int toTimeSecond(int abs_sec) const;
 };
