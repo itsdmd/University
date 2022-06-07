@@ -23,6 +23,17 @@ Student::Student(const char *name, float math, float lit) {
 	this->lit = lit;
 }
 
+Student& Student::operator = (const Student& other) {
+	if (&other == this) {
+		return *this;
+	}
+	
+	this->name = strcpy(this->name, other.name);
+	
+	
+	return *this;
+}
+
 Student::Student(const Student& other) {
 	this->name = new char[strlen(other.name) + 1];
 	strcpy(this->name, other.name);

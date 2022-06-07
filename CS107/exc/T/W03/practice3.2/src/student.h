@@ -12,6 +12,9 @@ public:
 	Student(const Student& other);
 	~Student();
 	
+	Student& operator = (const Student& other);
+	void setSize(int const &size);
+	
 	void setName(const char *name);
 	void setMath(float const &math);
 	void setLit(float const &lit);
