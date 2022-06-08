@@ -15,6 +15,7 @@
 			"bitset": "cpp",
 			"cctype": "cpp",
 			"cerrno": "cpp",
+			"cfloat": "cpp",
 			"chrono": "cpp",
 			"cinttypes": "cpp",
 			"climits": "cpp",
