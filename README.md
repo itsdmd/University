@@ -25,20 +25,23 @@ There should be a folder for each course. The name of the folder should be the c
 
 General hierarchy (only folder's level matters):
 - **Course**
-	- **exc** ................. *for homework assignments*
+	- **exc** ................. _Assignments_
 		- ├ **.vscode** + Workspace file
-		- ├ **L** .................. *Lab*
-		- └ **T** ...................*Theory*
-		
-			- ├ **codes** ............... *Code submission*
-			- └ **subs** ................. *Other submission*
+		- ├ **L** ........ _Lab_
+		- └ **T** ........ _Theory_
 			
-				- └ **W\*\*** .................. *Week \*\* submission, ex: W03*
+			- └ **W\*\*** ................ _Week \*\* submission, ex: W03_
+				- ├ **data** ........ _Input data files (if not specifically required by lecturer)_
+				- ├ **doc** ......... _Documentation (usually a Jupyter notebook)_
+				- └ **src** .......... _Headers_
 	---
-	- **lec** .................... *for lecture materials*
-		- ├ **L** ............... *Lab*
-		- └ **T** ............... *Theory*
-			- └ **W\*\*** .................. *Week \*\* lecture/resource*
+	- **lec** ................. _Lecture materials_
+		- ├ **L** ........ _Lab_
+		- └ **T** ........ _Theory_
+			- └ **W\*\*** ................ _Week \*\* lecture resource_
+				- ├ **img** ......... _Images_
+				- ├ **doc** ......... _Text_
+				- └ **other** ...... _Other document types_
 
 ## 3. 📄 Files
 **For material files**: Descriptive and no whitespace
@@ -46,7 +49,7 @@ General hierarchy (only folder's level matters):
 **For submission files**: Follow lecturer's naming scheme
 
 ## 4. 💬 Commit Messages
-There are 2 types of commits: ***Generic*** and ***Submission***.
+There are 2 types of commits: **_Generic_** and **_Submission_**.
 - **[Generic](#a--generic)**: For files that are not submissions. Check using [GMCV workflow](https://github.com/itsdmd/University/actions/workflows/gcmv.yml).
 - **[Submission](#b--submission)**: For files that are for homework submission. Check using [SCMV workflow](https://github.com/itsdmd/University/actions/workflows/scmv.yml).
 
