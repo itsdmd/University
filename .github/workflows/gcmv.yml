@@ -41,6 +41,16 @@ jobs:
           regex_pattern: '\[(rnm|mov|mrg)\](?=\ .*\>\ .*)'
           regex_flags: 'g'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
+        
+      - name: 🔎 Regex check 3
+        id: regex-3
+        if: steps.regex-2.outputs.first_match == ''
+        uses: AsasInnab/regex-action@v1
+        with:
+          regex_pattern: '\[ImgBot\]'
+          regex_flags: 'g'
+          search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
+      
           
       - name: ✏ Prepare issue body
         id: issue-body-reg
