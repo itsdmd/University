@@ -2,3 +2,4 @@
 **/.hidden
 **2159003**zip
 .ipynb_checkpoints/**
+.clang-format
