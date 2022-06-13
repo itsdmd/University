@@ -35,12 +35,12 @@ General hierarchy (only folder's level matters):
 				- ├ **doc** ......... _Documentation (usually a Jupyter notebook)_
 				- └ **src** .......... _Headers_
 	---
-	- **lec** ................. _Lecture materials_
+	- **lec** ................. _Lecture materials and Documentation/Notation_
 		- ├ **L** ........ _Lab_
 		- └ **T** ........ _Theory_
 			- └ **W\*\*** ................ _Week \*\* lecture resource_
 				- ├ **img** ......... _Images_
-				- ├ **doc** ......... _Text_
+				- ├ **doc** ......... _Text or Jupyter Notebook_
 				- └ **other** ...... _Other document types_
 
 ## 3. 📄 Files
