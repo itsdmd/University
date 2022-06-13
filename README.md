@@ -32,7 +32,6 @@ General hierarchy (only folder's level matters):
 			
 			- └ **W\*\*** ................ _Week \*\* submission, ex: W03_
 				- ├ **data** ........ _Input data files (if not specifically required by lecturer)_
-				- ├ **doc** ......... _Documentation (usually a Jupyter notebook)_
 				- └ **src** .......... _Headers_
 	---
 	- **lec** ................. _Lecture materials and Documentation/Notation_
@@ -66,6 +65,12 @@ Generic commits must start its message with one of the following prefixes:
 
 ### b. ✍ Submission
 
+#### Regex patterns
+- [Non-versioning](https://regex101.com/r/mPeqnJ)
+- [Versioned](https://regex101.com/r/omjKhe)
+- [Using `>`](https://regex101.com/r/fW7Pp0)
+
+#### Examples
 ✅ Match:
 - ```102.02.01```
 - ```104.L.02.01```
