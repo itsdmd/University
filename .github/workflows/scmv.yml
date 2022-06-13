@@ -29,40 +29,13 @@ jobs:
       - name: 🗒 Get commit message history
         id: cmsg-history
         run: git log > cmsg.txt
-        
-        
-        # Pattern explanation:
-        #               (1)             |                                  (2)                                      |          (3)
-        # ------------------------------+---------------------------------------------------------------------------+------------------------
-        #      req. if (3) is missing   |                                required                                   | only if (1) is missing
-        # ------------------------------+---------------------------------------------------------------------------+------------------------
-        #     [|3 characters|]|*space*  |  3 digits|*dot*|'L' OR 'T'|*dot*|2 digits AND characters that's not '.'   |    |*dot*|2 digits|
-        #                               |                                               if (1) exists (optional)    |
-        #
-        #   Match:
-        #     - 102.02.01
-        #     - 104.L.02.01
-        #     - 105b.T.03.02
-        #     - [add] 102.05
-        #     - [add] 104b.T.05
-        #     - [add] 104.T.05-og
-        #     - [rnm] 104.T.05 > 104.T.06.31
-        #
-        #   Won't match:
-        #     - 104.T.03
-        #     - [xyz] 104.T.05
-        #     - [rnm] 104.T.05
-        #     - [mod] 104.T.05.21
-        #     - 104.l.02.01
-        #     - 104.X.02.03
-        #     - [del] 42069.LT.2.112
       
       # Non-versioning
       - name: 🔎 Regex check 1
         id: regex-1
         uses: AsasInnab/regex-action@v1
         with:
-          regex_pattern: '((\[(add|del|mod|rft)\]\ )(?=[0-9]{3}([a-z])?\.([LT]\.)?[0-9]{2}(.*)?$))'
+          regex_pattern: '((\[(add|del|mod|rft)\]\ )(?=[0-9]{3}([a-z])?\.([DLT]\.)?[0-9]{2}(.*)?$))'
           regex_flags: 'gm'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
       
@@ -72,7 +45,7 @@ jobs:
         if: steps.regex-1.outputs.first_match == ''
         uses: AsasInnab/regex-action@v1
         with:
-          regex_pattern: '((?<!.)([0-9]{3}([a-z])?\.([LT]\.)?.*\..*$))'
+          regex_pattern: '((?<!.)([0-9]{3}([a-z])?\.([DLT]\.)?.*\..*$))'
           regex_flags: 'gm'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
       
