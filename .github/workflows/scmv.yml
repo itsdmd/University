@@ -59,9 +59,19 @@ jobs:
           regex_flags: 'gm'
           search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
           
+      # [ImgBot]
+      - name: 🔎 Regex check 4
+        id: regex-4
+        if: steps.regex-3.outputs.first_match == ''
+        uses: AsasInnab/regex-action@v1
+        with:
+          regex_pattern: '\[ImgBot\]'
+          regex_flags: 'gm'
+          search_string: '${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}'
+          
       - name: ✏ Prepare issue body (regex)
         id: issue-body-reg
-        if: steps.regex-1.outputs.first_match == '' && steps.regex-2.outputs.first_match == '' && steps.regex-3.outputs.first_match == ''
+        if: steps.regex-1.outputs.first_match == '' && steps.regex-2.outputs.first_match == '' && steps.regex-3.outputs.first_match == '' && steps.regex-4.outputs.first_match == ''
         run: head -5 cmsg.txt > issue.txt
           
       - name: ✍ Create new issue (regex)
