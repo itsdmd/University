@@ -54,7 +54,7 @@ jobs:
           
       - name: ✏ Prepare issue body
         id: issue-body-reg
-        if: steps.regex-1.outputs.first_match == '' && steps.regex-2.outputs.first_match == ''
+        if: steps.regex-1.outputs.first_match == '' && steps.regex-2.outputs.first_match == '' && steps.regex-3.outputs.first_match == ''
         run: head -5 cmsg.txt > issue.txt
 
       - name: ✍ Create new issue (regex)
