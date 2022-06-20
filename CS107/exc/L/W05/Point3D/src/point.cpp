@@ -110,8 +110,7 @@ void Point3D::setZ(double const &z) {
 }
 
 void Point3D::setXYZ(double const &x, double const &y, double const &z) {
-	this->_x = x;
-	this->_y = y;
+	this->Point2D::setXY(x, y);
 	this->_z = z;
 }
 /* #endregion */
