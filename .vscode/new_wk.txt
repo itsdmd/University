@@ -1,2 +1,2 @@
-# w: week number; c = course code; t = type ('L' for Lab,'T' for Theory)
-w= && c= && t= && z $c exc $t && mkdir 'W0'$w && cd 'W0'$w && touch 'w0'$w'.ino' && cp -a ../../../.vscode/.clang-format .
+# c = course code; t = type (L/T); w: week number; f: file type (no dot)
+c= && t= && w= && f= && z $c exc $t && mkdir 'W0'$w && cd 'W0'$w && touch 'w0'$w'.'$f && cp -a ../../../.vscode/.clang-format .
