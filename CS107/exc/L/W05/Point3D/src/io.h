@@ -1,4 +1,5 @@
-#pragma once
+#ifndef IO_H
+#define IO_H
 
 #include <string>
 #include <vector>
@@ -14,3 +15,5 @@ vector<Point3D> extractor3D(vector<string> const &inp);
 
 void printVector3D(vector<Point3D> const &vtp3);
 void writeFile(string const &file_name, vector<Point3D> const &vtp3);
+
+#endif
