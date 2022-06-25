@@ -10,20 +10,25 @@ SaveAccount::SaveAccount(int balance, int period, float rate, int duration) {
 	this->m_duration = duration;
 }
 
-float SaveAccount::calcIntrst() const {
-	return ((float)this->getBalance() * (this->m_rate / 100) * this->m_duration)
-		   - ((float)this->getBalance() * (this->m_rate / 100) * (this->m_duration % this->m_period));
+float SaveAccount::calcInterest() const {
+	if (this->m_period == 0)
+		return 0;
+
+	return ((float)this->getBalance()
+			* ((float)this->m_rate / 100.0f)
+			* (float)((int)this->m_duration / (int)this->m_period));
 }
 
 void SaveAccount::deposit(float money) {
-	Account::deposit(money - this->calcIntrst());
+	Account::deposit(money + this->calcInterest());
 	this->m_duration = 0;
 
 	return;
 }
 
 void SaveAccount::withdraw(float money) {
-	Account::withdraw(money - this->calcIntrst());
+	Account::deposit(this->calcInterest());
+	Account::withdraw(money);
 	this->m_duration = 0;
 
 	return;

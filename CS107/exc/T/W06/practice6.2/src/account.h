@@ -10,6 +10,7 @@ class Account {
 
 		void deposit(float money) {
 			m_balance += money;
+
 			return;
 		}
 
@@ -30,7 +31,7 @@ class SaveAccount: public Account {
 
 	public:
 		SaveAccount(int balance, int period, float rate, int duration);
-		float calcIntrst() const;
+		float calcInterest() const;
 
 		void deposit(float money);
 		void withdraw(float money);
