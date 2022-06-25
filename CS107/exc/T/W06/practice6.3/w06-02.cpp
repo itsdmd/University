@@ -9,14 +9,14 @@ int main() {
 	Motorbike mb;
 	Truck t;
 
-	mb.addGoodsWeight(10.0f);
+	mb.addLoad(10.0f);
 	mb.addFuel(50.0f);
 	mb.traverse(100.0f);
 
 	cout << "Motorbike fuel amount: " << mb.getFuelAmount() << "\n";
 
 
-	t.addGoodsWeight(10.0f);
+	t.addLoad(10.0f);
 	t.addFuel(50.0f);
 	t.traverse(100.0f);
 
