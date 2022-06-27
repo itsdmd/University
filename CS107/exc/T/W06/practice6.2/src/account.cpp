@@ -1,5 +1,7 @@
 #include "account.h"
 
+#include <cmath>
+
 /// ------------------------------------------------------------------------ ///
 ///                                SaveAccount                               ///
 /// ------------------------------------------------------------------------ ///
@@ -14,9 +16,12 @@ float SaveAccount::calcInterest() const {
 	if (this->m_period == 0)
 		return 0;
 
+	// Interest = Balance * ((1 + (ratePerMonth * period)) ^ (duration / period) - 1)
 	return ((float)this->getBalance()
-			* ((float)this->m_rate / 100.0f)
-			* (float)((int)this->m_duration / (int)this->m_period));
+			* ((1.0f
+				+ (pow((float)((this->m_rate / 12) * this->m_period),
+					   (int)(this->m_duration / this->m_period))))
+			   - 1.0f));
 }
 
 void SaveAccount::deposit(float money) {
