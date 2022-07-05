@@ -44,6 +44,6 @@ class Circle: public Shape {
 		void printShape() const override;
 };
 
-void printShapeInfos(vector<Shape*> shapes);			   // Print formatted attributes of shapes inside a vector
+void printShapeInfos(vector<Shape*> rec, vector<Shape*> tri, vector<Shape*> cir);			   // Print formatted attributes of shapes inside a vector
 
 #endif

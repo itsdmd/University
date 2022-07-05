@@ -21,7 +21,7 @@ Rectangle::~Rectangle() {
 }
 
 void Rectangle::printShape() const {
-	cout << "Rectangle, [(" << this->m_attr[0][0] << "; " << this->m_attr[0][1] << "), (" << this->m_attr[1][0] << "; " << this->m_attr[1][1] << ")]";
+	cout << "Rectangle, [(" << this->m_attr[0][0] << ";" << this->m_attr[0][1] << "), (" << this->m_attr[1][0] << ";" << this->m_attr[1][1] << ")]";
 }
 
 
@@ -43,7 +43,7 @@ Triangle::~Triangle() {
 }
 
 void Triangle::printShape() const {
-	cout << "Triangle, [(" << this->m_attr[0][0] << "; " << this->m_attr[0][1] << "), (" << this->m_attr[1][0] << "; " << this->m_attr[1][1] << "), (" << this->m_attr[2][0] << "; " << this->m_attr[2][1] << ")]";
+	cout << "Triangle, [(" << this->m_attr[0][0] << ";" << this->m_attr[0][1] << "), (" << this->m_attr[1][0] << ";" << this->m_attr[1][1] << "), (" << this->m_attr[2][0] << ";" << this->m_attr[2][1] << ")]";
 }
 
 
@@ -64,17 +64,32 @@ Circle::~Circle() {
 }
 
 void Circle::printShape() const {
-	cout << "Circle, [(" << this->m_attr[0][0] << "; " << this->m_attr[0][1] << "), " << this->m_attr[1][0] << "]";
+	cout << "Circle, [(" << this->m_attr[0][0] << ";" << this->m_attr[0][1] << "), " << this->m_attr[1][0] << "]";
 }
 
 
 /// ------------------------------------------------------------------------ ///
 ///                             printShapeInfos()                            ///
 /// ------------------------------------------------------------------------ ///
-void printShapeInfos(vector<Shape*> shapes) {
-	for (int i = 0; i < shapes.size(); i++) {
+void printShapeInfos(vector<Shape*> rec, vector<Shape*> tri, vector<Shape*> cir) {
+	cout << "Rectangles:\n";
+	for (int i = 0;i < rec.size();i++) {
 		cout << "[" << i << "]: ";
-		shapes[i]->printShape();
+		rec[i]->printShape();
+		cout << "\n";
+	}
+	
+	cout << "\nTriangles:\n";
+	for (int i = 0;i < tri.size();i++) {
+		cout << "[" << i << "]: ";
+		tri[i]->printShape();
+		cout << "\n";
+	}
+	
+	cout << "\nCircles:\n";
+	for (int i = 0;i < cir.size();i++) {
+		cout << "[" << i << "]: ";
+		cir[i]->printShape();
 		cout << "\n";
 	}
 }
