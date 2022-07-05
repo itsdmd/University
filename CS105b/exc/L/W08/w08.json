@@ -1,0 +1,294 @@
+[
+    {
+        "id": "1d6e793099200223",
+        "type": "tab",
+        "label": "105.L.08",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e6b1f41b8619ee47",
+        "type": "group",
+        "z": "1d6e793099200223",
+        "name": "UI",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "c90ab550f6f1c490",
+            "0a1e9a237fa9139f",
+            "499676caa49c47dd",
+            "1cb987611c24e6c8",
+            "c470bc355b8a8f9f",
+            "e077095194beaa3d"
+        ],
+        "x": 114,
+        "y": 159,
+        "w": 192,
+        "h": 562
+    },
+    {
+        "id": "c90ab550f6f1c490",
+        "type": "ui_button",
+        "z": "1d6e793099200223",
+        "g": "e6b1f41b8619ee47",
+        "name": "",
+        "group": "293b15351a53714c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "star",
+        "payload": "Clicked",
+        "payloadType": "str",
+        "topic": "Button",
+        "topicType": "str",
+        "x": 230,
+        "y": 200,
+        "wires": [
+            [
+                "2c2bd96b7c48009f"
+            ]
+        ]
+    },
+    {
+        "id": "0a1e9a237fa9139f",
+        "type": "ui_dropdown",
+        "z": "1d6e793099200223",
+        "g": "e6b1f41b8619ee47",
+        "name": "",
+        "label": "Choices",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "293b15351a53714c",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": true,
+        "options": [
+            {
+                "label": "Choice 1: string",
+                "value": "Hello",
+                "type": "str"
+            },
+            {
+                "label": "Choice 2: numeric",
+                "value": 5,
+                "type": "num"
+            },
+            {
+                "label": "Choice 3: bool",
+                "value": true,
+                "type": "bool"
+            }
+        ],
+        "payload": "",
+        "topic": "Dropdown",
+        "topicType": "str",
+        "className": "",
+        "x": 220,
+        "y": 280,
+        "wires": [
+            [
+                "2c2bd96b7c48009f"
+            ]
+        ]
+    },
+    {
+        "id": "499676caa49c47dd",
+        "type": "ui_switch",
+        "z": "1d6e793099200223",
+        "g": "e6b1f41b8619ee47",
+        "name": "",
+        "label": "Switch",
+        "tooltip": "",
+        "group": "293b15351a53714c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "Switch",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 230,
+        "y": 380,
+        "wires": [
+            [
+                "2c2bd96b7c48009f"
+            ]
+        ]
+    },
+    {
+        "id": "1cb987611c24e6c8",
+        "type": "ui_slider",
+        "z": "1d6e793099200223",
+        "g": "e6b1f41b8619ee47",
+        "name": "",
+        "label": "Slider",
+        "tooltip": "",
+        "group": "293b15351a53714c",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "Slider",
+        "topicType": "str",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "className": "",
+        "x": 230,
+        "y": 480,
+        "wires": [
+            [
+                "2c2bd96b7c48009f"
+            ]
+        ]
+    },
+    {
+        "id": "c470bc355b8a8f9f",
+        "type": "ui_numeric",
+        "z": "1d6e793099200223",
+        "g": "e6b1f41b8619ee47",
+        "name": "",
+        "label": "Numeric",
+        "tooltip": "",
+        "group": "293b15351a53714c",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": true,
+        "topic": "Numeric",
+        "topicType": "str",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "className": "",
+        "x": 220,
+        "y": 580,
+        "wires": [
+            [
+                "2c2bd96b7c48009f"
+            ]
+        ]
+    },
+    {
+        "id": "e077095194beaa3d",
+        "type": "ui_text_input",
+        "z": "1d6e793099200223",
+        "g": "e6b1f41b8619ee47",
+        "name": "",
+        "label": "Change text",
+        "tooltip": "",
+        "group": "293b15351a53714c",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "Text",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "str",
+        "x": 210,
+        "y": 680,
+        "wires": [
+            [
+                "2c2bd96b7c48009f"
+            ]
+        ]
+    },
+    {
+        "id": "736f09bcc9c77314",
+        "type": "ui_template",
+        "z": "1d6e793099200223",
+        "group": "2ae0f80377ceca64",
+        "name": "Logs",
+        "order": 0,
+        "width": "6",
+        "height": "10",
+        "format": "<ul>\n    <li ng-repeat=\"x in msg.payload\">\n        <font color=\"red\">{{x.topic}}</font>\n        <ul><li><font color=\"black\">{{x.payload}}</font></li></ul>\n    </li>\n</ul>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 870,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2c2bd96b7c48009f",
+        "type": "function",
+        "z": "1d6e793099200223",
+        "name": "Push event to log array",
+        "func": "var dashboardLog = flow.get('dashboardLog') || [];\n\ndashboardLog.push(msg);\nif (dashboardLog.length > 20) {\n    dashboardLog.shift();\n    dashboardLog.length = 20;\n}\n\nflow.set('dashboardLog', dashboardLog);\n\nmsg = {};\nmsg.payload = dashboardLog;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 420,
+        "wires": [
+            [
+                "736f09bcc9c77314"
+            ]
+        ]
+    },
+    {
+        "id": "293b15351a53714c",
+        "type": "ui_group",
+        "name": "UI Elements",
+        "tab": "6f52ac13af168dd8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2ae0f80377ceca64",
+        "type": "ui_group",
+        "name": "Logs",
+        "tab": "6f52ac13af168dd8",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6f52ac13af168dd8",
+        "type": "ui_tab",
+        "name": "Event Log",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]
