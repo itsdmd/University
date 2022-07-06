@@ -1,0 +1,6 @@
+Circle: Radius=9.000000
+Circle: Radius=6.000000
+Rectangle: Width=4.000000, Height=2.000000
+Rectangle: Width=4.000000, Height=6.000000
+Triangle: A=10.000000, B=2.000000, C=0.000000
+Circle: Radius=3.000000
