@@ -10,14 +10,14 @@ LiquidCrystal LCD(7, 6, 5, 4, 3, 2);
 
 const int MOIST = A0;
 const int PIR = 8;
-const int RELAY = 9;
-const int LCD_LED = 13;			// Turn on/off LCD
+const int REL_PWR = 9;			// Relay controlling watering system
+const int REL_LCD = 10;			// Turn on/off LCD
 /* #endregion */
 
 /// ------------------------------ Global Vars ----------------------------- ///
 /* #region   */
-bool g_pirState = false;		// false = not detected, true = detected
-bool g_relayState = false;		// false = off, true = on
+bool g_statePIR = false;		// false = not detected, true = detected
+bool g_statePWR = false;		// false = off, true = on
 
 int g_moisture = 0;				// Moisture level read from sensor
 int g_threshold = 0;			// Moisture threshold set by user
@@ -32,8 +32,8 @@ void setup() {
 	pinMode(MOIST, INPUT);
 	pinMode(PIR, INPUT);
 
-	pinMode(RELAY, OUTPUT);
-	pinMode(LCD_LED, OUTPUT);
+	pinMode(REL_PWR, OUTPUT);
+	pinMode(REL_LCD, OUTPUT);
 }
 
 
@@ -50,22 +50,22 @@ void readMoist() {
 
 // Read data from PIR
 void readPir() {
-	g_pirState = digitalRead(PIR);
+	g_statePIR = digitalRead(PIR);
 }
 
-// Activate RELAY
+// Activate REL_PWR
 void activateRelay() {
-	if (!g_relayState) {
-		digitalWrite(RELAY, HIGH);
-		g_relayState = true;
+	if (!g_statePWR) {
+		digitalWrite(REL_PWR, HIGH);
+		g_statePWR = true;
 	}
 }
 
-// Deactivate RELAY
+// Deactivate REL_PWR
 void deactivateRelay() {
-	if (g_relayState) {
-		digitalWrite(RELAY, LOW);
-		g_relayState = false;
+	if (g_statePWR) {
+		digitalWrite(REL_PWR, LOW);
+		g_statePWR = false;
 	}
 }
 /* #endregion */
@@ -73,7 +73,7 @@ void deactivateRelay() {
 
 /// ------------------------------ Controllers ----------------------------- ///
 /* #region   */
-// Control RELAY based on MOIST
+// Control REL_PWR based on MOIST
 void wateringOnMoisture(const int threshold) {
 	if (g_moisture < threshold) {
 	activateRelay();
@@ -82,7 +82,7 @@ void wateringOnMoisture(const int threshold) {
 	}
 }
 
-// Control RELAY based on weather forcast
+// Control REL_PWR based on weather forcast
 void wateringOnWeather(const int threshold) {
 	//TODO
 }
@@ -92,10 +92,19 @@ void wateringController() {
 }
 // Turn LCD on/off based on PIR
 void LCDOnPIR() {
-	if (g_pirState) {
-		digitalWrite(LCD_LED, HIGH);
+	if (g_statePIR) {
+		digitalWrite(REL_LCD, HIGH);
+		
+		LCD.setCursor(0, 0);
+		LCD.print("Moisture: ");
+		LCD.print(g_moisture);
+		
+		LCD.setCursor(0, 1);
+		LCD.print("Status: ");
+		LCD.setCursor(8, 1);
+		(g_statePWR) ? LCD.print("Watering") : LCD.print("Idling");
 	} else {
-		digitalWrite(LCD_LED, LOW);
+		digitalWrite(REL_LCD, LOW);
 	}
 }
 /* #endregion */
@@ -106,7 +115,7 @@ void logging(){
 	Serial.print("\n");
 	
 	Serial.print("PIR: ");
-	Serial.print(g_pirState);
+	Serial.print(g_statePIR);
 	Serial.print("\n");
 }
 
