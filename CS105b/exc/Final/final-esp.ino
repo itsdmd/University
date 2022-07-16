@@ -7,7 +7,7 @@ const int READ = 13;
 
 String g_imsg = "006270500";
 String g_omsg = "";
-const int g_msglen = 9;
+const int g_msglen = 3;
 
 bool g_write = true;
 
@@ -39,7 +39,7 @@ void write() {
 	
 	bool state = true;		// true: OUT=1, SEPO=0 ; false: OUT=0, SEPO=1
 	int counter = 0;
-	while (counter < g_omsg.length()) {
+	while (counter < (g_msglen * 4)) {
 		digitalWrite(OUT, LOW);
 		digitalWrite(SEPO, LOW);
 		
@@ -77,7 +77,7 @@ void write() {
 		digitalWrite(SEPO, HIGH);
 		digitalWrite(WRITE, LOW);
 		while (((digitalRead(IN) == LOW) && (digitalRead(SEPI) == LOW) && (digitalRead(READ) == LOW)) == false) {
-			if (counter == g_omsg.length() - 1) {
+			if (counter == (g_msglen * 4 - 1)) {
 				break;
 			}
 			
@@ -88,49 +88,87 @@ void write() {
 	}
 	
 	g_write = false;
+	Serial.println("[E] Finished writing");
 }
 
 void read() {
-	// When detect start signal
-	if (digitalRead(IN) == HIGH) {
-		// Respond using OUT and wait for response
-		while (digitalRead(IN) == HIGH) {
-			digitalWrite(OUT, HIGH);
-		}
-		// End of response signal
+	g_imsg = "";
+	
+	bool finished = false;
+	
+	while (!finished) {
 		digitalWrite(OUT, LOW);
+		digitalWrite(SEPO, LOW);
+		digitalWrite(WRITE, LOW);
 		
-		String imsg_temp = "";
-		
-		int counter = 0;
-		while (counter < (g_msglen * 4)) {
-			// If detect new character signal
-			if (digitalRead(SEPI) == HIGH) {
-				// Wait for response
-				while (digitalRead(SEPI) == HIGH) {
+		// When detect start signal
+		if ((digitalRead(IN) > 50) && (digitalRead(SEPI) > 50) && (digitalRead(READ) > 50)) {
+			while (((digitalRead(IN) > 50) && (digitalRead(SEPI) < 50)) == false) {
+				Serial.println("[E] Waiting first");
+				
+				digitalWrite(OUT, HIGH);
+				digitalWrite(SEPO, HIGH);
+				digitalWrite(WRITE, LOW);
+			}
+			digitalWrite(OUT, LOW);
+			digitalWrite(SEPO, LOW);
+			
+			bool state = true;		// true: OUT=1, SEPO=0 ; false: OUT=0, SEPO=1
+			while (g_imsg.length() < (g_msglen * 4)) {
+				digitalWrite(SEPO, LOW);
+				
+				bool canRead = false;
+				
+				switch (state) {
+					case true:
+						if ((digitalRead(IN) > 50) && (digitalRead(SEPI) < 50)) {
+							canRead = true;
+							state = !state;
+						}
+						break;
+					
+					case false:
+						if ((digitalRead(IN) < 50) && (digitalRead(SEPI) > 50)) {
+							canRead = true;
+							state = !state;
+						}
+						break;
+					
+					default:
+						break;
+				}
+				
+				if (canRead) {
+					if (digitalRead(READ) > 50) {
+						g_imsg += '1';
+					} else {
+						g_imsg += '0';
+					}
+
+					Serial.print("[E] Reading, ");
+					Serial.print(digitalRead(READ));
+					Serial.print(", ");
+					Serial.println(g_imsg);
+					
+					while (((digitalRead(IN) > 50) && (digitalRead(SEPI) > 50)) == false) {
+						Serial.print("[E] Waiting respond, ");
+						Serial.print(digitalRead(IN));
+						Serial.print(", ");
+						Serial.print(digitalRead(SEPI));
+						Serial.print(", ");
+						Serial.println(digitalRead(READ));
+						
+						digitalWrite(SEPO, HIGH);
+					}
+				} else {
 					digitalWrite(SEPO, HIGH);
 				}
-				
-				// Switch to reading mode
-				digitalWrite(SEPO, LOW);
-				// Register value
-				if (digitalRead(READ) == HIGH) {
-					imsg_temp += "1";
-				} else {
-					imsg_temp += "0";
-				}
-				
-				// Mark as read
-				counter++;
-				// Switch to waiting mode
-				digitalWrite(SEPO, HIGH);
 			}
+			
+			Serial.println("[E] Finished reading");
+			finished = true;
 		}
-		
-		g_imsg = imsg_temp;
 	}
-  
-	g_write = true;
 }
 
 // Convert a string of decimal number characters to a binary string
@@ -207,9 +245,25 @@ String toDecimal(String msg) {
 }
 
 void loop() {
-	if (g_write == true) {
+	if (g_write) {
 		g_omsg = toBinary(g_imsg);
 		Serial.println(g_omsg);
+		
 		write();
+		
+		digitalWrite(OUT, LOW);
+		digitalWrite(SEPO, LOW);
+		digitalWrite(WRITE, LOW);
+	} else {
+		delay(1500);
+		
+		Serial.print("\n\n\n\n\n");
+		read();
+		
+		g_imsg = toDecimal(g_imsg);
+		Serial.println(g_imsg);
+		
+		delay(1000);
+		Serial.print("\n\n\n\n\n");
 	}
 }

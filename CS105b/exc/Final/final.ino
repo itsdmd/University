@@ -33,8 +33,8 @@ String g_weather = "";			// Weather condition read from ESP
 
 String g_imsg = "";				// Incoming message from ESP (completed)
 String g_omsg = "";				// Outgoing message to ESP
-const int g_msglen = 9;			// Message length
-bool g_read = true;			// Reading mode
+const int g_msglen = 3;			// Message length
+bool g_write = false;				// Reading mode
 
 unsigned long long prevMillis = 0;		// Checkpoint for timer
 /* #endregion */
@@ -63,7 +63,6 @@ void setup() {
 	pinMode(ESP_SEPO, OUTPUT);
 	pinMode(ESP_WRITE, OUTPUT);
 	
-	g_read = true;
 	prevMillis = millis();
 }
 
@@ -147,108 +146,147 @@ void LCDOnPIR() {
 void readESP() {
 	g_imsg = "";
 	
-	digitalWrite(ESP_OUT, LOW);
-	digitalWrite(ESP_SEPO, LOW);
-	digitalWrite(ESP_WRITE, LOW);
+	bool finished = false;
 	
-	// When detect start signal
-	if ((analogRead(ESP_IN) > 50) && (analogRead(ESP_SEPI) > 50) && (analogRead(ESP_READ) > 50)) {
-		while (((analogRead(ESP_IN) > 50) && (analogRead(ESP_SEPI) < 50)) == false) {
-			Serial.println("[A] Waiting first");
-			
-			digitalWrite(ESP_OUT, HIGH);
-			digitalWrite(ESP_SEPO, HIGH);
-			digitalWrite(ESP_WRITE, LOW);
-		}
+	while (!finished) {
 		digitalWrite(ESP_OUT, LOW);
 		digitalWrite(ESP_SEPO, LOW);
+		digitalWrite(ESP_WRITE, LOW);
 		
-		bool state = true;		// true: OUT=1, SEPO=0 ; false: OUT=0, SEPO=1
-		while (g_imsg.length() < (g_msglen * 4)) {
+		// When detect start signal
+		if ((analogRead(ESP_IN) > 50) && (analogRead(ESP_SEPI) > 50) && (analogRead(ESP_READ) > 50)) {
+			while (((analogRead(ESP_IN) > 50) && (analogRead(ESP_SEPI) < 50)) == false) {
+				Serial.println("[A] Waiting first");
+				
+				digitalWrite(ESP_OUT, HIGH);
+				digitalWrite(ESP_SEPO, HIGH);
+				digitalWrite(ESP_WRITE, LOW);
+			}
+			digitalWrite(ESP_OUT, LOW);
 			digitalWrite(ESP_SEPO, LOW);
 			
-			bool canRead = false;
-			
-			switch (state) {
-				case true:
-					if ((analogRead(ESP_IN) > 50) && (analogRead(ESP_SEPI) < 50)) {
-						canRead = true;
-						state = !state;
-					}
-					break;
+			bool state = true;		// true: OUT=1, SEPO=0 ; false: OUT=0, SEPO=1
+			while (g_imsg.length() < (g_msglen * 4)) {
+				digitalWrite(ESP_SEPO, LOW);
 				
-				case false:
-					if ((analogRead(ESP_IN) < 50) && (analogRead(ESP_SEPI) > 50)) {
-						canRead = true;
-						state = !state;
-					}
-					break;
+				bool canRead = false;
 				
-				default:
-					break;
-			}
-			
-			if (canRead) {
-				if (analogRead(ESP_READ) > 50) {
-					g_imsg += '1';
-				} else {
-					g_imsg += '0';
-				}
-
-				Serial.print("[A] Reading, ");
-				Serial.print(analogRead(ESP_READ));
-				Serial.print(", ");
-				Serial.println(g_imsg);
-				
-				while (((analogRead(ESP_IN) > 50) && (analogRead(ESP_SEPI) > 50)) == false) {
-					Serial.print("[A] Waiting respond, ");
-					Serial.print(analogRead(ESP_IN));
-					Serial.print(", ");
-					Serial.print(analogRead(ESP_SEPI));
-					Serial.print(", ");
-					Serial.println(analogRead(ESP_READ));
+				switch (state) {
+					case true:
+						if ((analogRead(ESP_IN) > 50) && (analogRead(ESP_SEPI) < 50)) {
+							canRead = true;
+							state = !state;
+						}
+						break;
 					
+					case false:
+						if ((analogRead(ESP_IN) < 50) && (analogRead(ESP_SEPI) > 50)) {
+							canRead = true;
+							state = !state;
+						}
+						break;
+					
+					default:
+						break;
+				}
+				
+				if (canRead) {
+					if (analogRead(ESP_READ) > 50) {
+						g_imsg += '1';
+					} else {
+						g_imsg += '0';
+					}
+
+					Serial.print("[A] Reading, ");
+					Serial.print(analogRead(ESP_READ));
+					Serial.print(", ");
+					Serial.println(g_imsg);
+					
+					while (((analogRead(ESP_IN) > 50) && (analogRead(ESP_SEPI) > 50)) == false) {
+						Serial.print("[A] Waiting respond, ");
+						Serial.print(analogRead(ESP_IN));
+						Serial.print(", ");
+						Serial.print(analogRead(ESP_SEPI));
+						Serial.print(", ");
+						Serial.println(analogRead(ESP_READ));
+						
+						digitalWrite(ESP_SEPO, HIGH);
+					}
+				} else {
 					digitalWrite(ESP_SEPO, HIGH);
 				}
-			} else {
-				digitalWrite(ESP_SEPO, HIGH);
 			}
+			
+			Serial.println("[A] Finished reading");
+			finished = true;
 		}
-		
-		g_read = false;
-	} else {
-		g_read = true;
 	}
 }
 
 // Write binary data to ESP
 void writeESP() {
-	while(analogRead(ESP_IN) == LOW) {
-		digitalWrite(ESP_OUT, HIGH);
-	}
-	digitalWrite(ESP_OUT, LOW);
+	Serial.println("[A] Start writing");
 	
+	while (((analogRead(ESP_IN) > 50) && (analogRead(ESP_SEPI) > 50)) == false) {
+		Serial.println("[A] Waiting first");
+			
+		digitalWrite(ESP_OUT, HIGH);
+		digitalWrite(ESP_SEPO, HIGH);
+		digitalWrite(ESP_WRITE, HIGH);
+	}
+	
+	bool state = true;		// true: OUT=1, SEPO=0 ; false: OUT=0, SEPO=1
 	int counter = 0;
-	while (counter < (g_msglen * 4)) {
-		while(analogRead(ESP_SEPI) == LOW) {
-			digitalWrite(ESP_SEPO, HIGH);
-		}
+	while (counter < g_omsg.length()) {
+		digitalWrite(ESP_OUT, LOW);
 		digitalWrite(ESP_SEPO, LOW);
 		
-		while(analogRead(ESP_SEPI) == LOW) {
-			if (g_omsg[counter] == '1') {
-				digitalWrite(ESP_WRITE, HIGH);
-			} else {
-				digitalWrite(ESP_WRITE, LOW);
+		if (g_omsg[counter] == '1') {
+			digitalWrite(ESP_WRITE, HIGH);
+		} else {
+			digitalWrite(ESP_WRITE, LOW);
+		}
+		
+		switch (state) {
+			case true:
+				digitalWrite(ESP_OUT, HIGH);
+				digitalWrite(ESP_SEPO, LOW);
+				state = !state;
+				break;
+			
+			case false:
+				digitalWrite(ESP_OUT, LOW);
+				digitalWrite(ESP_SEPO, HIGH);
+				state = !state;
+				break;
+			
+			default:
+				break;
+		}
+		
+		Serial.print("[A] Writing, ");
+		Serial.println(g_omsg[counter]);
+		
+		while (analogRead(ESP_SEPI) != HIGH) {
+			Serial.println("[A] Waiting for reading");
+		}
+		
+		digitalWrite(ESP_OUT, HIGH);
+		digitalWrite(ESP_SEPO, HIGH);
+		digitalWrite(ESP_WRITE, LOW);
+		while (((analogRead(ESP_IN) < 50) && (analogRead(ESP_SEPI) < 50) && (analogRead(ESP_READ) < 50)) == false) {
+			if (counter == g_omsg.length() - 1) {
+				break;
 			}
 			
-			digitalWrite(ESP_SEPO, LOW);
+			Serial.println("[A] Waiting next");
 		}
 		
 		counter++;
 	}
 	
-	g_read = true;
+	g_write = false;
+	Serial.println("[A] Finished writing");
 }
 
 // Convert a string of decimal number characters to a binary string
@@ -384,7 +422,29 @@ void loop() {
 	readPir();
 	LCDOnPIR();
   	
-	if (g_read == true) {
+	if (!g_write) {
 		readESP();
+		
+		g_imsg = toDecimal(g_omsg);
+		Serial.println(g_imsg);
+		
+		digitalWrite(ESP_OUT, LOW);
+		digitalWrite(ESP_SEPO, LOW);
+		digitalWrite(ESP_WRITE, LOW);
+		
+		g_write = true;
+	} else {
+		delay(1000);
+		Serial.print("\n\n\n\n\n");
+		
+		composeMessage();
+		g_omsg = toBinary(g_omsg);
+
+		logging();
+		
+		writeESP();
+		
+		delay(1500);
+		Serial.print("\n\n\n\n\n");
 	}
 }
