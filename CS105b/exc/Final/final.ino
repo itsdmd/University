@@ -22,6 +22,7 @@ const int ESP_OUT = 13; 		// Send read/write signal to ESP
 /* #region   */
 bool g_statePIR = false;		// PIR state
 bool g_status = false;			// Watering relay state
+int g_m_status = 0;				// Watering status set by user. 0: auto-off, 1: auto-on, 2: manual-off, 3: manual-on
 
 int g_moisture = 0;				// Moisture level read from sensor
 int g_threshold = 0;			// Moisture threshold set by user
@@ -30,8 +31,6 @@ String g_weather = "";			// Weather condition read from ESP
 String g_imsg = "";				// Received from ESP
 String g_omsg = "";				// To be sent to ESP
 const int g_msglen = 27;		// Receive message length
-
-bool g_reading = true;			// Reading mode by default
 
 unsigned long long prevMillis = 0;		// Checkpoint for timer
 /* #endregion */
@@ -56,7 +55,7 @@ void setup() {
 	
 	digitalWrite(REL_PWR, LOW);
 	digitalWrite(REL_LCD, LOW);
-	digitalWrite(ESP_OUT, LOW);
+	digitalWrite(ESP_OUT, HIGH);			// Default in reading mode
 	
 	prevMillis = millis();
 }
@@ -74,8 +73,8 @@ void readMoist() {
 }
 
 // Read data from PIR
-void readPir() {
-	g_statePIR = analogRead(PIR);
+void readPIR() {
+	g_statePIR = digitalRead(PIR);
 }
 
 // Activate REL_PWR
@@ -100,9 +99,19 @@ void waterOff() {
 /* #region   */
 // Control REL_PWR based on MOIST
 void wateringController() {
-	if (g_moisture < (g_threshold)) {
-		if (g_weather[0] == '1'							// If it's gonna rain in the next hour
-			|| g_weather.substring(3) == "011") {		// Or if it's not gonna rain the next hour but will be 2 hours from now
+	if (g_m_status == 2) {
+		waterOff();
+		return;
+	} else if (g_m_status == 3) {
+		waterOn();
+		return;
+	}
+	
+	else if (g_moisture < g_threshold) {
+		if (((g_weather[0] == '1')							// If it's gonna rain in the next hour
+				&& (g_moisture > g_threshold - 100))		// and the soil is not too dry
+			|| ((g_weather.substring(0, 2) == "01")			// Or if it's not gonna rain the next hour but will be 2 hours from now
+				&& (g_moisture > (g_threshold - 50)))) {	// ... and the soil is not too dry
 			
 			waterOff();
 		}
@@ -110,6 +119,8 @@ void wateringController() {
 		else {
 			waterOn();
 		}
+	} else {
+		waterOff();
 	}
 }
 
@@ -117,6 +128,9 @@ void wateringController() {
 void LCDOnPIR() {
 	if (g_statePIR) {
 		digitalWrite(REL_LCD, HIGH);
+		delay(100);
+		
+		LCD.begin(16, 2);
 		
 		LCD.setCursor(0, 0);
 		LCD.print("Moist.:");
@@ -128,7 +142,9 @@ void LCDOnPIR() {
 		LCD.setCursor(0, 1);
 		LCD.print("Status: ");
 		LCD.setCursor(8, 1);
-		(g_status) ? LCD.print("Watering") : LCD.print("Idling");
+		(g_status) ? LCD.print("Water") : LCD.print("Idle");
+		LCD.setCursor(13, 1);
+		((g_m_status == 0) || (g_m_status == 1)) ? LCD.print("(A)") : LCD.print("(M)");
 	} else {
 		digitalWrite(REL_LCD, LOW);
 	}
@@ -152,9 +168,6 @@ void readESP() {
 	}
 	
 	g_imsg = s_imsg.substring((s_imsg.indexOf('<') + 1), s_imsg.indexOf('>', s_imsg.indexOf('<')));
-	
-	Serial.print("Received: ");
-	Serial.println(g_imsg);
 }
 
 void writeESP() {
@@ -170,7 +183,9 @@ void writeESP() {
 
 // Prepare message to send to ESP
 void composeMessage() {
-	g_omsg = g_status;
+	g_omsg = "";
+	
+	g_omsg += g_m_status;
 	
 	if (g_moisture < 1000) {
 		g_omsg += "0";
@@ -198,27 +213,13 @@ void composeMessage() {
 	}
 	g_omsg += g_threshold;
 }
-/* #endregion */
 
-void logging(){
-	Serial.print("Moisture: ");
-	Serial.print(g_moisture);
-	Serial.print("\n");
-	
-	Serial.print("PIR: ");
-	Serial.print(g_statePIR);
-	Serial.print("\n");
-	
-	Serial.print("IMSG: ");
-	Serial.print(g_imsg);
-	Serial.print("\n");
-	
-	Serial.print("OMSG: ");
-	Serial.print(g_omsg);
-	Serial.print("\n");
-	
-	Serial.print("\n");
+void decomposeMessage() {
+	g_m_status = g_imsg.substring(12, (12 + 1)).toInt();
+	g_threshold = g_imsg.substring(17, (17 + 4)).toInt();
+	g_weather = g_imsg.substring(21);
 }
+/* #endregion */
 
 
 
@@ -227,50 +228,61 @@ void logging(){
 /// ------------------------------------------------------------------------ ///
 void loop() {
 	readMoist();
-	readPir();
+	readPIR();
 	LCDOnPIR();
+	wateringController();
 	
-	switch (g_reading) {
-		case true: {
-			digitalWrite(ESP_OUT, HIGH);
-			
-			while (g_imsg.length() != g_msglen) {
-				readESP();
-			}
-
-			Serial.print("Received: ");
-			Serial.println(g_imsg);
-
-			digitalWrite(ESP_OUT, LOW);
-			
-			g_reading = false;
-			break;
+	String old_omsg = g_omsg;
+	composeMessage();
+	
+	// Default in reading mode.
+	// When there's a change in the message, switch to writing mode by turning off ESP_IN
+	if (old_omsg != g_omsg) {
+		// Switch to writing mode
+		digitalWrite(ESP_OUT, LOW);
+		
+		// Wait until ESP switched to reading mode
+		while (digitalRead(ESP_IN) == LOW) {
+			delay(100);
 		}
 		
-		case false: {
-			digitalWrite(ESP_OUT, LOW);
-			
-			while (digitalRead(ESP_IN) == LOW) {
-				Serial.println("Waiting for ESP to read...\n");
-				delay(100);
-			}
-			
-			while (digitalRead(ESP_IN) == HIGH) {
-				digitalWrite(ESP_OUT, LOW);
-				writeESP();
-				
-				delay(50);
-			}
-			
-			Serial.print("\nSent: ");
-			Serial.println(g_omsg);
-
-			g_reading = true;
-			
-			digitalWrite(ESP_OUT, HIGH);
-			break;
-		}
+		// Keep writing until ESP switched to writing mode again
+		do {
+			writeESP();
+			delay(100);
+		} while (digitalRead(ESP_OUT) == HIGH);
+		
+		// Switch to reading mode
+		digitalWrite(ESP_OUT, HIGH);
 	}
 	
-	delay(3000);
+	else if (digitalRead(ESP_IN) == LOW) {
+		digitalWrite(ESP_OUT, HIGH);
+		
+		String old_imsg = g_imsg;
+		
+		while (digitalRead(ESP_IN) == HIGH) {
+			delay(100);
+		}
+		
+		do {
+			readESP();
+			delay(100);
+			
+			if (digitalRead(ESP_IN) == HIGH) {
+				g_imsg = old_imsg;
+				break;
+			}
+		} while (g_imsg.length() != g_msglen);
+		
+		decomposeMessage();
+		
+		digitalWrite(ESP_OUT, LOW);
+	}
+	
+	else {
+		digitalWrite(ESP_OUT, HIGH);
+	}
+	
+	delay(1000);
 }

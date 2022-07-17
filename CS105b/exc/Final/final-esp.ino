@@ -1,11 +1,9 @@
 const int ARD_OUT = 12;				// Send read/write signal to Arduino
 const int ARD_IN = 13;				// Receive read/write signal from Arduino
 
-String g_nmsg = "220717112505006270050000000";		// Received from Node RED
+String g_nmsg = "220717144231006270500100111";		// Received from Node RED
 String g_amsg = "";									// Received from Arduino
 const int g_msglen = 9;								// Receive message length
-
-bool g_reading = false;				// Writing mode by default
 
 void setup() {
 	Serial.begin(9600);
@@ -31,9 +29,6 @@ void readARD() {
 	}
 	
 	g_amsg = s_amsg.substring((s_amsg.indexOf('<') + 1), s_amsg.indexOf('>', s_amsg.indexOf('<')));
-	
-	Serial.print("Received: ");
-	Serial.println(g_amsg);
 }
 
 void writeARD() {
@@ -46,47 +41,26 @@ void writeARD() {
 }
 
 void loop() {
-	switch (g_reading) {
-		case true: {
-			digitalWrite(ARD_OUT, HIGH);
-			
-			while (g_amsg.length() != g_msglen) {
-				readARD();
-			}
-
-			Serial.print("Received: ");
-			Serial.println(g_amsg);
-			
-			digitalWrite(ARD_OUT, LOW);
-			
-			g_reading = false;
-			break;
-		}
+	// Default in writing mode.
+	// When lost ARD_IN signal sent by Arduino, switch to reading mode.
+	if (digitalRead(ARD_IN) == HIGH) {
+		digitalWrite(ARD_OUT, LOW);
 		
-		case false: {
-			digitalWrite(ARD_OUT, LOW);
-			
-			while (digitalRead(ARD_IN) == LOW) {
-				Serial.println("Waiting for Arduino to read...\n");
-				delay(100);
-			}
-			
-			while (digitalRead(ARD_IN) == HIGH) {
-				digitalWrite(ARD_OUT, LOW);
-				writeARD();
-				
-				delay(50);
-			}
-			
-			Serial.print("\nSent: ");
-			Serial.println(g_nmsg);
-
-			g_reading = true;
-
-			digitalWrite(ARD_OUT, HIGH);
-			break;
-		}
+		do {
+			writeARD();
+			delay(100);
+		} while (digitalRead(ARD_IN) == HIGH);
+		
+	} else {
+		digitalWrite(ARD_OUT, HIGH);
+		
+		do {
+			readARD();
+			delay(100);
+		} while (g_amsg.length() != g_msglen);
+		
+		digitalWrite(ARD_OUT, LOW);
 	}
 	
-	delay(3000);
+	delay(200);
 }
