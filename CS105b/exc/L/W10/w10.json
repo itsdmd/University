@@ -1,0 +1,213 @@
+[
+    {
+        "id": "a796932c45c7d4f0",
+        "type": "tab",
+        "label": "105.L.10",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b627e61b375ba42d",
+        "type": "ui_gauge",
+        "z": "a796932c45c7d4f0",
+        "name": "",
+        "group": "60f61f8933c75011",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 390,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5e13b5843610d790",
+        "type": "http request",
+        "z": "a796932c45c7d4f0",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://maker.ifttt.com/trigger/105-L-10/with/key/d4tFaZXmchOi6y9dgXuR-n?value1={{payload}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1010,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "00c93b38d1446bbd",
+        "type": "mqtt in",
+        "z": "a796932c45c7d4f0",
+        "name": "",
+        "topic": "itsdmd",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "8a61acbb94c528b9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "0f254705bafe1327",
+                "b627e61b375ba42d",
+                "fbc04ee55629379d"
+            ]
+        ]
+    },
+    {
+        "id": "0f254705bafe1327",
+        "type": "debug",
+        "z": "a796932c45c7d4f0",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "fbc04ee55629379d",
+        "type": "function",
+        "z": "a796932c45c7d4f0",
+        "name": "> 80",
+        "func": "flow.set(\"temp\", parseInt(msg.payload))\n\nif (flow.get(\"temp\") > 80) {\n    msg.payload = 1;\n} else {\n    msg.payload = 0;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "5d5fe304921b77fb"
+            ]
+        ]
+    },
+    {
+        "id": "5d5fe304921b77fb",
+        "type": "switch",
+        "z": "a796932c45c7d4f0",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 570,
+        "y": 160,
+        "wires": [
+            [
+                "36f5daf8582d8326"
+            ]
+        ]
+    },
+    {
+        "id": "36f5daf8582d8326",
+        "type": "change",
+        "z": "a796932c45c7d4f0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "temp",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 160,
+        "wires": [
+            [
+                "5e13b5843610d790"
+            ]
+        ]
+    },
+    {
+        "id": "60f61f8933c75011",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "96068ac2d0402a17",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8a61acbb94c528b9",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "96068ac2d0402a17",
+        "type": "ui_tab",
+        "name": "Temperature",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    }
+]
