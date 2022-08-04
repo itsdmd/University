@@ -4,4 +4,4 @@
 .ipynb_checkpoints/**
 .clang-format
 **/.ipynb_checkpoints/**
-**testbed**
+**/testbed**
