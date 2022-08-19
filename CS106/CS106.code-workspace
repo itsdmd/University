@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 25,
+				"server": "localhost",
+				"port": 3306,
+				"driver": "MySQL",
+				"name": "mysql",
+				"database": "mysql",
+				"username": "dmd",
+				"password": "123qwf",
+				"connectionTimeout": 1000
+			}
+		]
+	}
+}
