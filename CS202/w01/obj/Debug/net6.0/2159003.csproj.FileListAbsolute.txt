@@ -1,0 +1,15 @@
+/home/dmd/Documents/University/CS202/w01/bin/Debug/net6.0/2159003
+/home/dmd/Documents/University/CS202/w01/bin/Debug/net6.0/2159003.deps.json
+/home/dmd/Documents/University/CS202/w01/bin/Debug/net6.0/2159003.runtimeconfig.json
+/home/dmd/Documents/University/CS202/w01/bin/Debug/net6.0/2159003.dll
+/home/dmd/Documents/University/CS202/w01/bin/Debug/net6.0/ref/2159003.dll
+/home/dmd/Documents/University/CS202/w01/bin/Debug/net6.0/2159003.pdb
+/home/dmd/Documents/University/CS202/w01/obj/Debug/net6.0/2159003.csproj.AssemblyReference.cache
+/home/dmd/Documents/University/CS202/w01/obj/Debug/net6.0/2159003.GeneratedMSBuildEditorConfig.editorconfig
+/home/dmd/Documents/University/CS202/w01/obj/Debug/net6.0/2159003.AssemblyInfoInputs.cache
+/home/dmd/Documents/University/CS202/w01/obj/Debug/net6.0/2159003.AssemblyInfo.cs
+/home/dmd/Documents/University/CS202/w01/obj/Debug/net6.0/2159003.csproj.CoreCompileInputs.cache
+/home/dmd/Documents/University/CS202/w01/obj/Debug/net6.0/2159003.dll
+/home/dmd/Documents/University/CS202/w01/obj/Debug/net6.0/ref/2159003.dll
+/home/dmd/Documents/University/CS202/w01/obj/Debug/net6.0/2159003.pdb
+/home/dmd/Documents/University/CS202/w01/obj/Debug/net6.0/2159003.genruntimeconfig.cache
