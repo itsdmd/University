@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/dmd/Documents/University/CS202/w01/w01.csproj",
-      "projectName": "w01",
-      "projectPath": "/home/dmd/Documents/University/CS202/w01/w01.csproj",
+      "projectUniqueName": "/home/dmd/Documents/University/CS202/w01/2159003.csproj",
+      "projectName": "2159003",
+      "projectPath": "/home/dmd/Documents/University/CS202/w01/2159003.csproj",
       "packagesPath": "/home/dmd/.nuget/packages/",
       "outputPath": "/home/dmd/Documents/University/CS202/w01/obj/",
       "projectStyle": "PackageReference",
