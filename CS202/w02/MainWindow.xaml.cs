@@ -1,33 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace w02
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window
-    {
-        public MainWindow()
+	{
+
+		string[] resFiles;
+		string resPath = "Images";
+		public string[] GetImageFiles()
+		{
+			resFiles = Directory.GetFiles(resPath);
+
+			return resFiles;
+		}
+
+        public Tuple<string,string> NextEntry()
         {
-            InitializeComponent();
+            Random rng = new Random();
+			
+            string path = resFiles[rng.Next(resFiles.Length)];
+            string text = path.Substring(resPath.Length + 1)    // Remove "Images/"
+                              .Split('.')[0]                    // Remove ".png"
+                              .Replace('_', ' ');
+
+			return new Tuple<string, string>(path, text);
         }
 
+		public void DisplayNewEntry()
+		{
+			Tuple<string, string> entry = NextEntry();
+
+			// https://stackoverflow.com/a/4567065/16784616
+			image.Source = new BitmapImage(new Uri(entry.Item1, UriKind.Relative));
+
+			textbox.Content = entry.Item2;
+		}
+        
         private void changeButton_Click(object sender, RoutedEventArgs e)
         {
-            quoteLabel.Content = "Test button";
-        }
-    }
+			DisplayNewEntry();
+		}
+
+		public MainWindow()
+		{
+			InitializeComponent();
+			GetImageFiles();
+			DisplayNewEntry();
+		}
+	}
 }
