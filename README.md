@@ -25,22 +25,12 @@ There should be a folder for each course. The name of the folder should be the c
 
 General hierarchy (only folder's level matters):
 - **Course**
-	- **exc** ................. _Assignments_
-		- ├ **.vscode** + Workspace file
-		- ├ **L** ........ _Lab_
-		- └ **T** ........ _Theory_
-			
-			- └ **W\*\*** ................ _Week \*\* submission, ex: W03_
-				- ├ **data** ........ _Input data files (if not specifically required by lecturer)_
-				- └ **src** .......... _Headers_
-	---
-	- **lec** ................. _Lecture materials and Documentation/Notation_
-		- ├ **L** ........ _Lab_
-		- └ **T** ........ _Theory_
-			- └ **W\*\*** ................ _Week \*\* lecture resource_
-				- ├ **img** ......... _Images_
-				- ├ **doc** ......... _Text or Jupyter Notebook_
-				- └ **other** ...... _Other document types_
+	- ├ **L** ........ _Lab_
+	- └ **T** ........ _Theory_
+		
+		- └ **w\*\*** ................ _Week \*\* submission, ex: W03_
+			- ├ **data** ........ _Input data files (if not specifically required by lecturer)_
+			- └ **src** .......... _Headers_
 
 ## 3. 📄 Files
 **For material files**: Descriptive and no whitespace
