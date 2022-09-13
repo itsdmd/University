@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Personal\\Projects\\Git\\University\\CS202\\w02\\w02.csproj": {}
+    "C:\\Personal\\Projects\\Git\\University\\CS202\\T\\w02\\w02.csproj": {}
   },
   "projects": {
-    "C:\\Personal\\Projects\\Git\\University\\CS202\\w02\\w02.csproj": {
+    "C:\\Personal\\Projects\\Git\\University\\CS202\\T\\w02\\w02.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Personal\\Projects\\Git\\University\\CS202\\w02\\w02.csproj",
+        "projectUniqueName": "C:\\Personal\\Projects\\Git\\University\\CS202\\T\\w02\\w02.csproj",
         "projectName": "w02",
-        "projectPath": "C:\\Personal\\Projects\\Git\\University\\CS202\\w02\\w02.csproj",
+        "projectPath": "C:\\Personal\\Projects\\Git\\University\\CS202\\T\\w02\\w02.csproj",
         "packagesPath": "C:\\Users\\DucDao\\.nuget\\packages\\",
-        "outputPath": "C:\\Personal\\Projects\\Git\\University\\CS202\\w02\\obj\\",
+        "outputPath": "C:\\Personal\\Projects\\Git\\University\\CS202\\T\\w02\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
