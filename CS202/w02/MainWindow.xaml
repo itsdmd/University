@@ -1,0 +1,26 @@
+﻿<Window x:Class="w02.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:w02"
+        mc:Ignorable="d"
+        Title="202.02" Height="450" Width="800">
+    
+    <Canvas>
+        <Image x:Name="testImage"
+               Source="Images/avatar.jpg"
+               Width="100" Height="100"
+               Canvas.Left="200" Canvas.Top="50"/>
+
+        <Label x:Name="quoteLabel"
+               Content="Test Quote"
+               Canvas.Left="54" Canvas.Top="50" />
+
+        <Button x:Name="button"
+                Width="75" Height="30"
+                Content="Click Me" 
+                Canvas.Left="54" Canvas.Top="100" 
+                Click="changeButton_Click" />
+    </Canvas>
+</Window>
