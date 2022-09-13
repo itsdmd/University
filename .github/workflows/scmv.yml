@@ -3,10 +3,10 @@ name: Submission CM Verifier
 on:
   push:
     paths:
-      - '**/exc/L/**'
-      - '**/exc/T/**'
-      - '**/exc/Midterm/**'
-      - '**/exc/Final/**'
+      - '**/L/**'
+      - '**/T/**'
+      - '**/Midterm/**'
+      - '**/Final/**'
       - '!**test**'
       - '!**-og**"'
       - '!.github/**'
