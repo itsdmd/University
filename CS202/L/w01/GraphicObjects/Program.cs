@@ -17,44 +17,43 @@ namespace GraphicObjects
 	{
 		class Point
 		{
-			public int X { get; set; }
-			public int Y { get; set; }
+			public int m_x { get; set; }
+			public int m_y { get; set; }
 
 			public Point()
 			{
-				Console.WriteLine("Enter X coordinate: ");
-				X = int.Parse(Console.ReadLine());
-
-				Console.WriteLine("Enter Y coordinate: ");
-				Y = int.Parse(Console.ReadLine());
-			}
-			
-			public Point(int x, int y)
-			{
-				X = x;
-				Y = y;
+				// Generate random value in range [-100; 100] for X and Y
+				m_x = new Random().Next(-100, 100);
+				m_y = new Random().Next(-100, 100);
 			}
 			
 			public override string ToString()
 			{
-				return ($"({X}, {Y})");
+				return ($"({m_x}, {m_y})");
 			}
 		}
 
 		class GraphicObj
 		{
-			public string objName { get; set; }
-			public List<Point> points { get; set; }
-			
+			public string m_type = "Base";
+			public List<Point> m_points = new List<Point>();
+			public List<string> m_pntName = new List<string>();
+
 			public override string ToString()
 			{
-				StringBuilder builder = new StringBuilder(objName);
-				builder.Append(":");
+				StringBuilder builder = new StringBuilder();
+				builder.Append(m_type).Append(":");
 
-				foreach (var point in points)
+				int index = 0;
+				foreach (var point in m_points)
 				{
-					builder.Append(" ");
-					builder.Append(point.ToString());
+					builder.Append(" [")
+						   .Append(m_pntName[index])
+						   .Append(": ")
+						   .Append(point.ToString())
+						   .Append("]");
+
+					index++;
 				}
 
 				return builder.ToString();
@@ -63,58 +62,46 @@ namespace GraphicObjects
 		
 		class Line : GraphicObj
 		{
+			Point startPnt = new Point();
+			Point endPnt = new Point();
+			
 			public Line()
 			{
-				objName = "Line";
-				
-				Point startPnt = new Point();
-				Point endPnt = new Point();
-				points = new List<Point>() { startPnt, endPnt };
-			}
-
-			public Line(Point startPnt, Point endPnt)
-			{
-				objName = "Line";
-
-				points = new List<Point>() { startPnt, endPnt };
+				m_type = "Line";
+				m_points.Add(startPnt);
+				m_pntName.Add("Start point");
+				m_points.Add(endPnt);
+				m_pntName.Add("End point");
 			}
 		}
 
 		class Rectangle : GraphicObj
 		{
+			Point topLeft = new Point();
+			Point botRight = new Point();
+			
 			public Rectangle()
 			{
-				objName = "Rectangle";
-
-				Point startPnt = new Point();
-				Point endPnt = new Point();
-				points = new List<Point>() { startPnt, endPnt };
-			}
-
-			public Rectangle(Point startPnt, Point endPnt)
-			{
-				objName = "Rectangle";
-
-				points = new List<Point>() { startPnt, endPnt };
+				m_type = "Rectangle";
+				m_points.Add(topLeft);
+				m_pntName.Add("Top left");
+				m_points.Add(botRight);
+				m_pntName.Add("Bottom right");
 			}
 		}
 
 		class Ellipse : GraphicObj
 		{
+			Point topLeft = new Point();
+			Point botRight = new Point();
+			
 			public Ellipse()
 			{
-				objName = "Ellipse";
-
-				Point startPnt = new Point();
-				Point endPnt = new Point();
-				points = new List<Point>() { startPnt, endPnt };
-			}
-
-			public Ellipse(Point startPnt, Point endPnt)
-			{
-				objName = "Ellipse";
-
-				points = new List<Point>() { startPnt, endPnt };
+				m_type = "Ellipse";
+				m_points.Add(topLeft);
+				m_pntName.Add("Top left");
+				m_points.Add(botRight);
+				m_pntName.Add("Bottom right");
 			}
 		}
 
@@ -122,7 +109,35 @@ namespace GraphicObjects
 
 		static void Main(string[] args)
 		{
-			
+			List<GraphicObj> objects = new List<GraphicObj>();
+			Random rng = new Random();
+			int numOfObj = 10;
+			int numOfTypes = 3;
+
+			for (int i = 0; i < numOfObj; i++)
+			{
+				switch(rng.Next(numOfTypes))
+				{
+					case 0:
+						objects.Add(new Line());
+						break;
+
+					case 1:
+						objects.Add(new Rectangle());
+						break;
+
+					case 2:
+						objects.Add(new Ellipse());
+						break;
+
+					default: break;
+				}
+			}
+
+			foreach (GraphicObj obj in objects)
+			{
+				Console.WriteLine(obj.ToString());
+			}
 		}
 	}
 }
