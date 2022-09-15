@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Drawing;
 using System.Text;
+using System.Xml.Linq;
 
 // There are three types of graphic objects you need to create in 2D space: 
 //	- A line(controlled by two points: start point and end point)
 //	- A rectangle(controlled by two points: left top point and right bottom point)
 //	- An ellipse(controlled by two points: left top point and right bottom point)
-
-//### Requirements
-//Generate randomly 10 objects of three types above. Print out all the generated objects.
-//Hint: Override the ToString function
+//	Generate randomly 10 objects of three types above. Print out all the generated objects.
 
 namespace GraphicObjects
 {
@@ -33,11 +31,18 @@ namespace GraphicObjects
 			}
 		}
 
+		public enum ShapeType
+		{
+			Line,
+			Rectangle,
+			Ellipse
+		}
+
 		class GraphicObj
 		{
 			public string m_type = "Base";
-			public List<Point> m_points = new List<Point>();
-			public List<string> m_pntName = new List<string>();
+			public List<Point> m_points = new();
+			public List<string> m_pntName = new();
 
 			public override string ToString()
 			{
@@ -62,8 +67,8 @@ namespace GraphicObjects
 		
 		class Line : GraphicObj
 		{
-			Point startPnt = new Point();
-			Point endPnt = new Point();
+			Point startPnt = new();
+			Point endPnt = new();
 			
 			public Line()
 			{
@@ -104,39 +109,33 @@ namespace GraphicObjects
 				m_pntName.Add("Bottom right");
 			}
 		}
-
-		// TODO: RNG
-
-		static void Main(string[] args)
+		static GraphicObj NewObj(ShapeType type)
 		{
-			List<GraphicObj> objects = new List<GraphicObj>();
-			Random rng = new Random();
+			switch (type)
+			{
+				case ShapeType.Line:
+					return new Line();
+
+				case ShapeType.Rectangle:
+					return new Rectangle();
+
+				case ShapeType.Ellipse:
+					return new Ellipse();
+
+				default:
+					throw new NotSupportedException();
+			}
+		}
+
+		static void Main()
+		{
+			Random rng = new();
 			int numOfObj = 10;
-			int numOfTypes = 3;
 
 			for (int i = 0; i < numOfObj; i++)
 			{
-				switch(rng.Next(numOfTypes))
-				{
-					case 0:
-						objects.Add(new Line());
-						break;
-
-					case 1:
-						objects.Add(new Rectangle());
-						break;
-
-					case 2:
-						objects.Add(new Ellipse());
-						break;
-
-					default: break;
-				}
-			}
-
-			foreach (GraphicObj obj in objects)
-			{
-				Console.WriteLine(obj.ToString());
+				ShapeType type = (ShapeType)rng.Next(0, 3);
+				Console.WriteLine(NewObj(type));
 			}
 		}
 	}
