@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalFinanceAdvisor", "PersonalFinanceAdvisor\PersonalFinanceAdvisor.csproj", "{CEBDEA68-B3EB-4004-9F7D-D8CF62070413}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchRename", "BatchRename\BatchRename.csproj", "{4DD5D5B7-5A42-4552-BDE3-7132CD265369}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEBDEA68-B3EB-4004-9F7D-D8CF62070413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEBDEA68-B3EB-4004-9F7D-D8CF62070413}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEBDEA68-B3EB-4004-9F7D-D8CF62070413}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEBDEA68-B3EB-4004-9F7D-D8CF62070413}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD5D5B7-5A42-4552-BDE3-7132CD265369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DD5D5B7-5A42-4552-BDE3-7132CD265369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DD5D5B7-5A42-4552-BDE3-7132CD265369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DD5D5B7-5A42-4552-BDE3-7132CD265369}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C092D41F-DCDD-4C0A-AD2C-39C134CA1CE2}
+	EndGlobalSection
+EndGlobal
