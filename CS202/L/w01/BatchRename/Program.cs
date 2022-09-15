@@ -26,14 +26,18 @@ namespace BatchRename
 			// Capitalize first character of each word
 			for (int i = 0; i < words.Length; i++)
 			{
-				words[i] = words[i].Substring(0, 1).ToUpper() + words[i].Substring(1);
+				StringBuilder sb = new();
+				sb.Append(words[i].Substring(0, 1).ToUpper())
+				  .Append(words[i].AsSpan(1));
+				
+				words[i] = sb.ToString();
 			}
 
 			// Get the current date
 			DateTime date = DateTime.Now;
 
 			// Stitching
-			StringBuilder builder = new StringBuilder(date.ToString("yyMMdd"));
+			StringBuilder builder = new(date.ToString("yyMMdd"));
 			foreach (string word in words)
 			{
 				builder.Append(' ');
@@ -51,30 +55,28 @@ namespace BatchRename
 			}
 		}
 
-		static void Main(string[] args)
+		static void Main()
 		{
-			var filenames = new List<string>() {
-				"Ernesto Lowe.pdf",
-				"Calvin-hopkins.pdf",
-				"Brandon    Mullins.pdf",
-				"Jon Wood.pdf",
-				"marianne-owers.pdf",
-				"Luis--Chavez.pdf",
-				"Cecil Logan.pdf",
-				"Saul_kennedy.pdf",
-				"Raul___Thompson___CV.pdf",
-				"Juana--Wagner.pdf",
-				"sophie_chapman.pdf",
-				"Donna___Mason.pdf",
-				"garry-roy.pdf",
-				"Drew sparks.pdf",
-				"Jeffrey norris.pdf",
-				"Dwayne_townsend.pdf",
-				"Violet-Garza.pdf",
-				"Oscar----Ellis.pdf",
-				"jeremiah wwest.pdf",
-				"emma    Padilla.pdf",
-			};
+			List<string> filenames = new () { "Ernesto Lowe.pdf",
+											  "Calvin-hopkins.pdf",
+											  "Brandon    Mullins.pdf",
+											  "Jon Wood.pdf",
+											  "marianne-owers.pdf",
+											  "Luis--Chavez.pdf",
+											  "Cecil Logan.pdf",
+											  "Saul_kennedy.pdf",
+											  "Raul___Thompson___CV.pdf",
+											  "Juana--Wagner.pdf",
+											  "sophie_chapman.pdf",
+											  "Donna___Mason.pdf",
+											  "garry-roy.pdf",
+											  "Drew sparks.pdf",
+											  "Jeffrey norris.pdf",
+											  "Dwayne_townsend.pdf",
+											  "Violet-Garza.pdf",
+											  "Oscar----Ellis.pdf",
+											  "jeremiah wwest.pdf",
+											  "emma    Padilla.pdf" };
 
 			Console.WriteLine("File names after renaming:");
 			Renamer(filenames);
