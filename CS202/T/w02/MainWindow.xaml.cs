@@ -11,12 +11,11 @@ namespace w02
     
     public partial class MainWindow : Window
 	{
-
 		string[] resFiles;
-		string resPath = "Images";
+		readonly string resDir = "Images";
 		public string[] GetImageFiles()
 		{
-			resFiles = Directory.GetFiles(resPath);
+			resFiles = Directory.GetFiles(resDir);
 
 			return resFiles;
 		}
@@ -26,7 +25,7 @@ namespace w02
             Random rng = new Random();
 			
             string path = resFiles[rng.Next(resFiles.Length)];
-            string text = path.Substring(resPath.Length + 1)    // Remove "Images/"
+            string text = path.Substring(resDir.Length + 1)    // Remove "Images/"
                               .Split('.')[0]                    // Remove ".png"
                               .Replace('_', ' ');
 
@@ -37,7 +36,6 @@ namespace w02
 		{
 			Tuple<string, string> entry = NextEntry();
 
-			// https://stackoverflow.com/a/4567065/16784616
 			image.Source = new BitmapImage(new Uri(entry.Item1, UriKind.Relative));
 
 			textbox.Content = entry.Item2;
