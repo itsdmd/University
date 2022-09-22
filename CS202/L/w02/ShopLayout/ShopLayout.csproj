@@ -16,6 +16,7 @@
     <None Remove="res\book.png" />
     <None Remove="res\camera.png" />
     <None Remove="res\chocolate.png" />
+    <None Remove="res\crown.png" />
     <None Remove="res\cucumber.png" />
     <None Remove="res\cup.png" />
     <None Remove="res\detergent-1.png" />
@@ -88,6 +89,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\chocolate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\crown.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\cucumber.png">

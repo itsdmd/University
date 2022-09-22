@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopLayout"
         mc:Ignorable="d"
-        Title="Tiki" Height="400" Width="1000">
+        Title="Tiki" Height="500" Width="1100">
 	<StackPanel Orientation="Vertical">
 		<TextBlock Text="Danh Muc Noi Bat"
-					   FontSize="20"/>
+				   FontSize="20" FontWeight="Bold"
+				   Margin="5"/>
 		<Border BorderThickness="5" BorderBrush="White">
 			<UniformGrid Rows="2" Height="200">
 				<Border BorderThickness="0.5" BorderBrush="Black">
@@ -216,135 +217,125 @@
 
 		<Border BorderThickness="5" BorderBrush="Silver">
 			<StackPanel Orientation="Vertical">
-				<UniformGrid Rows="1" Columns="2">
+				<DockPanel>
+					<Image Source="res/crown.png"
+						   Width="20" Height="20"
+						   DockPanel.Dock="Left"
+						   Margin="5"/>
 					<TextBlock Text="Xu Huong Mua Sam"
-							   TextAlignment="Left" VerticalAlignment="Center"
-							   Foreground="Orange"
+							   TextAlignment="Left" VerticalAlignment="Center" Margin="5"
+							   DockPanel.Dock="Left"
+							   Foreground="Blue"
 							   FontSize="20" FontWeight="Bold"/>
-					<TextBlock Text="Xem tat ca &gt;"
-							   TextAlignment="Right" VerticalAlignment="Center"
-							   Foreground="Orange"/>
-				</UniformGrid>
+					<TextBlock Text="XEM THEM"
+							   TextAlignment="Right" VerticalAlignment="Center" Margin="5"
+							   DockPanel.Dock="Right"
+							   Foreground="Blue"/>
+				</DockPanel>
 
 				<UniformGrid Rows="1">
-					<Border BorderThickness="0.5" BorderBrush="Black">
+					<Border BorderThickness="0.5" BorderBrush="Black" Margin="10">
 						<StackPanel Orientation="Vertical">
-							<Canvas Width="100" Height="100">
-								<Image x:Name="fsi1"
-									   Width="100" Height="100"
-									   Source="res/detergent-1.png"/>
-								<TextBlock x:Name="fsd1"
-										   Width="30" Height="30"
-										   Canvas.Right="0" Canvas.Top="0"
-										   Background="Wheat" Foreground="Black"
-										   Text="-15%" TextAlignment="Center"/>
-							</Canvas>
-							<TextBlock x:Name="fsp1"
-									   Text="250.000"
-					   				   TextAlignment="Center" TextWrapping="Wrap"
-					   				   VerticalAlignment="Center" HorizontalAlignment="Center"
-									   Foreground="Orange"
-									   FontSize="15"/>
+							<StackPanel Orientation="Vertical">
+								<TextBlock Text="Noi ap suat"
+										   VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"
+										   FontSize="15" FontWeight="Bold"/>
+								<TextBlock Text="Nhieu nguoi xem"
+										   TextAlignment="Center"
+										   VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"
+										   Width="100"
+										   Foreground="DeepSkyBlue" Background="LightCyan"/>
+							</StackPanel>
+							<StackPanel Orientation="Horizontal">
+								<Border BorderBrush="Black" BorderThickness="1" Margin="5">
+									<Image x:Name="fsi11"
+										   Width="100" Height="100" Margin="5"
+										   Source="res/pressure-cooker-2.png"/>
+								</Border>
+								<Border BorderBrush="Black" BorderThickness="1" Margin="5">
+									<Image x:Name="fsi12"
+										   Width="100" Height="100" Margin="5"
+										   Source="res/pressure-cooker-3.png"/>
+								</Border>
+							</StackPanel>
 						</StackPanel>
 					</Border>
-					<Border BorderThickness="0.5" BorderBrush="Black">
+					<Border BorderThickness="0.5" BorderBrush="Black" Margin="10">
 						<StackPanel Orientation="Vertical">
-							<Canvas Width="100" Height="100">
-								<Image x:Name="fsi2"
-									   Width="100" Height="100"
-									   Source="res/detergent-2.png"/>
-								<TextBlock x:Name="fsd2"
-										   Width="30" Height="30"
-										   Canvas.Right="0" Canvas.Top="0"
-										   Background="Wheat" Foreground="Black"
-										   Text="-10%" TextAlignment="Center"/>
-							</Canvas>
-							<TextBlock x:Name="fsp2"
-									   Text="120.000"
-					   				   TextAlignment="Center" TextWrapping="Wrap"
-					   				   VerticalAlignment="Center"
-									   Foreground="Orange"
-									   FontSize="15"/>
+							<StackPanel Orientation="Vertical">
+								<TextBlock Text="Thung rac, do hot rac"
+										   VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"
+										   FontSize="15" FontWeight="Bold"/>
+								<TextBlock Text="Giam den 4%"
+										   TextAlignment="Center"
+										   VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"
+										   Width="100"
+										   Foreground="DeepSkyBlue" Background="LightCyan"/>
+							</StackPanel>
+							<StackPanel Orientation="Horizontal">
+								<Border BorderBrush="Black" BorderThickness="1" Margin="5">
+									<Image x:Name="fsi21"
+										   Width="100" Height="100" Margin="5"
+										   Source="res/bin-2.png"/>
+								</Border>
+								<Border BorderBrush="Black" BorderThickness="1" Margin="5">
+									<Image x:Name="fsi22"
+										   Width="100" Height="100" Margin="5"
+										   Source="res/bin-3.png"/>
+								</Border>
+							</StackPanel>
 						</StackPanel>
 					</Border>
-					<Border BorderThickness="0.5" BorderBrush="Black">
+					<Border BorderThickness="0.5" BorderBrush="Black" Margin="10">
 						<StackPanel Orientation="Vertical">
-							<Canvas Width="100" Height="100">
-								<Image x:Name="fsi3"
-									   Width="100" Height="100"
-									   Source="res/detergent-3.png"/>
-								<TextBlock x:Name="fsd3"
-										   Width="30" Height="30"
-										   Canvas.Right="0" Canvas.Top="0"
-										   Background="Wheat" Foreground="Black"
-										   Text="-30%" TextAlignment="Center"/>
-							</Canvas>
-							<TextBlock x:Name="fsp3"
-									   Text="75.000"
-					   				   TextAlignment="Center" TextWrapping="Wrap"
-					   				   VerticalAlignment="Center"
-									   Foreground="Orange"
-									   FontSize="15"/>
+							<StackPanel Orientation="Vertical">
+								<TextBlock Text="Binh nuoc the thao"
+										   VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"
+										   FontSize="15" FontWeight="Bold"/>
+								<TextBlock Text="Giam den 58%"
+										   TextAlignment="Center"
+										   VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"
+										   Width="100"
+										   Foreground="DeepSkyBlue" Background="LightCyan"/>
+							</StackPanel>
+							<StackPanel Orientation="Horizontal">
+								<Border BorderBrush="Black" BorderThickness="1" Margin="5">
+									<Image x:Name="fsi31"
+										   Width="100" Height="100" Margin="5"
+										   Source="res/sport-bottle-2.png"/>
+								</Border>
+								<Border BorderBrush="Black" BorderThickness="1" Margin="5">
+									<Image x:Name="fsi32"
+										   Width="100" Height="100" Margin="5"
+										   Source="res/sport-bottle-3.png"/>
+								</Border>
+							</StackPanel>
 						</StackPanel>
 					</Border>
-					<Border BorderThickness="0.5" BorderBrush="Black">
+					<Border BorderThickness="0.5" BorderBrush="Black" Margin="10">
 						<StackPanel Orientation="Vertical">
-							<Canvas Width="100" Height="100">
-								<Image x:Name="fsi4"
-									   Width="100" Height="100"
-									   Source="res/soap.png"/>
-								<TextBlock x:Name="fsd4"
-										   Width="30" Height="30"
-										   Canvas.Right="0" Canvas.Top="0"
-										   Background="Wheat" Foreground="Black"
-										   Text="-25%" TextAlignment="Center"/>
-							</Canvas>
-							<TextBlock x:Name="fsp4"
-									   Text="25.000"
-					   				   TextAlignment="Center" TextWrapping="Wrap"
-					   				   VerticalAlignment="Center"
-									   Foreground="Orange"
-									   FontSize="15"/>
-						</StackPanel>
-					</Border>
-					<Border BorderThickness="0.5" BorderBrush="Black">
-						<StackPanel Orientation="Vertical">
-							<Canvas Width="100" Height="100">
-								<Image x:Name="fsi5"
-									   Width="100" Height="100"
-									   Source="res/sanitizer.png"/>
-								<TextBlock x:Name="fsd5"
-										   Width="30" Height="30"
-										   Canvas.Right="0" Canvas.Top="0"
-										   Background="Wheat" Foreground="Black"
-										   Text="-5%" TextAlignment="Center"/>
-							</Canvas>
-							<TextBlock x:Name="fsp5"
-									   Text="99.000"
-					   				   TextAlignment="Center" TextWrapping="Wrap"
-					   				   VerticalAlignment="Center"
-									   Foreground="Orange"
-									   FontSize="15"/>
-						</StackPanel>
-					</Border>
-					<Border BorderThickness="0.5" BorderBrush="Black">
-						<StackPanel Orientation="Vertical">
-							<Canvas Width="100" Height="100">
-								<Image x:Name="fsi6"
-									   Width="100" Height="100"
-									   Source="res/shampoo.png"/>
-								<TextBlock x:Name="fsd6"
-										   Width="30" Height="30"
-										   Canvas.Right="0" Canvas.Top="0"
-										   Background="Wheat" Foreground="Black"
-										   Text="-20%" TextAlignment="Center"/>
-							</Canvas>
-							<TextBlock x:Name="fsp6"
-									   Text="100.000"
-					   				   TextAlignment="Center" TextWrapping="Wrap"
-					   				   VerticalAlignment="Center"
-									   Foreground="Orange"
-									   FontSize="15"/>
+							<StackPanel Orientation="Vertical">
+								<TextBlock Text="Tu"
+										   VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"
+										   FontSize="15" FontWeight="Bold"/>
+								<TextBlock Text="Nhieu nguoi xem"
+										   TextAlignment="Center"
+										   VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"
+										   Width="100"
+										   Foreground="DeepSkyBlue" Background="LightCyan"/>
+							</StackPanel>
+							<StackPanel Orientation="Horizontal">
+								<Border BorderBrush="Black" BorderThickness="1" Margin="5">
+									<Image x:Name="fsi41"
+										   Width="100" Height="100" Margin="5"
+										   Source="res/wardrobe-2.png"/>
+								</Border>
+								<Border BorderBrush="Black" BorderThickness="1" Margin="5">
+									<Image x:Name="fsi42"
+										   Width="100" Height="100" Margin="5"
+										   Source="res/wardrobe-3.png"/>
+								</Border>
+							</StackPanel>
 						</StackPanel>
 					</Border>
 				</UniformGrid>
