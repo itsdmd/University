@@ -1,0 +1,15 @@
+﻿<Window x:Class="ShopLayout.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopLayout"
+        mc:Ignorable="d"
+        Title="Shop Layout" Height="300" Width="300">
+	<StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+		<TextBlock Text="Choose a shop to display" Margin="20"/>
+		<Button x:Name="shopee" Content="Shopee" Click="shopee_Click" HorizontalAlignment="Center" Margin="10" Width="70"/>
+		<Button x:Name="tiki" Content="Tiki" Click="tiki_Click" HorizontalAlignment="Center" Margin="10" Width="70"/>
+		<Button x:Name="tgdd" Content="TGDD" Click="tgdd_Click" HorizontalAlignment="Center" Margin="10" Width="70"/>
+	</StackPanel>
+</Window>
