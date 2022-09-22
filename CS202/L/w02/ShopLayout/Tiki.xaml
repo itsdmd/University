@@ -1,0 +1,354 @@
+﻿<Window x:Class="ShopLayout.Tiki"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopLayout"
+        mc:Ignorable="d"
+        Title="Tiki" Height="400" Width="1000">
+	<StackPanel Orientation="Vertical">
+		<TextBlock Text="Danh Muc Noi Bat"
+					   FontSize="20"/>
+		<Border BorderThickness="5" BorderBrush="White">
+			<UniformGrid Rows="2" Height="200">
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/fish.png"/>
+						<TextBlock Text="Thuc Pham Tuoi Song"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/cucumber.png"/>
+						<TextBlock Text="Rau Cu Qua"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/shoes_male.png"/>
+						<TextBlock Text="Giay The Thao"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/bag.png"/>
+						<TextBlock Text="Balo"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/pressure-cooker-1.png"/>
+						<TextBlock Text="Noi ap suat"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/bin-1.png"/>
+						<TextBlock Text="Thung rac, do hot rac"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/sport-bottle-1.png"/>
+						<TextBlock Text="Binh nuoc the thao"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/wardrobe-1.png"/>
+						<TextBlock Text="Tu"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/tool.png"/>
+						<TextBlock Text="Thiet bi nha cua khac"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/pot.png"/>
+						<TextBlock Text="Noi cac loai"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/table-set.png"/>
+						<TextBlock Text="Ban ghe"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/cup.png"/>
+						<TextBlock Text="Ly, coc &amp; phu kien ly"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/fold-knife.png"/>
+						<TextBlock Text="Dao xep da nang"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/mouse.png"/>
+						<TextBlock Text="Thiet bi so - Khac"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/kitchen.png"/>
+						<TextBlock Text="Ke nha bep"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/kitchen-app.png"/>
+						<TextBlock Text="Phu kien nha bep khac"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/food-container.png"/>
+						<TextBlock Text="Hop dung thuc pham"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/mop-1.png"/>
+						<TextBlock Text="Dung cu lau nha khac"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/mop-2.png"/>
+						<TextBlock Text="Choi, cay lau nha"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<Border BorderThickness="0.5" BorderBrush="Black">
+					<StackPanel Orientation="Vertical">
+						<Rectangle Height="20"/>
+						<Image Width="50" Height="50"
+							   Source="res/tent.png"/>
+						<TextBlock Text="Phu kien the thao, da ngoai"
+					   		   TextAlignment="Center" TextWrapping="Wrap"
+					   		   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+			</UniformGrid>
+		</Border>
+
+		<Border BorderThickness="5" BorderBrush="Silver">
+			<StackPanel Orientation="Vertical">
+				<UniformGrid Rows="1" Columns="2">
+					<TextBlock Text="Xu Huong Mua Sam"
+							   TextAlignment="Left" VerticalAlignment="Center"
+							   Foreground="Orange"
+							   FontSize="20" FontWeight="Bold"/>
+					<TextBlock Text="Xem tat ca &gt;"
+							   TextAlignment="Right" VerticalAlignment="Center"
+							   Foreground="Orange"/>
+				</UniformGrid>
+
+				<UniformGrid Rows="1">
+					<Border BorderThickness="0.5" BorderBrush="Black">
+						<StackPanel Orientation="Vertical">
+							<Canvas Width="100" Height="100">
+								<Image x:Name="fsi1"
+									   Width="100" Height="100"
+									   Source="res/detergent-1.png"/>
+								<TextBlock x:Name="fsd1"
+										   Width="30" Height="30"
+										   Canvas.Right="0" Canvas.Top="0"
+										   Background="Wheat" Foreground="Black"
+										   Text="-15%" TextAlignment="Center"/>
+							</Canvas>
+							<TextBlock x:Name="fsp1"
+									   Text="250.000"
+					   				   TextAlignment="Center" TextWrapping="Wrap"
+					   				   VerticalAlignment="Center" HorizontalAlignment="Center"
+									   Foreground="Orange"
+									   FontSize="15"/>
+						</StackPanel>
+					</Border>
+					<Border BorderThickness="0.5" BorderBrush="Black">
+						<StackPanel Orientation="Vertical">
+							<Canvas Width="100" Height="100">
+								<Image x:Name="fsi2"
+									   Width="100" Height="100"
+									   Source="res/detergent-2.png"/>
+								<TextBlock x:Name="fsd2"
+										   Width="30" Height="30"
+										   Canvas.Right="0" Canvas.Top="0"
+										   Background="Wheat" Foreground="Black"
+										   Text="-10%" TextAlignment="Center"/>
+							</Canvas>
+							<TextBlock x:Name="fsp2"
+									   Text="120.000"
+					   				   TextAlignment="Center" TextWrapping="Wrap"
+					   				   VerticalAlignment="Center"
+									   Foreground="Orange"
+									   FontSize="15"/>
+						</StackPanel>
+					</Border>
+					<Border BorderThickness="0.5" BorderBrush="Black">
+						<StackPanel Orientation="Vertical">
+							<Canvas Width="100" Height="100">
+								<Image x:Name="fsi3"
+									   Width="100" Height="100"
+									   Source="res/detergent-3.png"/>
+								<TextBlock x:Name="fsd3"
+										   Width="30" Height="30"
+										   Canvas.Right="0" Canvas.Top="0"
+										   Background="Wheat" Foreground="Black"
+										   Text="-30%" TextAlignment="Center"/>
+							</Canvas>
+							<TextBlock x:Name="fsp3"
+									   Text="75.000"
+					   				   TextAlignment="Center" TextWrapping="Wrap"
+					   				   VerticalAlignment="Center"
+									   Foreground="Orange"
+									   FontSize="15"/>
+						</StackPanel>
+					</Border>
+					<Border BorderThickness="0.5" BorderBrush="Black">
+						<StackPanel Orientation="Vertical">
+							<Canvas Width="100" Height="100">
+								<Image x:Name="fsi4"
+									   Width="100" Height="100"
+									   Source="res/soap.png"/>
+								<TextBlock x:Name="fsd4"
+										   Width="30" Height="30"
+										   Canvas.Right="0" Canvas.Top="0"
+										   Background="Wheat" Foreground="Black"
+										   Text="-25%" TextAlignment="Center"/>
+							</Canvas>
+							<TextBlock x:Name="fsp4"
+									   Text="25.000"
+					   				   TextAlignment="Center" TextWrapping="Wrap"
+					   				   VerticalAlignment="Center"
+									   Foreground="Orange"
+									   FontSize="15"/>
+						</StackPanel>
+					</Border>
+					<Border BorderThickness="0.5" BorderBrush="Black">
+						<StackPanel Orientation="Vertical">
+							<Canvas Width="100" Height="100">
+								<Image x:Name="fsi5"
+									   Width="100" Height="100"
+									   Source="res/sanitizer.png"/>
+								<TextBlock x:Name="fsd5"
+										   Width="30" Height="30"
+										   Canvas.Right="0" Canvas.Top="0"
+										   Background="Wheat" Foreground="Black"
+										   Text="-5%" TextAlignment="Center"/>
+							</Canvas>
+							<TextBlock x:Name="fsp5"
+									   Text="99.000"
+					   				   TextAlignment="Center" TextWrapping="Wrap"
+					   				   VerticalAlignment="Center"
+									   Foreground="Orange"
+									   FontSize="15"/>
+						</StackPanel>
+					</Border>
+					<Border BorderThickness="0.5" BorderBrush="Black">
+						<StackPanel Orientation="Vertical">
+							<Canvas Width="100" Height="100">
+								<Image x:Name="fsi6"
+									   Width="100" Height="100"
+									   Source="res/shampoo.png"/>
+								<TextBlock x:Name="fsd6"
+										   Width="30" Height="30"
+										   Canvas.Right="0" Canvas.Top="0"
+										   Background="Wheat" Foreground="Black"
+										   Text="-20%" TextAlignment="Center"/>
+							</Canvas>
+							<TextBlock x:Name="fsp6"
+									   Text="100.000"
+					   				   TextAlignment="Center" TextWrapping="Wrap"
+					   				   VerticalAlignment="Center"
+									   Foreground="Orange"
+									   FontSize="15"/>
+						</StackPanel>
+					</Border>
+				</UniformGrid>
+			</StackPanel>
+		</Border>
+	</StackPanel>
+</Window>

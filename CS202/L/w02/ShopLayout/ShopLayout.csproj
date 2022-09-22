@@ -9,20 +9,38 @@
 
   <ItemGroup>
     <None Remove="res\baby-chair.png" />
+    <None Remove="res\bag.png" />
+    <None Remove="res\bin-1.png" />
+    <None Remove="res\bin-2.png" />
+    <None Remove="res\bin-3.png" />
     <None Remove="res\book.png" />
     <None Remove="res\camera.png" />
     <None Remove="res\chocolate.png" />
+    <None Remove="res\cucumber.png" />
+    <None Remove="res\cup.png" />
     <None Remove="res\detergent-1.png" />
     <None Remove="res\detergent-2.png" />
     <None Remove="res\detergent-3.png" />
     <None Remove="res\dress.png" />
     <None Remove="res\earring.png" />
+    <None Remove="res\fish.png" />
+    <None Remove="res\fold-knife.png" />
+    <None Remove="res\food-container.png" />
     <None Remove="res\football.png" />
     <None Remove="res\iphone.png" />
     <None Remove="res\kettle.png" />
+    <None Remove="res\kitchen-app.png" />
+    <None Remove="res\kitchen.png" />
     <None Remove="res\laptop.png" />
     <None Remove="res\makeup.png" />
+    <None Remove="res\mop-1.png" />
+    <None Remove="res\mop-2.png" />
+    <None Remove="res\mouse.png" />
     <None Remove="res\pot.png" />
+    <None Remove="res\pressure-cooker-1.png" />
+    <None Remove="res\pressure-cooker-2.png" />
+    <None Remove="res\pressure-cooker-3.png" />
+    <None Remove="res\pressure-cooker.png" />
     <None Remove="res\purse.png" />
     <None Remove="res\sanitizer.png" />
     <None Remove="res\scooter.png" />
@@ -31,13 +49,36 @@
     <None Remove="res\shoes_female.png" />
     <None Remove="res\shoes_male.png" />
     <None Remove="res\soap.png" />
+    <None Remove="res\sport-bottle-1.png" />
+    <None Remove="res\sport-bottle-2.png" />
+    <None Remove="res\sport-bottle-3.png" />
+    <None Remove="res\sport-bottle.png" />
+    <None Remove="res\table-set.png" />
+    <None Remove="res\tent.png" />
     <None Remove="res\ticket.png" />
+    <None Remove="res\tool.png" />
     <None Remove="res\tv.png" />
+    <None Remove="res\wardrobe-1.png" />
+    <None Remove="res\wardrobe-2.png" />
+    <None Remove="res\wardrobe-3.png" />
+    <None Remove="res\wardrobe.png" />
     <None Remove="res\watch.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="res\baby-chair.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\bag.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\bin-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\bin-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\bin-3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\book.png">
@@ -47,6 +88,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\chocolate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\cucumber.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\cup.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\detergent-1.png">
@@ -64,13 +111,46 @@
     <Content Include="res\earring.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="res\fish.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\fold-knife.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\food-container.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="res\football.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\kitchen-app.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\kitchen.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\makeup.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="res\mop-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\mop-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\mouse.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="res\pot.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\pressure-cooker-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\pressure-cooker-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\pressure-cooker-3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\purse.png">
@@ -106,10 +186,37 @@
     <Content Include="res\soap.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="res\sport-bottle-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\sport-bottle-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\sport-bottle-3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\table-set.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\tent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="res\ticket.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="res\tool.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="res\tv.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\wardrobe-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\wardrobe-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\wardrobe-3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\watch.png">
