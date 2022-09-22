@@ -10,12 +10,18 @@
     <Compile Update="Shopee.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Tiki.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Shopee.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tiki.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
