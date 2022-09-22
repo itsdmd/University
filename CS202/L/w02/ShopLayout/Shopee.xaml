@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopLayout"
         mc:Ignorable="d"
-        Title="Shopee" Height="400" Width="1000">
+        Title="Shopee" Height="420" Width="1000">
 	<StackPanel Orientation="Vertical">
 		<Border BorderThickness="5" BorderBrush="Silver">
 			<UniformGrid Rows="2" Height="200">

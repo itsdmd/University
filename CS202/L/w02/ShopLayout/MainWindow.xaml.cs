@@ -27,17 +27,20 @@ namespace ShopLayout
 
 		private void shopee_Click(object sender, RoutedEventArgs e)
 		{
-
+			Shopee shopee = new Shopee();
+			shopee.ShowDialog();
 		}
 
 		private void tiki_Click(object sender, RoutedEventArgs e)
 		{
-
+			Tiki tiki = new Tiki();
+			tiki.ShowDialog();
 		}
 
 		private void tgdd_Click(object sender, RoutedEventArgs e)
 		{
-
+			TGDD tgdd = new TGDD();
+			tgdd.ShowDialog();
 		}
 	}
 }
