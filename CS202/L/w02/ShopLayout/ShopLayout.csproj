@@ -37,6 +37,11 @@
     <None Remove="res\mop-1.png" />
     <None Remove="res\mop-2.png" />
     <None Remove="res\mouse.png" />
+    <None Remove="res\phone-1.png" />
+    <None Remove="res\phone-2.png" />
+    <None Remove="res\phone-3.png" />
+    <None Remove="res\phone-4.png" />
+    <None Remove="res\phone-5.png" />
     <None Remove="res\pot.png" />
     <None Remove="res\pressure-cooker-1.png" />
     <None Remove="res\pressure-cooker-2.png" />
@@ -56,6 +61,8 @@
     <None Remove="res\sport-bottle.png" />
     <None Remove="res\table-set.png" />
     <None Remove="res\tent.png" />
+    <None Remove="res\tgdd-1.png" />
+    <None Remove="res\tgdd-2.png" />
     <None Remove="res\ticket.png" />
     <None Remove="res\tool.png" />
     <None Remove="res\tv.png" />
@@ -145,6 +152,21 @@
     <Content Include="res\mouse.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="res\phone-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\phone-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\phone-3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\phone-4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\phone-5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="res\pot.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -203,6 +225,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\tent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\tgdd-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\tgdd-2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\ticket.png">
