@@ -1,0 +1,30 @@
+﻿<Window x:Class="DataBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBinding"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="400" Loaded="Window_Loaded">
+	<Window.Resources>
+		<local:CredToPercentageConv x:Key="percentageConv"/>
+		<local:RelToAbsPath x:Key="relToAbs"/>
+	</Window.Resources>
+	<StackPanel>
+		<Image Source="{Binding AvatarPath, Converter={StaticResource relToAbs}}" Width="50" Height="50"/>
+		<Label Content="{Binding ID}" HorizontalAlignment="Center"/>
+		<Label Content="{Binding Name}" HorizontalAlignment="Center"/>
+		<ProgressBar Value="{Binding Credits}"
+					 Minimum="0" Maximum="140"
+					 Width="200" Height="10"/>
+		<TextBlock HorizontalAlignment="Center">
+			<Run Text="{Binding Credits}"/>
+			/
+			<Run Text="{Binding TotalCred}"/>
+			<LineBreak/>
+			<Run Text="{Binding Credits, Converter={StaticResource percentageConv}}"/>
+		</TextBlock>
+		<Button Width="80" Height="35" Content="Calc"
+				Click="Button_Click"/>
+	</StackPanel>
+</Window>
