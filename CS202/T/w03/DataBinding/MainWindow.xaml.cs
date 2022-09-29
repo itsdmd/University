@@ -47,7 +47,6 @@ namespace DataBinding
 			AvatarPath = "Images/chocolate.png"
 		};
 
-
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			this.DataContext = _sv;
