@@ -28,12 +28,12 @@ General hierarchy (only folder's level matters):
 	- ├ **L** ........ _Lab_
 	- └ **T** ........ _Theory_
 		
-		- └ **w\*\*** ................ _Week \*\* submission, ex: W03_
+		- └ **w\*\*** ................ _Week \*\* submission, ex: w03_
 			- ├ **data** ........ _Input data files (if not specifically required by lecturer)_
 			- └ **src** .......... _Headers_
 
 ## 3. 📄 Files
-**For material files**: Descriptive and no whitespace
+**For material files**: Descriptive and no whitespace (except provided by lecturer)
 
 **For submission files**: Follow lecturer's naming scheme
 
@@ -47,7 +47,7 @@ Generic commits must start its message with one of the following prefixes:
 
 - ```[add]``` : Create new
 - ```[del]``` : Delete
-- ```[mod]``` : Modify *(non-versioning CMs only)*
+- ```[mod]``` : Modify *(Generic only)*
 - ```[rnm] <old> > <new>``` : Rename
 - ```[mov] <old_dir> > <new_dir>``` : Move
 - ```[rft]``` : Directory refactor
@@ -62,19 +62,13 @@ Generic commits must start its message with one of the following prefixes:
 
 #### Examples
 ✅ Match:
-- ```102.02.01```
-- ```104.L.02.01```
-- ```105b.T.03.02```
-- ```[add] 102.05```
-- ```[add] 104.T.05```
-- ```[add] 104.T.05-og```
-- ```[rnm] 104.T.05 > 104.T.06.31```
+- ```[add] 106.T.01```
+- ```[add] 106.T.01-02```
+- ```[add] 106.D-T.textbook```
+- ```106.T.01-02.01```
 
 ❌ Won't match:
-- ```104.T.03```
-- ```[xyz] 104.T.05```
-- ```[rnm] 104.T.05```
-- ```[mod] 104.T.05.21```
-- ```104.l.02.01```
-- ```104.X.02.03```
-- ```[del] 42069.LT.2.112```
+- ```[add] 106.T. 01```
+- ```[add] 106.T.01.02```
+- ```[add] 106.T.abc```
+- ```[add] 106.D.textbook```
