@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace ComboBox
 		{
 			public string ID { get; set; }
 			public string Name { get; set; }
-			public int Credits { get; set; }
+			public string Program { get; set; }
 			public string AvatarPath { get; set; }
 		}
 
@@ -39,27 +40,63 @@ namespace ComboBox
 		{
 			ID = "001",
 			Name = "John",
-			Credits = 75,
-			AvatarPath = "res/cup.png"
+			Program = "Standard",
+			AvatarPath = "res/1.jpg"
 		};
 
 		static Student _sv2 = new Student()
 		{
 			ID = "002",
 			Name = "Jim",
-			Credits = 120,
-			AvatarPath = "res/cucumber.png"
+			Program = "ITEC",
+			AvatarPath = "res/2.jpg"
 		};
 
-		List<Student> _list;
+		static Student _sv3 = new Student()
+		{
+			ID = "003",
+			Name = "Joe",
+			Program = "ITEC",
+			AvatarPath = "res/3.jpg"
+		};
+
+		static Student _sv4 = new Student()
+		{
+			ID = "004",
+			Name = "Jules",
+			Program = "Standard",
+			AvatarPath = "res/4.jpg"
+		};
+
+		static Student _sv5 = new Student()
+		{
+			ID = "005",
+			Name = "Jake",
+			Program = "Standard",
+			AvatarPath = "res/5.jpg"
+		};
+
+		BindingList<Student> _list;
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			_list = new List<Student>();
+			_list = new BindingList<Student>();
 			_list.Add(_sv1);
 			_list.Add(_sv2);
 
 			studentComboBox.ItemsSource = _list;
+		}
+
+		private void addStudent_Click(object sender, RoutedEventArgs e)
+		{
+			_list.Add(_sv3);
+			_list.Add(_sv4);
+			_list.Add(_sv5);
+		}
+
+		private void delStudent_Click(object sender, RoutedEventArgs e)
+		{
+			_list.RemoveAt(studentComboBox.SelectedIndex);
 		}
 	}
 }
