@@ -1,0 +1,46 @@
+﻿<Window x:Class="BookComboBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookComboBox"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="600" Loaded="Window_Loaded">
+	<Window.Resources>
+		<local:RelToAbsPath x:Key="relToAbs"/>
+	</Window.Resources>
+	<Canvas>
+		<ListView Name="bookComboBox"
+				  Width="400" Height="230"
+				  Canvas.Top="10" Canvas.Left="95">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Image Source="{Binding CoverPath, Converter={StaticResource relToAbs}}"
+							   Height="50"
+							   Margin="5"/>
+						<TextBlock VerticalAlignment="Center">
+							<Run Text="{Binding Name}" FontWeight="Bold" Foreground="Navy"/>
+							<LineBreak/>
+							<Run Text="{Binding Author}" Foreground="OrangeRed"/>
+							<LineBreak/>
+							<Run Text="{Binding PubYear}"/>
+						</TextBlock>
+					</StackPanel>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+		<Button x:Name="addBook"
+				Width="100" Height="30"
+				Canvas.Top="270" Canvas.Left="95"
+				Content="Add" Click="addBook_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		<Button x:Name="delBook"
+				Width="100" Height="30"
+				Canvas.Top="270" Canvas.Left="395"
+				Content="Delete" Click="delBook_Click" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<Button x:Name="updBook"
+				Width="100" Height="30"
+				Canvas.Top="270" Canvas.Left="245"
+				Content="Update" Click="updBook_Click" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+	</Canvas>
+</Window>
