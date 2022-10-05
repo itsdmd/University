@@ -18,13 +18,13 @@ WHERE (YEAR(NgayNhanChuc) > 1995)
 -- 5. BoMon + GVTBM
 SELECT *
 FROM BoMon
-JOIN GiaoVien
+LEFT JOIN GiaoVien
 ON BoMon.TruongBoMon = GiaoVien.MaGV
 
 -- 7. DeTai + GVCNDT
 SELECT *
 FROM DeTai
-JOIN GiaoVien
+LEFT JOIN GiaoVien
 ON DeTai.GVCNDT = GiaoVien.MaGV
 
 -- 9. GiaoVien (TenBoMon = 'Vi sinh') & (MaDT = '006')
