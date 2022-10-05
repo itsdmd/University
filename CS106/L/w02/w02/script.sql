@@ -88,12 +88,12 @@ INSERT INTO GiaoVien VALUES('006', N'Trần Bạch Tuyết', 1500, N'Nữ', '198
 INSERT INTO GiaoVien VALUES('007', N'Nguyễn An Trung', 1800, N'Nam', '1976-06-05', N'234 3/2, TP Biên Hòa', NULL, NULL)
 INSERT INTO GiaoVien VALUES('008', N'Trần Trung Hiếu', 1800, N'Nam', '1977-08-06', N'22/11 Lý Thường Kiệt, TP Mỹ Tho', '007', NULL)
 INSERT INTO GiaoVien VALUES('009', N'Trần Hoàng Nam', 2000, N'Nam', '1975-11-22', N'234 Trấn Não, An Phú, TP HCM', '001', NULL)
-INSERT INTO GiaoVien VALUES('010', N'Phạm Nam Thand', 1500, N'Nam', '1980-12-22', N'221 Hùng Vương, Q.5, TP HCM', '007', NULL)
+INSERT INTO GiaoVien VALUES('010', N'Phạm Nam Thanh', 1500, N'Nam', '1980-12-22', N'221 Hùng Vương, Q.5, TP HCM', '007', NULL)
 
-INSERT INTO Khoa VALUES('CNTT', 'Công nghệ thông tin', 1995, 'B11', '0838123456', '002', '2005-02-20')
-INSERT INTO Khoa VALUES('HH', 'Hóa học', 1980, 'B41', '0838456456', '007', '2001-10-15')
-INSERT INTO Khoa VALUES('SH', 'Sinh học', 1980, 'B31', '0838454545', '004', '2000-10-11')
-INSERT INTO Khoa VALUES('VL', 'Vật lý', 1976, 'B21', '0838223223', '005', '2003-09-18')
+INSERT INTO Khoa VALUES('CNTT', N'Công nghệ thông tin', 1995, 'B11', '0838123456', '002', '2005-02-20')
+INSERT INTO Khoa VALUES('HH', N'Hóa học', 1980, 'B41', '0838456456', '007', '2001-10-15')
+INSERT INTO Khoa VALUES('SH', N'Sinh học', 1980, 'B31', '0838454545', '004', '2000-10-11')
+INSERT INTO Khoa VALUES('VL', N'Vật lý', 1976, 'B21', '0838223223', '005', '2003-09-18')
 
 INSERT INTO BoMon VALUES('CNTT', N'Công nghệ tri thức', 'B15', '0838126126', NULL, 'CNTT', NULL)
 INSERT INTO BoMon VALUES('HHC', N'Hóa hữu cơ', 'B44', '838222222', NULL, 'HH', NULL)
