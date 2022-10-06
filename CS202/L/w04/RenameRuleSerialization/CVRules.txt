@@ -1,0 +1,7 @@
+﻿Replace google => facebook
+ReplaceWithSpace - _
+OneSpaceOnly
+TitleCase
+AddPrefix CV
+AddDatePrefix
+InVaLiD
