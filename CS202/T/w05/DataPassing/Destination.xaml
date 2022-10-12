@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataPassing"
         mc:Ignorable="d"
-        Title="Destination" Height="200" Width="220" Loaded="Window_Loaded">
+        Title="Destination" Height="270" Width="277" Loaded="Window_Loaded">
 	<Canvas>
 		<Label Content="Destination" 
 			   FontSize="30" FontWeight="DemiBold"
@@ -13,13 +13,18 @@
 		<TextBox x:Name="txtSource" Text="{Binding Name}"
 				 Width="200" Height="50"
 				 Canvas.Left="10" Canvas.Top="50"/>
+		<Slider x:Name="credSlider" Minimum="0" Maximum="100"
+				Value="{Binding Credits}" ValueChanged="Slider_ValueChanged"
+				Width="200"
+				Canvas.Left="10" Canvas.Top="114"
+				HorizontalAlignment="Left" VerticalAlignment="Center"/>
 		<Button x:Name="okButton" IsDefault="True"
 				Content="OK" Click="okButton_Click"
 				Width="80" Height="20"
-				Canvas.Left="10" Canvas.Top="119"/>
+				Canvas.Left="10" Canvas.Top="146" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 		<Button x:Name="cancelButton" IsCancel="True"
 				Content="Cancel"
 				Width="80" Height="20"
-				Canvas.Left="130" Canvas.Top="119"/>
+				Canvas.Left="130" Canvas.Top="146" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 	</Canvas>
 </Window>

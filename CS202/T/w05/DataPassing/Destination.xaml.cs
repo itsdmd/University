@@ -16,6 +16,9 @@ namespace DataPassing
 {
 	public partial class Destination : Window
 	{
+		public delegate void CreditChange(int newVal);	// Function pointer
+		public event CreditChange Handler;				// event: Function pointer array
+		
 		// Hold modified data from the textbox
 		public Student ReturnData { get; set; }
 
@@ -33,8 +36,14 @@ namespace DataPassing
 
 		private void okButton_Click(object sender, RoutedEventArgs e)
 		{
-			// Close the window and return the modified data
+			// Close the window and return true (succeed)
 			DialogResult = true;
+		}
+
+		private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			int newVal = (int)credSlider.Value;
+			Handler?.Invoke(newVal);	// If Handler isn't null, update with newVal
 		}
 	}
 }

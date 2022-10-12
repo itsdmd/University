@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace DataPassing
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
 	public partial class MainWindow : Window
 	{
 		public MainWindow()
@@ -25,7 +22,7 @@ namespace DataPassing
 			InitializeComponent();
 		}
 
-		static Student _sv1 = new Student()
+		static Student _sv = new Student()
 		{
 			ID = "001",
 			Name = "John",
@@ -35,20 +32,28 @@ namespace DataPassing
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			DataContext = _sv1;
+			DataContext = _sv;
 		}
 
-		private void okButton_Click(object sender, RoutedEventArgs e)
+		private void Screen_Handler(int newVal)
 		{
-			var screen = new Destination(_sv1);
+			_sv.Credits = newVal;
+		}
+
+		int _oldSliderVal = 0;
+		private void sendButton_Click(object sender, RoutedEventArgs e)
+		{
+			var screen = new Destination(_sv);
+			_oldSliderVal = _sv.Credits;
+			screen.Handler += Screen_Handler;
 			
 			if (screen.ShowDialog() == true)
 			{
-				// Update the data context for the main window with the modified data returned from the destination window
-				DataContext = screen.ReturnData;
+				_sv = screen.ReturnData;
+				DataContext = _sv;
 			} else
 			{
-				Title = "Nothing returned";
+				_sv.Credits = _oldSliderVal;
 			}
 		}
 	}
