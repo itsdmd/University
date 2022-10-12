@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataPassing"
         mc:Ignorable="d"
-        Title="MainWindow" Height="200" Width="220" Loaded="Window_Loaded">
+        Title="MainWindow" Height="261" Width="266" Loaded="Window_Loaded">
 	<Canvas>
 		<Label Content="Source" 
 			   FontSize="30" FontWeight="DemiBold"
@@ -13,9 +13,16 @@
 		<TextBox x:Name="txtSource" Text="{Binding Name}"
 				 Width="200" Height="50"
 				 Canvas.Left="10" Canvas.Top="50"/>
-		<Button x:Name="okButton" IsDefault="True"
-				Content="OK" Click="okButton_Click"
+		<Label Content="{Binding Credits}"
+			   Width="50" Height="33"
+			   HorizontalAlignment="Center" VerticalAlignment="Top"
+			   Canvas.Left="10" Canvas.Top="123"/>
+		<ProgressBar Minimum="0" Maximum="100" Value="{Binding Credits}"
+					 Width="130" Height="10" Canvas.Left="80" Canvas.Top="137"
+					 HorizontalAlignment="Center" VerticalAlignment="Top"/>
+		<Button x:Name="sendButton" IsDefault="True"
+				Content="Send" Click="sendButton_Click"
 				Width="80" Height="20"
-				Canvas.Left="70" Canvas.Top="118"/>
+				Canvas.Left="70" Canvas.Top="193" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 	</Canvas>
 </Window>
