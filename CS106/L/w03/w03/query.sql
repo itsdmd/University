@@ -10,7 +10,7 @@ WHERE Phai = N'Nữ'
 SELECT TenGV, Luong*1.1 as Luong10
 FROM GiaoVien
 
--- 3. Cho biết mã của các giáo viên có họ tên bắt đầu là “Nguyễn” và lương trên $2000, hoặc giáo viên là trưởng bộ môn nhận chức sau năm 1995.
+-- 3. Cho biết mã của các giáo viên có họ tên bắt đầu là "Nguyễn" và lương trên $2000, hoặc giáo viên là trưởng bộ môn nhận chức sau năm 1995.
 SELECT MaGV
 FROM GiaoVien
 WHERE (TenGV LIKE N'Nguyễn%')
@@ -51,7 +51,7 @@ FROM Khoa
     LEFT JOIN GiaoVien
 ON Khoa.TruongKhoa = GiaoVien.MaGV
 
--- 9.Cho biết các giáo viên của bộ môn “Vi sinh” có tham gia đề tài 006.
+-- 9.Cho biết các giáo viên của bộ môn "Vi sinh" có tham gia đề tài 006.
 SELECT *
 FROM GiaoVien
     LEFT JOIN BoMon ON BoMon.MaBM = GiaoVien.MaBM
@@ -59,7 +59,7 @@ FROM GiaoVien
 WHERE (BoMon.TenBoMon = N'Vi sinh')
     AND (DeTai.MaDT = '006')
 
--- 10. Với những đề tài thuộc cấp quản lý “Thành phố”, cho biết mã đề tài, đề tài thuộc về chủ đề nào, họ tên người chủ nghiệm đề tài cùng với ngày sinh và địa chỉ của người ấy.
+-- 10. Với những đề tài thuộc cấp quản lý "Thành phố", cho biết mã đề tài, đề tài thuộc về chủ đề nào, họ tên người chủ nghiệm đề tài cùng với ngày sinh và địa chỉ của người ấy.
 SELECT TenDT, ChuDe.MaCD, ChuDe.TenCD, TenGV, NgSinh, DiaChi
 FROM DeTai
     LEFT JOIN ChuDe ON DeTai.MaCD = ChuDe.MaCD
@@ -71,13 +71,13 @@ SELECT GV.TenGV, GVQL.TenGV AS TenGVQLCM
 FROM GiaoVien AS GV
     LEFT JOIN GiaoVien AS GVQL ON GV.GVQLCM = GVQL.MaGV
 
--- 12. Tìm họ tên của những giáo viên được “Nguyễn Thanh Tùng” phụ trách trực tiếp.
+-- 12. Tìm họ tên của những giáo viên được "Nguyễn Thanh Tùng" phụ trách trực tiếp.
 SELECT GV.TenGV
 FROM GiaoVien AS GV
 LEFT JOIN GiaoVien AS GVQLCM ON GV.GVQLCM = GVQLCM.MaGV
 WHERE GVQLCM.TenGV = N'Nguyễn Thanh Tùng'
 
--- 13. Cho biết tên giáo viên là trưởng bộ môn “Hệ thống thông tin”.
+-- 13. Cho biết tên giáo viên là trưởng bộ môn "Hệ thống thông tin".
 SELECT TenGV
 FROM GiaoVien
     LEFT JOIN BoMon ON GiaoVien.MaGV = BoMon.TruongBoMon
@@ -104,16 +104,18 @@ FROM GiaoVien AS GV
     LEFT JOIN GiaoVien AS GVQL ON GV.GVQLCM = GVQL.MaGV
 
 -- 17. Cho các công việc bắt đầu trong khoảng từ 01/01/2007 đến 01/08/2007.
+SET DATEFORMAT DMY
 SELECT *
 FROM CongViec
-WHERE (DAY(CongViec.NgayBD) >= 1) AND (MONTH(CongViec.NgayBD) >= 1) AND (YEAR(CongViec.NgayBD) >= 2007)
-    AND (DAY(CongViec.NgayKT) <= 1) AND (MONTH(CongViec.NgayKT) <= 8) AND (YEAR(CongViec.NgayKT) <= 2007)
+WHERE CongViec.NgayBD >= '1/1/2007'
+    AND CongViec.NgayBD <= '1/8/2007'
 
--- 18. Cho biết họ tên các giáo viên cùng bộ môn với giáo viên “Trần Trà Hương”.
+-- 18. Cho biết họ tên các giáo viên cùng bộ môn với giáo viên "Trần Trà Hương".
 SELECT GiaoVien.TenGV
 FROM GiaoVien
     LEFT JOIN GiaoVien AS TTH ON TTH.TenGV = N'Trần Trà Hương'
 WHERE GiaoVien.MaBM = TTH.MaBM
+    AND GiaoVien.MaGV != TTH.MaGV
 
 -- 19. Tìm những giáo viên vừa là trưởng bộ môn vừa chủ nhiệm đề tài.
 SELECT DISTINCT GiaoVien.*
@@ -148,7 +150,7 @@ FROM GiaoVien
 WHERE (GiaoVien.MaGV = Khoa.TruongKhoa)
     AND (GiaoVien.MaGV = DeTai.GVCNDT)
 
--- 23. Cho biết mã số các giáo viên thuộc bộ môn “HTTT” hoặc có tham gia đề tài mã “001”.
+-- 23. Cho biết mã số các giáo viên thuộc bộ môn "HTTT" hoặc có tham gia đề tài mã "001".
 SELECT DISTINCT MaGV
 FROM GiaoVien
     LEFT JOIN BoMon ON GiaoVien.MaBM = BoMon.MaBM
@@ -161,6 +163,7 @@ SELECT DISTINCT GiaoVien.*
 FROM GiaoVien
     LEFT JOIN GiaoVien AS ZZT ON ZZT.MaGV = '002'
 WHERE GiaoVien.MaBM = ZZT.MaBM
+    AND GiaoVien.MaGV != ZZT.MaGV
 
 -- 25. Tìm những giáo viên là trưởng bộ môn.
 SELECT DISTINCT GiaoVien.*
