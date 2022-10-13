@@ -1,0 +1,5 @@
+﻿Replace google => facebook
+OneSpaceOnly
+PascalCase
+AddPrefix CV
+InVaLiD
