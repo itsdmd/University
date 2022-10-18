@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPassing", "DataPassing\DataPassing.csproj", "{025A5FCA-3381-474A-8E1E-E50383A4C785}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{025A5FCA-3381-474A-8E1E-E50383A4C785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{025A5FCA-3381-474A-8E1E-E50383A4C785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{025A5FCA-3381-474A-8E1E-E50383A4C785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{025A5FCA-3381-474A-8E1E-E50383A4C785}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3FBF3E21-8399-4FC2-8222-689C062625EA}
+	EndGlobalSection
+EndGlobal
