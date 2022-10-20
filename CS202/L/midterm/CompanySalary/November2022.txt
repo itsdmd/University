@@ -1,0 +1,18 @@
+﻿DailyEmployee: John Walker
+   Avatar: avatar01.jpg
+   DailyPayment=100$; TotalDays=28
+DailyEmployee: Lyndsea Carlie
+   Avatar: avatar02.jpg
+   DailyPayment=120$; TotalDays=10
+HourlyEmployee: Rachyl Napier
+   Avatar: avatar03.jpg
+   HourlyPayment=15$; TotalHours=1200
+ProductEmployee: Romaine Donna
+   Avatar: avatar04.jpg
+   PaymentPerProduct=10$; TotalProducts=180
+ProductEmployee: Peter Abram
+   Avatar: avatar05.jpg
+   PaymentPerProduct=11$; TotalProducts=150
+Manager: Clarinda Hyram
+   Avatar: avatar06.jpg
+   FixedPayment=500$; TotalEmployees=5; PaymentPerEmployee=100$
