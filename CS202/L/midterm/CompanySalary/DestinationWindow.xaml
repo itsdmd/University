@@ -1,0 +1,22 @@
+﻿<Window x:Class="CompanySalary.DestinationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CompanySalary"
+        mc:Ignorable="d"
+        Title="DestinationWindow" Height="256" Width="478" Loaded="Window_Loaded">
+	<Window.Resources>
+		<local:RelativeToAbsoluteConveter x:Key="converter"/>
+	</Window.Resources>
+	<Canvas>
+		<Label Content="SOURCE" FontWeight="Bold" FontSize="30"
+			   HorizontalAlignment="Left" Canvas.Left="80" VerticalAlignment="Center"/>
+		<TextBox Text="{Binding Payment}" x:Name="sourceTextBox"
+				 Width="208" Height="35" Canvas.Left="199" Canvas.Top="51" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+		<Image Name="avatarImage" Source="{Binding Avatar, Converter={StaticResource converter}}"
+			   Width="100" Height="100" Canvas.Left="58" Canvas.Top="47"/>
+		<Button x:Name="sendButton" Content="Send" Click="sendButton_Click"
+				Width="80" Height="35" Canvas.Left="182" Canvas.Top="159" HorizontalAlignment="Left" VerticalAlignment="Top" />
+	</Canvas>
+</Window>
