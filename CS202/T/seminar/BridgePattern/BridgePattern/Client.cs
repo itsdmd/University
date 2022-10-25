@@ -15,8 +15,8 @@ namespace BridgePattern
 			IDevice _radio = new Radio();
 
 			/* ------------------------------- Controllers ------------------------------ */
-			BasicController _basicCtrl_1 = new BasicController(_tv);
-			BasicController _basicCtrl_2 = new BasicController(_radio);
+			BaseController _basicCtrl_1 = new BaseController(_tv);
+			BaseController _basicCtrl_2 = new BaseController(_radio);
 
 			TVController _tvCtrl_1 = new TVController(_tv);
 			TVController _tvCtrl_2 = new TVController(_radio);
@@ -52,7 +52,7 @@ namespace BridgePattern
 			_tvCtrl_2.Mute();
 			Console.WriteLine("\n");
 
-			_tvCtrl_1.ChannelDown();
+			_tvCtrl_1.ChannelUp();
 			_tvCtrl_1.ChannelDown();
 			_tvCtrl_1.ChannelDown();
 			Console.WriteLine("\n");
@@ -78,9 +78,17 @@ namespace BridgePattern
 			_techCtr_2.SetChannel(1234);
 			Console.WriteLine("\n");
 
+			_techCtr_1.Reassign(_radio);
+			_techCtr_2.Reassign(_tv);
+			Console.WriteLine("\n");
+
 			_techCtr_1.GetLimits();
 			Console.WriteLine("\n");
 			_techCtr_2.GetLimits();
+			Console.WriteLine("\n");
+
+			_techCtr_1.TogglePower();
+			_techCtr_2.TogglePower();
 		}
 	}
 }
