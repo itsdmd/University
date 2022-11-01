@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BridgePattern
+﻿namespace BridgePattern
 {
 	class Client
 	{
@@ -15,9 +9,6 @@ namespace BridgePattern
 			IDevice _radio = new Radio();
 
 			/* ------------------------------- Controllers ------------------------------ */
-			BaseController _basicCtrl_1 = new BaseController(_tv);
-			BaseController _basicCtrl_2 = new BaseController(_radio);
-
 			TVController _tvCtrl_1 = new TVController(_tv);
 			TVController _tvCtrl_2 = new TVController(_radio);
 
@@ -28,26 +19,15 @@ namespace BridgePattern
 			TechnicianController _techCtr_2 = new TechnicianController(_radio);
 
 			/* ---------------------------------- Tests --------------------------------- */
-			Console.WriteLine("===== Basic Controller =====");
-			_basicCtrl_1.VolumeUp();
-			_basicCtrl_2.VolumeUp();
-			Console.WriteLine("\n");
-
-			_basicCtrl_1.TogglePower();
-            _basicCtrl_2.TogglePower();
-			Console.WriteLine("\n");
-
-            _basicCtrl_1.VolumeUp();
-            _basicCtrl_2.VolumeUp();
-			Console.WriteLine("\n");
-
-			_basicCtrl_1.ChannelUp();
-			_basicCtrl_1.ChannelDown();
-			_basicCtrl_1.ChannelDown();
-			_basicCtrl_2.ChannelUp();
-			Console.WriteLine("\n");
-
 			Console.WriteLine("===== TV Controller =====");
+			_tvCtrl_1.VolumeUp();
+			_tvCtrl_2.VolumeUp();
+			Console.WriteLine("\n");
+
+			_tvCtrl_1.TogglePower();
+			_tvCtrl_2.TogglePower();
+			Console.WriteLine("\n");
+			
 			_tvCtrl_1.Mute();
 			_tvCtrl_2.Mute();
 			Console.WriteLine("\n");
