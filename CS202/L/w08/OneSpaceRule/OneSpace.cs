@@ -6,7 +6,7 @@ namespace OneSpaceRule
 	{
 		public string Name => "OneSpace";
 
-		public List<string> Requirements { get; set; }
+		public List<string> Parse { get; set; }
 
 		public string Rename(string inp)
 		{
