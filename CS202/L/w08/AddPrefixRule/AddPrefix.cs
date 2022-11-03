@@ -7,15 +7,15 @@ namespace AddPrefixRule
 		public string Name => "AddPrefix";
 
 		private string _prefix = "";
-		public List<string> Requirements
+		public List<string> Parse
 		{
 			get => new List<string> { "prefix" };
-			set => _prefix = value[0];
+			set => _prefix = value[1];
 		}
 
 		public string Rename(string inp)
 		{
-			return (_prefix + inp);
+			return (_prefix + " " + inp);
 		}
 	}
 }

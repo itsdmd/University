@@ -3,7 +3,7 @@
 	public interface IRule
 	{
 		string Name { get; }
-		List<string> Requirements { get; set; }
+		List<string> Parse { get; set; }
 		string Rename(string inp);
 	};
 }

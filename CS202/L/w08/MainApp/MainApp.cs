@@ -32,7 +32,8 @@ class DLLReader
 					// Console.Write("\t\t==> Compatible with " + typeof(IRule).Name);
 
 					// Remove "Rule" from the name
-					dict.Add(type.Name.Replace("Rule", ""), (IRule)Activator.CreateInstance(type));
+					dict.Add(type.Name.Replace("Rule", ""),
+                                (IRule)Activator.CreateInstance(type));
                     
                     // Console.WriteLine();
                 }
@@ -45,14 +46,14 @@ class DLLReader
     }
 }
 
-class Formatter
+class Factory
 {
 	private static string _ruleFile = new string("");
 	private static string _fileName = new string("");
 
 	public string ruleFile { set { _ruleFile = value; } }
 	public string fileName { set { _fileName = value; } }
-	public string renamed { get { return Renamer(); } }
+	public string renamed { get { return Parse(); } }
 
 	// Read rule file
 	static List<string> RuleReader()
@@ -61,22 +62,21 @@ class Formatter
 	}
 
 	// Apply the rules
-	public string Renamer()
+	public string Parse()
 	{
 		List<string> rules = RuleReader();
 		string renamed = new string(_fileName);
 
-        Dictionary<string, IRule> plugins = new DLLReader().GetPluginDict();
+        Dictionary<string, IRule> rulePrototypes = new DLLReader().GetPluginDict();
 
 		foreach (string rule in rules)
 		{
-			var tokens = rule.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            var reqs = new List<string>();
-            IRule plugin = null;
+			List<string> tokens = rule.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToList();
+            IRule irule = null;
 
             try
             {
-                plugin = plugins[tokens[0]];
+                irule = rulePrototypes[tokens[0]];
             }
             catch (KeyNotFoundException)
             {
@@ -84,26 +84,8 @@ class Formatter
                 continue;
             }
 
-			switch (tokens[0])
-			{
-				case "AddPrefix":
-					reqs.Add(tokens[1]);
-					break;
-
-				case "Replace":
-                    // FromString starts after tokens[0] and end when encounter ' ='
-                    reqs.Add(rule.Substring(rule.IndexOf(tokens[0]) + tokens[0].Length + 1,
-                                            rule.IndexOf(" =") - rule.IndexOf(tokens[0]) - tokens[0].Length - 1));
-					// ToString starts after '>' until end of string
-					reqs.Add(rule.Substring(rule.IndexOf('>') + 1));
-					break;
-
-				default:
-                    break;
-			}
-
-            plugin.Requirements = reqs;
-			renamed = plugin.Rename(renamed);
+            irule.Parse = tokens;
+			renamed = irule.Rename(renamed);
 		}
 
 		return renamed;
@@ -119,7 +101,7 @@ class MainApp
 
         files.Add("Michael      jack-forsel google.pdf");
 
-        Formatter fmt = new Formatter();
+        Factory fmt = new Factory();
         fmt.ruleFile = "CVRules.txt";
         fmt.fileName = files[0];
 
