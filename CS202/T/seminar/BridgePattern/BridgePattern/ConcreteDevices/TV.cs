@@ -3,9 +3,8 @@
 	internal class TV : BaseDevice
 	{
 		const uint CHN_MIN = 1;
-		const uint CHN_MAX = 500;
-		uint _channelMin = 1;
-		uint _channelMax = 50;
+		const uint CHN_MAX = 50;
+		const uint CHN_STEP = 1;
 
 		public TV()
 		{
@@ -15,13 +14,13 @@
 
 		public override void SetChannel(uint channel)
 		{
-			if (channel < _channelMin)
+			if (channel < CHN_MIN)
 			{
-				channel = _channelMin;
+				channel = CHN_MIN;
 			}
-			else if (channel > _channelMax)
+			else if (channel > CHN_MAX)
 			{
-				channel = _channelMax;
+				channel = CHN_MAX;
 			}
 
 			_channelNow = channel;
@@ -33,7 +32,7 @@
 			Dictionary<string, uint> limits = new Dictionary<string, uint>();
 			limits.Add("CHN_MIN", CHN_MIN);
 			limits.Add("CHN_MAX", CHN_MAX);
-			limits.Add("CHN_STEP", 1);
+			limits.Add("CHN_STEP", CHN_STEP);
 
 			return limits;
 		}
@@ -45,8 +44,8 @@
 					+ "\nPower: " + (_powerState ? "On" : "Off")
 					+ "\nVolume: " + _volume
 					+ "\nChannel: " + _channelNow
-					+ "\nChannel Min: " + _channelMin
-					+ "\nChannel Max: " + _channelMax);
+					+ "\nChannel Min: " + CHN_MIN
+					+ "\nChannel Max: " + CHN_MAX);
 		}
 	}
 }
