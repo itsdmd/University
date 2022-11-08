@@ -11,7 +11,7 @@
 		public const uint FM_STEP = 200;
 		uint _channelMin = FM_MIN;
 		uint _channelMax = FM_MAX;
-		
+
 		public Radio()
 		{
 			_name = "Radio";

@@ -60,7 +60,14 @@
 				return;
 			}
 
-			_device.SetChannel(_device.GetChannel() + 1);
+			if (_device.GetChannel() == _device.GetLimits()["CHN_MAX"])
+			{
+				_device.SetChannel(_device.GetLimits()["CHN_MIN"]);
+			}
+			else
+			{
+				_device.SetChannel(_device.GetChannel() + _device.GetLimits()["CHN_STEP"]);
+			}
 		}
 
 		public override void ChannelDown()
@@ -71,7 +78,14 @@
 				return;
 			}
 
-			_device.SetChannel(_device.GetChannel() - 1);
+			if (_device.GetChannel() == _device.GetLimits()["CHN_MIN"])
+			{
+				_device.SetChannel(_device.GetLimits()["CHN_MAX"]);
+			}
+			else
+			{
+				_device.SetChannel(_device.GetChannel() - _device.GetLimits()["CHN_STEP"]);
+			}
 		}
 	}
 }
