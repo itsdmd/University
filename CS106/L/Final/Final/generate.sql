@@ -1,4 +1,4 @@
-USE [master]
+﻿USE [master]
 GO
 /****** Object:  Database [QLNhomNghienCuu]    Script Date: 2/8/2021 9:41:15 PM ******/
 CREATE DATABASE [QLNhomNghienCuu]
@@ -56,7 +56,7 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[HocVi_QuaTrinh](
 	[MaGV] [varchar](5) NOT NULL,
-	[HocVi] [varchar](50) NOT NULL,
+	[HocVi] [varchar](3) NOT NULL,
 	[NgayCap] [datetime] NOT NULL,
 	[NoiCap] [nvarchar](40) NULL,
  CONSTRAINT [PK_ChucDanh] PRIMARY KEY CLUSTERED 
@@ -134,25 +134,25 @@ CREATE TABLE [dbo].[ThanhVien_NNC](
 GO
 SET ANSI_PADDING OFF
 GO
-INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV01', N'Tr?n Xu�n Hi?n', N'0276886', CAST(0x000080AF00000000 AS DateTime), N'CNTT', N'CN')
+INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV01', N'Trần Xuân Hiền', N'0276886', CAST(0x000080AF00000000 AS DateTime), N'CNTT', N'CN')
 GO
-INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV02', N'Phan V?n Ngh?a', N'0276887', CAST(0x00007C9C00000000 AS DateTime), N'CNTT', N'TS')
+INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV02', N'Phan Văn Nghĩa', N'0276887', CAST(0x00007C9C00000000 AS DateTime), N'CNTT', N'TS')
 GO
-INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV03', N'Nguy?n Th? Mai', N'0034881150', CAST(0x000086FF00000000 AS DateTime), N'CNTT', N'ThS')
+INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV03', N'Nguyễn Thị Mai', N'0034881150', CAST(0x000086FF00000000 AS DateTime), N'CNTT', N'ThS')
 GO
-INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV04', N'Tr??ng Gia Minh', N'0348811230', CAST(0x0000869400000000 AS DateTime), N'VL', N'ThS')
+INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV04', N'Trương Gia Minh', N'0348811230', CAST(0x0000869400000000 AS DateTime), N'VL', N'ThS')
 GO
-INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV05', N'Nguy?n �nh Loan', N'02886765', CAST(0x0000767B00000000 AS DateTime), N'VL', N'TS')
+INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV05', N'Nguyễn Ánh Loan', N'02886765', CAST(0x0000767B00000000 AS DateTime), N'VL', N'TS')
 GO
-INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV06', N'Tr?n Gia Nam', N'02881147', CAST(0x00007E6900000000 AS DateTime), N'CNTT', N'TS')
+INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV06', N'Trần Gia Nam', N'02881147', CAST(0x00007E6900000000 AS DateTime), N'CNTT', N'TS')
 GO
-INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV07', N'Nguy?n Tr?n Huy', N'01181178', CAST(0x00007BAF00000000 AS DateTime), N'CNTT', N'ThS')
+INSERT [dbo].[GiangVien] ([MaGV], [HoTen], [CMND], [NgaySinh], [MaKhoa], [HocVi]) VALUES (N'GV07', N'Nguyễn Trần Huy', N'01181178', CAST(0x00007BAF00000000 AS DateTime), N'CNTT', N'ThS')
 GO
-INSERT [dbo].[HocVi] ([MaHV], [TenHV]) VALUES (N'CN', N'C? nh�n')
+INSERT [dbo].[HocVi] ([MaHV], [TenHV]) VALUES (N'CN', N'Cử nhân')
 GO
-INSERT [dbo].[HocVi] ([MaHV], [TenHV]) VALUES (N'ThS', N'Th?c s?')
+INSERT [dbo].[HocVi] ([MaHV], [TenHV]) VALUES (N'ThS', N'Thạc sỹ')
 GO
-INSERT [dbo].[HocVi] ([MaHV], [TenHV]) VALUES (N'TS', N'Ti?n s?')
+INSERT [dbo].[HocVi] ([MaHV], [TenHV]) VALUES (N'TS', N'Tiến sĩ')
 GO
 INSERT [dbo].[HocVi_QuaTrinh] ([MaGV], [HocVi], [NgayCap], [NoiCap]) VALUES (N'GV01', N'ThS', CAST(0x0000A8DD00000000 AS DateTime), NULL)
 GO
@@ -170,19 +170,19 @@ INSERT [dbo].[HocVi_QuaTrinh] ([MaGV], [HocVi], [NgayCap], [NoiCap]) VALUES (N'G
 GO
 INSERT [dbo].[HocVi_QuaTrinh] ([MaGV], [HocVi], [NgayCap], [NoiCap]) VALUES (N'GV07', N'ThS', CAST(0x0000A49400000000 AS DateTime), NULL)
 GO
-INSERT [dbo].[Khoa] ([MaKhoa], [TenKhoa], [NamTL], [TruongKhoa]) VALUES (N'CNTT', N'C�ng ngh? th�ng tin', 1995, N'GV06')
+INSERT [dbo].[Khoa] ([MaKhoa], [TenKhoa], [NamTL], [TruongKhoa]) VALUES (N'CNTT', N'Công nghệ thông tin', 1995, N'GV06')
 GO
-INSERT [dbo].[Khoa] ([MaKhoa], [TenKhoa], [NamTL], [TruongKhoa]) VALUES (N'HH', N'Ho� h?c', 1998, NULL)
+INSERT [dbo].[Khoa] ([MaKhoa], [TenKhoa], [NamTL], [TruongKhoa]) VALUES (N'HH', N'Hoá học', 1998, NULL)
 GO
-INSERT [dbo].[Khoa] ([MaKhoa], [TenKhoa], [NamTL], [TruongKhoa]) VALUES (N'VL', N'V?t l�', 1998, N'GV05')
+INSERT [dbo].[Khoa] ([MaKhoa], [TenKhoa], [NamTL], [TruongKhoa]) VALUES (N'VL', N'Vật lý', 1998, N'GV05')
 GO
 INSERT [dbo].[Khoa] ([MaKhoa], [TenKhoa], [NamTL], [TruongKhoa]) VALUES (N'VS', N'Vi sinh', 2000, NULL)
 GO
-INSERT [dbo].[NhomNC] ([MaNhom], [TenNhom], [NgayLapNhom], [TruongNhom], [MaKhoa]) VALUES (N'NH01', N'CNTT - H? t? v?n', CAST(0x0000A25300000000 AS DateTime), N'GV02', N'CNTT')
+INSERT [dbo].[NhomNC] ([MaNhom], [TenNhom], [NgayLapNhom], [TruongNhom], [MaKhoa]) VALUES (N'NH01', N'CNTT - Hệ tư vấn', CAST(0x0000A25300000000 AS DateTime), N'GV02', N'CNTT')
 GO
-INSERT [dbo].[NhomNC] ([MaNhom], [TenNhom], [NgayLapNhom], [TruongNhom], [MaKhoa]) VALUES (N'NH02', N'CNTT - Tr� tu? nh�n t?o', CAST(0x0000A9EA00000000 AS DateTime), N'GV03', N'CNTT')
+INSERT [dbo].[NhomNC] ([MaNhom], [TenNhom], [NgayLapNhom], [TruongNhom], [MaKhoa]) VALUES (N'NH02', N'CNTT - Trí tuệ nhân tạo', CAST(0x0000A9EA00000000 AS DateTime), N'GV03', N'CNTT')
 GO
-INSERT [dbo].[NhomNC] ([MaNhom], [TenNhom], [NgayLapNhom], [TruongNhom], [MaKhoa]) VALUES (N'NH03', N'VL - V?t l� ?ng d?ng', CAST(0x0000A4AF00000000 AS DateTime), N'GV05', N'VL')
+INSERT [dbo].[NhomNC] ([MaNhom], [TenNhom], [NgayLapNhom], [TruongNhom], [MaKhoa]) VALUES (N'NH03', N'VL - Vật lý ứng dụng', CAST(0x0000A4AF00000000 AS DateTime), N'GV05', N'VL')
 GO
 INSERT [dbo].[ThanhVien_NNC] ([MaNhom], [MaGV], [NgayVaoNhom], [NgayRoiNhom]) VALUES (N'NH01', N'GV01', CAST(0x0000A25D00000000 AS DateTime), CAST(0x0000A3E000000000 AS DateTime))
 GO
