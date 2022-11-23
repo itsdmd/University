@@ -1,5 +1,5 @@
 ﻿-- Họ tên: Đào Minh Đức
--- ID: 2159003
+-- MSSV: 2159003
 -- Mã đề: 2
 
 use QLNhomNghienCuu
@@ -10,16 +10,18 @@ select NNC.MaNhom, NNC.TenNhom, count(TV.MaGV) as SoThanhVien
 from NhomNC as NNC,
 	ThanhVien_NNC as TV
 where NNC.MaNhom = TV.MaNhom
+	and TV.NgayRoiNhom is null
 group by NNC.MaNhom, NNC.TenNhom
 having count(TV.MaGV) >= ALL (select count(TV.MaGV)
 								from NhomNC as NNC,
 									ThanhVien_NNC as TV
 								where NNC.MaNhom = TV.MaNhom
+									and TV.NgayRoiNhom is null
 								group by NNC.MaNhom, NNC.TenNhom)
 go
 
 -- 2. Viết truy vấn cho biết nhóm nghiên cứu nào có tất cả thành viên tham gia đều là tiến sĩ.
-select NNC.TenNhom
+select *
 from NhomNC as NNC
 where not exists (select *
 					from ThanhVien_NNC as TV
