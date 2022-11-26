@@ -1,0 +1,43 @@
+﻿<Window x:Class="ComboBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComboBox"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="500" Loaded="Window_Loaded">
+	<Window.Resources>
+		<local:RelToAbsPath x:Key="relToAbs"/>
+	</Window.Resources>
+	<Canvas>
+		<ComboBox Name="studentComboBox"
+				  Width="250" Height="50"
+				  Canvas.Top="50" Canvas.Left="50">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Image Source="{Binding AvatarPath, Converter={StaticResource relToAbs}}"
+							   Width="40" Height="40"
+							   Margin="3"/>
+						<TextBlock VerticalAlignment="Center">
+							<Run Text=" "/>
+							<Run Text="{Binding ID}" FontWeight="Bold"/>
+							<Run Text=" - "/>
+							<Run Text="{Binding Name}"/>
+							<Run Text=" - "/>
+							<Run Text="{Binding Program}"/>
+						</TextBlock>
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<Button x:Name="addStudent"
+				Width="100" Height="30"
+				Canvas.Top="120" Canvas.Left="50"
+				Content="Add" Click="addStudent_Click"/>
+		<Button x:Name="delStudent"
+				Width="100" Height="30"
+				Canvas.Top="120" Canvas.Left="200"
+				Content="Delete" Click="delStudent_Click"/>
+	</Canvas>
+</Window>

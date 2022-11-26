@@ -1,0 +1,26 @@
+﻿<Window x:Class="BookBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookBinding"
+        mc:Ignorable="d"
+        Title="Book data" Height="400" Width="250" Loaded="Window_Loaded">
+	<Window.Resources>
+		<local:CredToPercentageConv x:Key="percentageConv"/>
+		<local:RelToAbsPath x:Key="relToAbs"/>
+	</Window.Resources>
+	<StackPanel>
+		<Image Source="{Binding CoverPath, Converter={StaticResource relToAbs}}" Height="200"/>
+		<TextBlock HorizontalAlignment="Center" Margin="0, 30">
+			Name: 
+			<Run Text="{Binding Name}"/>
+			<LineBreak/>
+			Author: 
+			<Run Text="{Binding Author}"/>
+			<LineBreak/>
+			Published: 
+			<Run Text="{Binding PubYear}"/>
+		</TextBlock>
+	</StackPanel>
+</Window>
