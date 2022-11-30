@@ -1,3 +1,6 @@
+# NOTE
+**This is a clone of [2.1](https://github.com/itsdmd/University/tree/2.1) branch.** The purpose of this branch is to be the lighter version of the original branch which has a 50+MB PDF file being commited accidentally. This branch is only for emergency scenarios where download time or speed is limited. Original branch should be used whenever possible.
+
 # ✅ Status
 ## 💬 CMs Format
 [![Generic CM Verifier](https://github.com/itsdmd/University/actions/workflows/gcmv.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/gcmv.yml) &emsp; [![Submission CM Verifier](https://github.com/itsdmd/University/actions/workflows/scmv.yml/badge.svg?branch=1.2)](https://github.com/itsdmd/University/actions/workflows/scmv.yml)
