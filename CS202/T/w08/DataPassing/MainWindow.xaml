@@ -1,0 +1,82 @@
+﻿<Window x:Class="DataPassing.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataPassing"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="456" Width="429" Loaded="Window_Loaded">
+	<Window.Resources>
+		<local:RelativeToAbsoluteConveter x:Key="converter"/>
+	</Window.Resources>
+	<DockPanel LastChildFill="True">
+		<Label Content="SOURCE" DockPanel.Dock="Top"
+			   FontWeight="Bold" FontSize="30" Padding="10"
+			   HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<DockPanel DockPanel.Dock="Bottom">
+			<TextBlock DockPanel.Dock="Left" Width="300">
+				Displaying 
+				<Run Text="{Binding CurrentItemsCount}"/>
+				 out of 
+				<Run Text="{Binding TotalItems}"/>
+			</TextBlock>
+
+			<StackPanel Orientation="Horizontal">
+				<Button x:Name="prevButton" Click="prevButton_Click"
+						Content="&lt;&lt;"
+						Width="35" Height="35"/>
+
+				<TextBlock Margin="10">
+					<Run Text="{Binding CurrentPage}"/>
+					 / 
+					<Run Text="{Binding TotalPages}"/>
+				</TextBlock>
+
+				<Button x:Name="nextButton" Click="nextButton_Click"
+						Content="&gt;&gt;"
+						Width="35" Height="35"/>
+			</StackPanel>
+		</DockPanel>
+		
+		<ListView Name="studentsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+			<ListView.Resources>
+				<ContextMenu x:Key="ItemContextMenu">
+					<MenuItem Header="Delete" Click="deleteMenuItem_Click"/>
+					<MenuItem Header="Edit" Click="editMenuItem_Click"/>
+				</ContextMenu>
+			</ListView.Resources>
+			<ListView.ItemContainerStyle>
+				<Style TargetType="{x:Type ListViewItem}" >
+					<Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}" />
+				</Style>
+			</ListView.ItemContainerStyle>
+			<ListView.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel />
+				</ItemsPanelTemplate>
+			</ListView.ItemsPanel>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<StackPanel>
+						<Image Source="{Binding Avatar, Converter={StaticResource converter}}"
+							   Width="150" Height="150"/>
+						<TextBlock>
+							<Run Text="{Binding ID}"/>
+							 - 
+							<Run Text="{Binding Name}"/>
+						</TextBlock>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Padding="5">
+								<Run Text="{Binding Credits}"/>
+								/ 100
+							</TextBlock>
+							<ProgressBar Value="{Binding Credits}" Minimum="0" Maximum="100"
+									 Width="70" Height="5"
+									 HorizontalAlignment="Right" VerticalAlignment="Center"/>
+						</StackPanel>
+					</StackPanel>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</DockPanel>
+</Window>

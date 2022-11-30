@@ -1,0 +1,88 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Bayer_04_Leverkusen.png" />
+    <None Remove="Images\Borussia_Dortmund.png" />
+    <None Remove="Images\Borussia_Moenchengladbach.png" />
+    <None Remove="Images\Eintracht_Frankfurt.png" />
+    <None Remove="Images\FC_Augsburg.png" />
+    <None Remove="Images\FC_Bayern_Muenchen.png" />
+    <None Remove="Images\FC_Cologne.png" />
+    <None Remove="Images\FC_Schalke_04.png" />
+    <None Remove="Images\FC_Union_Berlin.png" />
+    <None Remove="Images\Hertha_BSC.png" />
+    <None Remove="Images\Mainz_05.png" />
+    <None Remove="Images\RB_Leipzig_2014.png" />
+    <None Remove="Images\SC_Freiburg.png" />
+    <None Remove="Images\SV_Werder_Bremen.png" />
+    <None Remove="Images\TSG_Hoffenheim.png" />
+    <None Remove="Images\VfB_Stuttgart_1893.png" />
+    <None Remove="Images\VfL_Bochum.png" />
+    <None Remove="Images\VfL_Wolfsburg.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Bayer_04_Leverkusen.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Borussia_Dortmund.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Borussia_Moenchengladbach.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Eintracht_Frankfurt.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\FC_Augsburg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\FC_Bayern_Muenchen.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\FC_Cologne.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\FC_Schalke_04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\FC_Union_Berlin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Hertha_BSC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Mainz_05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\RB_Leipzig_2014.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SC_Freiburg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SV_Werder_Bremen.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\TSG_Hoffenheim.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\VfB_Stuttgart_1893.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\VfL_Bochum.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\VfL_Wolfsburg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

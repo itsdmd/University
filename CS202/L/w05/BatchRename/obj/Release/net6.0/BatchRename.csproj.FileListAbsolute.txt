@@ -1,0 +1,16 @@
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\bin\Release\net6.0\BatchRename.exe
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\bin\Release\net6.0\CVRules.txt
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\bin\Release\net6.0\BatchRename.deps.json
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\bin\Release\net6.0\BatchRename.runtimeconfig.json
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\bin\Release\net6.0\BatchRename.dll
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\bin\Release\net6.0\BatchRename.pdb
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\obj\Release\net6.0\BatchRename.csproj.AssemblyReference.cache
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\obj\Release\net6.0\BatchRename.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\obj\Release\net6.0\BatchRename.AssemblyInfoInputs.cache
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\obj\Release\net6.0\BatchRename.AssemblyInfo.cs
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\obj\Release\net6.0\BatchRename.csproj.CoreCompileInputs.cache
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\obj\Release\net6.0\BatchRename.dll
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\obj\Release\net6.0\refint\BatchRename.dll
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\obj\Release\net6.0\BatchRename.pdb
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\obj\Release\net6.0\BatchRename.genruntimeconfig.cache
+C:\Users\itsdmd\Documents\GitHub\University\CS202\L\w05\BatchRename\obj\Release\net6.0\ref\BatchRename.dll
