@@ -1,0 +1,42 @@
+body {
+	margin: 20px;
+	padding: 20px;
+	box-shadow: 1px 1px 8px grey;
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+}
+
+div.content-block {
+	background: lightgray;
+	padding: 10px;
+	margin: 10px;
+	border: 5px grey solid;
+	box-shadow: 2px 2px 10px black;
+	border-radius: 10px;
+}
+
+span.first-name {
+	color: red !important;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+h1,h2,h3,h4 {
+	font-family: 'Unbounded', cursive;
+}
+
+ul li, ol li {
+	font-family: 'Chivo Mono', monospace;
+}
+
+img#avatar {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	width: 200px;
+	border-radius: 50%;
+	border: 5px solid white;
+}
