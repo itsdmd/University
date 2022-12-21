@@ -96,4 +96,5 @@ Forms are used to collect user input. The user input is sent to a server for pro
 
 ## CSS
 
-- If `id` and `class` are applied to the same element and have conflicting styles, the style of the `id` will be applied.
+- Use **`:root { }`** to select all elements.
+- Use **`[type='...'] { }`** to select a specific type of element. For example, `[type='text'] { }` will select all `input` elements with `type="text"`.
