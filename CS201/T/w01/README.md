@@ -44,11 +44,13 @@
 ### Block level
 
 - Each block level element will start on a new line and span the full width available (100% of the parent element).
+
 - Levels:
 	
 	[![](src/mermaid/mermaid-diagram-02.png)](https://mermaid.live/edit#pako:eNpVjzEOgzAMRa-CPHOCjFXXTu1UZTHYQCTiRCEZKsTdMUUtiif7PcvyX6EPxGBgTBin5nWz0mgtpTuBxzQ6OWElupCI0yUqGZHIyVjbo3hmz5JrwUIX-A_aQAuek0dH-uB6YAt50gsWjLbEA5Y5W7Cy6SqWHJ4f6cHkVLiFEgkz3x3qTx7MgPOilMnlkB5n6G_2FiLKO4TfzrYDAXBUOA)
 	- Negative value for `margin` will make the element larger.
 	- For `margin` and `padding`, the order is: _top, right, bottom, left_ $\rightarrow$ **clock-wise**.
+
 - To make an element to be a part of a block element, use `<span>` tag. [(?)](index.html?plain=1#L37)
 
 ## Example
