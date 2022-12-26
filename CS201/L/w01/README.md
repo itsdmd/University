@@ -1,6 +1,6 @@
-# Week 01 #
+# Week 01
 
-## Table of Contents ##
+## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Exercises](#exercises)
@@ -15,18 +15,18 @@
 
 
 
-## Exercises ##
+## Exercises
 
 - [HTML](https://www.freecodecamp.org/learn/responsive-web-design/#basic-html-and-html5)
 - [CSS](https://www.freecodecamp.org/learn/responsive-web-design/basic-css)
 
 
 
-## Notes ##
+## Notes
 
-### HTML ###
+### HTML
 
-#### Anchor's dead link ####
+#### Anchor's dead link
 
 Dead link is a type of **placeholder** for a link that is not yet available/defined. It is used to reserve a space for a link that will be available in the future.
 
@@ -34,7 +34,7 @@ Dead link is a type of **placeholder** for a link that is not yet available/defi
 <a href="#">This is a dead link</a>
 ```
 
-#### Input ####
+#### Input
 
 ```html
 <input type="...">
@@ -44,7 +44,7 @@ List of of input types: [W3Schools](https://www.w3schools.com/html/html_form_inp
 
 The default value is `text`.
 
-##### Text input #####
+##### Text input
 
 ```html
 <input type="text" placeholder="Enter your name">
@@ -56,7 +56,7 @@ The default value is `text`.
 <input type="text" placeholder="Enter your name" required>
 ```
 
-##### Radio button #####
+##### Radio button
 
 ```html
 <label for="indoor">
@@ -77,7 +77,7 @@ The default value is `text`.
 
 > _Personal reference:_ `for`, `id` and `value` attributes should have the value of the input label text in lowercase.
 
-#### Form ####
+#### Form
 
 Forms are used to collect user input. The user input is sent to a server for processing.
 
@@ -98,7 +98,7 @@ Forms are used to collect user input. The user input is sent to a server for pro
 ```
 
 
-### CSS ###
+### CSS
 
 - Use **`:root { }`** to select all elements.
 - Use **`[type='...'] { }`** to select a specific type of element. For example, `[type='text'] { }` will select all `input` elements with `type="text"`.
