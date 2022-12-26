@@ -1,6 +1,6 @@
 {
     "default": true,
-    "header-style": { "style": "atx_closed" },
+    "header-style": { "style": "atx" },
     "line-length": false,
     "no-duplicate-heading": false,
     "no-hard-tabs": false,
