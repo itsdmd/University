@@ -1,6 +1,6 @@
-# Week 01 #
+# Week 01
 
-## Table of Contents ##
+## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [HTML](#html)
@@ -20,9 +20,9 @@
 
 
 
-## HTML ##
+## HTML
 
-### Basics ###
+### Basics
 
 - All HTML documents starts with `<!DOCTYPE html>`.
 
@@ -47,7 +47,7 @@
 			- Example: paragraphs about a specific topic.
 		- `div`: generic container. Should be avoided whenever possible.
 
-#### Block level ####
+#### Block level
 
 - Each block level element will start on a new line and span the full width available (100% of the parent element).
 
@@ -60,7 +60,7 @@
 - To make an element to be a part of a block element, use `<span>` tag. [(?)](index.html?plain=1#L37)
 
 
-### Example ###
+### Example
 
 [Source](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure#active_learning_exploring_the_code_for_our_example)
 
@@ -139,11 +139,11 @@
 
 
 
-## CSS ##
+## CSS
 
-### Basics ###
+### Basics
 
-#### Structure ####
+#### Structure
 
 `h1 { color: red; }`
 
@@ -151,7 +151,7 @@
 - `color` is the property
 - `red` is the value
 
-#### Naming conventions ####
+#### Naming conventions
 
 - All lowercase
 - Separated by `-` if there are multiple words
@@ -160,7 +160,7 @@
 	- `content-block`
 
 
-### Styling ###
+### Styling
 
 - All child elements of an element will **inherit all styles of the parent** element unless overridden.
 
@@ -189,11 +189,11 @@
 - Value can be stored in variables
 
 	```css
-	:root { --main-color: #FF0; }
+	:root { --main-color:
 
 	h1 { color: var(--main-color, red); }
 
-#### Fallback value ####
+#### Fallback value
 
 - If for any reasons the browser cannot find the value of a property or run into compatibility issues, it will ignore the property and/or use the default value.
 - Fallback value(s) is used to prevent the property from being ignored by adding backup value(s) that should be guaranteed to work on any browser/platform.
@@ -210,9 +210,9 @@
 	```
 
 
-### Implement to HTML ###
+### Implement to HTML
 
-#### Inline ####
+#### Inline
 
 :no_entry_sign: _**Should be avoided**_
 
@@ -223,7 +223,7 @@
 ```
 
 
-### Head ###
+### Head
 
 :warning: _**Not recommended**_
 
@@ -236,7 +236,7 @@
 </head>
 ```
 
-#### External ####
+#### External
 
 :heavy_check_mark: _**Recommended**_
 
