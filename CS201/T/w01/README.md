@@ -53,11 +53,11 @@
 
 - Levels:
 
-	[![block-lvl-diag](src/mermaid/mermaid-diagram-02.png)](https://mermaid.live/edit#pako:eNpVjzEOgzAMRa-CPHOCjFXXTu1UZTHYQCTiRCEZKsTdMUUtiif7PcvyX6EPxGBgTBin5nWz0mgtpTuBxzQ6OWElupCI0yUqGZHIyVjbo3hmz5JrwUIX-A_aQAuek0dH-uB6YAt50gsWjLbEA5Y5W7Cy6SqWHJ4f6cHkVLiFEgkz3x3qTx7MgPOilMnlkB5n6G_2FiLKO4TfzrYDAXBUOA)
+	[![block-lvl-diag](src/mermaid/mermaid-diagram-02.png)](https://mermaid.live/edit#pako:eNpVkL0KwzAMhF_FaE5fwGPp2qmdihelUhKD_3DsQgl59yoNbfBN0neHOLTAMxKDhjFjmtT9bIISzbXfgcc82rDDxuhjJs7qpF52tr1jhZnxyDXZhEQ2jK27iR17DqU1ONAB_osM0IHn7NGS9F02bKBMcsGAlpF4wOqKARNWiWIt8fYOT9AlV-6gJsLCF4vSyYMe0M1CmWyJ-br_4PuKDhKGR4y_zPoBlH9ZTA)
 	- Negative value for `margin` will make the element larger.
 	- For `margin` and `padding`, the order is: _top, right, bottom, left_ $\rightarrow$ **clock-wise**.
 
-- To make an element to be a part of a block element, use `<span>` tag. [(?)](index.html?plain=1#L37)
+- To make an element to be a part of a block element, use `<span>` tag. [(Usage)](index.html?plain=1#L37)
 
 
 ### Example
@@ -192,6 +192,7 @@
 	:root { --main-color:
 
 	h1 { color: var(--main-color, red); }
+	```
 
 #### Fallback value
 
