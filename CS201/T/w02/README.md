@@ -63,8 +63,7 @@
 
 [(Usage)](styles/style.css?plain=1#L76)
 
-_**Not reccomended.**_ Should use `flex` whenever possible.
-
+_**Not reccomended.**_ `flex` should be used whenever possible.
 
 ```css
 main {
