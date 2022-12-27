@@ -1,0 +1,139 @@
+:root {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: normal;
+	background-color: white;
+}
+
+body {
+	margin: 0px;
+}
+
+header {
+	background-color: lightblue;
+	height: 75px;
+	left: 0px;
+	padding: 10px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 100;
+}
+
+#logo {
+	color: white;
+	font-family: 'Be Vietnam Pro', sans-serif;
+	font-weight: bold;
+	margin: 10px;
+}
+
+nav {
+	position: absolute;
+	right: 30px;
+	top: 25px;
+}
+
+nav ul li {
+	display: inline-block;	/* Arrange list items on 1 line */
+	margin: 0px 5px;
+	padding: 5px 5px;
+}
+
+nav ul li:hover {
+	background: darkblue;
+	border-radius: 3px;
+	box-shadow: 1px 1px 3px black;
+	color: white;
+}
+
+nav a {
+	color: white;
+	padding: 10px;
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: white;
+}
+
+#banner {
+	background: grey;
+	background-attachment: fixed;
+	background-image: url("../src/images/dracula.png");
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 500px;
+	margin-top: 95px;
+	width: 100%;
+}
+
+#banner-text {
+	color:white;
+	font-size: 2em;
+}
+
+main {
+	width: 80%;
+	margin: auto;
+}
+
+#main-col {
+	display: flex;
+}
+
+.front-block {
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	margin: 15px 10px 15px 10px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.front-block h3 {
+	font-size: x-large;
+	text-align: center;
+}
+
+button {
+	background-color: lightblue;
+	border-radius: 5px;
+	border: 2px;
+	color: white;
+	font-family: 'Be Vietnam Pro', sans-serif;
+	font-size: medium;
+	font-weight: bold;
+	padding: 5px;
+	width: 100%;
+}
+
+button:hover {
+	background-color: darkblue;
+	box-shadow: 1px 1px 3px black;
+	cursor: pointer;
+}
+
+#map {
+	display: flex;
+	height: 600px;
+	justify-content: center;
+	margin: 20px;
+	width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Be Vietnam Pro', sans-serif;
+	font-weight: bold;
+}
+
+footer {
+	background-color: lightskyblue;
+	color: aliceblue;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-top: 30px;
+	padding: 20px 50px;
+}
