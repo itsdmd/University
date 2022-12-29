@@ -1,0 +1,18 @@
+/* Provided */
+
+div {
+    background: #80808026;
+    border: 1px dashed #68b3ff;
+    padding: 5px;
+    margin: 5px;
+}
+
+.ball {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+* {
+    font-family: 'archivo narrow', sans-serif;
+}
