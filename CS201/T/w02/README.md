@@ -9,7 +9,7 @@
 		- [Flexbox](#flexbox)
 		- [Center using margin](#center-using-margin)
 	- [:memo: Notes from Lab](#memo-notes-from-lab)
-		- [Parralax effect for image](#parralax-effect-for-image)
+		- [Parralax effect](#parralax-effect)
 		- [Units](#units)
 		- [Grid](#grid)
 

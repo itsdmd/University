@@ -23,5 +23,23 @@ img {
 .container.grid-4x2 img {
 	object-fit: cover;
 	width: 100%;
-	height: 45vh;
+	height: 25vh;
+}
+
+.footer-wrapper {
+	background-color: #000;
+	color: #fff;
+	margin: auto;
+	width: 90%;
+	display: flex;
+	align-content: space-between;
+	justify-content: space-between;
+}
+
+.footer-wrapper img {
+	height: 80px;
+}
+
+.footer-wrapper.social {
+	overflow: hidden;
 }
