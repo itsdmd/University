@@ -11,6 +11,7 @@
 	- [:memo: Notes from Lab](#memo-notes-from-lab)
 		- [Parralax effect for image](#parralax-effect-for-image)
 		- [Units](#units)
+		- [Grid](#grid)
 
 ## CSS
 
@@ -81,7 +82,7 @@ main {
 
 ### :memo: Notes from Lab
 
-#### Parralax effect for image
+#### Parralax effect
 
 - Use `background-attachment: fixed;` to make the background image fixed when scrolling.
 
@@ -96,3 +97,13 @@ Some basic units:
 - `em`: Relative to the **font-size** of the element.
 - `rem`: Relative to the **font-size** of the **root** element.
 - `vh`: Relative to 1% of the **viewport's height**.
+
+#### Grid
+
+- To use grid template, the parent element must have `display: grid;` set.
+- Set the number and size of columns using `grid-template-columns`.
+	- `fr`: Fractional unit. Relative to the **available space**.
+	- Example: `grid-template-columns: 1fr 2fr 1fr;` will create 3 columns, with the first and last column having the same size, and the middle column twice as big.
+		- `1fr` = `1/3`, `2fr` = `2/3`.
+	- `auto`: Automatically set the size of the column based on the content.
+	- [Usage](../../L/w02/styles/style-lec.css?plain=1#L96)
