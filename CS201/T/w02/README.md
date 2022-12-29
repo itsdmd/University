@@ -6,8 +6,11 @@
 - [CSS](#css)
 	- [Positioning](#positioning)
 		- [`position`](#position)
-		- [`flex`](#flex)
+		- [Flexbox](#flexbox)
 		- [Center using margin](#center-using-margin)
+	- [:memo: Notes from Lab](#memo-notes-from-lab)
+		- [Parralax effect for image](#parralax-effect-for-image)
+		- [Units](#units)
 
 ## CSS
 
@@ -15,7 +18,9 @@
 
 #### `position`
 
-> [W3Schools](https://www.w3schools.com/css/css_positioning.asp)
+- Basic/default, position elements based on relativity.
+
+> Source: [W3Schools](https://www.w3schools.com/css/css_positioning.asp)
 
 - `static`: Default. Elements render in order as they appear in the source code.
 	- Not affected by the `top`, `bottom`, `left`, and `right` properties.
@@ -33,9 +38,11 @@
 		- `fixed` is vice versa to `relative`, make it stick in place.
 	- _**Simplified**_: It's a `relative` within the viewport, and `fixed` outside of it.
 
-#### `flex`
+#### Flexbox
 
-> See the [cheatsheet](../doc/CSS_Cheatsheet_2.jpg) for more information.
+- More flexible	way to position elements using box model.
+
+> See the [cheatsheet](../doc/CSS_Cheatsheet_2.jpg) for more details.
 
 - Center the element horizontally. [(Usage)](styles/style.css?plain=1#L58)
 
@@ -63,7 +70,7 @@
 
 [(Usage)](styles/style.css?plain=1#L76)
 
-_**Not reccomended.**_ `flex` should be used whenever possible.
+:no_entry_sign: _**Not reccomended.**_ `flex` should be used whenever possible.
 
 ```css
 main {
@@ -71,3 +78,21 @@ main {
 	margin: auto;
 }
 ```
+
+### :memo: Notes from Lab
+
+#### Parralax effect for image
+
+- Use `background-attachment: fixed;` to make the background image fixed when scrolling.
+
+#### Units
+
+> Source: [W3Schools](https://www.w3schools.com/cssref/css_units.php)
+
+Some basic units:
+
+- `%`: Relative to the **parent** element.
+- `px`: 1px = **1/96in**. 1in = 2.54cm.
+- `em`: Relative to the **font-size** of the element.
+- `rem`: Relative to the **font-size** of the **root** element.
+- `vh`: Relative to 1% of the **viewport's height**.
