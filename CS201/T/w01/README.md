@@ -269,7 +269,7 @@ Forms are used to collect user input. The user input is sent to a server for pro
 - Value can be stored in variables
 
 	```css
-	:root { --main-color:
+	:root { --main-color: #ff0000; }
 
 	h1 { color: var(--main-color, red); }
 	```
