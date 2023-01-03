@@ -1,0 +1,234 @@
+:root {
+	font-family: "Open Sans", sans-serif;
+	font-weight: normal;
+	background-color: white;
+	transition: all 500ms;
+
+	--background-color: #6272a4;
+	--primary-color: #bd93f9;
+}
+
+/* -------------------------------- Semantic -------------------------------- */
+body {
+	margin: 0px;
+}
+
+header {
+	background-color: var(--background-color);
+	height: 75px;
+	left: 0px;
+	padding: 10px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+}
+
+nav {
+	position: absolute;
+	right: 30px;
+}
+
+nav ul li {
+	display: inline-block; /* Arrange list items on 1 line */
+	margin: 0px 5px;
+	padding: 5px 5px;
+}
+
+nav ul li:hover {
+	background: var(--primary-color);
+	border-radius: 3px;
+	color: white;
+}
+
+nav a {
+	color: white;
+	padding: 10px;
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: white;
+}
+
+main {
+	width: 80%;
+	margin: auto;
+}
+
+button {
+	background-color: var(--background-color);
+	border-radius: 5px;
+	border: 2px;
+	color: white;
+	font-family: "Be Vietnam Pro", sans-serif;
+	font-size: medium;
+	font-weight: bold;
+	padding: 5px;
+	width: 100%;
+}
+
+button:hover {
+	background-color: var(--primary-color);
+	cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Be Vietnam Pro", sans-serif;
+	font-weight: bold;
+}
+
+p {
+	text-align: justify;
+}
+
+footer {
+	background-color: var(--background-color);
+	color: aliceblue;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-top: 30px;
+	padding: 20px 50px;
+}
+
+/* ---------------------------------- Class --------------------------------- */
+input.menu-checkbox {
+	display: none;
+	width: 35px;
+	height: 35px;
+}
+
+.front-block {
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	margin: 15px 10px 15px 10px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.front-block h3 {
+	font-size: x-large;
+	text-align: center;
+}
+
+/* ----------------------------------- ID ----------------------------------- */
+#logo {
+	color: white;
+	font-family: "Be Vietnam Pro", sans-serif;
+	font-weight: bold;
+	margin: 10px;
+}
+
+#banner {
+	background: grey;
+	background-attachment: fixed;
+	background-image: url("https://github.com/dracula/wallpaper/blob/master/base.png?raw=true");
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 500px;
+	margin-top: 95px;
+	width: 100%;
+}
+
+#banner-text {
+	color: white;
+	font-size: 2em;
+}
+
+#main-col {
+	display: flex;
+	justify-content: space-around;
+}
+
+#map {
+	display: flex;
+	height: 600px;
+	justify-content: center;
+	margin: 20px;
+	width: 100%;
+}
+
+/* ------------------------------- Responsive ------------------------------- */
+/* max 720px */
+@media screen and (max-width: 720px) {
+	#main-col {
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	nav {
+		position: absolute;
+		top: 80px;
+		right: 0px;
+		background-color: var(--background-color);
+		width: 150px;
+		height: 100vh;
+		transition: all 500ms;
+	}
+
+	nav {
+		right: -150px;
+	}
+
+	input.menu-checkbox:checked ~ nav {
+		right: 0px;
+	}
+
+	nav ul {
+		margin: 0px;
+		padding: 0px;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: center;
+	}
+
+	input.menu-checkbox {
+		display: block;
+		position: fixed;
+		right: 30px;
+		top: 30px;
+	}
+
+	.front-block {
+		flex-basis: 35%;
+	}
+
+	.front-block:last-child {
+		flex-basis: 85%;
+	}
+
+	#map {
+		width: auto;
+	}
+}
+
+/* max 480px */
+@media screen and (max-width: 540px) {
+	#main-col {
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	.front-block {
+		flex-basis: 100%;
+	}
+
+	#map {
+		width: auto;
+	}
+}
+
+/* -------------------------------- Override -------------------------------- */
