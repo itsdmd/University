@@ -24,16 +24,16 @@ ul li {
 
 /* -------------------------------- Semantic -------------------------------- */
 header {
+	background-color: var(--header-bg-color);
+	height: var(--header-height);
+	left: 0px;
 	position: fixed;
 	top: 0px;
-	left: 0px;
-	height: var(--header-height);
 	width: 100%;
-	background-color: var(--header-bg-color);
 }
 
 body {
-	margin: 0;
+	margin: 0px;
 	margin-top: var(--header-height);
 }
 
@@ -42,11 +42,11 @@ nav ul {
 }
 
 nav ul li {
-	text-align: center;
+	border-radius: 5px;
 	list-style: none;
 	margin-left: 25px;
 	padding: 10px;
-	border-radius: 5px;
+	text-align: center;
 	transition: background 300ms;
 }
 
@@ -55,9 +55,9 @@ nav ul li:hover {
 }
 
 nav ul li a {
-	text-decoration: none;
 	color: var(--header-fg-color);
 	font-weight: bold;
+	text-decoration: none;
 }
 
 img {
@@ -65,26 +65,26 @@ img {
 }
 
 footer {
-	width: 100%;
 	margin: 0px;
 	padding: 0px;
+	width: 100%;
 }
 
 /* ---------------------------------- Class --------------------------------- */
 .header-wrapper {
-	width: 90%;
-	height: 100%;
-	margin: auto;
-	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	background-color: var(--header-bg-color);
+	display: flex;
+	height: 100%;
+	justify-content: space-between;
+	margin: auto;
+	width: 90%;
 }
 
 .menu-check {
 	display: none;
-	width: 35px;
 	height: 35px;
+	width: 35px;
 }
 
 .main-wrapper {
@@ -92,20 +92,20 @@ footer {
 }
 
 .container {
+	gap: 20px;
 	max-width: 90%;
 	margin: auto;
-	gap: 20px;
 }
 
 footer .container {
-	display: flex;
-	justify-content: space-between;
 	align-items: center;
-	color: whitesmoke;
 	background-color: var(--header-bg-color);
-	max-width: 100%;
-	margin: 0px;
+	color: whitesmoke;
+	display: flex;
 	gap: 0px;
+	justify-content: space-between;
+	margin: 0px;
+	max-width: 100%;
 }
 
 .front-three-blocks {
@@ -114,27 +114,28 @@ footer .container {
 }
 
 .col-3 {
-	flex-basis: 100%;
-	border: solid 5px;
 	border-color: lightgray;
 	border-radius: 15px;
+	border-style: solid;
+	border-width: 5px;
+	flex-basis: 100%;
 	padding: 10px;
 }
 
 .col-3 img {
+	object-fit: cover;
 	height: 50vh;
 	width: 100%;
-	object-fit: cover;
 }
 
 .banner-2 {
-	width: 100%;
-	height: 50vh;
-	background-image: url(../img/bg.jpg);
-	display: flex;
 	align-items: center;
-	justify-content: center;
+	background-image: url(../img/bg.jpg);
 	color: whitesmoke;
+	display: flex;
+	height: 50vh;
+	justify-content: center;
+	width: 100%;
 }
 
 .about-us {
@@ -147,8 +148,8 @@ footer .container {
 }
 
 .about-us .col-2 img {
-	width: 100%;
 	object-fit: cover;
+	width: 100%;
 }
 
 .date {
@@ -157,54 +158,54 @@ footer .container {
 
 /* ----------------------------------- ID ----------------------------------- */
 #logo {
-	display: flex;
 	align-items: center;
+	display: flex;
 	justify-content: flex-start;
 }
 
 #logo h1 {
-	margin-left: 10px;
 	color: var(--header-fg-color);
+	margin-left: 10px;
 }
 
 #banner {
-	width: 100%;
-	background-image: url(../img/background.jpg);
-	background-attachment: fixed;
-	height: 60vh;
-	background-size: cover;
-	margin: 85px 0;
-	display: flex;
 	align-items: center;
+	background-attachment: fixed;
+	background-image: url(../img/background.jpg);
+	background-size: cover;
+	color: whitesmoke;
+	display: flex;
+	height: 60vh;
 	justify-content: center;
+	margin: 85px 0;
 	text-align: center;
 	text-shadow: black 0px 3px 5px;
-	color: whitesmoke;
+	width: 100%;
 }
 
 /* ------------------------------- Media Query ------------------------------ */
 /* Max 800px */
 @media only screen and (max-width: 800px) {
 	nav {
-		position: fixed;
-		top: var(--header-height);
-		right: calc(0px - var(--nav-vertical-width));
-		width: var(--nav-vertical-width);
-		height: 100vh;
 		background-color: var(--header-bg-color);
+		height: 100vh;
+		position: fixed;
+		right: calc(0px - var(--nav-vertical-width));
+		top: var(--header-height);
 		transition: 300ms, right 300ms;
+		width: var(--nav-vertical-width);
 	}
 
 	nav ul {
+		align-items: center;
 		flex-direction: column;
 		justify-content: center;
-		align-items: center;
 		padding: 0px;
 	}
 
 	nav ul li {
-		margin: 0px;
 		margin-bottom: 10px;
+		margin: 0px;
 	}
 
 	.about-us {
@@ -221,8 +222,8 @@ footer .container {
 
 	.front-three-blocks {
 		flex-wrap: wrap;
-		justify-content: center;
 		gap: 2%;
+		justify-content: center;
 	}
 
 	.col-3 {
@@ -242,10 +243,10 @@ footer .container {
 	}
 
 	nav {
-		width: 100%;
 		height: 100vh;
 		right: 0px;
 		transform: translateY(-100%);
+		width: 100%;
 		z-index: -99;
 	}
 
