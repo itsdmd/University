@@ -182,6 +182,7 @@ input.menu-checkbox {
 		right: -150px;
 	}
 
+	/* Show nav bar only when menu-checkbox is checked */
 	input.menu-checkbox:checked ~ nav {
 		right: 0px;
 	}
