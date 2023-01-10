@@ -7,7 +7,6 @@
 	- [Container](#container)
 	- [Rows](#rows)
 	- [Columns](#columns)
-- [HTML Forms](#html-forms)
 
 ## Bootstrap 4
 
@@ -76,7 +75,3 @@ Class | Screen size
 `md` | > 768px
 `lg` | > 992px
 `xl` | > 1200px
-
-## HTML Forms
-
-

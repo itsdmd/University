@@ -7,7 +7,6 @@
 		<meta name="Description" content="Enter your description here" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-		<link rel="stylesheet" href="assets/css/style.css" />
 		<title>Week 04</title>
 	</head>
 	<body>
@@ -100,7 +99,7 @@
 		</div>
 
 		<!-- ------------ card ------------- -->
-		<div class="container mt-4 mb-4 pt-4">
+		<div class="container mt-5 mb-4 pt-4">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="card">
@@ -116,12 +115,65 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6"></div>
+				<div class="col-md-6">
+					<h4>Create Account</h4>
+					<hr />
+					<form action="index.html" method="post" enctype="multipart/form-data">
+						<label for="username">Username</label>
+						<input type="text" name="username" placeholder="Username" class="form-control" autocomplete="off" />
+
+						<label for="email">Email Address</label>
+						<input type="email" name="email" placeholder="Email" class="form-control" autocomplete="off" />
+
+						<label for="password">Password</label>
+						<input type="password" name="password" placeholder="Password" class="form-control" autocomplete="off" />
+
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">Age</span>
+							</div>
+							<input type="number" name="age" placeholder="Age" class="form-control" autocomplete="off" />
+						</div>
+
+						<label for="image" class="mt-5">Avatar</label>
+						<input type="file" name="avatar" class="form-control mb-3" />
+
+						<label for="message">Your message</label>
+						<textarea name="message" id="" cols="30" rows="5" class="form-control"></textarea>
+
+						<label for="gender">Gender</label>
+						<br />
+						<input type="radio" name="gender" value="male" /> Male
+						<br />
+						<input type="radio" name="gender" value="female" /> Female
+						<br />
+						<input type="radio" name="gender" value="other" /> Other
+						<br />
+
+						<label for="skills">Skills</label>
+						<br />
+						<input type="checkbox" name="skills" value="webdev" /> Web Development
+						<br />
+						<input type="checkbox" name="skills" value="ml" /> Machine Learning
+						<br />
+						<input type="checkbox" name="skills" value="statistic" /> Statistic
+						<br />
+
+						<label for="location">Where are you from?</label>
+						<select name="location" id="" class="form-control">
+							<option value="hcm">Ho Chi Minh City</option>
+							<option value="hn">Hanoi</option>
+							<option value="other">Other</option>
+						</select>
+
+						<button type="submit" class="btn btn-primary btn-lg mt-5">Submit</button>
+					</form>
+				</div>
 			</div>
 		</div>
 
 		<!-- ----------- footer ------------ -->
-		<div class="container-fluid mt-4 pt-4 pb-4 bg-dark text-light">
+		<div class="container-fluid mt-5 pt-4 pb-4 bg-dark text-light">
 			<div class="container mb-4">
 				<h4><i class="fas fa-university"></i> ITEC 2023</h4>
 			</div>
