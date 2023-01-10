@@ -1,108 +1,106 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Lab 1</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&family=Merriweather&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style-og.css">
-    <link rel="stylesheet" href="styles/style-lec.css">
-    <link rel="stylesheet" href="styles/style-prac.css">
-  </head>
-  <body>
-    <div class="main-wrapper">
-      <div class="container">
-        <header>
-          <div class="logo">
-            <img src="https://www.itec.hcmus.edu.vn/en/templates/201205_itec/images/itec/logo.png" alt="logo">
-          </div>
-          <div class="main-nav">
-            <nav>
-              <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">BTC</a></li>
-                <li><a href="#">ETH</a></li>
-                <li><a href="#">XRP</a></li>
-              </ul>
-            </nav>
-          </div>
-        </header>
-      </div>
-      <div class="container">
-        <div class="banner-back">
-          <div class="banner-front">
+	<head>
+		<meta charset="utf-8" />
+		<title>Lab 2</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;600&family=Roboto:wght@100&family=Unbounded:wght@200;400&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="styles/style.css" />
+	</head>
+	<body>
+		<header>
+			<div class="header-wrapper">
+				<div id="logo">
+					<img src="img/logo.png" width="85px" alt="logo" />
+					<h1>ITEC Crypto</h1>
+				</div>
+				<input type="checkbox" name="menu" value="" class="menu-check" />
+				<nav>
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Crypto Exchange</a></li>
+						<li><a href="#">BTC</a></li>
+						<li><a href="#">ETH</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<div id="banner">
+			<div class="banner-wrapper">
+				<h1>ITEC Crypto Exchange</h1>
+				<h4>A very trustworthy platform</h4>
+			</div>
+		</div>
+		<!-- end #banner -->
+		<main>
+			<div class="main-wrapper">
+				<div class="container front-three-blocks">
+					<div class="col-3">
+						<img src="img/eth.jpg" alt="" />
+						<h3>Buy and Sell Crypto</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+						<button type="button" name="button">Read More</button>
+					</div>
+					<!-- end .col-3 -->
+					<div class="col-3">
+						<img src="img/XRP.jpeg" alt="" />
+						<h3>Hot New Coins</h3>
+						<p>Definitely not a scam. Lorem ipsum dolor sit amet, consectetur.</p>
+						<button type="button" name="button">Read More</button>
+					</div>
+					<!-- end .col-3 -->
+					<div class="col-3">
+						<img src="img/ftx.jpg" alt="" />
+						<h3>FTX - Stamp of Quality</h3>
+						<p>Our exchange is under supervision of Sam Bankman Fried, funds are safe!</p>
+						<button type="button" name="button">Read More</button>
+					</div>
+					<!-- end .col-3 -->
+				</div>
+				<!-- end .container -->
+			</div>
+			<!-- end .main wrapper -->
+		</main>
+		<div>
+			<div class="date">
+				<h4>ITEC Crypto [Member of FTX International] 2023</h4>
+			</div>
+			<div class="social"></div>
+			<!-- student HTML: put a full width banner here -->
+			<div class="banner-2">
+				<h1>Start trading today</h1>
+			</div>
 
-          </div>
-        </div>
-      </div>
-      <main>
-        <div class="container">
-          <div class="ball blue">
-          </div>
-          <div class="ball green">
-          </div>
-          <div class="ball orange">
-          </div>
-          <div class="ball red">
-          </div>
-
-        </div>
-        <h2>Three Column Layout (Float)</h2>
-        <div class="container float">
-          <div class="col-3">
-          </div>
-          <div class="col-3">
-          </div>
-          <div class="col-3">
-          </div>
-        </div>
-        <h2>Two Column Layout (Flex)</h2>
-        <div class="container flex">
-          <div class="col-2">
-          </div>
-          <div class="col-2">
-          </div>
-        </div>
-        <h2>Four Column Layout (Grid)</h2>
-        <div class="container grid-4">
-          <div class="col-4">
-          </div>
-          <div class="col-4">
-          </div>
-          <div class="col-4">
-          </div>
-          <div class="col-4">
-          </div>
-        </div>
-        <h2>Five Column Image Layout Flex</h2>
-        <div class="container gal-5">
-          <img src="src/images/1.jpg" alt="gal-5.0">
-          <img src="src/images/4.jpg" alt="gal-5.1">
-          <img src="src/images/9.jpg" alt="gal-5.2">
-          <img src="src/images/10.jpg" alt="gal-5.3">
-          <img src="src/images/11.jpg" alt="gal-5.4">
-        </div>
-        <h2>4 X 2 Image Layout Grid (object fit)</h2>
-        <div class="container grid-4x2">
-          <img src="src/images/1.jpg" alt="grid-4x2.0">
-          <img src="src/images/4.jpg" alt="grid-4x2.1">
-          <img src="src/images/9.jpg" alt="grid-4x2.2">
-          <img src="src/images/10.jpg" alt="grid-4x2.3">
-          <img src="src/images/10.jpg" alt="grid-4x2.3">
-          <img src="src/images/9.jpg" alt="grid-4x2.2">
-          <img src="src/images/4.jpg" alt="grid-4x2.1">
-          <img src="src/images/1.jpg" alt="grid-4x2.0">
-        </div>
-      </main>
-      <footer>
-        <div class="footer-wrapper">
-          <div class="site-name">
-            <p>ITEC 2023</p>
-          </div>
-          <div class="social">
-            <img src="https://cdn-icons-png.flaticon.com/512/9287/9287358.png" alt="">
-          </div>
-        </div>
-    </div> <!-- End of main-wrapper -->
-  </body>
+			<!-- student HTML: put two columns (50/50) here with about us info on left and image on right -->
+			<div class="about-us container">
+				<div class="col-2">
+					<img src="img/ftx.jpg" alt="" />
+				</div>
+				<div class="col-2">
+					<h2>Learn about FTX</h2>
+					<hr />
+					<h4>Do you trust Bankman?</h4>
+					<ul>
+						<li>We never lie</li>
+						<li>We never steal</li>
+						<li>We aren't sus</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<div class="container">
+				<div class="date">
+					<h4>ITEC Crypto [Member of FTX International] 2023</h4>
+				</div>
+				<div class="social">
+					<img src="img/logo.png" alt="" />
+				</div>
+			</div>
+		</footer>
+	</body>
 </html>
