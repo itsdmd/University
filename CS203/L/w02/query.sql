@@ -1,5 +1,181 @@
 ﻿use QLThuVien
 
+-- 1. Nhận vào hai số a, b và trả về tổng a, b.
+if object_id('sp_cau1') is not null
+	drop procedure sp_cau1
+go
+
+create procedure sp_cau1
+	@a int,
+	@b int,
+	@tong int output
+as
+begin
+	set @tong = @a + @b
+end
+go
+
+declare
+	@a1 int = 1,
+	@b1 int = 2,
+	@kq1 int
+
+execute sp_cau1 @a1, @b1, @kq1 output
+print convert(varchar(10), @a1) + ' + ' + convert(varchar(10), @b1) + ' = ' + convert(varchar(10), @kq1)
+go
+
+
+-- 2. Nhận vào hai số a, b và trả về hiệu a, b.
+if object_id('sp_cau2') is not null
+	drop procedure sp_cau2
+go
+
+create procedure sp_cau2
+	@a int,
+	@b int,
+	@hieu int output
+as
+begin
+	set @hieu = @a - @b
+end
+go
+
+declare
+	@a2 int = 1,
+	@b2 int = 2,
+	@kq2 int
+
+execute sp_cau2 @a2, @b2, @kq2 output
+print convert(varchar(10), @a2) + ' - ' + convert(varchar(10), @b2) + ' = ' + convert(varchar(10), @kq2)
+go
+
+
+-- 3. Nhận vào hai số a, b và trả về tích a, b.
+if object_id('sp_cau3') is not null
+	drop procedure sp_cau3
+go
+
+create procedure sp_cau3
+	@a int,
+	@b int,
+	@tich int output
+as
+begin
+	set @tich = @a * @b
+end
+go
+
+declare
+	@a3 int = 1,
+	@b3 int = 2,
+	@kq3 int
+
+execute sp_cau3 @a3, @b3, @kq3 output
+print convert(varchar(10), @a3) + ' * ' + convert(varchar(10), @b3) + ' = ' + convert(varchar(10), @kq3)
+go
+
+
+-- 4. Nhận vào hai số a, b và trả về thương a, b.
+if object_id('sp_cau4') is not null
+	drop procedure sp_cau4
+go
+
+create procedure sp_cau4
+	@a int,
+	@b int,
+	@thuong int output
+as
+begin
+	set @thuong = @a / @b
+end
+
+declare
+	@a4 int = 7,
+	@b4 int = 2,
+	@kq4 int
+
+execute sp_cau4 @a4, @b4, @kq4 output
+print convert(varchar(10), @a4) + ' / ' + convert(varchar(10), @b4) + ' = ' + convert(varchar(10), @kq4)
+go
+
+
+-- 5. Nhận vào hai số a, b và trả về số dư của phép chia a cho b.
+if object_id('sp_cau5') is not null
+	drop procedure sp_cau5
+go
+
+create procedure sp_cau5
+	@a int,
+	@b int,
+	@soDu int output
+as
+begin
+	set @soDu = @a % @b
+end
+
+declare
+	@a5 int = 9,
+	@b5 int = 5,
+	@kq5 int
+
+execute sp_cau5 @a5, @b5, @kq5 output
+print 'So du cua phep chia ' + convert(varchar(10), @a5) + ' / ' + convert(varchar(10), @b5) + ' la: ' + convert(varchar(10), @kq5)
+go
+
+
+-- 6. Nhận vào hai số a, b và i.
+---- Nếu i là 1 trả về tổng a, b
+---- Nếu i là 2 trả về hiệu a, b
+---- Nếu i là 3 trả về tích a, b
+---- Nếu i là 4 trả về thương a, b
+---- Nếu i là 5 trả về số dư phép chia a cho b
+---- Yêu cầu: sử dụng lại stored procedure ở câu 1 đến câu 5 và dùng case để xét giá trị i.
+if object_id('sp_cau6') is not null
+	drop procedure sp_cau6
+go
+
+create procedure sp_cau6
+	@a int,
+	@b int,
+	@i int = 0,
+	@kq int output
+as
+begin
+	declare
+		@kq_c1 int = 0,
+		@kq_c2 int = 0,
+		@kq_c3 int = 0,
+		@kq_c4 int = 0,
+		@kq_c5 int = 0
+
+	execute sp_cau1 @a, @b, @kq_c1 output
+	execute sp_cau2 @a, @b, @kq_c2 output
+	execute sp_cau3 @a, @b, @kq_c3 output
+	execute sp_cau4 @a, @b, @kq_c4 output
+	execute sp_cau5 @a, @b, @kq_c5 output
+
+	select case @i
+		when 1 then @kq_c1
+		when 2 then @kq_c2
+		when 3 then @kq_c3
+		when 4 then @kq_c4
+		when 5 then @kq_c5
+		else 'i khong hop le'
+	end
+end
+
+declare
+	@a6 int = 7,
+	@b6 int = 4,
+	@i6 int = 1,
+	@return6 int,
+	@kq6 int
+
+execute @return6 = sp_cau6 @a6, @b6, @i6, @kq6 output
+print 'Ket qua: ' + convert(varchar(10), @kq6)
+go
+
+
 -- 7. Nhận vào n, m và trả về tổng các giá trị nằm trong đoạn n, m (dùng tham số output).
 if object_id('sp_cau7') is not null
 	drop procedure sp_cau7
@@ -12,7 +188,7 @@ create procedure sp_cau7
 as
 begin
 	set @tong = 0
-	if @n >= @m
+	if @n > @m
 		begin
 			return 1
 		end
