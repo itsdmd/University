@@ -21,7 +21,7 @@ declare
 	@kq1 int
 
 execute sp_cau1 @a1, @b1, @kq1 output
-print convert(varchar(10), @a1) + ' + ' + convert(varchar(10), @b1) + ' = ' + convert(varchar(10), @kq1)
+print '' + convert(varchar(10), @a1) + ' + ' + convert(varchar(10), @b1) + ' = ' + convert(varchar(10), @kq1)
 go
 
 
@@ -46,7 +46,7 @@ declare
 	@kq2 int
 
 execute sp_cau2 @a2, @b2, @kq2 output
-print convert(varchar(10), @a2) + ' - ' + convert(varchar(10), @b2) + ' = ' + convert(varchar(10), @kq2)
+print '' + convert(varchar(10), @a2) + ' - ' + convert(varchar(10), @b2) + ' = ' + convert(varchar(10), @kq2)
 go
 
 
@@ -71,7 +71,7 @@ declare
 	@kq3 int
 
 execute sp_cau3 @a3, @b3, @kq3 output
-print convert(varchar(10), @a3) + ' * ' + convert(varchar(10), @b3) + ' = ' + convert(varchar(10), @kq3)
+print '' + convert(varchar(10), @a3) + ' * ' + convert(varchar(10), @b3) + ' = ' + convert(varchar(10), @kq3)
 go
 
 
@@ -95,7 +95,7 @@ declare
 	@kq4 int
 
 execute sp_cau4 @a4, @b4, @kq4 output
-print convert(varchar(10), @a4) + ' / ' + convert(varchar(10), @b4) + ' = ' + convert(varchar(10), @kq4)
+print '' + convert(varchar(10), @a4) + ' / ' + convert(varchar(10), @b4) + ' = ' + convert(varchar(10), @kq4)
 go
 
 
@@ -290,6 +290,7 @@ else
 	print 'So nam nhuan trong doan tu ' + convert(varchar(10), @n9) + ' den ' + convert(varchar(10), @m9) + ' la: ' + convert(varchar(10), @kq9)
 go
 
+
 -- 10. Nhận vào n và trả ra giá trị n!, biết rằng n! = 1*2*3*...*n
 if object_id('sp_cau10') is not null
 	drop procedure sp_cau10
@@ -315,4 +316,179 @@ declare
 
 execute sp_cau10 @n10, @kq10 output
 print 'Gia tri cua ' + convert(varchar(10), @n10) + '! la: ' + convert(varchar(10), @kq10)
+go
+
+
+-- 11. Nhận vào ngày a (kiểu date hoặc datetime) cho biết tháng của ngày a có bao nhiêu ngày. Ví dụ: nếu ngày a là ngày 15/02/2000 thì trả về 28 là số ngày của tháng 2 trong năm 2000.
+if object_id('sp_cau11') is not null
+	drop procedure sp_cau11
+go
+
+create procedure sp_cau11
+	@a date,
+	@so_ngay int output
+as
+begin
+	set @so_ngay = 0
+	if datepart(mm, @a) in (1, 3, 5, 7, 8, 10, 12)
+		set @so_ngay = 31
+	else if datepart(mm, @a) in (4, 6, 9, 11)
+		set @so_ngay = 30
+	else if datepart(mm, @a) = 2
+		begin
+			if datepart(yy, @a) % 4 = 0 and datepart(yy, @a) % 100 <> 0 or datepart(yy, @a) % 400 = 0
+				set @so_ngay = 29
+			else
+				set @so_ngay = 28
+		end
+end
+go
+
+declare
+	@a11 date = '2020-02-15',
+	@kq11 int
+
+execute sp_cau11 @a11, @kq11 output
+print 'Thang ' + convert(varchar(10), datepart(mm, @a11)) + ' cua nam ' + convert(varchar(10), datepart(yy, @a11)) + ' co ' + convert(varchar(10), @kq11) + ' ngay'
+go
+
+
+-- 12. Nhận vào n, kiểm tra xem n có phải số nguyên tố không. Nếu là số nguyên tố trả về 1 còn không trả về 0.
+if object_id('sp_cau12') is not null
+	drop procedure sp_cau12
+go
+
+create procedure sp_cau12
+	@n int,
+	@kq int output
+as
+begin
+	set @kq = 1
+	if @n < 2
+		set @kq = 0
+	else
+		begin
+			declare @i int = 2
+			while @i <= @n / 2 and @kq = 1
+			begin
+				if @n % @i = 0
+					set @kq = 0
+			end
+		end
+end
+
+declare
+	@n12 int = 13,
+	@kq12 int
+
+execute sp_cau12 @n12, @kq12 output
+if @kq12 = 1
+	print '' + convert(varchar(10), @n12) + ' la so nguyen to'
+else
+	print '' + convert(varchar(10), @n12) + ' khong phai la so nguyen to'
+
+
+-- 13. Nhận vào n, m và trả về tích các số nguyên tố nằm trong đoạn n, m (dùng tham số output). Lưu ý: số nguyên tố là số có hai ước chung là 1 và chính nó, ví dụ: 13, 17, ...
+if object_id('sp_cau13') is not null
+	drop procedure sp_cau13
+go
+
+create procedure sp_cau13
+	@n int,
+	@m int,
+	@kq int output
+as
+begin
+	set @kq = 1
+	declare @i int = @n
+	while @i <= @m
+	begin
+		declare @j int = 2
+		while @j <= @i / 2
+		begin
+			if @i % @j = 0
+				break
+			set @j = @j + 1
+		end
+		if @j > @i / 2
+			set @kq = @kq * @i
+		set @i = @i + 1
+	end
+end
+
+declare
+	@n13 int = 2,
+	@m13 int = 10,
+	@kq13 int
+
+execute sp_cau13 @n13, @m13, @kq13 output
+print 'Tich cac so nguyen to trong doan ' + convert(varchar(10), @n13) + ' den ' + convert(varchar(10), @m13) + ' la: ' + convert(varchar(10), @kq13)
+go
+
+
+-- 14. Nhận vào n, kiểm tra xem n có phải số chính phương không. Nếu là số chính phương trả về 1 còn không trả về 0. Lưu ý: số chính phương là bình phương của một số khác, ví dụ: 4, 9, ...
+if object_id('sp_cau14') is not null
+	drop procedure sp_cau14
+go
+
+create procedure sp_cau14
+	@n int,
+	@kq int output
+as
+begin
+	set @kq = 0
+	declare @i int = 1
+	while @i <= @n / 2
+	begin
+		if @i * @i = @n
+			set @kq = 1
+		set @i = @i + 1
+	end
+end
+
+declare
+	@n14 int = 9,
+	@kq14 int
+
+execute sp_cau14 @n14, @kq14 output
+if @kq14 = 1
+	print '' + convert(varchar(10), @n14) + ' la so chinh phuong'
+else
+	print '' + convert(varchar(10), @n14) + ' khong phai la so chinh phuong'
+go
+
+
+-- 15. Nhận vào n, m và trả về tổng các số chính phương nằm trong đoạn n, m (dùng tham số output).
+if object_id('sp_cau15') is not null
+	drop procedure sp_cau15
+go
+
+create procedure sp_cau15
+	@n int,
+	@m int,
+	@kq int output
+as
+begin
+	set @kq = 0
+	declare @i int = @n
+	while @i <= @m
+	begin
+		declare @j int = 1
+		while @j <= @i / 2
+		begin
+			if @j * @j = @i
+				set @kq = @kq + @i
+			set @j = @j + 1
+		end
+		set @i = @i + 1
+	end
+end
+
+declare
+	@n15 int = 2,
+	@m15 int = 10,
+	@kq15 int
+
+execute sp_cau15 @n15, @m15, @kq15 output
+print 'Tong cac so chinh phuong trong doan ' + convert(varchar(10), @n15) + ' den ' + convert(varchar(10), @m15) + ' la: ' + convert(varchar(10), @kq15)
 go
