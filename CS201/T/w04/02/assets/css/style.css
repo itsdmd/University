@@ -1,0 +1,15 @@
+.container-fluid {
+    margin: 0px;
+    padding: 0px;
+}
+
+.banner {
+    background: url(https://img.freepik.com/free-vector/flat-abstract-background_23-2149123686.jpg?w=2000);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.jumbotron {
+    background: none;
+    text-align:center;
+}
