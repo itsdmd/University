@@ -322,7 +322,7 @@ Forms are used to collect user input. The user input is sent to a server for pro
 :heavy_check_mark: _**Recommended**_
 
 - Create a new `.css` file
-	- _**Personal reference**_: All the `.css` files should be inside a folder named `styles`. If there are multiple file types used for styling, each types should be in their own folder.
+	- _**Personal reference**_: All the `.css` files should be inside a folder named `css` placed inside `assets` root folder.
 - Put all the CSS code in the file.
 - Link the CSS file to the HTML file:
 
