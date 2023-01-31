@@ -1,7 +1,7 @@
 /* -------------------------------- Semantic -------------------------------- */
 
 header {
-	background: whitesmoke;
+	background-color: whitesmoke;
 	height: 75px;
 	left: 0;
 	position: fixed;
@@ -15,6 +15,10 @@ header .container {
 	display: flex;
 	height: 100%;
 	justify-content: space-between;
+}
+
+nav {
+	transition: all 300ms;
 }
 
 nav ul {
@@ -40,6 +44,10 @@ nav ul li {
 	padding: 200px;
 }
 
+.black {
+	background-color: black;
+}
+
 .col-md-8 {
 	display: flex;
 	flex-direction: column;
@@ -49,8 +57,8 @@ nav ul li {
 
 .container-fluid.banner {
 	align-items: center;
-	background-size: cover;
 	background: url(../img/bg1.jpg) no-repeat center center;
+	background-size: cover;
 	color: whitesmoke;
 	display: flex;
 	height: 500px;
@@ -63,13 +71,23 @@ nav ul li {
 	height: 50px;
 }
 
+.hamburger {
+	cursor: pointer;
+	display: none;
+	width: 50px;
+}
+
+.nav-slide {
+	right: 0;
+}
+
 .row.blocks {
 	gap: 1%;
 	flex-wrap: nowrap;
 }
 
 .transaction {
-	background: white;
+	background-color: white;
 	border-radius: 20px;
 	box-shadow: 0 0 15px white;
 }
@@ -77,6 +95,33 @@ nav ul li {
 /* -------------------------------- Override -------------------------------- */
 
 @media screen and (max-width: 768px) {
+	nav {
+		background-color: black;
+		color: white;
+		height: 100%;
+		position: fixed;
+		right: -200px;
+		top: 75px;
+		width: 200px;
+		z-index: 999 !important;
+	}
+
+	nav ul {
+		display: block;
+	}
+
+	nav ul li {
+		text-align: center;
+	}
+
+	nav ul li:hover {
+		background-color: navy;
+	}
+
+	.hamburger {
+		display: block;
+	}
+
 	.row.blocks {
 		flex-wrap: wrap;
 	}
