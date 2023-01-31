@@ -1,0 +1,83 @@
+/* -------------------------------- Semantic -------------------------------- */
+
+header {
+	background: whitesmoke;
+	height: 75px;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+}
+
+header .container {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	justify-content: space-between;
+}
+
+nav ul {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li {
+	cursor: pointer;
+	margin: 10px;
+	padding: 10px;
+}
+
+/* ---------------------------------- Class --------------------------------- */
+
+.bg-wrapper {
+	background: url(../img/bg2.jpg) no-repeat center center;
+	background-size: cover;
+	padding: 200px;
+}
+
+.col-md-8 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.container-fluid.banner {
+	align-items: center;
+	background-size: cover;
+	background: url(../img/bg1.jpg) no-repeat center center;
+	color: whitesmoke;
+	display: flex;
+	height: 500px;
+	margin-top: 75px;
+	position: relative;
+}
+
+.front-block img {
+	width: 50px;
+	height: 50px;
+}
+
+.row.blocks {
+	gap: 1%;
+	flex-wrap: nowrap;
+}
+
+.transaction {
+	background: white;
+	border-radius: 20px;
+	box-shadow: 0 0 15px white;
+}
+
+/* -------------------------------- Override -------------------------------- */
+
+@media screen and (max-width: 768px) {
+	.row.blocks {
+		flex-wrap: wrap;
+	}
+}
