@@ -5,8 +5,9 @@ console.log("main.js loaded");
 /* ---------------------------------- */
 
 let frontBlocks = document.querySelectorAll(".front-block");
-let nav = document.querySelector("nav");
 let hamburger = document.querySelector(".hamburger");
+let header = document.querySelector("header");
+let nav = document.querySelector("nav");
 
 /* ---------------------------------- */
 /*           EventListeners           */
@@ -26,5 +27,8 @@ frontBlocks.forEach(function(block) {
 
 hamburger.addEventListener("click", function() {
 	console.log("hamburger click");
+	
+	header.classList.toggle("black");
 	nav.classList.toggle("nav-slide");
+	hamburger.classList.toggle("invert");
 });
