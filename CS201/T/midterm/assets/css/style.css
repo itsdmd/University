@@ -72,7 +72,16 @@ header {
 	flex-direction: row;
 	flex-grow: 1;
 	flex-wrap: nowrap;
-	justify-content: space-around;
+	justify-content: center;
+	width: auto;
+	height: var(--catalogue-tab-btn-height);
+}
+
+.ctl-tabs > * {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-grow: 1;
+	justify-content: center;
 	width: auto;
 }
 
@@ -82,10 +91,9 @@ header {
 	border: solid 2px transparent;
 	color: #000;
 	cursor: pointer;
-	flex-basis: 1;
+	flex-grow: 1;
 	font-size: 16px;
 	font-weight: 400;
-	height: var(--catalogue-tab-btn-height);
 	padding-bottom: auto !important;
 	padding: 11px var(--def-padding) 11px var(--def-padding);
 	transition: var(--def-transition);
