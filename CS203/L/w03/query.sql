@@ -243,7 +243,7 @@ begin
 end
 go
 
-execute sp_cau7 'PM003'
+execute sp_cau7 'PM001'
 go
 
 
@@ -339,11 +339,16 @@ begin
 	where mapt = @maPhieuTra
 	
 	-- Cap nhat tien phat
-	update CT_PhieuTra as ctpm,
-		PhieuMuon as pm
-	set ctpm.tienphat = ctpm.mucgiaphat * (DATEDIFF(day, pm.ngaymuon, @ngayTra) - pm.songaymuon)
-	where ctpm.mapm = pm.mapm
-		and ctpm.mapt = @maPhieuTra
+	update CT_PhieuTra
+	set tienphat = ctpt.mucgiaphat * (DATEDIFF(day, pm.ngaymuon, @ngayTra) - ctpm.songayquydinh)
+	from PhieuTra as pt,
+		CT_PhieuTra as ctpt,
+		PhieuMuon as pm,
+		CT_PhieuMuon as ctpm
+	where pt.mapt = ctpt.mapt
+		and pt.mapm = pm.mapm
+		and pm.mapm = ctpm.mapm
+		and ctpt.mapt = @maPhieuTra
 end
 go
 
