@@ -24,14 +24,9 @@ a:hover {
 }
 
 header {
-	align-items: center;
 	display: flex;
-	flex-direction: column;
-	height: var(--header-height);
-	justify-content: center;
-	padding-bottom: var(--def-padding);
-	padding-top: var(--def-padding);
 	width: 100%;
+	justify-content: center;
 }
 
 /* ---------------------------------- Class --------------------------------- */
@@ -121,7 +116,7 @@ header {
 	justify-content: space-between;
 	padding-left: var(--def-padding);
 	padding-right: var(--def-padding);
-	width: 1000px;
+	flex-basis: var(--header-width);
 }
 
 .header-logo {
