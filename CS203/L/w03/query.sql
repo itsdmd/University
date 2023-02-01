@@ -389,7 +389,7 @@ begin
 	
 	-- Them phieu muon
 	insert into PhieuMuon
-	values (@maPhieuMuon, @maDocGia,GETDATE(), 0, 0)
+	values (@maPhieuMuon, @maDocGia, GETDATE(), 0)
 	
 	RAISERROR('Them thanh cong', 0, 0)
 end
