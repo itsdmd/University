@@ -7,7 +7,7 @@ let age = document.querySelector("form input#age");
 let genderMale = document.querySelector("form input.male");
 let genderFemale = document.querySelector("form input.female");
 let major = document.querySelector("form select#major");
-
+let tbody = document.querySelector("table tbody");
 /* Event Listeners */
 
 submitBtn.addEventListener("click", function(event) {
@@ -22,10 +22,19 @@ submitBtn.addEventListener("click", function(event) {
     } else if (genderFemale.checked) {
         genderVal = "F"
     }
-    createClassmate(nameVal);
+    createClassmate(nameVal, ageVal, majorVal, genderVal);
 });
 
-function createClassmate(nameVal) {
+function createClassmate(nameVal, ageVal, majorVal, genderVal) {
     console.log("create function called!");
-    console.log(nameVal);
+    let output = `
+        <tr>
+            <td>${nameVal}</td>
+            <td>${ageVal}</td>
+            <td>${genderVal}</td>
+            <td>${majorVal}</td>
+        </tr>
+    `;
+    console.log(output);
+    tbody.insertAdjacentHTML("beforeend", output);
 }
