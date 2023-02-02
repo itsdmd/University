@@ -40,7 +40,7 @@ function generatePostGrid(target, classes, url, imgUrl, title, text) {
 
 	for (let i = 0; i < url.length; i++) {
 		targetNode.appendChild(generatePostItem(classes, url, imgUrl, title, text, i));
-		console.log(target + "Item " + i + " generated");
+		console.log(target + " Item " + i + " generated");
 	}
 }
 
@@ -271,4 +271,81 @@ let pickUpContentText = [
 ];
 
 generatePostGrid(".pickup.content-grid", pickUpContentClasses, pickUpContentUrl, pickUpContentImgUrl, pickUpContentTitle, pickUpContentText);
+/* #endregion */
+
+/* ---------------------------------- */
+/*             Latest News            */
+/* ---------------------------------- */
+
+/* #region   */
+let newsDates = ["Feb. 1, 2023", "Jan. 31, 2023", "Jan. 20, 2023", "Jan. 20, 2023", "Jan. 6, 2023", ""];
+
+let newsTitle = [
+	"Notice Regarding the Status of Repurchase of Shares of Common Stock(PDF:158KB)",
+	"Nikon introduces the Digital Sight 50M Monochrome Camera",
+	"Notice of Implementation of Settlement relating to Public Takeover Offer for Shares of SLM and SLM becoming a Consolidated Subsidiary of Nikon",
+	"Nikon's Public Takeover Offer for SLM Successful",
+	"Nikon Exhibits at CES® 2023",
+	"more News",
+];
+
+let newsUrl = [
+	"https://www.nikon.com/news/2023/20230201_e.pdf",
+	"https://www.nikon.com/news/2023/0131_digital-sight-50m_01.htm",
+	"https://www.nikon.com/news/2022/slm/",
+	"https://www.nikon.com/news/2022/slm/",
+	"https://www.nikon.com/news/2023/0106_ces_01.htm",
+	"https://www.nikon.com/news/",
+];
+
+function generateNewsItem(date, title, url) {
+	// Template
+	// <div class="news content-list-item">
+	// 	<p class="date">Feb. 1, 2023</p>
+	// 	<p>></p>
+	// 	<a href="#">Placeholder</a>
+	// </div>
+
+	let newsItem = document.createElement("div");
+	newsItem.classList.add("news", "content-list-item");
+
+	if (date == "") {
+		newsItem.classList.add("more");
+	}
+
+	let newsDate = document.createElement("p");
+	newsDate.classList.add("date");
+	newsDate.textContent = date;
+
+	let newsArrow = document.createElement("p");
+	newsArrow.classList.add("arrow");
+	newsArrow.textContent = ">";
+
+	let newsLink = document.createElement("a");
+	newsLink.href = url;
+	newsLink.textContent = title;
+
+	newsItem.appendChild(newsDate);
+	newsItem.appendChild(newsArrow);
+	newsItem.appendChild(newsLink);
+
+	return newsItem;
+}
+
+function generateNewsList() {
+	let newsList = document.querySelector(".news.content-list");
+
+	while (newsList.firstChild) {
+		newsList.removeChild(newsList.firstChild);
+	}
+
+	for (let i = 0; i < newsDates.length; i++) {
+		let newsItem = generateNewsItem(newsDates[i], newsTitle[i], newsUrl[i]);
+		newsList.appendChild(newsItem);
+		console.log(".news.content-list Item " + i + " generated");
+	}
+}
+
+generateNewsList();
+
 /* #endregion */

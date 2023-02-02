@@ -5,6 +5,7 @@
 	--catalogue-tab-btn-height: 85px;
 	--color-primary: #ffe100;
 	--color-border: #e2e2e2;
+	--color-link: #0014cc;
 	--banner-height: 374.45px;
 	--def-padding: 20px;
 	--def-transition: all 300ms ease-in-out;
@@ -52,6 +53,10 @@ header {
 
 .catalogue.content-grid {
 	grid-template-columns: repeat(5, 1fr);
+}
+
+.catalogue.content-wrapper {
+	padding-top: 45px;
 }
 
 .catalogue-header {
@@ -143,6 +148,27 @@ header {
 	width: var(--content-width);
 }
 
+.content-list {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.content-list-item {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	margin: 0px;
+	padding: 0px;
+}
+
 .content-grid {
 	display: grid;
 	gap: var(--def-padding);
@@ -156,10 +182,6 @@ header {
 	justify-content: center;
 	padding-bottom: var(--def-padding);
 	padding-top: var(--def-padding);
-}
-
-.content-grid-item a:hover > * {
-	cursor: pointer;
 }
 
 .content-grid-item img {
@@ -194,7 +216,7 @@ header {
 
 .content-grid-item.post h3 {
 	margin: 0px;
-	color: #0014cc;
+	color: var(--color-link);
 	padding: var(--def-padding) 0px var(--def-padding) 0px;
 }
 
@@ -211,10 +233,6 @@ header {
 	flex-basis: 1;
 	flex-shrink: 1;
 	margin: auto;
-}
-
-.content-wrapper.catalogue {
-	padding-top: 45px;
 }
 
 .header-content {
@@ -288,6 +306,35 @@ header {
 .nav-main ul li button:hover {
 	border-bottom: solid 5px var(--color-primary);
 	transition: var(--def-transition);
+}
+
+.news.content-block hr {
+	border: none;
+	border-bottom: solid 1px var(--color-border);
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+
+.news.content-list-item a {
+	color: var(--color-link);
+}
+
+.news.content-list-item .date {
+	flex: 0 0 126px;
+}
+
+.news.content-list-item > * {
+	margin: var(--def-padding);
+}
+
+.news.content-list-item.more .date {
+	flex: 0 0 0px;
+	margin: 0px;
+}
+
+.news.content-wrapper {
+	width: 100%;
 }
 
 .pickup.content-block-wrapper {
