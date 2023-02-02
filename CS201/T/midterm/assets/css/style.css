@@ -1,6 +1,8 @@
+/* Linked to: T/midterm/index.html */
+
 :root {
-	--catalogue-width: 1280px;
-	--catalogue-tab-btn-height: 85px;
+	--ctl-width: 1280px;
+	--ctl-tab-btn-height: 85px;
 	--color-primary: #ffe100;
 	--color-border: #e2e2e2;
 	--banner-height: 374.45px;
@@ -40,10 +42,15 @@ header {
 	width: 100%;
 }
 
+.catalogue-wrapper {
+	display: flex;
+	width: 100%;
+}
+
 .catalogue {
 	align-items: center;
 	display: flex;
-	flex-basis: var(--catalogue-width);
+	flex-basis: var(--ctl-width);
 	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: center;
@@ -53,9 +60,24 @@ header {
 	padding-top: 60px;
 }
 
-.catalogue-wrapper {
+.ctl-content-wrapper {
+	width: var(--ctl-width);
+	margin: auto;
+}
+
+.ctl-content {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: var(--def-padding);
+	width: auto;
+}
+
+.ctl-content > * {
+	align-items: center;
 	display: flex;
-	width: 100%;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
 }
 
 .ctl-header {
@@ -67,25 +89,7 @@ header {
 	width: 100%;
 }
 
-.ctl-tabs {
-	display: flex;
-	flex-direction: row;
-	flex-grow: 1;
-	flex-wrap: nowrap;
-	justify-content: center;
-	width: auto;
-	height: var(--catalogue-tab-btn-height);
-}
-
-.ctl-tabs > * {
-	display: flex;
-	flex-wrap: nowrap;
-	flex-grow: 1;
-	justify-content: center;
-	width: auto;
-}
-
-.ctl-tabs button {
+.ctl-tab button {
 	background-color: transparent;
 	border-bottom: solid 2px var(--color-border) !important;
 	border: solid 2px transparent;
@@ -99,21 +103,44 @@ header {
 	transition: var(--def-transition);
 }
 
-.ctl-tabs button:hover {
+.ctl-tab button:hover {
 	text-decoration: underline;
 }
 
-.ctl-tabs .is-selected button {
+.ctl-tab.is-selected button {
 	border-bottom: solid 2px transparent !important;
 	border-top: solid 5px var(--color-primary) !important;
 	border: solid 2px var(--color-border);
 	transition: var(--def-transition);
 }
 
+.ctl-tab.is-selected button:hover {
+	text-decoration: none;
+	cursor: default;
+}
+
+.ctl-tabs {
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	flex-wrap: nowrap;
+	justify-content: center;
+	width: auto;
+	height: var(--ctl-tab-btn-height);
+}
+
+.ctl-tabs > * {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-grow: 1;
+	justify-content: center;
+	width: auto;
+}
+
 .ctl-side {
 	border-bottom: solid 2px var(--color-border) !important;
 	border: none;
-	height: var(--catalogue-tab-btn-height) - 2px; /* 2px is the border's width */
+	height: var(--ctl-tab-btn-height) - 2px; /* 2px is the border's width */
 	width: 5%;
 }
 
@@ -142,6 +169,15 @@ header {
 .header-search * {
 	margin: 0;
 	margin-bottom: 5px;
+}
+
+.nav-main-wrapper {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	width: 100%;
 }
 
 .nav-main {
@@ -179,15 +215,6 @@ header {
 .nav-main ul li button:hover {
 	border-bottom: solid 5px var(--color-primary);
 	transition: var(--def-transition);
-}
-
-.nav-main-wrapper {
-	align-items: center;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	width: 100%;
 }
 
 /* ----------------------------------- ID ----------------------------------- */
