@@ -34,6 +34,10 @@ body {
 	align-items: center;
 }
 
+body .block-divider {
+	width: var(--content-width) !important;
+}
+
 header {
 	display: flex;
 	width: 100%;
@@ -48,6 +52,15 @@ header {
 
 .banner-img {
 	height: 100%;
+	width: 100%;
+}
+
+.block-divider {
+	border-bottom: solid 2px var(--color-border) !important;
+	border: none;
+	height: 0px;
+	margin: 0px;
+	padding: 0px;
 	width: 100%;
 }
 
@@ -131,7 +144,7 @@ header {
 	flex-wrap: nowrap;
 	justify-content: center;
 	margin: auto;
-	padding: 60px var(--def-padding) 35px var(--def-padding);
+	padding: 60px var(--def-padding) 60px var(--def-padding);
 }
 
 .content-block-wrapper {
@@ -140,12 +153,11 @@ header {
 }
 
 .content-divider {
-	border-bottom: solid 2px var(--color-border) !important;
 	border: none;
-	height: 0px;
-	margin: 0px;
+	border-bottom: solid 1px var(--color-border);
+	margin: var(--def-padding) 0px var(--def-padding) 0px;
 	padding: 0px;
-	width: var(--content-width);
+	width: 100%;
 }
 
 .content-list {
@@ -167,6 +179,10 @@ header {
 	justify-content: center;
 	margin: 0px;
 	padding: 0px;
+}
+
+.content-list-item a {
+	color: var(--color-link);
 }
 
 .content-grid {
@@ -308,16 +324,8 @@ header {
 	transition: var(--def-transition);
 }
 
-.news.content-block hr {
-	border: none;
-	border-bottom: solid 1px var(--color-border);
-	margin: 0px;
-	padding: 0px;
-	width: 100%;
-}
-
-.news.content-list-item a {
-	color: var(--color-link);
+.news.content-list {
+	margin: var(--def-padding) 0px var(--def-padding) 0px;
 }
 
 .news.content-list-item .date {
@@ -333,8 +341,35 @@ header {
 	margin: 0px;
 }
 
+.news.content-block-wrapper {
+	margin-bottom: 125px;
+}
+
 .news.content-wrapper {
+	flex-direction: column;
 	width: 100%;
+}
+
+.news.content-wrapper .social.content-list {
+	margin: var(--def-padding) 0px var(--def-padding) 0px;
+}
+
+.news.content-wrapper .social.content-list-item .embed {
+	padding: var(--def-padding);
+	border: solid 2px var(--color-border);
+}
+
+.news.content-wrapper .social.content-list-item .embed a .header {
+	display: flex;
+	margin-bottom: var(--def-padding);
+}
+
+.news.content-wrapper .social.content-list-item .embed a .header h3 {
+	margin-left: var(--def-padding);
+}
+
+.news.content-wrapper .warning.content-list {
+	margin: var(--def-padding) 0px var(--def-padding) 0px;
 }
 
 .pickup.content-block-wrapper {
