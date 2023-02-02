@@ -7,7 +7,6 @@
 		<meta name="Description" content="Enter your description here" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-		<link rel="stylesheet" href="style.css" />
 		<title>My Classmates</title>
 	</head>
 	<body>
@@ -35,48 +34,64 @@
 		</nav>
 		<div class="jumbotron">
 			<div class="container">
-				<h1 class="display-4">My classmates</h1>
-				<p class="lead">Add a new classmate:</p>
-				<hr class="my-4" />
 				<!-- classmate form here -->
 				<div class="row">
-					<div class="col-md-6">
-						<h4><i class="fa fa-user"></i> Add Classmate Here</h4>
-						<br />
-
+					<div class="col-md-6 offset-md-3">
+						<h1 class="display-4">My classmates</h1>
+						<p class="lead">Add a new classmate:</p>
+						<hr class="my-4" />
+						<h4><i class="fa fa-user"></i> Add Classmate Here:</h4>
 						<form action="index.html" method="get">
-							<label for="classmate-name">Name</label>
-							<input type="text" name="classmate-name" id="classmate-name" class="form-control" />
-							<br />
-
-							<label for="classmate-age">Age</label>
-							<input type="number" name="classmate-age" id="classmate-age" class="form-control" />
-							<br />
-
-							<label for="classmate-gender">Gender</label>
-							<br />
-							<input type="radio" name="classmate-gender" value="male" /> Male
-							<input type="radio" name="classmate-gender" value="female" /> Female
-							<br />
-							<br />
-
-							<label for="classmate-major">Major</label>
-							<select name="classmate-major" id="">
-								<option value="computer science">Computer Science</option>
+							<label for="classmate-name">Classmate Name</label>
+							<input type="text" name="classmate-name" id="classmate-name" placeholder="Your classmate's name" class="form-control mb-3" />
+							<label for="age">Classmate Age</label>
+							<input type="number" name="age" id="age" class="form-control mb-3" placeholder="Classmate's age..." />
+							<label for="gender">Classmate Gender</label> <br />
+							<input type="radio" name="gender" value="male" class="gender male" /> Male <br />
+							<input type="radio" name="gender" value="female" class="gender female" /> Female <br />
+							<label for="major" class="mt-3">Classmate Major</label>
+							<select name="major" id="major" class="form-control mb-3">
+								<option default value="computer science">Computer Science</option>
 								<option value="business">Business</option>
-								<option value="design">Design</option>
+								<option value="design">Graphic Design</option>
+								<option value="economics">Economics</option>
 							</select>
-							<br />
-							<br />
-
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="submit" class="btn btn-lg btn-outline-primary btn-block">
+								<i class="fa fa-check-circle" aria-hidden="true"></i> Submit
+							</button>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- end jumbotron -->
-		<div class="container"></div>
+		<div class="container">
+			<h1><i class="fa fa-university" aria-hidden="true"></i> My Classmates</h1>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Age</th>
+						<th>Gender</th>
+						<th>Major</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Lan</td>
+						<td>36</td>
+						<td>F</td>
+						<td>Urban Planning</td>
+					</tr>
+					<tr>
+						<td>Spencer</td>
+						<td>41</td>
+						<td>M</td>
+						<td>Web Development</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
 		<footer class="pt-4 pb-4 pt-4 bg-dark text-light">
 			<div class="container">
@@ -86,5 +101,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+		<script src="assets/js/main.js"></script>
 	</body>
 </html>
