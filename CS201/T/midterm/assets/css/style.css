@@ -298,6 +298,10 @@ header {
 	grid-template-columns: repeat(3, 1fr);
 }
 
+.pickup.content-grid-item.post img {
+	flex-basis: 252px;
+}
+
 .topics.content-grid {
 	grid-template-columns: repeat(4, 1fr);
 }

@@ -3,7 +3,7 @@
 console.log("main.js loaded");
 
 /* ------- Grid post generator ------ */
-function generatePostItem(url, imgUrl, title, text, index) {
+function generatePostItem(classes, url, imgUrl, title, text, index) {
 	// Template:
 	// <a href="#" class="topics content-grid-item">
 	// 	<img alt="placeholder img" />
@@ -12,7 +12,7 @@ function generatePostItem(url, imgUrl, title, text, index) {
 	// </a>
 
 	let post = document.createElement("a");
-	post.classList.add("topics", "content-grid-item", "post");
+	post.classList.add(classes, "content-grid-item", "post");
 	post.href = url[index];
 
 	let postImg = document.createElement("img");
@@ -30,7 +30,7 @@ function generatePostItem(url, imgUrl, title, text, index) {
 	return post;
 }
 
-function generatePostGrid(target, url, imgUrl, title, text) {
+function generatePostGrid(target, classes, url, imgUrl, title, text) {
 	let targetNode = document.querySelector(target);
 
 	// Remove all current content items
@@ -39,7 +39,7 @@ function generatePostGrid(target, url, imgUrl, title, text) {
 	}
 
 	for (let i = 0; i < url.length; i++) {
-		targetNode.appendChild(generatePostItem(url, imgUrl, title, text, i));
+		targetNode.appendChild(generatePostItem(classes, url, imgUrl, title, text, i));
 		console.log(target + "Item " + i + " generated");
 	}
 }
@@ -217,6 +217,9 @@ catalogueTab.forEach((button) => {
 /*               Topics               */
 /* ---------------------------------- */
 
+/* #region   */
+let topicsContentClasses = ["topics"];
+
 let topicsContentUrl = [
 	"https://www.nikon.com/products/optical-processing-machine/",
 	"https://www.microscope.healthcare.nikon.com/en_AOM/products/confocal-microscopes/ax",
@@ -237,11 +240,15 @@ let topicsContentText = [
 	"Assisting factory automation with high accuracy auto dimension measuring of electronic components",
 ];
 
-generatePostGrid(".topics.content-grid", topicsContentUrl, topicsContentImgUrl, topicsContentTitle, topicsContentText);
+generatePostGrid(".topics.content-grid", topicsContentClasses, topicsContentUrl, topicsContentImgUrl, topicsContentTitle, topicsContentText);
+/* #endregion */
 
 /* ---------------------------------- */
 /*               Pick Up              */
 /* ---------------------------------- */
+
+/* #region   */
+let pickUpContentClasses = ["pickup"];
 
 let pickUpContentUrl = [
 	"https://www.nikon.com/ces2023e/https://www.nikon.com/ces2023e/",
@@ -263,4 +270,5 @@ let pickUpContentText = [
 	"Here you can see our latest sustainability report, which is organized according to Nikon Materiality of the Nikon Group's activities and progress clearer to readers.",
 ];
 
-generatePostGrid(".pickup.content-grid", pickUpContentUrl, pickUpContentImgUrl, pickUpContentTitle, pickUpContentText);
+generatePostGrid(".pickup.content-grid", pickUpContentClasses, pickUpContentUrl, pickUpContentImgUrl, pickUpContentTitle, pickUpContentText);
+/* #endregion */
