@@ -1,8 +1,8 @@
 /* Linked to: T/midterm/index.html */
 
 :root {
-	--ctl-width: 1280px;
-	--ctl-tab-btn-height: 85px;
+	--content-width: 1280px;
+	--catalogue-tab-btn-height: 85px;
 	--color-primary: #ffe100;
 	--color-border: #e2e2e2;
 	--banner-height: 374.45px;
@@ -25,6 +25,14 @@ a:hover {
 	text-decoration: underline;
 }
 
+body {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
 header {
 	display: flex;
 	width: 100%;
@@ -42,25 +50,7 @@ header {
 	width: 100%;
 }
 
-.catalogue-wrapper {
-	display: flex;
-	width: 100%;
-}
-
-.catalogue {
-	align-items: center;
-	display: flex;
-	flex-basis: var(--ctl-width);
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	margin: auto;
-	padding-left: var(--def-padding);
-	padding-right: var(--def-padding);
-	padding-top: 60px;
-}
-
-.ctl-content-wrapper {
+.catalogue-content-wrapper {
 	display: flex;
 	flex-basis: 1;
 	flex-shrink: 1;
@@ -68,13 +58,11 @@ header {
 	padding-top: 45px;
 }
 
-.ctl-content {
-	display: grid;
-	gap: var(--def-padding);
+.catalogue-content-wrapper .content-grid {
 	grid-template-columns: repeat(5, 1fr);
 }
 
-.ctl-content-item {
+.catalogue-content-item {
 	align-items: center;
 	background-image: linear-gradient(to bottom, var(--color-border), #f9fafa);
 	display: flex;
@@ -85,30 +73,30 @@ header {
 	padding-top: var(--def-padding);
 }
 
-.ctl-content-item a:hover > * {
+.catalogue-content-item a:hover > * {
 	cursor: pointer;
 }
 
-.ctl-content-item img {
+.catalogue-content-item img {
 	height: 100%;
 	margin-bottom: var(--def-padding);
 	width: 100%;
 }
 
-.ctl-content-item h3 {
+.catalogue-content-item h3 {
 	text-align: center;
 }
 
-.ctl-header {
+.catalogue-header {
 	display: flex;
 	flex-direction: row;
 	flex-grow: 1;
 	flex-wrap: nowrap;
 	justify-content: stretch;
-	width: 100%;
+	width: 111%;
 }
 
-.ctl-tab button {
+.catalogue-tab button {
 	background-color: transparent;
 	border-bottom: solid 2px var(--color-border) !important;
 	border: solid 2px transparent;
@@ -122,33 +110,33 @@ header {
 	transition: var(--def-transition);
 }
 
-.ctl-tab button:hover {
+.catalogue-tab button:hover {
 	text-decoration: underline;
 }
 
-.ctl-tab.is-selected button {
+.catalogue-tab.is-selected button {
 	border-bottom: solid 2px transparent !important;
 	border-top: solid 5px var(--color-primary) !important;
 	border: solid 2px var(--color-border);
 	transition: var(--def-transition);
 }
 
-.ctl-tab.is-selected button:hover {
+.catalogue-tab.is-selected button:hover {
 	text-decoration: none;
 	cursor: default !important;
 }
 
-.ctl-tabs {
+.catalogue-tabs {
 	display: flex;
 	flex-direction: row;
 	flex-grow: 1;
 	flex-wrap: nowrap;
 	justify-content: center;
 	width: auto;
-	height: var(--ctl-tab-btn-height);
+	height: var(--catalogue-tab-btn-height);
 }
 
-.ctl-tabs > * {
+.catalogue-tabs > * {
 	display: flex;
 	flex-wrap: nowrap;
 	flex-grow: 1;
@@ -156,11 +144,41 @@ header {
 	width: auto;
 }
 
-.ctl-side {
+.catalogue-side {
 	border-bottom: solid 2px var(--color-border) !important;
 	border: none;
-	height: var(--ctl-tab-btn-height) - 2px; /* 2px is the border's width */
+	height: var(--catalogue-tab-btn-height) - 2px; /* 2px is the border's width */
 	width: 5%;
+}
+
+.content-block {
+	align-items: center;
+	display: flex;
+	flex-basis: var(--content-width);
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	margin: auto;
+	padding: 60px var(--def-padding) 35px var(--def-padding);
+}
+
+.content-block-wrapper {
+	display: flex;
+	width: 100%;
+}
+
+.content-divider {
+	border-bottom: solid 2px var(--color-border) !important;
+	border: none;
+	height: 0px;
+	margin: 0px;
+	padding: 0px;
+	width: var(--content-width);
+}
+
+.content-grid {
+	display: grid;
+	gap: var(--def-padding);
 }
 
 .header-content {
@@ -236,6 +254,10 @@ header {
 	transition: var(--def-transition);
 }
 
+.topics-content-wrapper .content-grid {
+	grid-template-columns: repeat(4, 1fr);
+}
+
 /* ----------------------------------- ID ----------------------------------- */
 #nav-divider {
 	background-image: linear-gradient(to bottom, var(--color-border), transparent);
@@ -247,9 +269,16 @@ header {
 
 /* -------------------------------- Override -------------------------------- */
 
+/* Banner image */
+@media screen and (max-width: 960px) {
+	.banner img {
+		content: url(https://www.nikon.com/img/index/kv_03_en.jpg);
+	}
+}
+
 /* Grid template */
 @media screen and (max-width: 768px) {
-	.ctl-content {
+	.catalogue-content {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
