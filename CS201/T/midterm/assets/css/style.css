@@ -61,23 +61,43 @@ header {
 }
 
 .ctl-content-wrapper {
-	width: var(--ctl-width);
+	display: flex;
+	flex-basis: 1;
+	flex-shrink: 1;
 	margin: auto;
+	padding-top: 45px;
+	width: var(--ctl-width);
 }
 
 .ctl-content {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
 	gap: var(--def-padding);
-	width: auto;
+	grid-template-columns: repeat(5, 1fr);
 }
 
-.ctl-content > * {
+.ctl-content-item {
 	align-items: center;
+	background-image: linear-gradient(to bottom, var(--color-border), #f9fafa);
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: center;
+	padding-bottom: var(--def-padding);
+	padding-top: var(--def-padding);
+}
+
+.ctl-content-item a:hover > * {
+	cursor: pointer;
+}
+
+.ctl-content-item img {
+	height: 100%;
+	margin-bottom: var(--def-padding);
+	width: 100%;
+}
+
+.ctl-content-item h3 {
+	text-align: center;
 }
 
 .ctl-header {
@@ -116,7 +136,7 @@ header {
 
 .ctl-tab.is-selected button:hover {
 	text-decoration: none;
-	cursor: default;
+	cursor: default !important;
 }
 
 .ctl-tabs {
