@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="Description" content="Enter your description here" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+		<link rel="stylesheet" href="style.css" />
+		<title>My Classmates</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand"><i class="fa fa-university" aria-hidden="true"></i> My Classmates</a>
+				<button
+					class="navbar-toggler"
+					data-target="#my-nav"
+					data-toggle="collapse"
+					aria-controls="my-nav"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div id="my-nav ml-auto" class="collapse navbar-collapse">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="jumbotron">
+			<div class="container">
+				<h1 class="display-4">My classmates</h1>
+				<p class="lead">Add a new classmate:</p>
+				<hr class="my-4" />
+				<!-- classmate form here -->
+				<div class="row">
+					<div class="col-md-6">
+						<h4><i class="fa fa-user"></i> Add Classmate Here</h4>
+						<br />
+
+						<form action="index.html" method="get">
+							<label for="classmate-name">Name</label>
+							<input type="text" name="classmate-name" id="classmate-name" class="form-control" />
+							<br />
+
+							<label for="classmate-age">Age</label>
+							<input type="number" name="classmate-age" id="classmate-age" class="form-control" />
+							<br />
+
+							<label for="classmate-gender">Gender</label>
+							<br />
+							<input type="radio" name="classmate-gender" value="male" /> Male
+							<input type="radio" name="classmate-gender" value="female" /> Female
+							<br />
+							<br />
+
+							<label for="classmate-major">Major</label>
+							<select name="classmate-major" id="">
+								<option value="computer science">Computer Science</option>
+								<option value="business">Business</option>
+								<option value="design">Design</option>
+							</select>
+							<br />
+							<br />
+
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end jumbotron -->
+		<div class="container"></div>
+
+		<footer class="pt-4 pb-4 pt-4 bg-dark text-light">
+			<div class="container">
+				<h3><i class="fa fa-university" aria-hidden="true"></i> My ITEC Classmates 2023</h3>
+			</div>
+		</footer>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+	</body>
+</html>
