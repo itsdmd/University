@@ -1,0 +1,67 @@
+:root {
+}
+
+/* -------------------------------- Semantic -------------------------------- */
+
+/* ---------------------------------- Class --------------------------------- */
+
+.active {
+	opacity: 100% !important;
+}
+
+.carousel {
+	height: 750px;
+	position: relative;
+	width: 100%;
+}
+
+.carousel img {
+	height: inherit;
+	left: 0;
+	object-fit: cover;
+	opacity: 0%;
+	position: absolute;
+	top: 0;
+	transition: all 300ms;
+	width: 100%;
+}
+
+.carousel {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.carousel ul {
+	display: flex;
+	justify-content: space-between;
+	list-style: none;
+	margin: 0;
+	padding: 5%;
+	width: 100%;
+	z-index: 10;
+}
+
+ul.controls li {
+	background: white;
+	border-radius: 50%;
+	cursor: pointer;
+	font-family: fangsong;
+	font-size: 25px;
+	font-weight: bolder;
+	height: 40px;
+	opacity: 0.4;
+	text-align: center;
+	transform: scale(1);
+	transition: all 300ms;
+	width: 40px;
+}
+
+ul.controls li:hover {
+	opacity: 0.8;
+	transform: scale(1.1);
+}
+
+/* ----------------------------------- ID ----------------------------------- */
+
+/* -------------------------------- Override -------------------------------- */
