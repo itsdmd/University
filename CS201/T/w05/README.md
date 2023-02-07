@@ -62,13 +62,15 @@ alert("What's up!");
 - Select HTML elements using `querySelector(<...>)` or `querySelectorAll(<...>)`
 
 ```js
-let h1 = document.querySelector("h1");	// Selects first h1 tag
-let p = document.querySelectorAll("p");	// Selects all p tags
-let logoImg = document.querySelector("div.logo img");	// Selects first img tag inside div.logo
+let h1 = document.querySelector("h1");	// Selects first <h1>
+let p = document.querySelectorAll("p");	// Selects all <p>
+let logoImg = document.querySelector("div.logo img");	// Selects first <img> inside <div.logo>
 
 let nav = document.querySelector("nav");
 let navItems = nav.querySelectorAll("li");	// Selects all li tags inside nav
 ```
+
+> Alternatives: `getElementById()`, `getElementsByClassName()`, `getElementsByTagName()`. These will return an array of nodes.
 
 - Get/Set attributes using `getAttribute(<...>)` and `setAttribute(<...>)`
 
