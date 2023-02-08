@@ -276,3 +276,282 @@ go
 exec sp_DanhSachSachDangMuon 'PM003'
 go
 
+-- /* ------------ Homework ------------ */
+-- Viết thủ tục thực hiện các yêu cầu sau:
+
+-- 4. Thêm thuộc tính số cuốn mượn vào bảng PhieuMuon. Cập nhật giá trị “số cuốn mượn” theo 2 cách: dùng truy vấn và dùng cursor
+
+-- -- Cách 1: dùng truy vấn
+
+create
+-- alter
+proc sp_CapNhatSoCuonMuon_01
+	@mapm varchar(5)
+as
+
+alter table PhieuMuon
+add socuonmuon int
+
+update PhieuMuon
+set socuonmuon = (
+	select count(*)
+from CT_PhieuMuon c
+where c.mapm = @mapm
+)
+where mapm = @mapm
+
+go
+
+exec sp_CapNhatSoCuonMuon_01 'PM001'
+go
+
+-- -- Cách 2: dùng cursor
+
+create
+-- alter
+proc sp_CapNhatSoCuonMuon_02
+	@mapm varchar(5)
+as
+
+alter table PhieuMuon
+add socuonmuon int
+
+declare cur cursor for (
+	select *
+from CT_PhieuMuon
+where mapm = @mapm
+)
+
+open cur
+
+declare
+	@isbn varchar(10),
+	@masach varchar(10),
+	@socuonmuon int = 0
+
+fetch next from cur into @isbn, @masach
+
+while (@@fetch_status = 0)
+begin
+	set @socuonmuon = @socuonmuon + 1
+
+	fetch next from cur into @isbn, @masach
+end
+
+update PhieuMuon
+set socuonmuon = @socuonmuon
+where mapm = @mapm
+
+close cur
+deallocate cur
+go
+
+exec sp_CapNhatSoCuonMuon_02 'PM001'
+go
+
+
+-- 5. In ra danh sách các đầu sách với định dạng như sau:
+-- -- Mã đầu sách
+-- -- Tên đầu sách
+-- -- Tổng số cuốn hiện còn
+-- -- Tổng số cuốn đang mượn
+
+create
+-- alter
+proc sp_DanhSachDauSach
+as
+
+declare cur cursor for (
+	select d.isbn, d.tensach,
+	(select count(*)
+	from CuonSach s
+	where s.isbn = d.isbn
+		and s.tinhtrang = N'Hiện có') as tongsocon,
+	(select count(*)
+	from CuonSach s
+		join CT_PhieuMuon c on s.isbn = c.isbn and s.masach = c.masach
+	where s.isbn = d.isbn
+		and s.tinhtrang = N'Đang mượn') as tongsomuon
+from DauSach d
+)
+
+open cur
+
+declare
+	@isbn varchar(10),
+	@tensach nvarchar(30),
+	@tongsocon int,
+	@tongsomuon int
+
+print N'DANH SÁCH ĐẦU SÁCH'
+
+fetch next from cur into @isbn, @tensach, @tongsocon, @tongsomuon
+
+while (@@fetch_status = 0)
+begin
+	print N'ISBN: ' + @isbn
+	print N'Tên sách: ' + @tensach
+	print N'Tổng số cuốn hiện còn: ' + cast(@tongsocon as nvarchar(10))
+	print N'Tổng số cuốn đang mượn: ' + cast(@tongsomuon as nvarchar(10))
+	print ''
+
+	fetch next from cur into @isbn, @tensach, @tongsocon, @tongsomuon
+end
+
+close cur
+deallocate cur
+go
+
+exec sp_DanhSachDauSach
+go
+
+
+-- 6. Xuất ra màn hình thống kê theo mẫu như sau:
+-- -- Tháng: 09/2020
+-- -- Số lượng đọc giả mượn sách
+-- -- Đầu sách được mượn nhiều nhất
+-- -- Tổng số tiền phạt do trả trễ
+
+create
+-- alter
+proc sp_ThongKe
+	@thang int,
+	@nam int
+as
+
+declare
+	@soluongdocgia int,
+	@isbn varchar(10),
+	@tongtienphat float
+
+declare cur cursor for (
+	select month(p.ngaymuon) as thang, year(p.ngaymuon) as nam,
+	count(distinct p.madg) as soluongdocgia,
+	(select top 1
+		d.isbn
+	from DauSach d
+		join CuonSach s on d.isbn = s.isbn
+		join CT_PhieuMuon c on s.isbn = c.isbn and s.masach = c.masach
+	where month(p.ngaymuon) = @thang and year(p.ngaymuon) = @nam
+	group by d.isbn
+	order by count(*) desc) as isbn,
+	sum(ct.tienphat) as tongtienphat
+from PhieuMuon p
+	join CT_PhieuMuon c on p.mapm = c.mapm
+	join PhieuTra t on p.mapm = t.mapm
+	join CT_PhieuTra ct on t.mapt = ct.mapt
+where month(p.ngaymuon) = @thang and year(p.ngaymuon) = @nam
+group by month(p.ngaymuon), year(p.ngaymuon)
+)
+
+open cur
+
+fetch next from cur into @thang, @nam, @soluongdocgia, @isbn, @tongtienphat
+
+while (@@fetch_status = 0)
+begin
+	print N'Tháng: ' + cast(@thang as nvarchar(10)) + N'/' + cast(@nam as nvarchar(10))
+	print N'Số lượng đọc giả mượn sách: ' + cast(@soluongdocgia as nvarchar(10))
+	print N'Đầu sách được mượn nhiều nhất: ' + @isbn
+	print N'Tổng số tiền phạt do trả trễ: ' + cast(@tongtienphat as nvarchar(10))
+	print ''
+
+	fetch next from cur into @thang, @nam, @soluongdocgia, @isbn, @tongtienphat
+end
+
+close cur
+deallocate cur
+go
+
+exec sp_ThongKe 9, 2020
+go
+
+-- 7. Xuất ra màn hình tình hình mượn trả sách của tháng này:
+-- -- Mã phiếu mượn
+-- -- Tình trạng: (chưa trả xong, đã trả xong)
+-- -- Danh sách sách chưa trả
+
+create
+-- alter
+proc sp_TinhHinhMuonTra
+as
+
+declare
+	@mapm varchar(10),
+	@tinhtrang nvarchar(30),
+	@ngaymuon datetime,
+	@ngaytra datetime
+
+declare cur cursor for (
+	select pm.mapm, pm.ngaymuon, pt.ngaytra,
+	case
+		when pt.ngaytra is null then N'Chưa trả xong'
+		when pt.ngaytra > pm.ngaymuon then N'Đã trả xong'
+		else N'Chưa trả xong'
+	end as tinhtrang
+from PhieuMuon pm
+	join PhieuTra pt on pm.mapm = pt.mapm
+)
+
+open cur
+
+fetch next from cur into @mapm, @ngaymuon, @ngaytra, @tinhtrang
+
+while (@@fetch_status = 0)
+begin
+	print N'Mã phiếu mượn: ' + @mapm
+	print N'Tình trạng: ' + @tinhtrang
+	print N'Danh sách sách chưa trả:'
+
+	declare cur2 cursor for (
+		select s.isbn, s.masach, d.tensach, d.tacgia, d.namxb, d.theloai, d.nhaxb, d.tongluotmuon
+	from CuonSach s
+		join DauSach d on s.isbn = d.isbn
+		join CT_PhieuMuon c on s.isbn = c.isbn and s.masach = c.masach
+	where c.mapm = @mapm
+	)
+
+	open cur2
+
+	declare
+		@isbn varchar(10),
+		@masach varchar(10),
+		@tensach nvarchar(30),
+		@tacgia nvarchar(30),
+		@namxb int,
+		@theloai nvarchar(30),
+		@nhaxb nvarchar(30),
+		@trangthai nvarchar(30)
+
+	fetch next from cur2 into @isbn, @masach, @tensach, @tacgia, @namxb, @theloai, @nhaxb, @trangthai
+
+	while (@@fetch_status = 0)
+	begin
+		print '---'
+		print N'ISBN: ' + @isbn
+		print N'Mã sách: ' + @masach
+		print N'Tên sách: ' + @tensach
+		print N'Tác giả: ' + @tacgia
+		print N'Năm xuất bản: ' + cast(@namxb as nvarchar(10))
+		print N'Thể loại: ' + @theloai
+		print N'Nhà xuất bản: ' + @nhaxb
+		print '---'
+		print ''
+
+		fetch next from cur2 into @isbn, @masach, @tensach, @tacgia, @namxb, @theloai, @nhaxb, @trangthai
+	end
+
+	close cur2
+	deallocate cur2
+	print ''
+
+	fetch next from cur into @mapm, @ngaymuon, @ngaytra, @tinhtrang
+end
+
+close cur
+deallocate cur
+go
+
+exec sp_TinhHinhMuonTra
+go
+
