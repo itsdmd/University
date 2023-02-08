@@ -1,0 +1,138 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+button {
+	font-family: "Source Serif Pro", serif;
+}
+
+p,
+ul li,
+nav a,
+form {
+	font-family: "Questrial", sans-serif;
+}
+
+header {
+	background: white;
+	box-shadow: 1px 1px 3px grey;
+	width: 100%;
+	position: fixed;
+	height: 55px;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+
+body {
+	margin: 0;
+}
+
+.container {
+	width: 90%;
+	margin: auto;
+}
+
+.d-flex {
+	display: flex;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+nav ul li {
+	list-style: none;
+	padding: 5px 10px;
+	margin: 3px;
+}
+
+nav ul a {
+	color: grey;
+	text-decoration: none;
+}
+
+.btn-green {
+	background: #4aed4a;
+	color: white;
+	border-radius: 10px;
+	transform: scale(1);
+	transition: all 200ms;
+	border: none;
+	box-shadow: 1px 1px 3px #8c8c8c;
+}
+
+nav ul:nth-child(1) {
+	color: black;
+}
+
+.mt-4 {
+	margin-top: 1rem;
+}
+
+.banner {
+	height: 350px;
+	display: flex;
+	background-size: cover !important;
+	background: url(../img/banner.jpg);
+	align-content: center;
+	text-align: center;
+}
+
+.quote {
+	background: #ffffff80;
+	padding: 3%;
+}
+
+nav ul li:first-child a {
+	color: black;
+	font-weight: bolder;
+}
+
+nav ul li:last-child a {
+	color: white;
+}
+
+.btn-lg {
+	padding: 2% 5%;
+}
+
+.btn-green:hover {
+	transform: scale(1.1);
+	background: green;
+}
+
+.ribbon {
+	box-shadow: 1px 1px 3px grey;
+}
+
+img {
+	max-width: 100%;
+}
+
+.col-md-3 {
+	width: 25%;
+	margin: 2%;
+}
+
+.card {
+	border: 1px solid #e6e6e6;
+	border-radius: 10px;
+	padding: 0 10px;
+}
+
+@media screen and (max-width: 850px) {
+	.col-md-3 {
+		width: 41%;
+		margin: 2%;
+	}
+
+	.d-flex {
+		flex-flow: wrap;
+	}
+}
