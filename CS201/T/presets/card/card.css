@@ -1,0 +1,44 @@
+img {
+	border-radius: 5px 5px 0 0;
+}
+
+.card {
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin: 5px 2.5px 5px 2.5px;
+	transition: 0.3s;
+	width: 23%;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-deck {
+	background-color: azure;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	margin: auto;
+	padding: 25px;
+	width: 85%;
+}
+
+/* Add some padding inside the card container */
+.container {
+	padding: 2px 16px;
+}
+
+@media screen and (max-width: 600px) {
+	.card {
+		width: 43%;
+	}
+
+	.card-deck {
+		flex-wrap: wrap;
+	}
+}
