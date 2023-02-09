@@ -1,0 +1,334 @@
+* {
+	--border-width: 1px;
+	--border-radius: 5px;
+	--margin: 10px;
+
+	font-family: Heebo, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+	transition: all 300ms;
+}
+
+/* -------------------------------- Semantic -------------------------------- */
+
+img {
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+footer {
+	height: 250px;
+	background-color: rgb(99, 99, 99);
+}
+
+button {
+	background-color: skyblue;
+	border: none;
+	border-radius: var(--border-radius);
+	color: white;
+	font-size: 1.5rem;
+	font-weight: 600;
+	padding: 10px 20px 10px 20px;
+}
+
+button.clear {
+	border: 1px solid white;
+	background-color: transparent;
+}
+
+/* ---------------------------------- Class --------------------------------- */
+
+/* ---------------------------------- */
+/*               Helpers              */
+/* ---------------------------------- */
+
+/* #region  */
+/* ----------- Positioning ---------- */
+/* #region  */
+.ai-c {
+	align-items: center;
+}
+
+.big-text {
+	font-size: 3.5rem;
+}
+
+.d-f {
+	display: flex;
+}
+
+.d-fc {
+	display: flex;
+	flex-direction: column;
+}
+
+.fw-nw {
+	flex-wrap: nowrap;
+}
+
+.jc-c {
+	justify-content: center;
+}
+
+.jc-fs {
+	justify-content: flex-start;
+}
+
+.jc-fe {
+	justify-content: flex-end;
+}
+
+.jc-sa {
+	justify-content: space-around;
+}
+
+.jc-sb {
+	justify-content: space-between;
+}
+
+.mar-auto {
+	margin: auto;
+}
+
+.mar-def {
+	margin: var(--margin);
+}
+
+.pad-def {
+	padding: 1rem;
+}
+
+.w85 {
+	width: 85%;
+	margin: auto;
+}
+
+.w100 {
+	width: 100%;
+	margin: 0px !important;
+}
+
+.wrapper {
+	max-width: 95%;
+	margin: auto;
+}
+
+/* #endregion */
+
+/* ------------- Styling ------------ */
+
+/* #region  */
+.bor {
+	border: var(--border-width) solid grey;
+}
+
+.bor-rnd {
+	border-radius: 5px;
+}
+
+.clr-1 {
+	background: #233142;
+}
+
+.clr-2 {
+	background: #455d7a;
+}
+
+.clr-3 {
+	background: #f95959;
+}
+
+.clr-4 {
+	background: #e3e3e3;
+}
+
+.opa-0 {
+	opacity: 0;
+}
+
+.opa-05 {
+	opacity: 0.5;
+}
+
+.opa-1 {
+	opacity: 1;
+}
+
+.txt-center {
+	text-align: center;
+}
+
+.txt-none {
+	text-decoration: none;
+}
+
+.shadow {
+	box-shadow: 1.5px 1.5px 3px grey;
+}
+/* #endregion */
+
+/* #endregion */
+
+/* ---------------------------------- */
+/*               Custom               */
+/* ---------------------------------- */
+
+.card {
+	background-color: white;
+	display: flex;
+	flex-flow: column;
+	margin-right: calc(5 * var(--border-radius));
+	padding: calc(2 * var(--border-radius));
+	flex: 1;
+}
+
+.card img {
+	border-radius: calc(3 * var(--border-radius));
+	height: 250px;
+}
+.card-deck {
+	display: flex;
+	flex-grow: 1;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+}
+
+.banner {
+	background-image: url("images/banner.jpg");
+	background-size: cover;
+	height: 750px;
+	color: white;
+}
+
+.banner .quote {
+	position: relative;
+	top: 35%;
+	left: 5%;
+}
+
+.banner .quote > * {
+	padding: 0px;
+	margin-bottom: 3px;
+	margin-top: 0px;
+}
+
+.banner .quote .btn-wrapper > * {
+	margin-right: 15px;
+}
+
+.banner .quote p {
+	font-size: 1.5rem;
+}
+
+.block-divider {
+	height: calc(5 * var(--margin));
+}
+
+.title-divider {
+	height: calc(2 * var(--margin));
+}
+
+.header {
+	height: 50px;
+}
+
+.header .nav ul li button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40px;
+}
+
+.header ul li {
+	list-style: none;
+	margin-right: var(--margin);
+	text-align: right;
+}
+
+.header ul li a {
+	text-decoration: none;
+	color: black;
+}
+
+.logo a img {
+	height: 50px;
+}
+
+.news .card-deck .card:first-child {
+	flex: 2;
+}
+
+.fos {
+	height: 500px;
+	background-color: black;
+	color: white;
+	flex-grow: 1;
+}
+
+.fos h1:first-of-type {
+	color: aquamarine;
+}
+
+.fos .quote .text p {
+	font-size: 1.5rem;
+}
+
+.fos .quote .text {
+	margin: 0px;
+	margin-left: 5% !important;
+}
+
+.fos .quote img {
+	height: 100%;
+	width: auto;
+}
+
+.people h1 {
+	color: mediumorchid;
+}
+
+.footer-content {
+	color: white;
+	height: 100%;
+	left: 5%;
+	position: relative;
+	width: 100%;
+}
+
+/* -------------------------------- Override -------------------------------- */
+@media screen and (max-width: 768px) {
+	.banner {
+		height: 500px;
+	}
+
+	.banner .quote {
+		left: 0%;
+	}
+
+	.banner .quote .btn-wrapper > * {
+		margin-right: 0px;
+	}
+
+	.banner .quote p {
+		font-size: 1rem;
+	}
+
+	.big-text {
+		font-size: 2.5rem;
+	}
+
+	.card-deck {
+		display: block;
+	}
+
+	.fos {
+		height: 300px;
+	}
+
+	.fos .quote .text p {
+		font-size: 0.8rem;
+	}
+
+	.fos .quote .text {
+		margin-left: 2%;
+	}
+}
