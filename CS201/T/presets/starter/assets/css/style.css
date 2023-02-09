@@ -1,0 +1,136 @@
+:root {
+	--border-width: 1px;
+
+	transition: all 300ms;
+}
+
+/* -------------------------------- Semantic -------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+button {
+	font-family: "Source Serif Pro", serif;
+}
+
+p,
+ul li,
+nav a,
+form {
+	font-family: "Questrial", sans-serif;
+}
+
+img {
+	max-width: 100%;
+	object-fit: cover;
+}
+
+/* ---------------------------------- Class --------------------------------- */
+
+/* ---------------------------------- */
+/*               Helpers              */
+/* ---------------------------------- */
+
+/* #region  */
+/* ----------- Positioning ---------- */
+/* #region  */
+.ai-c {
+	align-items: center;
+}
+
+.d-f {
+	display: flex;
+}
+
+.fw-nw {
+	flex-wrap: nowrap;
+}
+
+.jc-c {
+	justify-content: center;
+}
+
+.jc-fs {
+	justify-content: flex-start;
+}
+
+.jc-fe {
+	justify-content: flex-end;
+}
+
+.jc-sa {
+	justify-content: space-around;
+}
+
+.jc-sb {
+	justify-content: space-between;
+}
+
+/* #endregion */
+
+/* ------------- Styling ------------ */
+
+/* #region  */
+.bor {
+	border: var(--border-width) solid grey;
+}
+
+.bor-rnd {
+	border-radius: 5px;
+}
+
+.clr-1 {
+	background: #233142;
+}
+
+.clr-2 {
+	background: #455d7a;
+}
+
+.clr-3 {
+	background: #f95959;
+}
+
+.clr-4 {
+	background: #e3e3e3;
+}
+
+.mar-def {
+	margin: 1rem;
+}
+
+.opa-0 {
+	opacity: 0;
+}
+
+.opa-05 {
+	opacity: 0.5;
+}
+
+.opa-1 {
+	opacity: 1;
+}
+
+.pad-def {
+	padding: 1rem;
+}
+
+.txt-center {
+	text-align: center;
+}
+
+.txt-none {
+	text-decoration: none;
+}
+
+.shadow {
+	box-shadow: 1.5px 1.5px 3px grey;
+}
+/* #endregion */
+
+/* #endregion */
+
+/* ----------------------------------- ID ----------------------------------- */
+
+/* -------------------------------- Override -------------------------------- */
