@@ -25,7 +25,7 @@
 
 ```js
 // Create a new XMLHttpRequest object
-var xhr = new XMLHttpRequest();
+let xhr = new XMLHttpRequest();
 
 // Open a request to the server
 xhr.open('GET', 'https://randomuser.me/api');
@@ -44,7 +44,9 @@ xhr.onload = function() {
 		alert(`Succeed, got ${xhr.response.length} bytes`); // response is the server
 	}
 };
+```
 
+```js
 // Extras
 xhr.onprogress = function(event) {
 	if (event.lengthComputable) {
