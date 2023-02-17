@@ -2,6 +2,69 @@
 
 console.log("main.js loaded");
 
+let productsUrl = [
+	[
+		"https://www.healthcare.nikon.com/en/",
+		"https://industry.nikon.com/en-aom/",
+		"https://www.nikon.com/products/optical-processing-machine/",
+		"https://www.nikon.com/products/encoder/",
+		"https://www.nikon.com/products/industrial-lenses/",
+		"https://ngpd.nikon.com/en/",
+		"https://www.nikon.com/products/components/",
+		"https://www.nikon-trimble.co.jp/english/",
+		"https://www.nikon.com/products/fpd/lineup/",
+		"https://www.nikon.com/products/semi/lineup/",
+		"https://www.nikonprecision.com/products-and-technology/steppers-and-metrology-solutions-for-mems-markets/",
+	],
+	[
+		"https://imaging.nikon.com/lineup/dslr/",
+		"https://imaging.nikon.com/lineup/mirrorless/",
+		"https://imaging.nikon.com/lineup/compact/",
+		"https://imaging.nikon.com/lineup/lens/",
+		"https://imaging.nikon.com/lineup/speedlight/",
+		"https://imaging.nikon.com/lineup/software/",
+		"https://imaging.nikon.com/lineup/sportoptics/",
+		"https://imaging.nikon.com/lineup/sportoptics/laser/",
+		"https://imaging.nikon.com/lineup/accessory/",
+		"https://www.nikonlenswear.com/",
+	],
+];
+let productsTitle = [
+	[
+		"Healthcare Products & Solutions",
+		"Industrial Metrology",
+		"Optical Processing Machine",
+		"Encoders",
+		"Industrial Lenses",
+		"Material Processing Solutions & Robot Vision",
+		"Optical Components & Materials",
+		"Surveying Instruments",
+		"FPD Lithography Systems",
+		"Semiconductor Systems",
+		"MEMS Steppers & Both Side Measurement System",
+	],
+	[
+		"Digital SLR Cameras",
+		"Mirrorless Cameras",
+		"Compact Digital Cameras",
+		"NIKKOR Lenses",
+		"Speedlights",
+		"Software",
+		"Sport Optics",
+		"Laser Rangefinder",
+		"Accessories",
+		"Ophthalmic Lenses",
+	],
+];
+
+let aboutUrl = [
+	"https://www.nikon.com/about/corporate/",
+	"https://www.nikon.com/about/technology/",
+	"https://www.nikon.com/about/sustainability/",
+	"https://www.nikon.com/about/ir",
+];
+let aboutTitle = ["Corporate Information", "Technology & Design", "Sustainability", "Investor Relations"];
+
 /* ------- Grid post generator ------ */
 function generatePostItem(classes, url, imgUrl, title, text, index) {
 	// Template:
@@ -45,6 +108,14 @@ function generatePostGrid(target, classes, url, imgUrl, title, text) {
 }
 
 /* ---------------------------------- */
+/*           Navbar dropdown          */
+/* ---------------------------------- */
+
+let nav_prodBtn = document.querySelector("#nav-prod-btn");
+let nav_aboutBtn = document.querySelector("#nav-about-btn");
+let nav_prodGrid = document.querySelector(".grid-container.prod-tab");
+
+/* ---------------------------------- */
 /*              Catalogue             */
 /* ---------------------------------- */
 
@@ -52,69 +123,14 @@ function generatePostGrid(target, classes, url, imgUrl, title, text) {
 
 /* #region   */
 
-let catalogueContentUrl = [
-	[
-		"https://www.healthcare.nikon.com/en/",
-		"https://industry.nikon.com/en-aom/",
-		"https://www.nikon.com/products/optical-processing-machine/",
-		"https://www.nikon.com/products/encoder/",
-		"https://www.nikon.com/products/industrial-lenses/",
-		"https://ngpd.nikon.com/en/",
-		"https://www.nikon.com/products/components/",
-		"https://www.nikon-trimble.co.jp/english/",
-		"https://www.nikon.com/products/fpd/lineup/",
-		"https://www.nikon.com/products/semi/lineup/",
-		"https://www.nikonprecision.com/products-and-technology/steppers-and-metrology-solutions-for-mems-markets/",
-	],
-	[
-		"https://imaging.nikon.com/lineup/dslr/",
-		"https://imaging.nikon.com/lineup/mirrorless/",
-		"https://imaging.nikon.com/lineup/compact/",
-		"https://imaging.nikon.com/lineup/lens/",
-		"https://imaging.nikon.com/lineup/speedlight/",
-		"https://imaging.nikon.com/lineup/software/",
-		"https://imaging.nikon.com/lineup/sportoptics/",
-		"https://imaging.nikon.com/lineup/sportoptics/laser/",
-		"https://imaging.nikon.com/lineup/accessory/",
-		"https://www.nikonlenswear.com/",
-	],
-];
-let catalogueContentTitle = [
-	[
-		"Healthcare Products & Solutions",
-		"Industrial Metrology",
-		"Optical Processing Machine",
-		"Encoders",
-		"Industrial Lenses",
-		"Material Processing Solutions & Robot Vision",
-		"Optical Components & Materials",
-		"Surveying Instruments",
-		"FPD Lithography Systems",
-		"Semiconductor Systems",
-		"MEMS Steppers & Both Side Measurement System",
-	],
-	[
-		"Digital SLR Cameras",
-		"Mirrorless Cameras",
-		"Compact Digital Cameras",
-		"NIKKOR Lenses",
-		"Speedlights",
-		"Software",
-		"Sport Optics",
-		"Laser Rangefinder",
-		"Accessories",
-		"Ophthalmic Lenses",
-	],
-];
-
-const catalogueContentImgUrlPrefix = "https://www.nikon.com/img/index/pic_product_";
-const catalogueContentImgUrlPrefix_tab = ["corp", "indi"];
-const catalogueContentImgUrlSuffix = ".png";
+const productsImgUrlPrefix = "https://www.nikon.com/img/index/pic_product_";
+const productsCtg = ["corp", "indi"];
+const productsImgUrlSuffix = ".png";
 
 function generateCatalogueContentItem(tabIndex, index) {
 	let contentItem = document.createElement("a");
 	contentItem.classList.add("catalogue", "content-grid-item", "card");
-	contentItem.href = catalogueContentUrl[tabIndex][index];
+	contentItem.href = productsUrl[tabIndex][index];
 
 	let contentImg = document.createElement("img");
 
@@ -148,15 +164,11 @@ function generateCatalogueContentItem(tabIndex, index) {
 	}
 
 	contentImg.src =
-		catalogueContentImgUrlPrefix +
-		catalogueContentImgUrlPrefix_tab[tabIndex] +
-		"_" +
-		(imgIndex + 1 < 10 ? "0" + String(imgIndex + 1) : String(imgIndex + 1)) +
-		catalogueContentImgUrlSuffix;
+		productsImgUrlPrefix + productsCtg[tabIndex] + "_" + (imgIndex + 1 < 10 ? "0" + String(imgIndex + 1) : String(imgIndex + 1)) + productsImgUrlSuffix;
 	contentItem.appendChild(contentImg);
 
 	let contentTitle = document.createElement("h3");
-	contentTitle.innerText = catalogueContentTitle[tabIndex][index];
+	contentTitle.innerText = productsTitle[tabIndex][index];
 	contentItem.appendChild(contentTitle);
 
 	return contentItem;
@@ -176,7 +188,7 @@ function generateCatalogueContent() {
 		catalogueContent.removeChild(catalogueContent.firstChild);
 	}
 
-	for (let i = 0; i < catalogueContentTitle[catalogueCurrentTab].length; i++) {
+	for (let i = 0; i < productsTitle[catalogueCurrentTab].length; i++) {
 		catalogueContent.appendChild(generateCatalogueContentItem(catalogueCurrentTab, i));
 		console.log("catalogueContentItem " + i + " generated");
 	}
@@ -348,4 +360,39 @@ function generateNewsList() {
 
 generateNewsList();
 
+/* #endregion */
+
+/* ---------------------------------- */
+/*            Footer Links            */
+/* ---------------------------------- */
+
+/* #region   */
+function generateFooterLinks(target, url, title) {
+	// target: HTMLNode
+	// url: stringList
+	// title: stringList
+
+	// Template:
+	// <a href="url">Title</a>
+	// <span> | </span>
+
+	for (let i = 0; i < url.length; i++) {
+		// Create separator
+		let separator = document.createElement("span");
+		separator.textContent = " | ";
+		target.appendChild(separator);
+
+		// Create link
+		let link = document.createElement("a");
+		link.href = url[i];
+		link.textContent = title[i];
+		target.appendChild(link);
+	}
+}
+
+let footerLinks_prods = document.querySelector(".footer.url-list.products");
+let footerLinks_about = document.querySelector(".footer.url-list.about");
+
+generateFooterLinks(footerLinks_prods, productsUrl[0], productsTitle[0]);
+generateFooterLinks(footerLinks_about, aboutUrl, aboutTitle);
 /* #endregion */

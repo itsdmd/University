@@ -17,6 +17,10 @@
 	--nav-main-width: calc(1000px - 2 * var(--def-gap-val));
 }
 
+* {
+	font-family: "Noto Sans", sans-serif;
+}
+
 /* -------------------------------- Semantic -------------------------------- */
 a {
 	color: #000;
@@ -306,6 +310,24 @@ footer {
 	margin-right: var(--def-gap-val);
 }
 
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	grid-gap: var(--def-gap-val);
+}
+
+.grid-container.prod-tab {
+	grid-template-areas:
+		"hdr hdr hdr hdr"
+		"ctg ctg div ctg"
+		"itm itm div itm";
+}
+
+.grid-container.about-tab {
+	display: none;
+}
+
 .header-content {
 	display: flex;
 	flex-direction: row;
@@ -333,10 +355,25 @@ footer {
 	margin-bottom: 5px;
 }
 
+.nav-dropdown {
+	background-color: var(--color-secondary);
+	border: solid 1px var(--color-border);
+	/* display: flex; */
+	/* justify-content: flex-start; */
+	left: 0px;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	top: 135px;
+	width: 100%;
+	z-index: 1;
+}
+
 .nav-main-wrapper {
 	align-items: center;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: center;
 	width: 100%;
