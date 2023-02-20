@@ -66,7 +66,7 @@ let aboutUrl = [
 let aboutTitle = ["Corporate Information", "Technology & Design", "Sustainability", "Investor Relations"];
 
 /* ------- Grid post generator ------ */
-function generatePostItem(classes, url, imgUrl, title, text, index) {
+function populatePostItem(classes, url, imgUrl, title, text, index) {
 	// Template:
 	// <a href="#" class="topics content-grid-item">
 	// 	<img alt="placeholder img" />
@@ -93,7 +93,7 @@ function generatePostItem(classes, url, imgUrl, title, text, index) {
 	return post;
 }
 
-function generatePostGrid(target, classes, url, imgUrl, title, text) {
+function populatePostGrid(target, classes, url, imgUrl, title, text) {
 	let targetNode = document.querySelector(target);
 
 	// Remove all current content items
@@ -102,8 +102,8 @@ function generatePostGrid(target, classes, url, imgUrl, title, text) {
 	}
 
 	for (let i = 0; i < url.length; i++) {
-		targetNode.appendChild(generatePostItem(classes, url, imgUrl, title, text, i));
-		console.log(target + " Item " + i + " generated");
+		targetNode.appendChild(populatePostItem(classes, url, imgUrl, title, text, i));
+		console.log(target + " Item " + i + " populated");
 	}
 }
 
@@ -111,9 +111,124 @@ function generatePostGrid(target, classes, url, imgUrl, title, text) {
 /*           Navbar dropdown          */
 /* ---------------------------------- */
 
-let nav_prodBtn = document.querySelector("#nav-prod-btn");
-let nav_aboutBtn = document.querySelector("#nav-about-btn");
-let nav_prodGrid = document.querySelector(".grid-container.prod-tab");
+/* #region   */
+/* --------- Populate items --------- */
+function populateNavDropProdTabItems() {
+	// Template:
+	// <a href="url">
+	//     <p>Title</p>
+	// </a>
+
+	let navDropProdTabContent1 = document.querySelector(".nav-dropdown .prod-tab .itm1");
+
+	// Remove all current content items
+	while (navDropProdTabContent1.firstChild) {
+		navDropProdTabContent1.removeChild(navDropProdTabContent1.firstChild);
+	}
+
+	for (let i = 0; i < productsUrl[0].length; i++) {
+		let contentItem = document.createElement("a");
+		contentItem.href = productsUrl[0][i];
+
+		let contentItemTitle = document.createElement("p");
+		contentItemTitle.innerText = productsTitle[0][i];
+
+		contentItem.appendChild(contentItemTitle);
+		navDropProdTabContent1.appendChild(contentItem);
+	}
+
+	// Exception: remove last item
+	navDropProdTabContent1.removeChild(navDropProdTabContent1.lastChild);
+
+	// let navDropProdTabContent2 = document.querySelector(".nav-dropdown .prod-tab .itm2");
+
+	// while (navDropProdTabContent2.firstChild) {
+	// 	navDropProdTabContent2.removeChild(navDropProdTabContent2.firstChild);
+	// }
+
+	// for (let i = 0; i < productsUrl[1].length; i++) {
+	// 	let contentItem = document.createElement("a");
+	// 	contentItem.href = productsUrl[1][i];
+
+	// 	let contentItemTitle = document.createElement("p");
+	// 	contentItemTitle.innerText = productsTitle[1][i];
+
+	// 	contentItem.appendChild(contentItemTitle);
+	// 	navDropProdTabContent2.appendChild(contentItem);
+	// }
+}
+
+function populateNavDropAboutTabItems() {
+	// Template:
+	// <a href="url">
+	//     <p>Title</p>
+	// </a>
+
+	let navDropAboutTabContent = document.querySelector(".nav-dropdown .about-tab .itm");
+
+	// Remove all current
+	while (navDropAboutTabContent.firstChild) {
+		navDropAboutTabContent.removeChild(navDropAboutTabContent.firstChild);
+	}
+
+	for (let i = 0; i < aboutUrl.length; i++) {
+		let contentItem = document.createElement("a");
+		contentItem.href = aboutUrl[i];
+
+		let contentItemTitle = document.createElement("p");
+		contentItemTitle.innerText = aboutTitle[i];
+
+		contentItem.appendChild(contentItemTitle);
+		navDropAboutTabContent.appendChild(contentItem);
+	}
+}
+
+populateNavDropProdTabItems();
+populateNavDropAboutTabItems();
+
+/* ---------- Show/Hide tab --------- */
+let navProdBtn = document.querySelector("#nav-prod-btn");
+let navAboutBtn = document.querySelector("#nav-about-btn");
+
+let navDropProdTab = document.querySelector(".nav-dropdown .prod-tab");
+let el_navProdBtn = navProdBtn.addEventListener("click", function () {
+	console.log("navProdBtn clicked");
+
+	navAboutBtn.classList.remove("active");
+	navDropAboutTab.classList.remove("active");
+
+	navProdBtn.classList.toggle("active");
+	navDropProdTab.classList.toggle("active");
+});
+
+let navDropAboutTab = document.querySelector(".nav-dropdown .about-tab");
+let el_navAboutBtn = navAboutBtn.addEventListener("click", function () {
+	console.log("navAboutBtn clicked");
+
+	navProdBtn.classList.remove("active");
+	navDropProdTab.classList.remove("active");
+
+	navAboutBtn.classList.toggle("active");
+	navDropAboutTab.classList.toggle("active");
+});
+
+let navProdCloseBtn = document.querySelector(".nav-dropdown .prod-tab .nav-dropdown-close-btn");
+let el_navProdCloseBtn = navProdCloseBtn.addEventListener("click", function () {
+	console.log("navProdCloseBtn clicked");
+
+	navProdBtn.classList.remove("active");
+	navDropProdTab.classList.remove("active");
+});
+
+let navAboutCloseBtn = document.querySelector(".nav-dropdown .about-tab .nav-dropdown-close-btn");
+let el_navAboutCloseBtn = navAboutCloseBtn.addEventListener("click", function () {
+	console.log("navAboutCloseBtn clicked");
+
+	navAboutBtn.classList.remove("active");
+	navDropAboutTab.classList.remove("active");
+});
+
+/* #endregion */
 
 /* ---------------------------------- */
 /*              Catalogue             */
@@ -127,7 +242,7 @@ const productsImgUrlPrefix = "https://www.nikon.com/img/index/pic_product_";
 const productsCtg = ["corp", "indi"];
 const productsImgUrlSuffix = ".png";
 
-function generateCatalogueContentItem(tabIndex, index) {
+function populateCatalogueContentItem(tabIndex, index) {
 	let contentItem = document.createElement("a");
 	contentItem.classList.add("catalogue", "content-grid-item", "card");
 	contentItem.href = productsUrl[tabIndex][index];
@@ -174,7 +289,7 @@ function generateCatalogueContentItem(tabIndex, index) {
 	return contentItem;
 }
 
-function generateCatalogueContent() {
+function populateCatalogueContent() {
 	// Template
 	// <a href="#" class="catalogue content-grid-item">
 	// 		<img alt="placeholder img" />
@@ -189,8 +304,8 @@ function generateCatalogueContent() {
 	}
 
 	for (let i = 0; i < productsTitle[catalogueCurrentTab].length; i++) {
-		catalogueContent.appendChild(generateCatalogueContentItem(catalogueCurrentTab, i));
-		console.log("catalogueContentItem " + i + " generated");
+		catalogueContent.appendChild(populateCatalogueContentItem(catalogueCurrentTab, i));
+		console.log("catalogueContentItem " + i + " populated");
 	}
 }
 /* #endregion */
@@ -203,7 +318,7 @@ let catalogueTab = document.querySelectorAll(".catalogue-tab");
 
 // Set first tab to be selected
 catalogueTab[catalogueCurrentTab].classList.add("is-selected");
-generateCatalogueContent();
+populateCatalogueContent();
 
 // Add EL to each button
 catalogueTab.forEach((button) => {
@@ -219,8 +334,8 @@ catalogueTab.forEach((button) => {
 		// Get the index of the clicked button
 		catalogueCurrentTab = Array.from(catalogueTab).indexOf(button);
 
-		// Generate content
-		generateCatalogueContent();
+		// populate content
+		populateCatalogueContent();
 	});
 });
 /* #endregion */
@@ -252,7 +367,7 @@ let topicsContentText = [
 	"Assisting factory automation with high accuracy auto dimension measuring of electronic components",
 ];
 
-generatePostGrid(".topics.content-grid", topicsContentClasses, topicsContentUrl, topicsContentImgUrl, topicsContentTitle, topicsContentText);
+populatePostGrid(".topics.content-grid", topicsContentClasses, topicsContentUrl, topicsContentImgUrl, topicsContentTitle, topicsContentText);
 /* #endregion */
 
 /* ---------------------------------- */
@@ -282,7 +397,7 @@ let pickUpContentText = [
 	"Here you can see our latest sustainability report, which is organized according to Nikon Materiality of the Nikon Group's activities and progress clearer to readers.",
 ];
 
-generatePostGrid(".pickup.content-grid", pickUpContentClasses, pickUpContentUrl, pickUpContentImgUrl, pickUpContentTitle, pickUpContentText);
+populatePostGrid(".pickup.content-grid", pickUpContentClasses, pickUpContentUrl, pickUpContentImgUrl, pickUpContentTitle, pickUpContentText);
 /* #endregion */
 
 /* ---------------------------------- */
@@ -310,7 +425,7 @@ let newsUrl = [
 	"https://www.nikon.com/news/",
 ];
 
-function generateNewsItem(date, title, url) {
+function populateNewsItem(date, title, url) {
 	// Template
 	// <div class="news content-list-item">
 	// 	<p class="date">Feb. 1, 2023</p>
@@ -344,7 +459,7 @@ function generateNewsItem(date, title, url) {
 	return newsItem;
 }
 
-function generateNewsList() {
+function populateNewsList() {
 	let newsList = document.querySelector(".news.content-list");
 
 	while (newsList.firstChild) {
@@ -352,13 +467,13 @@ function generateNewsList() {
 	}
 
 	for (let i = 0; i < newsDates.length; i++) {
-		let newsItem = generateNewsItem(newsDates[i], newsTitle[i], newsUrl[i]);
+		let newsItem = populateNewsItem(newsDates[i], newsTitle[i], newsUrl[i]);
 		newsList.appendChild(newsItem);
-		console.log(".news.content-list Item " + i + " generated");
+		console.log(".news.content-list Item " + i + " populated");
 	}
 }
 
-generateNewsList();
+populateNewsList();
 
 /* #endregion */
 
@@ -367,7 +482,7 @@ generateNewsList();
 /* ---------------------------------- */
 
 /* #region   */
-function generateFooterLinks(target, url, title) {
+function populateFooterLinks(target, url, title) {
 	// target: HTMLNode
 	// url: stringList
 	// title: stringList
@@ -393,6 +508,6 @@ function generateFooterLinks(target, url, title) {
 let footerLinks_prods = document.querySelector(".footer.url-list.products");
 let footerLinks_about = document.querySelector(".footer.url-list.about");
 
-generateFooterLinks(footerLinks_prods, productsUrl[0], productsTitle[0]);
-generateFooterLinks(footerLinks_about, aboutUrl, aboutTitle);
+populateFooterLinks(footerLinks_prods, productsUrl[0], productsTitle[0]);
+populateFooterLinks(footerLinks_about, aboutUrl, aboutTitle);
 /* #endregion */
