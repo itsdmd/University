@@ -458,8 +458,8 @@ footer {
 .nav-dropdown {
 	background-color: var(--color-secondary);
 	border: solid 1px var(--color-border);
-	/* display: flex; */
-	/* justify-content: flex-start; */
+	display: flex;
+	justify-content: flex-start;
 	left: 0px;
 	list-style: none;
 	margin: 0px;
@@ -479,12 +479,13 @@ footer {
 }
 
 .nav-main-wrapper {
-	align-items: center;
+	align-items: flex-start;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: center;
-	width: 100%;
+	margin: auto;
+	width: var(--nav-main-width);
 }
 
 .nav-main {
@@ -493,7 +494,7 @@ footer {
 	flex-wrap: nowrap;
 	height: var(--nav-main-height);
 	justify-content: flex-start;
-	width: var(--nav-main-width);
+	margin-left: 0px;
 }
 
 .nav-main ul {
@@ -610,11 +611,27 @@ footer {
 	.banner img {
 		content: url(https://www.nikon.com/img/index/kv_03_en.jpg);
 	}
+
+	.grid-container.prod-tab {
+		grid-template-columns: 49% 2% 49%;
+		grid-template-areas:
+			"hdr hdr hdr"
+			"ctg1 vdiv ctg2"
+			"itm1 vdiv itm2";
+	}
+
+	.grid-item.hdiv {
+		display: none;
+	}
 }
 
 /* Catalogue grid */
 @media screen and (max-width: 768px) {
 	.catalogue.content-grid {
 		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.grid-container {
+		grid-template-columns: 1fr;
 	}
 }
