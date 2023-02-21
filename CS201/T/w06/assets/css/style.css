@@ -1,8 +1,9 @@
-/* Linked to: T/midterm/index.html */
+/* Linked to: T/w06/index.html */
 
 :root {
 	--border-width: 2px;
-	--content-width: 1280px;
+	--content-width-narrow: 960px;
+	--content-width-wide: 1280px;
 	--catalogue-tab-btn-height: 85px;
 	--color-primary: #ffe100;
 	--color-secondary: #f2f2f2;
@@ -11,7 +12,6 @@
 	--banner-height: 374.45px;
 	--gap-val: 20px;
 	--top-bot-margin: var(--gap-val) 0px var(--gap-val) 0px;
-	--transition: all 300ms ease-in-out;
 	--header-height: 72px;
 	--header-width: 1000px;
 	--nav-main-height: 42px;
@@ -19,7 +19,9 @@
 }
 
 * {
+	color: #333333;
 	font-family: "Noto Sans", sans-serif;
+	transition: all 200ms ease-in-out;
 }
 
 /* -------------------------------- Semantic -------------------------------- */
@@ -42,7 +44,7 @@ body {
 }
 
 body .block-divider {
-	width: var(--content-width);
+	width: var(--content-width-wide);
 }
 
 header {
@@ -103,7 +105,6 @@ footer {
 	font-weight: 400;
 	padding-bottom: auto !important;
 	padding: 11px var(--gap-val) 11px var(--gap-val);
-	transition: var(--transition);
 }
 
 .catalogue-tab button:hover {
@@ -114,7 +115,6 @@ footer {
 	border-bottom: solid 2px transparent !important;
 	border-top: solid 5px var(--color-primary) !important;
 	border: solid 2px var(--color-border);
-	transition: var(--transition);
 }
 
 .catalogue-tab.is-selected button:hover {
@@ -150,7 +150,7 @@ footer {
 .content-block {
 	align-items: center;
 	display: flex;
-	flex-basis: var(--content-width);
+	flex-basis: var(--content-width-wide);
 	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: center;
@@ -219,10 +219,11 @@ footer {
 
 .content-grid-item.card {
 	background-image: linear-gradient(to bottom, var(--color-border), #f9fafa);
+	opacity: 1;
 }
 
 .content-grid-item.card:hover {
-	filter: brightness(1.02);
+	opacity: 0.8;
 }
 
 .content-grid-item.card h3 {
@@ -233,9 +234,11 @@ footer {
 .content-grid-item.post {
 	align-items: flex-start;
 	justify-content: flex-start;
+	opacity: 1;
 }
 
 .content-grid-item.post:hover {
+	opacity: 0.8;
 	text-decoration: none;
 }
 
@@ -305,6 +308,7 @@ footer {
 
 .footer.content-wrapper {
 	margin-left: 0px;
+	width: var(--content-width-narrow);
 }
 
 .footer.url-list a {
@@ -318,6 +322,7 @@ footer {
 .grid-container {
 	display: grid;
 	padding: var(--gap-val);
+	width: var(--content-width-wide);
 }
 
 .grid-container.prod-tab {
@@ -331,7 +336,6 @@ footer {
 	grid-template-columns: 33% 33% 1% 33%;
 	grid-template-rows: repeat(object-fit, 4);
 	margin: auto;
-	width: var(--content-width);
 }
 
 .grid-container.about-tab {
@@ -344,7 +348,6 @@ footer {
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 49% 2% 49%;
 	margin: auto;
-	width: var(--content-width);
 }
 
 .grid-container.active {
@@ -394,6 +397,7 @@ footer {
 }
 
 .grid-container.prod-tab .grid-item.ctg2 {
+	border-bottom: var(--border-width) solid var(--color-border);
 	grid-area: ctg2;
 	padding-left: var(--gap-val) !important;
 }
@@ -426,6 +430,7 @@ footer {
 	grid-area: itm;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
+	width: 100%;
 }
 
 .header-content {
@@ -517,12 +522,10 @@ footer {
 	height: var(--nav-main-height);
 	padding: 11px var(--gap-val) 11px var(--gap-val);
 	padding-bottom: auto !important;
-	transition: var(--transition);
 }
 
 .nav-main ul li button:hover {
 	border-bottom: solid 5px var(--color-primary);
-	transition: var(--transition);
 }
 
 .nav-main ul li button.active {
@@ -535,12 +538,10 @@ footer {
 	height: var(--nav-main-height);
 	padding: 11px var(--gap-val) 11px var(--gap-val);
 	padding-bottom: auto !important;
-	transition: var(--transition);
 }
 
 .nav-main ul li button.active:hover {
 	border-bottom: solid 5px var(--color-primary);
-	transition: var(--transition);
 }
 
 .news.content-list-item .date {
@@ -562,7 +563,7 @@ footer {
 
 .news.content-wrapper {
 	flex-direction: column;
-	width: 100%;
+	width: var(--content-width-narrow);
 }
 
 .news.content-wrapper .social.content-list-item .embed {
@@ -616,11 +617,16 @@ footer {
 		grid-template-columns: 49% 2% 49%;
 		grid-template-areas:
 			"hdr hdr hdr"
+			"hdiv hdiv hdiv"
 			"ctg1 vdiv ctg2"
 			"itm1 vdiv itm2";
 	}
 
-	.grid-item.hdiv {
+	.grid-container.prod-tab .grid-item.itm1 {
+		grid-template-columns: 1fr;
+	}
+
+	.grid-item.hdiv:nth-last-child(2) {
 		display: none;
 	}
 }
