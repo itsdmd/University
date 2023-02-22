@@ -19,17 +19,17 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
+        <FileNode Name="2159003_DaoMinhDuc_02.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TINY10:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TINY10</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>2159003_DaoMinhDuc_02.sql</FullPath>
+        </FileNode>
         <FileNode Name="init.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TINY10:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>TINY10</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>init.sql</FullPath>
-        </FileNode>
-        <FileNode Name="query.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TINY10:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>TINY10</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>query.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
