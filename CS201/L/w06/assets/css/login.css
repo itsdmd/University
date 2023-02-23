@@ -1,0 +1,16 @@
+.username {
+	position: relative;
+}
+
+.username img {
+	width: 32px;
+	position: absolute;
+	right: 8px;
+	top: 3px;
+	opacity: 0;
+	transition: opacity 200ms;
+}
+
+.show {
+	opacity: 1 !important;
+}
