@@ -66,27 +66,27 @@
           <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-plus" aria-hidden="true"></i> Create New Post</h5>
         </div>
         <div class="modal-body">
-            <form action="" method="get">
+            <form action="index.html" method="get" class="create-post">
                 <label for="title">Post Title</label>
-                <input type="text" class="form-control" name="title" placeholder="Add title...">
+                <input type="text" class="form-control post-title" name="title" placeholder="Add title...">
+
                 <label for="post">Post text</label>
+
                 <textarea name="body" class="form-control post-body"  rows="10"></textarea>
-                <button type="submit" class="btn btn-success btn-block mt-2" data-dismiss="modal"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> Create Post</button>
-              </form>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                <button type="submit" class="btn btn-success btn-block mt-2"><i class="fa fa-arrow-circle-o-up"></i> Create Post</button>
+            </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="create-close btn btn-secondary" data-dismiss="modal">Close</button>
 
         </div>
       </div>
     </div>
   </div>
+  <script src="assets/js/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-<script src="assets/js/main.js"></script>
+
 </body>
 </html>
