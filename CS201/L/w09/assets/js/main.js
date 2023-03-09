@@ -1,39 +1,43 @@
 console.log("main.js loaded");
 
-const FETCH_URL = "https://api.binance.com/api/v3/ticker/price?symbol=";
+/*  Global variables: current price/prev price/current pair/dom el   */
+let pairEl = document.querySelector("p.pair");
+let pairValEl = document.querySelector("p.pair-value");
+let currentPrice = getCurrentPrice();
+let alertDiv = document.querySelector("div.pair-alert");
+let prevPrice;
 
-let g_prevPrice = 0;
+/*  Event Listeners      */
 
-// - Tasks:
-// + Fetch currency pair data from Binance API
-// + Output the current price (compared to previous)
-// + Give some indication if the price went up down
-// + Have a select options list to allow users to pick other currency pairs
+/* app functions    */
 
-// fetchCurrencyPairData("BTCUSDT");
+/* getCurrentPrice(symbol = 'BTCUSDT') async fn, return the price data   */
+updatePrices();
 
-function updatePrevPrice(price) {
-	g_prevPrice = price;
-}
-
-function comparePriceDiff(price) {
-	if (price > g_prevPrice) {
-		return "up";
-	} else if (price < g_prevPrice) {
-		return "down";
+async function updatePrices() {
+	prevPrice = currentPrice;
+	currentPrice = await getCurrentPrice();
+	pairEl.textContent = currentPrice.symbol;
+	pairValEl.textContent = currentPrice.price;
+	alertDiv.textContent = parseInt(currentPrice.price) - parseInt(prevPrice.price);
+	if (currentPrice.price > prevPrice.price) {
+		alertDiv.classList.add("alert-success");
+		alertDiv.classList.remove("alert-danger");
+	} else if (currentPrice.price < prevPrice.price) {
+		alertDiv.classList.add("alert-danger");
+		alertDiv.classList.remove("alert-success");
 	} else {
-		return "equal";
+		alertDiv.classList.add("alert-secondary");
+		alertDiv.classList.remove("alert-danger");
+		alertDiv.classList.remove("alert-success");
 	}
 }
 
-async function fetchCurrencyPairData(symbol) {
-	await fetch(FETCH_URL + symbol)
-		.then((response) => response.json())
-		.then((data) => {
-			console.log(data);
-			return data;
-		})
-		.catch((error) => {
-			console.log(error);
-		});
+async function getCurrentPrice(symbol = "BTCUSDT") {
+	let url = "https://www.binance.com/api/v3/ticker/price?symbol=" + symbol;
+	let result = await fetch(url)
+		.then((res) => res.json())
+		.then((data) => data);
+	console.log(result);
+	return result;
 }
