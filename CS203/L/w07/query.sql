@@ -186,6 +186,94 @@ begin
 		rollback
 	end
 end
+go
+
+-- ANSWER
+create
+function uf_w07_SoPT(@mapm varchar(5))
+returns int
+as
+	begin
+		return (
+			select count(*)
+			from PhieuTra
+			where mapm = @mapm
+		)
+	end
+end
+go
+
+create
+trigger ut_w06_cau6_0
+on PhieuMuon
+for insert
+as
+begin
+	if not exists
+	(
+		select *
+		from inserted i
+			join PhieuMuon pm
+				on i.mapm = pm.mapm
+		where dbo.uf_w07_SoPT(i.mapm) = pm.SoLanTra
+	)
+	
+	begin
+		update PhieuMuon
+		set solantra = dbo.uf_w07_SoPT(mapm)
+		from inserted i
+		where i.mapm = PhieuMuon.mapm
+	end
+end
+go
+
+create
+trigger ut_w06_cau6_1
+on PhieuMuon
+for update
+as
+begin
+	if not exists
+	(
+		select *
+		from inserted i
+			join PhieuMuon pm
+				on i.mapm = pm.mapm
+		where dbo.uf_w07_SoPT(i.mapm) = pm.SoLanTra
+	)
+	
+	begin
+		update PhieuMuon
+		set solantra = dbo.uf_w07_SoPT(mapm)
+		from inserted i
+		where i.mapm = PhieuMuon.mapm
+	end
+end
+go
+
+create
+trigger ut_w06_cau6_2
+on PhieuMuon
+for delete
+as
+begin
+	if not exists
+	(
+		select *
+		from deleted i
+			join PhieuMuon pm
+				on i.mapm = pm.mapm
+		where dbo.uf_w07_SoPT(i.mapm) = pm.SoLanTra
+	)
+	
+	begin
+		update PhieuMuon
+		set solantra = dbo.uf_w07_SoPT(mapm)
+		from deleted i
+		where i.mapm = PhieuMuon.mapm
+	end
+end
+go
 
 -- 7. Thêm thuộc tính "NgayTraDuKien" vào bảng CT_PhieuTra. Ngày trả dự kiến = ngày mượn + số ngày quy định được mượn.
 -- 		T	X	S
@@ -293,8 +381,7 @@ on CT_PhieuMuon
 for update
 as
 begin
-	if exists
-	(
+	if exists (
 		select count(*)
 		from inserted i,
 			PhieuMuon pm,
@@ -309,5 +396,65 @@ begin
 		raiserror('Ngay tra du kien phai la ngay muon cong voi so ngay quy dinh', 15, 1)
 		rollback
 	end
+end
+go
+
+-- ANSWER
+-- De sai, xet bang CT_PhieuMuon
+-- 		T	X	S
+-- PM	-	-	+(ngaymuon)
+-- CTPM	+	-	+(songayquydinh)
+
+create function uf_w07_SoNgayQuyDinh (
+	@mapm varchar(20)
+)
+returns table
+as
+	return (
+		select SoNgayQuyDinh, ngaytradukien
+		from CT_PhieuMuon
+		where mapm = @mapm
+	)
+end
+go
+
+create ut_w07_cau7_1
+on PhieuMuon
+for update
+as
+	if update(ngaymuon)
+	begin
+		if exists (
+			select *
+			from inserted i,
+				uf_w07_SoNgayQuyDinh() a
+			where a.ngaytradukien = dateadd(day, a.songayquydinh, i.ngaymuon)
+				and a.mapm = i.mapm
+		)
+		
+		begin
+			update CT_PhieuMuon
+			set ngaytradukien = dateadd(day, songayquydinh, ngaymuon)
+			from inserted i
+			where i.mapm = CT_PhieuMuon.mapm
+		end
+	end
+end
+go
+
+-- Same goes for other triggers
+
+-- 8. Tinh trang cuon sach duoc tu dong cap nhat "dang duoc muon" khi thu thu thuc hien cho doc gia muon sach
+create
+-- alter
+trigger ut_w07_cau8_1
+on CT_PhieuMuon
+for insert
+as
+	update CuonSach
+	set tinhtrang = N'đang được mượn'
+	from inserted i
+	where i.isbn = CuonSach.isbn
+		and i.masach = CuonSach.masach
 end
 go
