@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="Description" content="Enter your description here" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+		<link rel="stylesheet" href="style.css" />
+		<title>ITEC Store Final</title>
+	</head>
+	<body>
+		<!-- navbar -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand"><i class="fa fa-laptop" aria-hidden="true"></i> ITEC Store</a>
+				<button
+					class="navbar-toggler"
+					data-target="#my-nav"
+					data-toggle="collapse"
+					aria-controls="my-nav"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div id="my-nav" class="collapse navbar-collapse">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="#"> Store<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item ml-2">
+							<button type="button" class="btn btn-primary">
+								<!-- update the number of products in the cart here (store the data in the localstorage) -->
+								<i class="fa fa-cart-plus" aria-hidden="true"></i> <span class="badge badge-light cart-total"> 0</span>
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- jumbotron -->
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container d-flex flex-column justify-content-center align-items-center mt-5 text-light">
+				<h1 class="display-4 text-xl-center font-weight-bold">ITEC Store</h1>
+				<p class="lead font-weight-bold">Buy online today</p>
+			</div>
+		</div>
+		<!-- main -->
+		<div class="container">
+			<div class="category-selectors">
+				<!-- use these buttons to filter the products by categories -->
+				<a href="#" class="badge badge-primary p-2 mr-1">Cat 1</a>
+				<a href="#" class="badge badge-primary p-2 mr-1">Cat 2</a>
+				<a href="#" class="badge badge-primary p-2 mr-1">Cat 3</a>
+				<!-- output products as cards with image in the div.product-output -->
+			</div>
+			<div class="container pt-5">
+				<div class="container product-catalog">
+					<!-- Page Features-->
+					<div class="row gx-lg-5 card-container">
+						<div class="col-lg-4 col-sm-6 mb-5 align-items-stretch">
+							<div class="card">
+								<img src="https://i.dummyjson.com/data/products/1/thumbnail.jpg" class="card-img-top" />
+								<div class="card-body">
+									<h5 class="card-title">iPhone 9</h5>
+									<p class="card-text">$549</p>
+									<a href="#" class="btn btn-outline-primary"> Read More </a>
+									<a href="#" class="btn btn-primary"> <i class="fas fa-plus"></i> Purchase </a>
+								</div>
+								<div class="metadata d-none">
+									<p class="prod-desc">${prod.description}</p>
+									<p class="prod-brand">${prod.brand}</p>
+									<p class="prod-rating">${prod.rating}</p>
+									<p class="prod-stock">${prod.stock}</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-sm-6 mb-5 align-items-stretch">
+							<div class="card">
+								<img src="https://i.dummyjson.com/data/products/2/thumbnail.jpg" class="card-img-top" />
+								<div class="card-body">
+									<h5 class="card-title">iPhone X</h5>
+									<p class="card-text">$899</p>
+									<a href="#" class="btn btn-outline-primary"> Read More </a>
+									<a href="#" class="btn btn-primary"> <i class="fas fa-plus"></i> Purchase </a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-sm-6 mb-5 align-items-stretch">
+							<div class="card">
+								<img src="https://i.dummyjson.com/data/products/3/thumbnail.jpg" class="card-img-top" />
+								<div class="card-body">
+									<h5 class="card-title">Samsung Universe 9</h5>
+									<p class="card-text">$1249</p>
+									<a href="#" class="btn btn-outline-primary"> Read More </a>
+									<a href="#" class="btn btn-primary"> <i class="fas fa-plus"></i> Purchase </a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form">
+				<div class="d-md-flex d-block align-content-between">
+					<img src="images/form-img.png" alt="" class="col-12 col-md-6" />
+					<div class="col-12 col-md-6">
+						<form class="d-flex flex-column justify-content-between" novalidate>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Email address</label>
+								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+								<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Password</label>
+								<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+							</div>
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" id="exampleCheck1" />
+								<label class="form-check-label" for="exampleCheck1">Check me out</label>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal" tabindex="-1" role="dialog" id="info-modal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Modal title</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Modal body text goes here.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="mt-4 pt-3 pb-5 bg-dark text-light">
+			<div class="container">
+				<h3><i class="fa fa-laptop" aria-hidden="true"></i> ITEC Store</h3>
+			</div>
+		</footer>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+		<script src="main.js"></script>
+	</body>
+</html>
