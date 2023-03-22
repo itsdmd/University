@@ -141,8 +141,8 @@ begin
 			else
 			begin
 				print 'Xoa de tai nghien cuu'
-				--delete from DeTaiNCC
-				--where MaDT = (select MaDT from inserted)
+				delete from DeTaiNCC
+				where MaDT = (select MaDT from inserted)
 			end
 		end
 	end
