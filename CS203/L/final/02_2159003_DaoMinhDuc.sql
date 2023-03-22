@@ -100,8 +100,12 @@ as
 begin
 	declare @MaGV nchar(5)
 	declare @HocVi nvarchar(10)
+			declare @MaNhom nchar(10)
 	
 	select @MaGV = ChuNhiemDT
+	from inserted
+	
+	select @MaNhom = MaNNC
 	from inserted
 
 	if @MaGV is not null
@@ -125,8 +129,8 @@ begin
 				DeTaiNCC dt,
 				HocVi hv
 			where tv.MaGV = gv.MaGV
-				and tv.MaNhom = nnc.MaNhom
-				and dt.MaNNC = nnc.MaNhom
+				and tv.MaNhom = @MaNhom
+				and dt.MaNNC = @MaNhom
 				and hv.MaHV = gv.HocVi
 				and hv.TenHV LIKE N'Tiến sĩ'
 			
@@ -140,9 +144,15 @@ begin
 
 			else
 			begin
-				print 'Xoa de tai nghien cuu'
+				declare @MaDT nchar(10) = (select MaDT from inserted)
+				
+				print 'Xoa de tai nghien cuu ' + @MaDT
 				delete from DeTaiNCC
 				where MaDT = (select MaDT from inserted)
+				
+				print 'Xoa san pham cua de tai nghien cuu ' + @MaDT
+				delete from SanPhamDT
+				where MaDT = @MaDT
 			end
 		end
 	end
@@ -153,4 +163,9 @@ go
 update DeTaiNCC
 set ChuNhiemDT = 'GV01'
 where MaDT = '2022.CNTT.01'
+go
+
+update DeTaiNCC
+set ChuNhiemDT = 'GV01'
+where MaDT = '2023.VS.01'
 go
