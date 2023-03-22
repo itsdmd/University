@@ -8,17 +8,18 @@ go
 -- 1. Viết hàm truyền vào MaGV cho biết học vị của giảng viên này
 -- Tên function: UF_D1_C1
 -- Input: MaGV
--- Output: số đề tài chưa nghiệm thu (xep loai = null)
+-- Output: hoc vi cua giao vien
 
 create
 -- alter
 -- drop
 function UF_D1_C1(@MaGV char(5))
-returns int
+returns nvarchar(10)
 as
 begin
-	declare @result int
-	select @result = count(*)
+	declare @result nvarchar(10)
+	
+	select @result = gv.HocVi
 	from NhomNC nnc,
 		ThanhVien_NNC tv,
 		GiangVien gv,
@@ -39,6 +40,12 @@ go
 -- 2. Vẽ bảng tầm ảnh hưởng và chọn 1 trigger để cài cho RBTV sau:
 -- “Giảng viên chủ nhiệm đề tài phải có học vị Tiến Sĩ”
 -- Tên trigger: UTR_D1_2
+
+-- 			T	X	S
+-- DeTaiNCC
+
+
+
 
 -- 3. Cập nhật giảng viên chủ nhiệm là một thành viên là tiến sĩ trong nhóm nghiên cứu nếu vi
 -- phạm điều kiện ở câu 2 (Lưu ý: nếu không có giáo viên nào thỏa thì xóa đề tài NC và sản
