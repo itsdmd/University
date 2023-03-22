@@ -32,9 +32,11 @@ go
 -- -- -- Tên trigger: UTR_D1_C2
 -- -- -- Yêu cầu: Vẽ bảng tầm ảnh hưởng và in thông báo + hủy thao tác khi có vi phạm
 
--- 		T	X	S
--- PM	+	-	+(SoSachMuon)
--- CTPM	+	-	+(MaPM, MaSach)
+-- 			I	D	U
+-- PM		+	-	+(SoSachMuon)
+-- CTPM		+	+	+(MaPM, MaSach)
+-- PT		+	-	+(MaPT, MaPM)
+-- CTPT		+	+	+(MaPT, MaSach)
 
 create
 -- delete
