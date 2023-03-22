@@ -1,6 +1,6 @@
 ﻿-- Họ tên: Đào Minh Đức
 -- MSSV: 2159003
--- Mã đề: 
+-- Mã đề: 2
 
 use QLNhomNghienCuu
 go
@@ -13,7 +13,7 @@ go
 create
 -- alter
 -- drop
-function UF_D1_C1(@MaGV char(5))
+function UF_D1_C1(@MaGV varchar(5))
 returns nvarchar(10)
 as
 begin
@@ -56,7 +56,7 @@ on DeTaiNCC
 for update
 as
 begin
-	declare @MaGV nchar(5)
+	declare @MaGV varchar(5)
 	declare @HocVi nvarchar(10)
 	
 	select @MaGV = ChuNhiemDT
@@ -98,9 +98,9 @@ on DeTaiNCC
 for update
 as
 begin
-	declare @MaGV nchar(5)
+	declare @MaGV varchar(5)
 	declare @HocVi nvarchar(10)
-			declare @MaNhom nchar(10)
+			declare @MaNhom varchar(10)
 	
 	select @MaGV = ChuNhiemDT
 	from inserted
@@ -121,7 +121,7 @@ begin
 			print 'Khong duoc cap nhat do hoc vi la ' + @HocVi
 			
 			-- tim thanh vien trong nhom nghien cuu co hoc vi la tien si
-			declare @MaGV2 nchar(5)
+			declare @MaGV2 varchar(5)
 			select top 1 @MaGV2 = gv.MaGV
 			from NhomNC nnc,
 				ThanhVien_NNC tv,
@@ -144,7 +144,7 @@ begin
 
 			else
 			begin
-				declare @MaDT nchar(10) = (select MaDT from inserted)
+				declare @MaDT varchar(10) = (select MaDT from inserted)
 				
 				print 'Xoa de tai nghien cuu ' + @MaDT
 				delete from DeTaiNCC
