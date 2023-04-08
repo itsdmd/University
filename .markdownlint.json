@@ -1,0 +1,10 @@
+{
+    "default": true,
+    "header-style": { "style": "atx" },
+    "line-length": false,
+    "no-duplicate-heading": false,
+    "no-hard-tabs": false,
+    "no-multiple-blanks": { "maximum": 3 },
+    "ul-indent": { "indent": 1 },
+    "no-inline-html": false
+}
