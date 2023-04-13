@@ -1,4 +1,5 @@
 > ### [Project Requirements](https://tdquang7.notion.site/Project-batch-rename-2022-9dc9eb9c9d674dbdb4a988a3794d1335)
+> [Backup copy](https://www.notion.so/itsdmd/Project-batch-rename-2022-ea510f7c8485461496527d99a2ddd807)
 
 # Setup
 1. Use Visual Studio 2022 with **.NET 7.0** installed.
