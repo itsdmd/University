@@ -2,7 +2,7 @@
 
 |               Symbol                | Interpretation                                                                        |                 Symbol                  | Interpretation                                                                   |
 | :---------------------------------: | ------------------------------------------------------------------------------------- | :-------------------------------------: | -------------------------------------------------------------------------------- |
-|           $\overline{p}$            | negation                                                                              |               $\urcorner$               | negation of function                                                             |
+|           $\overline{p}$            | negation                                                                              |                 $\neg$                  | negation of function                                                             |
 |            $p \wedge q$             | conjunction                                                                           |               $p \vee q$                | disjunction                                                                      |
 |            $p \veebar q$            | exclusive disjunction                                                                 |                $a \in A$                | in                                                                               |
 |          $p \rightarrow q$          | implication (if $p$ _then_ $q$)                                                       |          $p \leftrightarrow q$          | equivalence ( $p$ _if and only if_ $q$)                                          |
