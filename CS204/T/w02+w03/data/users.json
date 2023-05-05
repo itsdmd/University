@@ -1,0 +1,19 @@
+[
+    {
+        "username": "test2",
+        "email": "test@ttt",
+        "hash": "$2y$10$r8GN78fehytiGC9lwiqufOOoKiwJ1tkcgy6cJYEQHY5d69NZn2cRy"
+    },
+    [
+        {
+            "username": "test",
+            "email": "test@ttt",
+            "hash": "$2y$10$P5y7jdMoLC9NBNsko4L6ouqGCEpBJfdSxYwr\/xubZB6IC4agAv8C2"
+        }
+    ],
+    {
+        "username": "test3",
+        "email": "test@ttt",
+        "password": "$2y$10$7PQ0h4QjgMQnRDI\/fvU9\/eWX9OA0XesY0bLW7MD2h3t.rRJF04gVC"
+    }
+]
