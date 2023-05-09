@@ -5,8 +5,8 @@ if (!file_exists("data/todos.json")) {
     $todos = [];
     $json = json_encode($todos);
     file_put_contents("data/todos.json", $json);
-} else {
-    $todos = getTodos();
+} elseif ($_SESSION['logged_in']) {
+    $todos = filterTodosByUser(getTodos());
 }
 
 if (isset($_POST['delete'])) {
@@ -17,8 +17,6 @@ if (isset($_POST['delete'])) {
 if (isset($_POST['status'])) {
     updateStatus($_POST['status'], $todos);
 }
-
-$todos = sortTodos($todos);
 
 if (isset($_POST['update'])) {
     updateTodo($todos, $_POST['update'], $_POST['id']);
@@ -65,9 +63,10 @@ function deleteTodo($index, &$todos) {
     $msg = ["text" => "item deleted", "class" => "danger"];
 }
 
-if (isset($_POST["todo"])) {
-    $new_todo = ["id" => 0, "todo" => $_POST['todo'], "status" => false];
-    array_push($todos, $new_todo);
+if (isset($_POST["todo"]) && $_SESSION['logged_in']) {
+    $new_todo = ["id" => 0, "todo" => $_POST['todo'], "status" => false, "user" => $_SESSION['username']];
+    $all_todos = getTodos();
+    array_push($all_todos, $new_todo);
     for ($i = 0; $i < count($todos); $i++) {
         $todos[$i]['id'] = $i;
     }
@@ -89,3 +88,13 @@ function getTodos() {
     // return array
     return $todos;
 };
+
+function filterTodosByUser($todos) {
+    $filtered_todos = [];
+    foreach ($todos as $todo) {
+        if ($todo['user'] == $_SESSION['username']) {
+            array_push($filtered_todos, $todo);
+        }
+    }
+    return $filtered_todos;
+}

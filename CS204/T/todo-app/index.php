@@ -29,55 +29,62 @@ include "func/functions.php";
 </div>
 <div class="container">
     <h2>Todos Here:</h2>
-    <div class="row">
+    <!-- only show the div below if user is logged in -->
+    <?php if (isset($_SESSION['username'])) : ?>
+        <div class="row">
+            <ul class="list-group w-100">
+                <?php foreach ($todos as $todo) : ?>
+                    <li class="list-group-item d-flex justify-content-between align-items-center w-100 <?php
+                                                                                                        if ($todo['status']) {
+                                                                                                            echo "complete";
+                                                                                                        }
+                                                                                                        ?>">
 
-        <ul class="list-group w-100">
-            <?php foreach ($todos as $todo) : ?>
-                <li class="list-group-item d-flex justify-content-between align-items-center w-100 <?php
-                                                                                                    if ($todo['status']) {
-                                                                                                        echo "complete";
-                                                                                                    }
-                                                                                                    ?>">
+                        <div class="todo-text">
+                            <?php echo htmlspecialchars($todo['todo']); ?>
+                        </div>
 
-                    <div class="todo-text">
-                        <?php echo htmlspecialchars($todo['todo']); ?>
-                    </div>
-
-                    <form action="index.php" method="post" class="d-none">
-                        <input type="text" value="<?php echo filter_var($todo['todo'], FILTER_SANITIZE_SPECIAL_CHARS); ?>" class="form-control" name="update">
-                        <input type="hidden" name="id" value="<?php echo $todo['id']; ?>">
-                    </form>
-
-                    <div class="d-flex">
-
-                        <button class="btn btn-primary edit"><i class="fa fa-pencil-square" aria-hidden="true"></i>
-                            Edit</button>
-                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                            <button type="submit" class="btn btn-danger mr-2 ml-2" name="delete" value="<?php echo $todo['id']; ?>"><i class="fa fa-trash" aria-hidden="true"></i>
-                                Delete</button>
+                        <form action="index.php" method="post" class="d-none">
+                            <input type="text" value="<?php echo filter_var($todo['todo'], FILTER_SANITIZE_SPECIAL_CHARS); ?>" class="form-control" name="update">
+                            <input type="hidden" name="id" value="<?php echo $todo['id']; ?>">
                         </form>
-                        <form method="post" action="index.php">
-                            <button type="submit" class="btn 
+
+                        <div class="d-flex">
+
+                            <button class="btn btn-primary edit"><i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                Edit</button>
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                                <button type="submit" class="btn btn-danger mr-2 ml-2" name="delete" value="<?php echo $todo['id']; ?>"><i class="fa fa-trash" aria-hidden="true"></i>
+                                    Delete</button>
+                            </form>
+                            <form method="post" action="index.php">
+                                <button type="submit" class="btn 
                     <?php
                     if ($todo['status']) {
                         echo "btn-warning";
                     } else {
                         echo "btn-outline-warning";
                     }
-                    ?>" name="status" value="<?php echo $todo['id']; ?>"> <?php
-                                                                            if ($todo['status']) {
-                                                                                echo "Undo";
-                                                                            } else {
-                                                                                echo "Done";
-                                                                            }
-                                                                            ?></button>
-                        </form>
-                    </div>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+                    ?>" name="status" value="<?php echo $todo['id']; ?>">
+                                    <?php
+                                    if ($todo['status']) {
+                                        echo "Undo";
+                                    } else {
+                                        echo "Done";
+                                    }
+                                    ?></button>
+                            </form>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
 
-    </div>
+        </div>
+    <?php else : ?>
+        <div class="alert alert-danger" role="alert">
+            You must be logged in to view this page!
+        </div>
+    <?php endif; ?>
 </div>
 <?php
 include "inc/footer.php";
