@@ -30,7 +30,28 @@ if (isset($_POST['register'])) {
         loginUser($_POST);
     }
 } else if (isset($_POST['login'])) {
-    var_dump($_POST);
+    $errors = [];
+    $users = getUsers();
+    // get all users and check if user submitted username ==
+    // to a username in the data/users.json (convert to assoc arr)
+    if (checkUserExists($users, $_POST['username'])) {
+        foreach ($users as $user) {
+            if ($user['username'] == $_POST['username']) {
+                if (!password_verify($_POST['password'], $user['password'])) {
+                    $errors['password'] = 'Invalid password!';
+                }
+            }
+        }
+    } else {
+        $errors['username'] = "User not found";
+    }
+    // check the user submitted password string against
+    // the hash of the associated user
+
+    // if no errors then login
+    if (empty($errors)) {
+        loginUser($_POST);
+    }
 }
 
 function loginUser($user) {
