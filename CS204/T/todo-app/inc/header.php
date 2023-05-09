@@ -30,12 +30,9 @@
                         <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true">Login</a>
+                        <a class="nav-link" href="login.php">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.php" tabindex="-1" aria-disabled="true">Logout</a>
-                    </li>
-                </ul>
+                    <ul>
             </div>
         </div>
     </nav>

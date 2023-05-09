@@ -40,11 +40,11 @@ include "func/functions.php";
                                                                                                     ?>">
 
                     <div class="todo-text">
-                        <?php echo $todo['todo']; ?>
+                        <?php echo htmlspecialchars($todo['todo']); ?>
                     </div>
 
                     <form action="index.php" method="post" class="d-none">
-                        <input type="text" value="<?php echo $todo['todo']; ?>" class="form-control" name="update">
+                        <input type="text" value="<?php echo filter_var($todo['todo'], FILTER_SANITIZE_SPECIAL_CHARS); ?>" class="form-control" name="update">
                         <input type="hidden" name="id" value="<?php echo $todo['id']; ?>">
                     </form>
 
@@ -64,14 +64,13 @@ include "func/functions.php";
                     } else {
                         echo "btn-outline-warning";
                     }
-                    ?>" name="status" value="<?php echo $todo['id']; ?>">
-                                <?php
-                                if ($todo['status']) {
-                                    echo "Undo";
-                                } else {
-                                    echo "Done";
-                                }
-                                ?></button>
+                    ?>" name="status" value="<?php echo $todo['id']; ?>"> <?php
+                                                                            if ($todo['status']) {
+                                                                                echo "Undo";
+                                                                            } else {
+                                                                                echo "Done";
+                                                                            }
+                                                                            ?></button>
                         </form>
                     </div>
                 </li>

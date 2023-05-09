@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "username": "admin",
+        "email": "admin@gmail.com",
+        "password": "$2y$10$66oWHhMRjk2wfPM\/3HHOz.BMuI17JX4ZN1Ku1OVTqeYktXcLv8JZK",
+        "role": "1"
+    },
+    {
+        "id": 2,
+        "username": "spencer",
+        "email": "austinma@hawaii.edu",
+        "password": "$2y$10$QExnbYOVCFtWUaDRtZku1O0yQ3qH57nHuj2yqD6GHJXcQM1eXkzpq",
+        "role": "2"
+    },
+    {
+        "id": 3,
+        "username": "user2",
+        "email": "spenver@gmail.com",
+        "password": "$2y$10$RJTgTyVJx4MG\/ermghVp4.1qWcdorcqD.\/trc0sWHVwFNNShI32q2",
+        "role": "2"
+    },
+    {
+        "id": 4,
+        "username": "user3",
+        "email": "austinma@hawaii.edu",
+        "password": "$2y$10$GALlLFFWbfvOYD7qC7v5FuCvMLigNxQFGweR9eABFudTe.IMuNHwO",
+        "role": "2"
+    },
+    {
+        "id": 5,
+        "username": "user5",
+        "email": "austinma@hawaii.edu",
+        "password": "$2y$10$UhudtSGBTWZZZ5iCBapFLOnxukdCX\/J956S1tAF4.Zylvdnw3phrC",
+        "role": "2"
+    },
+    {
+        "id": 6,
+        "username": "user6",
+        "email": "austinma@hawaii.edu",
+        "password": "$2y$10$IXXR3VXYOTx77yoUBLZj4.vUhTJGrgv\/WLLBGtS\/0RSRCcfbOYXM6",
+        "role": "2"
+    },
+    {
+        "id": 7,
+        "username": "lanlan",
+        "email": "austinma@hawaii.edu",
+        "password": "$2y$10$qOo\/FCMfolBz9qnbnuS0JepPVXbhZm09L8pj2EKeOQaozWgkEuVMi",
+        "role": "2"
+    }
+]

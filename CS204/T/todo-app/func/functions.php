@@ -75,18 +75,10 @@ if (isset($_POST["todo"])) {
 }
 
 function storeTodos($todos) {
-    // check if have permission to write to file
-    $f_handler = fopen("data/todos.json", "w");
-    if (!$f_handler) {
-        echo "You do not have permission to write to this file";
-        return false;
-    }
-
     // convert to json
     $json = json_encode($todos, JSON_PRETTY_PRINT);
     // store in file
     file_put_contents("data/todos.json", $json);
-    return true;
 }
 
 function getTodos() {
