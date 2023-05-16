@@ -33,7 +33,7 @@ if (isset($_POST['register'])) {
     $errors = [];
     $users = getUsers();
     // get all users and check if user submitted username ==
-    // to a username in the data/users.json (convert to assoc arr)
+    // to a username in the users.json (convert to assoc arr)
     if (checkUserExists($users, $_POST['username'])) {
         foreach ($users as $user) {
             if ($user['username'] == $_POST['username']) {
@@ -70,7 +70,7 @@ function createUser($user, $users) {
     $new_user['role'] = "2";
     array_push($users, $new_user);
     $json = json_encode($users, JSON_PRETTY_PRINT);
-    file_put_contents("data/users.json", $json);
+    file_put_contents("users.json", $json);
 }
 
 function checkUserExists($users, $username) {
@@ -89,7 +89,7 @@ function checkUserExists($users, $username) {
 
 function getUsers() {
     // get file contents
-    $json = file_get_contents("data/users.json");
+    $json = file_get_contents("users.json");
     // convert to assoc array
     $arr = json_decode($json, true);
     // return the arr

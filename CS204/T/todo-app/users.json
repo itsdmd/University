@@ -3,7 +3,7 @@
         "id": 1,
         "username": "admin",
         "email": "admin@gmail.com",
-        "password": "$2y$10$2YCjUPW26OTPi\/PdLcU61uuqGQXet23Qw2O4T7Wv.Hhkje0iWZhpm",
+        "password": "$2y$10$66oWHhMRjk2wfPM\/3HHOz.BMuI17JX4ZN1Ku1OVTqeYktXcLv8JZK",
         "role": "1"
     },
     {
@@ -50,16 +50,9 @@
     },
     {
         "id": 8,
-        "username": "adminn",
-        "email": "test@test.test",
-        "password": "$2y$10$h7OV8uG7ptSfdOfTvnzXceeR8s3QytvhSwJyxHUpc2Ck9deZmM2Ea",
-        "role": "2"
-    },
-    {
-        "id": 9,
-        "username": "admin2",
-        "email": "test@test.test",
-        "password": "$2y$10$2YCjUPW26OTPi\/PdLcU61uuqGQXet23Qw2O4T7Wv.Hhkje0iWZhpm",
+        "username": "admin10",
+        "email": "aus@few.com",
+        "password": "$2y$10$nIvMJgSttBz6P0NoqgL\/4umD0wDASBlMEovP5vXAND86LnraalAMm",
         "role": "2"
     }
 ]

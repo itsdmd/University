@@ -1,12 +1,24 @@
 <?php
 
 $msg = [];
-if (!file_exists("data/todos.json")) {
+if (!file_exists("todos.json")) {
     $todos = [];
     $json = json_encode($todos);
-    file_put_contents("data/todos.json", $json);
+    file_put_contents("todos.json", $json);
 } elseif ($_SESSION['logged_in']) {
-    $todos = filterTodosByUser(getTodos());
+    $todos = getTodos();
+    $todos = filterTodosByUser($todos);
+}
+
+function filterTodosByUser($todos) {
+    var_dump($todos);
+    $filter_todos = [];
+    foreach ($todos as $todo) {
+        if ($_SESSION['username'] == $todo['user']) {
+            array_push($filter_todos, $todo);
+        }
+    }
+    return $filter_todos;
 }
 
 if (isset($_POST['delete'])) {
@@ -17,6 +29,8 @@ if (isset($_POST['delete'])) {
 if (isset($_POST['status'])) {
     updateStatus($_POST['status'], $todos);
 }
+
+//$todos = sortTodos($todos);
 
 if (isset($_POST['update'])) {
     updateTodo($todos, $_POST['update'], $_POST['id']);
@@ -70,31 +84,21 @@ if (isset($_POST["todo"]) && $_SESSION['logged_in']) {
     for ($i = 0; $i < count($todos); $i++) {
         $todos[$i]['id'] = $i;
     }
-    storeTodos($todos);
+    storeTodos($all_todos);
 }
 
 function storeTodos($todos) {
     // convert to json
     $json = json_encode($todos, JSON_PRETTY_PRINT);
     // store in file
-    file_put_contents("data/todos.json", $json);
+    file_put_contents("todos.json", $json);
 }
 
 function getTodos() {
-    // access the data/todos.json
-    $data = file_get_contents("data/todos.json");
+    // access the todos.json
+    $data = file_get_contents("todos.json");
     // convert json to assoc array
     $todos = json_decode($data, true);
     // return array
     return $todos;
 };
-
-function filterTodosByUser($todos) {
-    $filtered_todos = [];
-    foreach ($todos as $todo) {
-        if ($todo['user'] == $_SESSION['username']) {
-            array_push($filtered_todos, $todo);
-        }
-    }
-    return $filtered_todos;
-}
