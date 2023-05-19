@@ -17,6 +17,9 @@ if (isset($_POST['add_student'])) {
 } else {
     echo "No form submitted.";
 }
+
+// clear the POST array
+$_POST = array();
 ?>
 
 <head>
@@ -99,7 +102,7 @@ if (isset($_POST['add_student'])) {
                                     <?php
                                     $teachers = query($sconn, "SELECT * FROM teachers");
                                     while ($teacher = $teachers->fetch_assoc()) {
-                                        echo "<option value='" . $teacher['t_id'] . "'>" . $teacher['t_name'] . "</option>";
+                                        echo "<option value='" . $teacher['id'] . "'>" . $teacher['t_name'] . "</option>";
                                     }
                                     ?>
                                 </select>
@@ -114,17 +117,33 @@ if (isset($_POST['add_student'])) {
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        Add Enrollment</h2>
+                        <h2>Add Enrollment</h2>
                         <form action="index.php" method="POST">
                             <div class="form-group">
-                                <label for="class_id">Class ID</label>
-                                <input type="text" class="form-control" id="class_id" name="class_id" required>
+                                <label for="class_id">Class</label>
+                                <select class="form-control" id="class_id" name="class_id" required>
+                                    <option value="">Select Class</option>
+                                    <?php
+                                    $classes = query($sconn, "SELECT * FROM classes");
+                                    while ($class = $classes->fetch_assoc()) {
+                                        echo "<option value='" . $class['id'] . "'>" . $class['c_name'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="student_id">Student ID</label>
-                                <input type="text" class="form-control" id="student_id" name="student_id" required>
+                                <label for="student_id">Student</label>
+                                <select class="form-control" id="student_id" name="student_id" required>
+                                    <option value="">Select Student</option>
+                                    <?php
+                                    $students = query($sconn, "SELECT * FROM students");
+                                    while ($student = $students->fetch_assoc()) {
+                                        echo "<option value='" . $student['id'] . "'>" . $student['s_name'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
-                            <button type="submit" class="btn btn-primary" name="add_enrollment">Add Class</button>
+                            <button type="submit" class="btn btn-primary" name="add_enrollment">Add Enrollment</button>
                         </form>
                     </div>
                 </div>

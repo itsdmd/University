@@ -47,12 +47,13 @@ function add_teacher($conn) {
 function add_class($conn) {
     // Get the values from the form
     $className = $_POST['class_name'];
+    $teacherId = $_POST['teacher_id'];
 
     // Prepare the SQL statement with placeholders
     $stmt = $conn->prepare("INSERT INTO classes (c_name, t_id, date_created) VALUES (?, ?, default)");
 
     // Bind the parameters to the statement
-    $stmt->bind_param("si", $className);
+    $stmt->bind_param("si", $className, $teacherId);
 
     // Execute the prepared statement
     if ($stmt->execute()) {
@@ -68,14 +69,13 @@ function add_class($conn) {
 function add_enrollment($conn) {
     // Get the values from the form
     $classId = $_POST['class_id'];
-    $teacherId = $_POST['teacher_id'];
     $studentId = $_POST['student_id'];
 
     // Prepare the SQL statement with placeholders
-    $stmt = $conn->prepare("INSERT INTO enrollment (c_id, t_id, s_id, date_created) VALUES (?, ?, ?, default)");
+    $stmt = $conn->prepare("INSERT INTO enrollment (c_id, s_id, date_created) VALUES (?, ?, default)");
 
     // Bind the parameters to the statement
-    $stmt->bind_param("iii", $classId, $teacherId, $studentId);
+    $stmt->bind_param("ii", $classId, $studentId);
 
     // Execute the prepared statement
     if ($stmt->execute()) {
