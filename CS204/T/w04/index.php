@@ -92,6 +92,18 @@ if (isset($_POST['add_student'])) {
                                 <label for="class_name">Class Name</label>
                                 <input type="text" class="form-control" id="class_name" name="class_name" required>
                             </div>
+                            <div class="form-group">
+                                <label for="teacher_id">Assigned Teacher</label>
+                                <select class="form-control" id="teacher_id" name="teacher_id" required>
+                                    <option value="">Select Teacher</option>
+                                    <?php
+                                    $teachers = query($sconn, "SELECT * FROM teachers");
+                                    while ($teacher = $teachers->fetch_assoc()) {
+                                        echo "<option value='" . $teacher['t_id'] . "'>" . $teacher['t_name'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-primary" name="add_class">Add Class</button>
                         </form>
                     </div>
@@ -107,10 +119,6 @@ if (isset($_POST['add_student'])) {
                             <div class="form-group">
                                 <label for="class_id">Class ID</label>
                                 <input type="text" class="form-control" id="class_id" name="class_id" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="teacher_id">Teacher ID</label>
-                                <input type="text" class="form-control" id="teacher_id" name="teacher_id" required>
                             </div>
                             <div class="form-group">
                                 <label for="student_id">Student ID</label>

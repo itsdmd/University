@@ -49,10 +49,10 @@ function add_class($conn) {
     $className = $_POST['class_name'];
 
     // Prepare the SQL statement with placeholders
-    $stmt = $conn->prepare("INSERT INTO classes (c_name, date_created) VALUES (?, default)");
+    $stmt = $conn->prepare("INSERT INTO classes (c_name, t_id, date_created) VALUES (?, ?, default)");
 
     // Bind the parameters to the statement
-    $stmt->bind_param("s", $className);
+    $stmt->bind_param("si", $className);
 
     // Execute the prepared statement
     if ($stmt->execute()) {
