@@ -2,8 +2,15 @@
 <html lang="en">
 
 <?php
-include "query.php";
 include "secrets.php";
+include "func/form_proc.php";
+include "func/query.php";
+
+if (isset($_POST['add_student'])) {
+    add_student($sconn);
+} else if (isset($_POST['add_teacher'])) {
+    add_teacher($sconn);
+}
 ?>
 
 <head>
@@ -18,28 +25,68 @@ include "secrets.php";
 </head>
 
 <body>
-    <header>
-        <!-- place navbar here -->
-    </header>
-    <main>
+    <!-- Add Student -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Add Student</h2>
+                        <form action="index.php" method="POST">
+                            <div class="form-group">
+                                <label for="student_name">Student
+                                    Name</label>
+                                <input type="text" class="form-control" id="student_name" name="student_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select class="form-control" id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="m">Male</option>
+                                    <option value="f">Female</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="add_student">Add
+                                Student</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <pre>
-            <?php
-            $q1 = "SELECT s.id AS student_id, s.s_name AS student_name, c.c_name AS class_name, t.t_name AS teacher_name
-            FROM enrollment e
-            JOIN classes c on c.id = e.c_id
-            JOIN students s on s.id = e.s_id
-            JOIN teachers t on t.id = e.t_id";
+    </div>
 
-            $posts = query($sconn, $q1)->fetch_all(MYSQLI_ASSOC);
+    <!-- Add Teacher -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Add Teacher</h2>
+                        <form action="index.php" method="POST">
+                            <div class="form-group">
+                                <label for="teacher_name">Teacher
+                                    Name</label>
+                                <input type="text" class="form-control" id="teacher_name" name="teacher_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select class="form-control" id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="m">Male</option>
+                                    <option value="f">Female</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="add_teacher">Add
+                                Teacher</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            print_r($posts);
-            ?>
-        </pre>
-    </main>
-    <footer>
-        <!-- place footer here -->
-    </footer>
+    </div>
+
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>
