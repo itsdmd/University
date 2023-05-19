@@ -10,6 +10,12 @@ if (isset($_POST['add_student'])) {
     add_student($sconn);
 } else if (isset($_POST['add_teacher'])) {
     add_teacher($sconn);
+} else if (isset($_POST['add_class'])) {
+    add_class($sconn);
+} else if (isset($_POST['add_enrollment'])) {
+    add_enrollment($sconn);
+} else {
+    echo "No form submitted.";
 }
 ?>
 
@@ -25,17 +31,16 @@ if (isset($_POST['add_student'])) {
 </head>
 
 <body>
-    <!-- Add Student -->
     <div class="container">
         <div class="row">
+            <!-- Add Student -->
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h2>Add Student</h2>
                         <form action="index.php" method="POST">
                             <div class="form-group">
-                                <label for="student_name">Student
-                                    Name</label>
+                                <label for="student_name">Student Name</label>
                                 <input type="text" class="form-control" id="student_name" name="student_name" required>
                             </div>
                             <div class="form-group">
@@ -46,27 +51,20 @@ if (isset($_POST['add_student'])) {
                                     <option value="f">Female</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary" name="add_student">Add
-                                Student</button>
+                            <button type="submit" class="btn btn-primary" name="add_student">Add Student</button>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-
-    <!-- Add Teacher -->
-    <div class="container">
-        <div class="row">
+            <!-- Add Teacher -->
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h2>Add Teacher</h2>
                         <form action="index.php" method="POST">
                             <div class="form-group">
-                                <label for="teacher_name">Teacher
-                                    Name</label>
+                                <label for="teacher_name">Teacher Name</label>
                                 <input type="text" class="form-control" id="teacher_name" name="teacher_name" required>
                             </div>
                             <div class="form-group">
@@ -77,14 +75,54 @@ if (isset($_POST['add_student'])) {
                                     <option value="f">Female</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary" name="add_teacher">Add
-                                Teacher</button>
+                            <button type="submit" class="btn btn-primary" name="add_teacher">Add Teacher</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <!-- Add Class -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Add Class</h2>
+                        <form action="index.php" method="POST">
+                            <div class="form-group">
+                                <label for="class_name">Class Name</label>
+                                <input type="text" class="form-control" id="class_name" name="class_name" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="add_class">Add Class</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Add Enrollment -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        Add Enrollment</h2>
+                        <form action="index.php" method="POST">
+                            <div class="form-group">
+                                <label for="class_id">Class ID</label>
+                                <input type="text" class="form-control" id="class_id" name="class_id" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="teacher_id">Teacher ID</label>
+                                <input type="text" class="form-control" id="teacher_id" name="teacher_id" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="student_id">Student ID</label>
+                                <input type="text" class="form-control" id="student_id" name="student_id" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="add_enrollment">Add Class</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <!-- Bootstrap JavaScript Libraries -->
