@@ -2,9 +2,6 @@
 <html lang="en">
 
 <?php
-include "func/db.php";
-include "func/query.php";
-
 include "inc/header.php";
 include "inc/jumbotron.php";
 include "inc/featured.php";
