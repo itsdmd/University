@@ -1,16 +1,5 @@
-<?php
-include "func/query.php";
-
-$posts = getPosts();
-?>
-
-<ul>
-  <?php foreach ($posts as $post) {
-    echo "<li>" . $post['post_title'] . "<br>" . $post['display_name'] . "</li>";
-  }
-  ?>
-</ul>
-
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">

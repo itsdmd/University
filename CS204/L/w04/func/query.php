@@ -1,5 +1,4 @@
 <?php
-
 function query($query, $bind_type = "", $bind_val = "", $conn = null) {
     if ($conn == null) {
         include "db.php";
@@ -17,13 +16,15 @@ function query($query, $bind_type = "", $bind_val = "", $conn = null) {
     return $results->fetch_all(MYSQLI_ASSOC);
 }
 
-function getPosts() {
+function getPosts($id = null, $limit = 10) {
     // sql query
     $sql = "SELECT * 
         FROM wp_posts wp
         JOIN wp_users wu ON wu.ID = wp.post_author
-        WHERE post_type = 'post'
-        LIMIT 20";
+        WHERE post_type = 'post'" .
+        ($id ? " AND wp.ID = " . strval($id)
+            : "") .
+        " LIMIT " . strval($limit);
 
     return query($sql);
 }
