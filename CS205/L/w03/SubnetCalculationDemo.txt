@@ -1,0 +1,25 @@
+10.25.100.0/22. Chia 5 duong mang con (NET 1 -> NET 5)
+
+a. Day dia chi IP hop le NET 1
+b. Dia chi hop le nho nhat NET 2
+c. Dia chi hop le lon nhat NET 3
+d. Dia chi hop le thu 5 NET 4
+e. So IP hop le trong cac duong mang con vua tim
+
+
+
+0000-1010.0001-1001.0110-0100.0000-0000
+\\\\\\\\\\\\\\\\\\\\\\\\\\|^^.^000-0000 (^: bit muon)
+
+NET 1: 00.0000-0000
+NET 2: 00.1000-0000
+NET 3: 01.0000-0000
+NET 4: 01.1000-0000
+NET 5: 10.0000-0000
+
+a. 00.0000-0001 -> 00.0111-1110 (.100.1 -> .100.126)
+b. 00.1000-0001 (.100.129)
+c. 01.0111-1110 (.101.126)
+d. 01.1000-0101 (.101.133)
+e. 2^7 - 2 = 126
+
