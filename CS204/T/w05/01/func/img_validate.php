@@ -1,6 +1,6 @@
 <?php
 
-function validateImg($img) {
+function imgValidate($img) {
     $errors = [];
 
     // check if file was uploaded

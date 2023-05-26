@@ -46,7 +46,10 @@
             print_r($_FILES);
 
             include "func/img_display.php";
-            displayImg("blog_img");
+            imgDisplay($_FILES["blog_img"]);
+
+            include "func/upload_save.php";
+            upload_save($_FILES["blog_img"]);
             ?>
         </pre>
     </div>
