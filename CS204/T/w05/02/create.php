@@ -3,9 +3,17 @@ include "inc/header.php";
 
 if (isset($_POST['title'])) {
     include "func/blog_handler.php";
+    $errors = postVerify($_POST);
 
-    print_r($_POST);
-    print_r($_FILES);
+    if (count($errors) > 0) {
+        print_r($errors);
+    } else {
+        include "func/img_display.php";
+        imgDisplay($_FILES['blog_img']);
+    }
+
+    // print_r($_POST);
+    // print_r($_FILES);
 }
 ?>
 <div class="jumbotron jumbotron-fluid">
@@ -29,6 +37,7 @@ if (isset($_POST['title'])) {
         </form>
     </div>
 </div>
+
 <?php
 include "inc/footer.php";
 ?>
