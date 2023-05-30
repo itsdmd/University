@@ -1,79 +1,55 @@
 <?php
 
-function postVerify($post) {
-    $errors = [];
+function processNewPost($post, $img) {
+    // get title and body from $post
+    $title = $post['title'];
+    $body = $post['body'];
+    // get file details from $post_img
+    $file_name = $img['name'];
+    $file_ext = explode(".", $file_name);
+    $file_ext = end($file_ext);
+    $tmp = $img['tmp_name'];
+    $file_size = $img['size'];
+    $allowed_ext = ['png', 'jpg', 'jpeg', 'gif'];
+    $file_error = $img['error'];
 
-    if (empty($post['title'])) {
-        $errors['title'] = "Title is required.";
+    // check for empty text fields
+    if (empty($title) || empty($body)) {
+        $errors['empty_text'] = "Text fields cannot be empty!";
     }
 
-    if (empty($post['body'])) {
-        $errors['body'] = "Body is required.";
-    }
-
-    if (count(imgValidate($_FILES['blog_img']))) {
-        $errors['image'] = "Image is invalid.";
-    }
-
-    return $errors;
-}
-
-function imgValidate($img) {
-    $errors = [];
-
-    // check if file was uploaded
-    if (!is_uploaded_file($img['tmp_name'])) {
-        $errors["uploaded"] = "File was not uploaded";
-    }
-
-    // check if file is an image
-    $img_info = getimagesize($img['tmp_name']);
-    if (!$img_info) {
-        $errors["img_info"] = "File is not an image";
-    }
-
-    // check if file is too large
-    if ($img['size'] > 10000000) {
-        $errors["size"] = "File is too large (Max: 10MB)";
-    }
-
-    // check if file is the correct type
-    $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
-    if (!in_array($img['type'], $allowed_types)) {
-        $errors["type"] = "File is not a valid type";
-    }
-
-    return $errors;
-}
-
-function imgDisplay($file, $name = "tmp_name") {
-    include "func/img_validate.php";
-    $errors = imgValidate($file);
-
-    if (count($errors) > 0) {
-        print_r($errors);
-    } else {
-        $img = file_get_contents($file[$name]);
-        echo "<img src='data:image/jpeg;base64," . base64_encode($img) . "' />";
-    }
-}
-
-function upload_save($file, $target_file = "uploads/" . $file['name']) {
-    if (!is_dir("uploads")) {
-        mkdir("uploads");
-        echo ("Created uploads directory.");
-    }
-
-    try {
-        if (move_uploaded_file($file["tmp_name"], $target_file)) {
-            echo ("The file " . basename($file["name"]) . " has been uploaded to " . $target_file);
-            return true;
-        } else {
-            echo ("Error uploading file.");
-            return false;
+    // check for proper file extension
+    if ($file_error == 0) {
+        if (!in_array(strtolower($file_ext), $allowed_ext)) {
+            $errors['file_ext'] = "Improper file extension!";
         }
-    } catch (Exception $e) {
-        echo ("Error uploading file.");
-        return false;
+        // check file size
+        if ($file_size > 5000000) {
+            $errors['file_size'] = "Files must be smaller than 5MB!";
+        }
+    } else {
+        $errors['img_error'] = "There was a problem with the image!";
     }
+
+    // if no errors, move file to dest and call insertBlog()
+    if (empty($errors)) {
+        if (!is_dir("uploads/")) {
+            mkdir("uploads", 0777, true);
+        }
+        $new_file_name = random_int(100, 100000) . "_" . $file_name;
+        $dest = "uploads/" . $new_file_name;
+        move_uploaded_file($tmp, $dest);
+        insertBlog($title, $body, $dest);
+    } else {
+        return $errors;
+    }
+}
+
+function insertBlog($title, $body, $img) {
+    include "func/query.php";
+
+    $query = "INSERT INTO posts (id, title, body, img_url, post_author, tags, date_updated, date_created) VALUES (NULL, ?, ?, ?, NULL, NULL, NULL, CURRENT_TIMESTAMP)";
+    $bind_val = [$title, $body, $img];
+
+    return insert($query, $bind_val);
 }

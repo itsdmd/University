@@ -3,14 +3,9 @@ include "inc/header.php";
 
 if (isset($_POST['title'])) {
     include "func/blog_handler.php";
-    $errors = postVerify($_POST);
+    $errors = processNewPost($_POST, $_FILES['blog_img']);
 
-    if (count($errors) > 0) {
-        print_r($errors);
-    } else {
-        include "func/img_display.php";
-        imgDisplay($_FILES['blog_img']);
-    }
+    // print_r(insertBlog($_POST['title'], $_POST['body'], $_FILES['blog_img']['name'])->fetch_all(MYSQLI_ASSOC));
 
     // print_r($_POST);
     // print_r($_FILES);
