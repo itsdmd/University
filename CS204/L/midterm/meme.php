@@ -1,4 +1,6 @@
 <?php
+// In the meme.php file set up an if statement to see if the $_GET super global "id" is set. If it is, pass that value to a prepared statement that fetches that meme based on the memes.id column. Output the single meme any way you like. Make sure to include a "back" button that links back to the "index.php".
+
 include "includes/header.php";
 include "includes/jumbo.php";
 ?>
@@ -6,8 +8,6 @@ include "includes/jumbo.php";
 <a href="index.php" class="btn btn-primary">Back</a>
 
 <?php
-// Task 4: In the meme.php file set up an if statement to see if the $_GET super global "id" is set. If it is, pass that value to a prepared statement that fetches that meme based on the memes.id column. Output the single meme any way you like. Make sure to include a "back" button that links back to the "index.php".
-
 if (isset($_GET['id'])) {
     include "functions/query.php";
 
