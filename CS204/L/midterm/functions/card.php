@@ -13,7 +13,7 @@
 //                         consectetur adipisicing elit.</p>
 //                 </div>
 //             </div>
-//         </div> <!-- end col-4 -->
+//         </div>
 //     </div>
 // </div>
 
@@ -41,7 +41,9 @@ function generateCardRows($cards) {
         if ($i % 3 == 0) {
             $output .= '<div class="row">';
         }
+
         $output .= generateCard($cards[$i]);
+
         if ($i % 3 == 2) {
             $output .= '</div>';
         }

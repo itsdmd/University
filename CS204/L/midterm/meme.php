@@ -32,10 +32,7 @@ if (isset($_GET['id'])) {
     echo "No meme found";
 }
 
-// clear get
 $_GET = array();
-?>
 
-<?php
 include "includes/footer.php";
 ?>
