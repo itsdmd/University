@@ -1,17 +1,7 @@
 <?php
-include "functions/secrets.php";
+$host = "localhost";
+$user = "root";
+$pw = "";
+$db = "2023_itec_blog";
 
 $conn = new mysqli($host, $user, $pw, $db);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} else {
-    // echo "Connected successfully";
-}
-?>
-
-<!-- <pre>
-    <?php
-    print_r($conn);
-    ?>
-</pre> -->

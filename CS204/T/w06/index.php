@@ -1,23 +1,34 @@
-<?php
-include "functions/db.php";
-include "inc/header.php";
-include "classes/Blog.php";
+<?php 
+    include "inc/header.php";
+    include "classes/Blog.php";
+    include "functions/db.php";
+    $blog = new Blog($conn);
+    $blogs = $blog->getPosts();
 
-$blog = new Blog($conn);
 ?>
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Welcome to ITEC Blog</h1>
-    <p class="lead">Login to create or edit a post</p>
-    <hr class="my-4">
-  </div>
-</div>
-<div class="container">
-  <div class="row blog-posts">
-
-  </div>
-</div>
-<!-- Button trigger modal -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+        <h1 class="display-4">Welcome to ITEC Blog</h1>
+        <p class="lead">Login to create or edit a post</p>
+        <hr class="my-4">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row blog-posts">
+          <?php foreach ($blogs as $b):?>
+            <div class="col-md-4">
+              <div class="card">
+                <img class="card-img-top" src="<?php echo $b['img_url']; ?>" alt="">
+                <div class="card-body">
+                  <h5 class="card-title"><?php echo $b['title'];?></h5>
+                  <p class="card-text"><?php echo $b['body']; ?></p>
+                </div>
+              </div>
+            </div>
+          <?php endforeach;?>
+        </div>
+    </div>
+    <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#blogModal">
   Launch demo modal
 </button>
@@ -37,12 +48,11 @@ $blog = new Blog($conn);
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save
-          changes</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
 <?php
-include "inc/footer.php";
+    include "inc/footer.php";
 ?>

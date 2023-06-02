@@ -1,17 +1,19 @@
-<?php
-include "inc/header.php";
-
-if (isset($_POST['title'])) {
+<?php 
+    include "inc/header.php";
+    include "classes/Blog.php";
     include "functions/db.php";
-
-    include "functions/blog_handler.php";
-
-    $result = processNewPost($_POST, $_FILES);
-    // var_dump($result);
-}
+    $blog = new Blog($conn);
+    if(isset($_POST['title'])) {
+        include "functions/db.php";
+    
+        include "functions/blog_handler.php";
+    
+        $result = $blog->processNewPost($_POST, $_FILES);
+        var_dump($result);
+    }
 ?>
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
         <h1 class="display-4">Create a new post</h1>
         <hr class="my-4">
         <form method="post" action="create.php" enctype="multipart/form-data">
@@ -29,8 +31,8 @@ if (isset($_POST['title'])) {
             </div>
             <button type="submit" name="create" id="" class="btn btn-primary btn-lg btn-block"><i class="fas fa-plus-circle"></i> Create Post</button>
         </form>
+        </div>
     </div>
-</div>
 <?php
-include "inc/footer.php";
+    include "inc/footer.php";
 ?>

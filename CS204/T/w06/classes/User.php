@@ -12,7 +12,8 @@ class User {
     public function __construct($conn) {
         $this->conn = $conn;
         $this->getAllUsers();
-        if (empty($this->users)) {
+        if(empty($this->users)) {
+
         }
     }
 
@@ -21,7 +22,7 @@ class User {
         $this->password = $user['password'];
     }
     public function getUserByName() {
-        $sql = "SELECT * FROM user WHERE user_name = ?";
+        $sql = "SELECT * FROM users WHERE user_name = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $this->user_name);
         $stmt->execute();
