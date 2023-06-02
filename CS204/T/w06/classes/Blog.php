@@ -42,9 +42,9 @@ class Blog {
         $this->title = $post['title'];
         $this->body = $post['body'];
         $this->img = $post_img['blog_img'];
-        $errors = []; 
+        $errors = [];
         // check title and body input fields
-        if(empty($this->title) || empty($this->body)) {
+        if (empty($this->title) || empty($this->body)) {
             $errors['empty_text'] = "Text fields cannot be empty!";
         }
         // get file details
@@ -55,35 +55,33 @@ class Blog {
         $file_size = $this->img['size'];
         $allowed_ext = ['png', 'jpg', 'jpeg', 'gif'];
         $file_error = $this->img['error'];
-    
-        if($file_error == 0) {
-            if(!in_array(strtolower($file_ext), $allowed_ext)) {
+
+        if ($file_error == 0) {
+            if (!in_array(strtolower($file_ext), $allowed_ext)) {
                 $errors['file_ext'] = "Improper file extension!";
             }
-            if($file_size > 5000000) {
+            if ($file_size > 5000000) {
                 $errors['file_size'] = "Files must be smaller than 5mb!";
             }
-    
         } else {
             $errors['img_error'] = "There was a problem with the image!";
         }
-    
-        if(empty($errors)) {
+
+        if (empty($errors)) {
             // move file to dest
-            if(!is_dir("images/")) {
+            if (!is_dir("images/")) {
                 mkdir("images", 0777, true);
             }
-            $new_file_name = random_int(100,100000) . "_itec_" . $file_name;
+            $new_file_name = random_int(100, 100000) . "_itec_" . $file_name;
             $dest = "images/" . $new_file_name;
             move_uploaded_file($tmp, $dest);
             // call insertBlog() fn, pass the title, body and img_url
             $results = [];
             $results['result'] = $this->insertBlog($dest);
             return $results;
-         } else {
+        } else {
             return $errors;
-         }
-    
+        }
     }
 
     public function insertBlog($img) {
@@ -93,12 +91,11 @@ class Blog {
         $stmt->bind_param("ssss", $this->body, $this->title, $img, $id);
         $stmt->execute();
         var_dump($stmt);
-        if($stmt->affected_rows == 1) {
+        if ($stmt->affected_rows == 1) {
             $new_id = $stmt->insert_id;
             header("Location: post.php?id=" . $new_id);
         } else {
             return "fail";
         }
-    
     }
 }
