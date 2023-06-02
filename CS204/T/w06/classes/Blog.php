@@ -18,6 +18,17 @@ class Blog {
         $this->conn = $conn;
     }
 
+    public function getPost($id) {
+        $this->id = $id;
+        $sql = "SELECT * FROM posts WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $this->id);
+        $stmt->execute();
+        $stmt = $stmt->get_result();
+        $this->blog = $stmt->fetch_assoc();
+        return $this->blog;
+    }
+
     public function getPosts() {
         $sql = "SELECT * FROM posts";
         $stmt = $this->conn->prepare($sql);

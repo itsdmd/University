@@ -20,7 +20,7 @@
               <div class="card">
                 <img class="card-img-top" src="<?php echo $b['img_url']; ?>" alt="">
                 <div class="card-body">
-                  <h5 class="card-title"><?php echo $b['title'];?></h5>
+                  <a href="#" class="blog_title" data-id="<?php echo $b['id']; ?>"><h5 class="card-title"><?php echo $b['title'];?></h5></a>
                   <p class="card-text"><?php echo $b['body']; ?></p>
                 </div>
               </div>
@@ -53,6 +53,34 @@
     </div>
   </div>
 </div>
+<script>
+  let blogPosts = document.querySelector(".blog-posts");
+  blogPosts.addEventListener("click", (event) => {
+    console.log(event.target);
+    event.preventDefault();
+    if(event.target.classList.contains("card-title")) {
+      let anchor = event.target.closest("a");
+      let id = anchor.getAttribute("data-id");
+      console.log(id);
+
+      fetch("functions/api.php", 
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "blog_id=" + id
+      })
+      .then(response => response.json())
+      .then((data) => {
+        //output blog to the page
+        console.log(data);
+      })
+    
+    }
+  });
+
+</script>
 <?php
     include "inc/footer.php";
 ?>
