@@ -10,8 +10,8 @@ if ($conn->connect_error) {
 }
 ?>
 
-<pre>
+<!-- <pre>
     <?php
     print_r($conn);
     ?>
-</pre>
+</pre> -->

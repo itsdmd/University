@@ -1,4 +1,5 @@
 <?php
+include "functions/db.php";
 include "inc/header.php";
 include "classes/Blog.php";
 

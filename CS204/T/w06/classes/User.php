@@ -21,7 +21,7 @@ class User {
         $this->password = $user['password'];
     }
     public function getUserByName() {
-        $sql = "SELECT * FROM users WHERE user_name = ?";
+        $sql = "SELECT * FROM user WHERE user_name = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $this->user_name);
         $stmt->execute();
@@ -30,7 +30,7 @@ class User {
     }
 
     public function getAllUsers() {
-        $sql = "SELECT * FROM users";
+        $sql = "SELECT * FROM user";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -38,7 +38,7 @@ class User {
     }
 
     public function createUser() {
-        $sql = "INSERT INTO users(user_name, user_role, user_password) VALUES(?,?,?)";
+        $sql = "INSERT INTO user(user_name, user_role, user_password) VALUES(?,?,?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
