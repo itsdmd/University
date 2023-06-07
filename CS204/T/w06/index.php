@@ -1,9 +1,21 @@
 <?php 
     include "inc/header.php";
     include "classes/Blog.php";
+    include "classes/Comment.php";
     include "functions/db.php";
     $blog = new Blog($conn);
     $blogs = $blog->getPosts();
+    $comment = new Comment($conn);
+    $comments = $comment->getComments(6);
+
+    var_dump($comments);
+
+    if(isset($_POST['comment'])) {
+      $c = new Comment($conn);
+      $insert_result = $c->insertComment($_POST['comment'], $_POST['post_id']);
+
+      var_dump($insert_result);
+    }
 
 ?>
     <div class="jumbotron jumbotron-fluid">
@@ -35,14 +47,18 @@
 
 <!-- Modal -->
 <div class="modal fade" id="blogModal" tabindex="-1" role="dialog" aria-labelledby="blogModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <img src="" class="modal-img" alt="" width="100%">
-        <h5 class="modal-title" id="blogModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+       <img src="" class="modal-img" alt="" width="100%" height="300px" style="object-fit:cover">
+      <div class="modal-header d-flex justify-content-between">
+       
+        <h5 class="modal-title" data-id="" id="blogModalLabel">Modal title</h5>
+        <div class="thumbs d-flex ml-auto">
+
+        </div>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
+        </button> -->
       </div>
       <div class="modal-body">
         ...
@@ -51,10 +67,21 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
+      <div class="container comments">
+        <hr class="m-3">
+            <h3>Comments</h3>
+            <form action="index.php" method="post">
+              <textarea name="comment" class="form-control comment-text" rows="2"></textarea>
+              <input type="hidden" name="post_id" value="" class="comment_post_id">
+              <button type="submit" class="btn btn-primary mt-3 mb-3" name="submit"><i class="fas fa-check-circle    "></i> Submit</button>
+            </form>
+            <hr>
+      </div>
     </div>
-  </div>
-</div>
+  </div> 
+</div> <!-- end of modal --> 
 <script>
+  let commentPostId = document.querySelector(".comment_post_id");
   let modalImg = document.querySelector(".modal-img");
   let modalTitle = document.querySelector(".modal-title");
   let modalBody = document.querySelector(".modal-body");
@@ -82,6 +109,7 @@
         console.log(data);
         modalTitle.innerText = data.title;
         modalBody.innerText = data.body;
+        commentPostId.setAttribute("value", data.id);
         modalImg.setAttribute("src", data.img_url);
         modalBtn.click();
       })
