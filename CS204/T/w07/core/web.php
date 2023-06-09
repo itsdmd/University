@@ -16,6 +16,11 @@ Router::post("login", function () {
     $user->login();
 });
 
+Router::post("create-user", function () {
+    $user = new User();
+    $user->createUser();
+});
+
 Router::get("contact", function () {
     include "views/contact.php";
 });
