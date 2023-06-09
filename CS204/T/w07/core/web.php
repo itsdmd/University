@@ -2,7 +2,7 @@
 $conn = "";
 
 Router::get("", function () {
-    $home = new Home($conn);
+    $home = new Home();
     $home->index();
 });
 
