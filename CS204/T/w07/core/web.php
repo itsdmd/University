@@ -7,7 +7,13 @@ Router::get("", function () {
 });
 
 Router::get("login", function () {
-    include "views/login.php";
+    $user = new User();
+    $user->getLogin();
+});
+
+Router::post("login", function () {
+    $user = new User();
+    $user->login();
 });
 
 Router::get("contact", function () {
