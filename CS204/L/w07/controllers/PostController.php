@@ -16,7 +16,7 @@ class PostController extends Controller {
 
     // methods
     public function getPost($id) {
-        $this->id = $id;
+        $this->post_id = $id;
         $postModel = new Post($this->conn);
         $post = $postModel->fetchPost($this->id);
         include "views/single_post.php";
@@ -28,4 +28,3 @@ class PostController extends Controller {
         include "views/posts.php";
     }
 }
-

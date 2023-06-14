@@ -10,7 +10,7 @@ class Router {
 
     public static function get($route, $function) {
         self::$route = $route;
-        if(isset($_GET['url'])) {
+        if (isset($_GET['url'])) {
             self::$url = $_GET['url'];
         } else {
             self::$url = "";
@@ -18,29 +18,28 @@ class Router {
 
         self::getParam();
 
-        if(self::$route == self::$url && $_SERVER['REQUEST_METHOD'] == "GET") {
+        if (self::$route == self::$url && $_SERVER['REQUEST_METHOD'] == "GET") {
             self::$found = true;
             $function->__invoke(self::$param);
-        } 
-
+        }
     }
 
     public static function post($route, $function) {
         self::$route = $route;
-        if(isset($_GET['url'])) {
+        if (isset($_GET['url'])) {
             self::$url = $_GET['url'];
         } else {
             self::$url = "";
         }
 
-        if(self::$route == self::$url && $_SERVER['REQUEST_METHOD'] == "POST") {
+        if (self::$route == self::$url && $_SERVER['REQUEST_METHOD'] == "POST") {
             self::$found = true;
             $function->__invoke();
-        } 
+        }
     }
 
     public static function getParam() {
-        if(stripos(self::$route, "{") !== false) {
+        if (stripos(self::$route, "{") !== false) {
             // explode the route and url so they can be matched
             $routeArr = explode("/", self::$route);
             $urlArr = explode("/", self::$url);
@@ -63,9 +62,7 @@ class Router {
             self::$url = implode("/", $urlArr);
             // var_dump(self::$route);
             // var_dump(self::$url);
-  
+
         }
     }
-
-
 }
