@@ -15,7 +15,8 @@
         // $MemeCtrl = new MemeCtrl();
         // $posts = $MemeCtrl->getAllMemes();
 
-        // foreach ($posts as $post) : ?>
+        // foreach ($posts as $post) : 
+        ?>
         <!-- <div class="col-md-4 mt-3">
             <div class="card">
                 <img class="card-img-top" src="<?= $post["meme_img"] ?>" alt="">
@@ -27,7 +28,8 @@
                 </div>
             </div>
         </div> -->
-        <?php // endforeach; ?>
+        <?php // endforeach; 
+        ?>
 
     </div>
 </div>
