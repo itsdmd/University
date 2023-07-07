@@ -5,15 +5,15 @@ Router::get("", function () {
     include "views/home.php";
 });
 
-Router::get("university.php", function () {
+Router::get("university", function () {
     include "views/uni.php";
 });
 
-Router::get("create.php", function () {
+Router::get("create", function () {
     include "views/create.php";
 });
 
-Router::get("login.php", function () {
+Router::get("login", function () {
     include "views/login.php";
 });
 
@@ -24,7 +24,7 @@ Router::get("login", function () {
 
 Router::post("login", function () {
     if (isset($_SESSION["role"]) && $_SESSION["role"] != "-1") {
-        header("Location: " . ROOT . "profile");
+        header("Location: " . ROOT);
         exit();
     }
 
@@ -43,6 +43,11 @@ Router::post("register", function () {
     $_SESSION["status"] = $user->userRegister();
 
     header("Location: " . ROOT . "login");
+});
+
+Router::get("logout", function () {
+    session_destroy();
+    header("Location: " . ROOT);
 });
 
 if (Router::$found === false) {

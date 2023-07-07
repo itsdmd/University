@@ -2,13 +2,23 @@
 
 <div class="jumbotron mt-4 " style="background:url(images/bg.jpg); background-size:cover; height:400px">
 
-    <div class="container pt-5 mt-4">
-        <h1 class="display-4"><i class="fas fa-exclamation-circle    "></i>
-            Login to add a University</h1>
-        <a href="login.php"><button class="btn btn-lg btn-primary
-    "><i class="fas fa-door-open"></i> Login</button></a>
+    <?php if (isset($_SESSION["username"])) : ?>
+        <div class="container pt-5 mt-4">
+            <h1 class="display-4"><i class="fas fa-university    "></i>
+                Welcome to University Network</h1>
+            <a href="create"><button class="btn btn-lg btn-primary
+    "><i class="fas fa-plus-circle"></i> Add University</button></a>
+        </div>
 
-    </div>
+    <?php else : ?>
+        <div class="container pt-5 mt-4">
+            <h1 class="display-4"><i class="fas fa-exclamation-circle    "></i>
+                Login to add a University</h1>
+            <a href="login.php"><button class="btn btn-lg btn-primary
+    "><i class="fas fa-door-open"></i> Login</button></a>
+        <?php endif; ?>
+
+        </div>
 </div>
 <div class="container">
     <div class="row">
