@@ -1,6 +1,6 @@
 <?php
 
-class UserCtrl extends Controller {
+class User {
     // Status codes:
     // -10: username does not exist
     // -11: username already exist
@@ -19,9 +19,11 @@ class UserCtrl extends Controller {
     public $avatar_id;
 
     public $conn;
+    public $req;
 
     public function __construct() {
-        parent::__construct();
+        $this->conn = DB::getConn();
+        $this->req = $_POST;
     }
 
     public function viewLoginPage() {

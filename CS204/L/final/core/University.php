@@ -37,4 +37,26 @@ class University {
             generateCard($uni['id'], $uni['uni_name'], $uni['uni_students'], $uni['uni_location'], $uni['uni_summary'], $uni['uni_img']);
         }
     }
+
+    public function addUniversity() {
+        $uni_name = $_POST['uni_name'];
+        $uni_students = $_POST['uni_students'];
+        $uni_location = $_POST['uni_location'];
+        $uni_summary = $_POST['uni_summary'];
+        $uni_img = $_POST['uni_img'];
+
+        $sql = "INSERT INTO universities (uni_name, uni_students, uni_location, uni_summary, uni_img) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("sssss", $uni_name, $uni_students, $uni_location, $uni_summary, $uni_img);
+        $stmt->execute();
+
+        header("Location: " . ROOT . "home");
+    }
+
+    public function deleteUniversity($id) {
+        $sql = "DELETE FROM universities WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+    }
 }
