@@ -14,11 +14,14 @@
         <div class="card-footer">
             <i class="fas fa-users"></i> Students :
             <?= $students ?>
-            <i class="fas fa-map-marker    "></i> Location :
+            <i class="fas fa-map-marker"></i> Location :
             <?= $location ?>
         </div>
-        <button class="btn btn-primary btn-block"> Learn
-            more</button>
+        <a href="university.php?id=<?= $id ?>">
+            <button class="btn btn-primary btn-block"
+                href="university.php?id=<?= $id ?>"> Learn
+                more</button>
+        </a>
     </div>
 </div>
 <?php } ?>
