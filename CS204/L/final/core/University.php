@@ -53,6 +53,19 @@ class University {
         header("Location: " . ROOT . "home");
     }
 
+    public function updateUniversity($id) {
+        $uni_name = $_POST['uni_name'];
+        $uni_students = $_POST['uni_students'];
+        $uni_location = $_POST['uni_location'];
+        $uni_summary = $_POST['uni_summary'];
+        $uni_img = $_POST['uni_img'];
+
+        $sql = "UPDATE universities SET uni_name = ?, uni_students = ?, uni_location = ?, uni_summary = ?, uni_img = ? WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("sssssi", $uni_name, $uni_students, $uni_location, $uni_summary, $uni_img, $id);
+        $stmt->execute();
+    }
+
     public function deleteUniversity($id) {
         $sql = "DELETE FROM universities WHERE id = ?";
         $stmt = $this->conn->prepare($sql);

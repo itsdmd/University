@@ -10,6 +10,11 @@ Router::get("university", function () {
 });
 
 Router::get("create", function () {
+    if (!isset($_SESSION["role"]) || $_SESSION["role"] != "1") {
+        header("Location: " . ROOT . "university?id=" . $_GET["id"]);
+        exit();
+    }
+
     include "views/create.php";
 });
 
@@ -24,6 +29,42 @@ Router::post("create", function () {
 
     $uni = new University();
     $uni->addUniversity();
+
+    header("Location: " . ROOT);
+});
+
+Router::get("edit", function () {
+    if (!isset($_SESSION["role"]) || $_SESSION["role"] != "1") {
+        header("Location: " . ROOT . "university?id=" . $_GET["id"]);
+        exit();
+    }
+
+    include "views/edit.php";
+});
+
+Router::post("edit", function () {
+    if (isset($_FILES["file"])) {
+        include "core/Upload.php";
+        $upload = new Upload();
+        $_POST["uni_img"] = "images/" . $upload->uploadMedia("images/");
+    } else {
+        $_POST["uni_img"] = "";
+    }
+
+    $uni = new University();
+    $uni->updateUniversity($_POST["id"]);
+
+    header("Location: " . ROOT . "university?id=" . $_POST["id"]);
+});
+
+Router::get("delete", function () {
+    if (!isset($_SESSION["role"]) || $_SESSION["role"] != "1") {
+        header("Location: " . ROOT . "university?id=" . $_GET["id"]);
+        exit();
+    }
+
+    $uni = new University();
+    $uni->deleteUniversity($_GET["id"]);
 
     header("Location: " . ROOT);
 });
@@ -62,18 +103,6 @@ Router::post("register", function () {
 
 Router::get("logout", function () {
     session_destroy();
-    header("Location: " . ROOT);
-});
-
-Router::get("delete", function () {
-    if (!isset($_SESSION["role"]) || $_SESSION["role"] != "1") {
-        header("Location: " . ROOT . "university?id=" . $_GET["id"]);
-        exit();
-    }
-
-    $uni = new University();
-    $uni->deleteUniversity($_GET["id"]);
-
     header("Location: " . ROOT);
 });
 
