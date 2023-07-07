@@ -28,16 +28,16 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="create.php"><i class="fas fa-plus"></i> Add University</a>
                     </li>
-                    <?php if ($_SESSION['logged_in'] == false) : ?>
+                    <?php if (isset($_SESSION['username'])) : ?>
                         <li class="nav-item ">
-                            <a class="nav-link" href="user.php"><i class="fas fa-user    "></i> Welcome User</a>
+                            <a class="nav-link" href="user.php"><i class="fas fa-user"></i> Welcome User</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="logout.php"><i class="fas fa-user    "></i> Logout</a>
+                            <a class="nav-link" href="logout.php"><i class="fas fa-user"></i> Logout</a>
                         </li>
                     <?php else : ?>
                         <li class="nav-item ">
-                            <a class="nav-link" href="login.php"><i class="fas fa-user    "></i> Login</a>
+                            <a class="nav-link" href="login.php"><i class="fas fa-user"></i> Login</a>
                         </li>
                     <?php endif; ?>
 
