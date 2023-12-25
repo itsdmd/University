@@ -1,10 +1,8 @@
 from collections import defaultdict
 
+
 # define graph
-
-
 class Graph:
-
     # Constructor
     def __init__(self):
         # default dictionary to store graph
@@ -15,8 +13,14 @@ class Graph:
         self.graph[u].append(v)
 
     # function to be implemented
-    def DFS(self, s):
-        print("DFS called")
+    def DFS(self, node, visited):
+        if node not in visited:
+            visited.append(node)
+            print(node, end=" ")
+            for neigh in self.graph[node]:
+                self.DFS(neigh, visited)
+
+        return visited
 
 
 # Driver code
@@ -26,8 +30,9 @@ g = Graph()
 # Read from input file
 f = open("input.txt", "r")
 for line in f:
-    u, v = [int(it) for it in line.strip().split(' ')]
+    u, v = [int(it) for it in line.strip().split(" ")]
     g.addEdge(u, v)
 f.close()
 
-g.DFS(0)
+visited = []
+g.DFS(1, visited)

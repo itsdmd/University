@@ -1,10 +1,8 @@
 from collections import defaultdict
 
+
 # define graph
-
-
 class Graph:
-
     # Constructor
     def __init__(self):
         # default dictionary to store graph
@@ -18,17 +16,19 @@ class Graph:
     def BFS(self, s):
         visited = [s]
         queue = [s]
-
-        print(self.graph[0])
+        result = []
 
         while queue:
-            current = queue.pop(0)
-            print(current, end=" ")
+            cur = queue.pop(0)
+            result.append(cur)
+            print(cur, end=" ")
 
-            for neigh in self.graph[current]:
+            for neigh in self.graph[cur]:
                 if neigh not in visited:
                     visited.append(neigh)
                     queue.append(neigh)
+
+        return result
 
 
 # Driver code
@@ -38,8 +38,10 @@ g = Graph()
 # Read from input file
 f = open("input.txt", "r")
 for line in f:
-    u, v = [int(it) for it in line.strip().split(' ')]
+    u, v = [int(it) for it in line.strip().split(" ")]
     g.addEdge(u, v)
 f.close()
 
-g.BFS(0)
+print(g.graph)
+
+g.BFS(1)
