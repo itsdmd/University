@@ -3,6 +3,7 @@ import importlib
 
 class SortStrat:
     sort = None
+    arr = []
 
     def __init__(self, algo_name):
         try:
@@ -12,3 +13,7 @@ class SortStrat:
         except ImportError:
             print("Error: " + algo_name + " is not a valid sorting algorithm")
             exit(1)
+
+    def sort(self, arr):
+        self.arr = arr
+        return self.sort(self.arr)

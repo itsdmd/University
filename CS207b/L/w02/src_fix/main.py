@@ -11,7 +11,9 @@ for i in range(25):
 sortAlgos = []
 sortAlgosDir = os.getcwd() + "/sort_algos/"
 for file in glob.glob(sortAlgosDir + "*.py"):
-    sortAlgos.append(file[len(sortAlgosDir) : -3])
+    # exclude SortStrat.py
+    if file != sortAlgosDir + "SortStrat.py":
+        sortAlgos.append(file[len(sortAlgosDir) : -3])
 
 
 def main():
