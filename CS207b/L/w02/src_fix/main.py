@@ -12,7 +12,7 @@ sortAlgos = []
 sortAlgosDir = os.getcwd() + "/sort_algos/"
 for file in glob.glob(sortAlgosDir + "*.py"):
     # exclude SortStrat.py
-    if file != sortAlgosDir + "SortStrat.py":
+    if file != sortAlgosDir + "SortAlgo.py":
         sortAlgos.append(file[len(sortAlgosDir) : -3])
 
 
