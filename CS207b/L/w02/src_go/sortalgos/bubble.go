@@ -3,7 +3,20 @@ package sortalgos
 type BubbleSort struct{}
 
 func (b *BubbleSort) Sort(input []int) []int {
-	return Sort(input)
+	swapped := true
+
+	for swapped {
+		swapped = false
+
+		for i := 1; i < len(input); i++ {
+			if input[i-1] > input[i] {
+				input[i], input[i-1] = input[i-1], input[i]
+				swapped = true
+			}
+		}
+	}
+
+	return input
 }
 
 func (b *BubbleSort) Name() string {
