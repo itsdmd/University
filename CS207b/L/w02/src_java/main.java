@@ -7,15 +7,11 @@ public class main {
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(5, 2, 4, 3, 1));
 
-        SortedList sortedList = new SortedList(list);
-        sortedList.selectionSort();
-        System.out.println(sortedList.getList());
+        SortedList sl = new SortedList(list);
+        sl.selectionSort();
+        System.out.println(sl.getList());
 
-        sortedList.bubbleSort();
-        System.out.println(sortedList.getList());
-
-        System.out.println(sortedList.maxValue());
-        sortedList.countingSort(1);
-        System.out.println(sortedList.getList());
+        sl.bubbleSort();
+        System.out.println(sl.getList());
     }
 }

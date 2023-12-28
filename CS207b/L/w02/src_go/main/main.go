@@ -21,6 +21,7 @@ func main() {
 
 	algoMap := map[int]sortalgos.SortAlgo{
 		1: &sortalgos.BubbleSort{},
+		2: &sortalgos.InterchangeSort{},
 	}
 
 	// List all available algorithms and their corresponding index
