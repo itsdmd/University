@@ -3,7 +3,7 @@ import numpy as np
 
 g = Graph()
 
-board = [[1, 2, 3], [4, 0, 5]]
+board = [[4, 1, 2], [5, 0, 3]]
 
 
 # Return a list of possible next states
@@ -39,55 +39,82 @@ def possibleNextStates(curState):
 
 
 stateDict = {}
-stateDictIndex = 0
+stateDictIndex = 1
 finalState = np.array([[1, 2, 3], [4, 5, 0]])
 finalStateFound = False
+frontier = [board]
 
 
 def addStateToDict(state):
     global stateDict, stateDictIndex
 
-    stateDict[str(state)] = stateDictIndex
-    stateDictIndex = stateDictIndex + 1
-    print("Added state " + str(state) + " at index " + str(stateDict[str(state)]))
+    if str(state) not in stateDict:
+        stateDict[str(state)] = stateDictIndex
+        # print(
+        #     "Added state "
+        #     + str(state)
+        #     + " to dictionary, index: "
+        #     + str(stateDictIndex)
+        # )
+        stateDictIndex += 1
+
+    return stateDict[str(state)]
 
 
 # Generate a graph of all possible states from the initial state
 def generateGraph(g, currentState):
-    global stateDict, stateDictIndex, finalState, finalStateFound
-
-    if finalStateFound:
-        return
+    global stateDict, stateDictIndex, finalState, finalStateFound, frontier
 
     if np.array_equal(np.array(currentState), finalState):
         finalStateFound = True
         return
 
-    if str(currentState) not in stateDict:
-        addStateToDict(currentState)
-
+    # Get all possible next states,
+    # add them to the graph and frontier
+    curStateIndex = addStateToDict(currentState)
     nextStates = possibleNextStates(currentState)
-    # print("Next states: " + str(nextStates))
-
-    for nextState in nextStates:
-        if finalStateFound:
+    for state in nextStates:
+        if np.array_equal(np.array(state), finalState):
+            finalStateFound = True
+            finalStateIndex = addStateToDict(state)
+            g.addEdge(curStateIndex, finalStateIndex)
+            # print("Final state found")
             return
 
-        genGraph = False
-        if str(nextState) not in stateDict:
-            addStateToDict(nextState)
-            genGraph = True
+        stateIndex = addStateToDict(state)
+        g.addEdge(curStateIndex, stateIndex)
+        # Find if the state is already in the frontier
+        if state not in frontier:
+            frontier.append(state)
 
-        g.addEdge(stateDict[str(currentState)], stateDict[str(nextState)])
+    frontier.pop(0)
+    if frontier:
+        # Board is unsolvable if recursion depth is too high
+        try:
+            generateGraph(g, frontier[0])
+        except RecursionError:
+            print("Board is unsolvable")
+            return
+    else:
+        return
 
-        if genGraph:
-            generateGraph(g, nextState)
+    return
 
 
 generateGraph(g, board)
-print(g.graph)
+# print(g.graph)
+
 
 # Driver code
-path = g.BFS(0)
+try:
+    finalStateIndex = stateDict[str(finalState.tolist())]
+    g.BFS(1, finalStateIndex)
 
-# Translate the path from index to state
+    path = g.traceback(1, finalStateIndex)
+    path.reverse()
+
+    print("Solution:")
+    for index in path:
+        print(list(stateDict.keys())[list(stateDict.values()).index(index)])
+except:
+    exit(1)

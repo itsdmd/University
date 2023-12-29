@@ -10,7 +10,9 @@ class Graph:
 
     # function to add an edge to graph
     def addEdge(self, u, v):
-        self.graph[u].append(v)
+        # check if the vertex is already in the graph
+        if v not in self.graph[u]:
+            self.graph[u].append(v)
 
     # function to be implemented
     # Refrence: https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
@@ -35,6 +37,20 @@ class Graph:
                         result.append(neigh)
                         return result
 
+        return result
+
+    def traceback(self, start, goal):
+        # Iteratively find the parent of nodes
+        # starting from the goal node until the start node is reached
+        cur = goal
+        result = []
+        while cur != start:
+            result.append(cur)
+            for neigh in self.graph:
+                if cur in self.graph[neigh]:
+                    cur = neigh
+                    break
+        result.append(start)
         return result
 
 
