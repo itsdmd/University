@@ -13,10 +13,11 @@ class Graph:
         self.graph[u].append(v)
 
     # function to be implemented
+    # Refrence: https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
     def DFS(self, node, visited):
         if node not in visited:
             visited.append(node)
-            print(node, end=" ")
+
             for neigh in self.graph[node]:
                 self.DFS(neigh, visited)
 
@@ -36,3 +37,9 @@ f.close()
 
 visited = []
 g.DFS(1, visited)
+
+# Write to output file
+f = open("output.txt", "w")
+for i in visited:
+    f.write(str(i) + " ")
+f.close()

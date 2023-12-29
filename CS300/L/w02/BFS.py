@@ -13,20 +13,27 @@ class Graph:
         self.graph[u].append(v)
 
     # function to be implemented
-    def BFS(self, s):
-        visited = [s]
-        queue = [s]
+    # Refrence: https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
+    def BFS(self, start, goal):
+        visited = [start]
+        queue = [start]
         result = []
 
+        # Loop until the queue is empty
         while queue:
+            # Dequeue the first element
             cur = queue.pop(0)
             result.append(cur)
-            print(cur, end=" ")
 
+            # Iterate all adjacent nodes of the dequeued node
             for neigh in self.graph[cur]:
                 if neigh not in visited:
                     visited.append(neigh)
                     queue.append(neigh)
+
+                    if neigh == goal:
+                        result.append(neigh)
+                        return result
 
         return result
 
@@ -42,6 +49,10 @@ for line in f:
     g.addEdge(u, v)
 f.close()
 
-print(g.graph)
+bfs_result = g.BFS(1, 6)
 
-g.BFS(1)
+# Write to output file
+f = open("output.txt", "w")
+for i in bfs_result:
+    f.write(str(i) + " ")
+f.close()
