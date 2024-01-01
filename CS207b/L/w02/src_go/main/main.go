@@ -15,7 +15,10 @@ func randomArray(length int) []int {
 	return arr
 }
 
-func main() {
+func sortArray(in *os.File) []int {
+	if in == nil {
+		in = os.Stdin
+	}
 	arr := randomArray(25)
 	fmt.Println("Unsorted array: ", arr)
 
@@ -31,10 +34,10 @@ func main() {
 	fmt.Print("0. Quit\n\n")
 	fmt.Print("Enter the index of the algorithm you want to use: ")
 	var algoIndex int
-	fmt.Scanln(&algoIndex)
+	fmt.Fscanf(in, "%d", &algoIndex)
 
-	// Exit if user enters 0
-	if algoIndex == 0 {
+	// Exit if user enters 0 or value greater than the number of algorithms
+	if algoIndex == 0 || algoIndex > len(algoMap) {
 		os.Exit(0)
 	}
 
@@ -43,4 +46,9 @@ func main() {
 	sorted := sl.Sort()
 
 	fmt.Println("Sorted data:", sorted)
+	return sorted
+}
+
+func main() {
+	sortArray(nil)
 }
