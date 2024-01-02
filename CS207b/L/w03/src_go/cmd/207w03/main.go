@@ -6,21 +6,23 @@ import (
 )
 
 func main() {
-	padovanNon := algorithm.GetFactory(algorithm.PADOVAN).CreateNonMemoryBufferVersion()
-	fmt.Println(padovanNon.GetName())
-	fmt.Println(padovanNon.GetVal(10))
+	padNon := algorithm.GetFactory(algorithm.PADOVAN).CreateNonMemoryBufferVersion()
+	fmt.Println(padNon.GetName())
+	fmt.Println(padNon.GetVal(10))
 
-	fibonacciNon := algorithm.GetFactory(algorithm.FIBONACCI).CreateNonMemoryBufferVersion()
-	fmt.Println(fibonacciNon.GetName())
-	fmt.Println(fibonacciNon.GetVal(10))
+	fibNon := algorithm.GetFactory(algorithm.FIBONACCI).CreateNonMemoryBufferVersion()
+	fmt.Println(fibNon.GetName())
+	fmt.Println(fibNon.GetVal(10))
 
-	buffer := make(map[string]map[uint64]uint64)
+	buffer := make(map[string]map[uint8]uint64)
+	buffer[string(algorithm.PADOVAN)][0] = 1
+	buffer[string(algorithm.FIBONACCI)][0] = 1
 
-	padovanFactory := algorithm.GetFactory(algorithm.PADOVAN).CreateMemoryBufferVersion(buffer)
-	fmt.Println(padovanFactory.GetName())
-	fmt.Println(padovanFactory.GetVal(10))
+	padMem := algorithm.GetFactory(algorithm.PADOVAN).CreateMemoryBufferVersion(buffer)
+	fmt.Println(padMem.GetName())
+	fmt.Println(padMem.GetVal(10))
 
-	fibonacciFactory := algorithm.GetFactory(algorithm.FIBONACCI).CreateMemoryBufferVersion(buffer)
-	fmt.Println(fibonacciFactory.GetName())
-	fmt.Println(fibonacciFactory.GetVal(10))
+	fibMem := algorithm.GetFactory(algorithm.FIBONACCI).CreateMemoryBufferVersion(buffer)
+	fmt.Println(fibMem.GetName())
+	fmt.Println(fibMem.GetVal(10))
 }

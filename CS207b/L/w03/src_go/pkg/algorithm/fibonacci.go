@@ -3,15 +3,10 @@ package algorithm
 import "fmt"
 
 type Fibonacci struct {
-	buffer map[string]map[uint64]uint64
+	buffer map[string]map[uint8]uint64
 }
 
-type FibonacciFactory interface {
-	CreateMemoryBufferVersion(map[string]map[uint64]uint64) IAlgorithm
-	CreateNonMemoryBufferVersion() IAlgorithm
-}
-
-func (f *Fibonacci) CreateMemoryBufferVersion(buffer map[string]map[uint64]uint64) IAlgorithm {
+func (f *Fibonacci) CreateMemoryBufferVersion(buffer map[string]map[uint8]uint64) IAlgorithm {
 	return &Fibonacci{buffer: buffer}
 }
 
@@ -20,17 +15,17 @@ func (f *Fibonacci) CreateNonMemoryBufferVersion() IAlgorithm {
 }
 
 func (f *Fibonacci) GetName() string {
-	return "Fibonacci"
+	return string(FIBONACCI)
 }
 
-func (f *Fibonacci) GetVal(input uint64) (uint64, error) {
+func (f *Fibonacci) GetVal(input uint8) (uint64, error) {
 	if input <= 0 {
 		return 0, fmt.Errorf("input must be greater than 0")
 	}
 
 	var returnVal uint64
 
-	if f.buffer[string(AlgType("Fibonacci"))] == nil { // NonBuffer
+	if f.buffer[string(FIBONACCI)] == nil { // NonBuffer
 		if input <= 0 {
 			return 0, fmt.Errorf("input must be greater than 0")
 		}
@@ -44,10 +39,9 @@ func (f *Fibonacci) GetVal(input uint64) (uint64, error) {
 
 		returnVal = a + b
 	} else { // Buffer
-		if f.buffer[string(AlgType("Fibonacci"))][input] != 1 {
-			return f.buffer[string(AlgType("Fibonacci"))][input], nil
+		if f.buffer[string(FIBONACCI)][input] != 0 {
+			return f.buffer[string(FIBONACCI)][input], nil
 		} else {
-
 			if input == 1 {
 				return 1, nil
 			}
@@ -58,7 +52,7 @@ func (f *Fibonacci) GetVal(input uint64) (uint64, error) {
 			returnVal = a + b
 
 			// Store result in buffer
-			f.buffer[string(AlgType("Fibonacci"))][input] = returnVal
+			f.buffer[string(FIBONACCI)][input] = returnVal
 		}
 	}
 

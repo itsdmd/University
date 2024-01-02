@@ -3,15 +3,10 @@ package algorithm
 import "fmt"
 
 type Padovan struct {
-	buffer map[string]map[uint64]uint64
+	buffer map[string]map[uint8]uint64
 }
 
-type PadovanFactory interface {
-	CreateMemoryBufferVersion(map[string]map[uint64]uint64) IAlgorithm
-	CreateNonMemoryBufferVersion() IAlgorithm
-}
-
-func (f *Padovan) CreateMemoryBufferVersion(buffer map[string]map[uint64]uint64) IAlgorithm {
+func (f *Padovan) CreateMemoryBufferVersion(buffer map[string]map[uint8]uint64) IAlgorithm {
 	return &Padovan{buffer: buffer}
 }
 
@@ -20,17 +15,17 @@ func (f *Padovan) CreateNonMemoryBufferVersion() IAlgorithm {
 }
 
 func (p *Padovan) GetName() string {
-	return "Padovan"
+	return string(PADOVAN)
 }
 
-func (p *Padovan) GetVal(input uint64) (uint64, error) {
+func (p *Padovan) GetVal(input uint8) (uint64, error) {
 	if input <= 0 {
 		return 0, fmt.Errorf("input must be greater than 0")
 	}
 
 	var returnVal uint64
 
-	if p.buffer[string(AlgType("Padovan"))] == nil { // NonBuffer
+	if p.buffer[string(PADOVAN)] == nil { // NonBuffer
 		if input == 1 || input == 2 || input == 3 {
 			return 1, nil
 		}
@@ -41,8 +36,8 @@ func (p *Padovan) GetVal(input uint64) (uint64, error) {
 		returnVal = a + b
 
 	} else { // Buffer
-		if p.buffer[string(AlgType("Padovan"))][input] != 0 {
-			return p.buffer[string(AlgType("Padovan"))][input], nil
+		if p.buffer[string(PADOVAN)][input] != 0 {
+			return p.buffer[string(PADOVAN)][input], nil
 		} else {
 			// Do normal calculation
 			if input == 1 || input == 2 || input == 3 {
@@ -55,7 +50,7 @@ func (p *Padovan) GetVal(input uint64) (uint64, error) {
 			returnVal = a + b
 
 			// Store result in buffer
-			p.buffer[string(AlgType("Padovan"))][input] = returnVal
+			p.buffer[string(PADOVAN)][input] = returnVal
 		}
 	}
 

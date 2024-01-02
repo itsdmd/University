@@ -9,7 +9,7 @@ const (
 
 type IAlgorithm interface {
 	GetName() string
-	GetVal(uint64) (uint64, error)
+	GetVal(uint8) (uint64, error)
 }
 
 type AlgorithmAbstractFactory interface {
@@ -17,7 +17,7 @@ type AlgorithmAbstractFactory interface {
 }
 
 type AlgorithmFactory interface {
-	CreateMemoryBufferVersion(map[string]map[uint64]uint64) IAlgorithm
+	CreateMemoryBufferVersion(map[string]map[uint8]uint64) IAlgorithm
 	CreateNonMemoryBufferVersion() IAlgorithm
 }
 
