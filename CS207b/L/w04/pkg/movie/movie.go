@@ -3,13 +3,13 @@ package movie
 type MovieType struct {
 	index                    int
 	initialCharge            float64
-	baseDailyRate            float64
 	daysBeforeAdditionCharge float64
 	additionalDailyRate      float64
+	frequentRenterPoints     int
 }
 
-func NewMovieType(index int, initialCharge, baseDailyRate, daysBeforeAdditionCharge, additionalDailyRate float64) MovieType {
-	return MovieType{index: index, initialCharge: initialCharge, baseDailyRate: baseDailyRate, daysBeforeAdditionCharge: daysBeforeAdditionCharge, additionalDailyRate: additionalDailyRate}
+func NewMovieType(index int, initialCharge, daysBeforeAdditionCharge, additionalDailyRate float64, frequentRenterPoints int) MovieType {
+	return MovieType{index: index, daysBeforeAdditionCharge: daysBeforeAdditionCharge, additionalDailyRate: additionalDailyRate, frequentRenterPoints: frequentRenterPoints}
 }
 
 type Movie struct {
@@ -42,8 +42,10 @@ func (m *Movie) GetCharge(daysRented int) float64 {
 	result := m.movieType.initialCharge
 	if daysRentedFloat > m.movieType.daysBeforeAdditionCharge {
 		result += (daysRentedFloat - m.movieType.daysBeforeAdditionCharge) * m.movieType.additionalDailyRate
-	} else {
-		result += m.movieType.baseDailyRate * daysRentedFloat
 	}
 	return result
+}
+
+func (m *Movie) GetFrequentRenterPoints() int {
+	return m.movieType.frequentRenterPoints
 }
