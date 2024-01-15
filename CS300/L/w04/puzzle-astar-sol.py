@@ -152,8 +152,11 @@ if __name__ == "__main__":
     start_node = PuzzleNode(start_state)
     goal_node = PuzzleNode(goal_state)
 
-    # solution = bfs(start_node, goal_state)
-    solution = astar(start_node, goal_state)
-
+    print("--- Breadth-first search ---")
+    solution = bfs(start_node, goal_state)
     print_solution(solution)
 
+    print("\n\n\n")
+    print("--- A* search ---")
+    solution = astar(start_node, goal_state)
+    print_solution(solution)
