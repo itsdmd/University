@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-	REGULAR := movie.NewMovieType(0, 0, 2, 2, 1.5)
-	NEW_RELEASE := movie.NewMovieType(1, 0, 2, 2, 2)
-	CHILDRENS := movie.NewMovieType(2, 0, 1.5, 3, 1.5)
+	REGULAR := movie.NewMovieType(0, 2, 2, 1.5, 1)
+	NEW_RELEASE := movie.NewMovieType(1, 2, 2, 2, 2)
+	CHILDRENS := movie.NewMovieType(2, 1.5, 3, 1.5, 1)
 
 	movie1 := movie.NewMovie("The Matrix", REGULAR)
 	movie2 := movie.NewMovie("The Lord of the Rings", NEW_RELEASE)

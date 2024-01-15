@@ -39,6 +39,14 @@ func (c *Customer) GetTotalCharge() float64 {
 	return result
 }
 
-func (c Customer) GetTotalFrequentRenterPoints() int {
-	return 0
+func (c *Customer) GetTotalFrequentRenterPoints() int {
+	rentals := c.GetRentals()
+	result := 0
+
+	for _, rental := range rentals {
+		movie := rental.GetMovie()
+		result += movie.GetFrequentRenterPoints()
+	}
+
+	return result
 }
