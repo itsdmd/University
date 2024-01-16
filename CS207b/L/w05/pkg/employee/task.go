@@ -12,7 +12,7 @@ type Concurrent struct {
 }
 
 func (c *Concurrent) GetName() string {
-	return ""
+	return c.Employees[0].GetName()
 }
 
 func (c *Concurrent) SetName(name string) IEmployee {
