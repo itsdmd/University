@@ -4,8 +4,33 @@ import (
 	"fmt"
 )
 
-type ITasks interface {
-	DoTask()
+/* ----------------------- Concurrent ----------------------- */
+
+// Decorate with tasks of another employee
+type Concurrent struct {
+	Employees []IEmployee
+}
+
+func (c *Concurrent) GetName() string {
+	return ""
+}
+
+func (c *Concurrent) SetName(name string) IEmployee {
+	return c
+}
+
+func (c *Concurrent) DoTask() {
+	for _, e := range c.Employees {
+		e.DoTask()
+	}
+}
+
+func (c *Concurrent) Join(time string) {
+	c.Employees[0].Join(time)
+}
+
+func (c *Concurrent) Terminate(time string) {
+	c.Employees[0].Terminate(time)
 }
 
 /* ----------------------- ReportTask ----------------------- */
@@ -15,6 +40,11 @@ type ReportTask struct {
 
 func (r *ReportTask) GetName() string {
 	return r.Employee.GetName()
+}
+
+func (r *ReportTask) SetName(name string) IEmployee {
+	r.Employee.SetName(name)
+	return r
 }
 
 func (r *ReportTask) DoTask() {
@@ -39,6 +69,11 @@ func (c *Cooperate) GetName() string {
 	return c.Employee.GetName()
 }
 
+func (c *Cooperate) SetName(name string) IEmployee {
+	c.Employee.SetName(name)
+	return c
+}
+
 func (c *Cooperate) DoTask() {
 	c.Employee.DoTask()
 	fmt.Printf("%s is cooperating\n", c.Employee.GetName())
@@ -59,6 +94,11 @@ type Planning struct {
 
 func (p *Planning) GetName() string {
 	return p.Employee.GetName()
+}
+
+func (p *Planning) SetName(name string) IEmployee {
+	p.Employee.SetName(name)
+	return p
 }
 
 func (p *Planning) DoTask() {
@@ -83,6 +123,11 @@ func (m *Motivate) GetName() string {
 	return m.Employee.GetName()
 }
 
+func (m *Motivate) SetName(name string) IEmployee {
+	m.Employee.SetName(name)
+	return m
+}
+
 func (m *Motivate) DoTask() {
 	m.Employee.DoTask()
 	fmt.Printf("%s is motivating\n", m.Employee.GetName())
@@ -103,6 +148,11 @@ type Monitor struct {
 
 func (m *Monitor) GetName() string {
 	return m.Employee.GetName()
+}
+
+func (m *Monitor) SetName(name string) IEmployee {
+	m.Employee.SetName(name)
+	return m
 }
 
 func (m *Monitor) DoTask() {
@@ -127,6 +177,11 @@ func (c *CreateRequirement) GetName() string {
 	return c.Employee.GetName()
 }
 
+func (c *CreateRequirement) SetName(name string) IEmployee {
+	c.Employee.SetName(name)
+	return c
+}
+
 func (c *CreateRequirement) DoTask() {
 	c.Employee.DoTask()
 	fmt.Printf("%s is creating requirement\n", c.Employee.GetName())
@@ -149,6 +204,11 @@ func (a *AssignTask) GetName() string {
 	return a.Employee.GetName()
 }
 
+func (a *AssignTask) SetName(name string) IEmployee {
+	a.Employee.SetName(name)
+	return a
+}
+
 func (a *AssignTask) DoTask() {
 	a.Employee.DoTask()
 	fmt.Printf("%s is assigning task\n", a.Employee.GetName())
@@ -169,6 +229,11 @@ type ManageProgress struct {
 
 func (m *ManageProgress) GetName() string {
 	return m.Employee.GetName()
+}
+
+func (m *ManageProgress) SetName(name string) IEmployee {
+	m.Employee.SetName(name)
+	return m
 }
 
 func (m *ManageProgress) DoTask() {

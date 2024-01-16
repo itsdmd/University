@@ -32,7 +32,7 @@ func main() {
 
 	fmt.Println("\nD: TEAM LEADER AND MANAGER:")
 	fmt.Println("-------")
-	tlm1 := &employee.Planning{Employee: &employee.Motivate{Employee: &employee.Monitor{Employee: &employee.CreateRequirement{Employee: &employee.AssignTask{Employee: &employee.ManageProgress{Employee: &employee.Employee{Name: "L&M"}}}}}}}
+	tlm1 := &employee.Concurrent{Employees: []employee.IEmployee{tl1.SetName("L&M"), m1.SetName("L&M")}}
 	fmt.Printf("The basic information of %s:\n", tlm1.GetName())
 	tlm1.Join("2020-07-01")
 	tlm1.Terminate("2020-07-31")
