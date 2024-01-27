@@ -2,6 +2,8 @@ import random
 import copy
 import math
 
+file = open("output.txt", "w")
+
 
 class NQueensStateNode:
     def __init__(self, initialState):
@@ -24,6 +26,9 @@ class NQueensStateNode:
         print(
             " ".join(str(r) for r in self.state), "\tHeuristic: ", self.getHeuristic()
         )
+
+    def getFormattedState(self):
+        return " ".join(str(r) for r in self.state)
 
     def countQueenList(self):
         # TODO: calculate the value of cRow, cDiagonal1, cDiagonal2
@@ -75,12 +80,11 @@ def HillClimbing(state):
         if nextState is None:
             break
         nextStateNode = NQueensStateNode(nextState)
-        currentStateNode.printState()
+        # currentStateNode.printState()
         if nextStateNode.getHeuristic() == 0:
             print("Solution found:")
             nextStateNode.printState()
-            print("\n")
-            break
+            return nextStateNode
         elif nextStateNode.getHeuristic() < currentStateNode.getHeuristic():
             currentStateNode = nextStateNode
             continue
@@ -103,11 +107,11 @@ def HillCLimbingFirstChoice(state):
     currentState = state
     currentNode = NQueensStateNode(currentState)
     max_tries = 1000
+    nextState = currentNode.getFirstChoice()
+    nextNode = NQueensStateNode(nextState)
+
     while max_tries > 0:
         max_tries -= 1
-
-        nextState = currentNode.getFirstChoice()
-        nextNode = NQueensStateNode(nextState)
 
         if nextNode.getHeuristic() < currentNode.getHeuristic():
             nextNode.printState()
@@ -117,6 +121,13 @@ def HillCLimbingFirstChoice(state):
                 print("Solution found:")
                 nextNode.printState()
                 break
+
+        nextState = currentNode.getFirstChoice()
+        nextNode = NQueensStateNode(nextState)
+
+    file = open("output.txt", "a")
+    file.write(nextNode.getFormattedState() + "\n")
+    file.close()
 
 
 def getRandomState(nQueen):
@@ -134,6 +145,7 @@ def HillClimbingRandomRestart(nQueen):
     """
     # TODO
     num_ran = 10
+    best_final_state = None
     while num_ran > 0:
         num_ran = num_ran - 1
         randomState = getRandomState(nQueen)
@@ -146,11 +158,22 @@ def HillClimbingRandomRestart(nQueen):
             best_random_state = randomState
             HillClimbing(best_random_state)
 
+    file = open("output.txt", "a")
+    file.write(best_final_state.getFormattedState() + "\n")
+    file.close()
+
 
 if __name__ == "__main__":
+    file = open("output.txt", "w")
+
     initial_state = [2, 3, 0, 1, 2, 3, 0, 1]
+    file.write(" ".join(str(r) for r in initial_state) + "\n")
+    file.close()
+
     print("===== Hill Climbing =====")
-    HillClimbing(initial_state)
+    file = open("output.txt", "a")
+    file.write(HillClimbing(initial_state).getFormattedState() + "\n")
+    file.close()
 
     print("===== Hill Climbing First Choice =====")
     HillCLimbingFirstChoice(initial_state)
