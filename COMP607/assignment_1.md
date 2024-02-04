@@ -1,4 +1,6 @@
-# Information Security Technologies COMP607</br>Assignment 1
+# Information Security Technologies COMP607
+
+# Assignment 1
 
 Student Name: **Dao Minh Duc**
 
@@ -11,6 +13,20 @@ Key: 4
 Plaintext message: **"A good name is better than good habits"**
 
 ![01](./img/01.png)
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
 
 ## 2.
 
@@ -32,22 +48,94 @@ If only 26 lowercase characters are used, we only need at most 5 bits per charac
 
 (ii) $128 / 5 = 25.2$. Therefore, we need at least 26 characters.
 
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
 ## 3.
 
 The bit sequence that appears the most frequent is `00011111`, so using frequency attack, we can assume that this sequence represents letter "e", which has the ASCII encode of `01100101`. Therefore, we can assume that the key of this cipher text is: `0b01100101 - 0b00011111 = 0b01000110`.
 
 With that key, we can work out the rest of the message by adding it to the bits in the cipher text.
 
-- `0b00010111 + 0b01000110 = 0b01011101 = m`
-- `0b00001110 + 0b01000110 = 0b01010100 = t`
-- `0b00011011 + 0b01000110 = 0b01100001 = a`
-- `0b00010110 + 0b01000110 = 0b01101100 = l`
-- `0b00001100 + 0b01000110 = 0b01110110 = v`
-- `0b00010100 + 0b01000110 = 0b01101110 = n`
+-   `0b00010111 + 0b01000110 = 0b01011101 = m`
+-   `0b00001110 + 0b01000110 = 0b01010100 = t`
+-   `0b00011011 + 0b01000110 = 0b01100001 = a`
+-   `0b00010110 + 0b01000110 = 0b01101100 = l`
+-   `0b00001100 + 0b01000110 = 0b01110110 = v`
+-   `0b00010100 + 0b01000110 = 0b01101110 = n`
 
 The decrypted cipher text is: "meetatelevenam"
 
 This can be interprteted in plaintext as: "Meet at eleven AM"
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
 
 ## 4.
 
@@ -57,6 +145,34 @@ This can be interprteted in plaintext as: "Meet at eleven AM"
 
 Therefore, `putty-0.70-installed.msi` is the good copy.
 
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
 ## 5.
 
 ### a.
@@ -65,11 +181,71 @@ Therefore, `putty-0.70-installed.msi` is the good copy.
 
 ![](./img/05-01-02.png)
 
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
 ### b.
 
 ![](./img/05-02.png)
 
 Therefore, `notice2.hmac.txt` is the authentic version.
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
 
 ## 6.
 
@@ -85,7 +261,7 @@ Conclusion: `test1.txt` and `test2.txt` plaintext files only differs in the last
 
 ### c.
 
-![](./img/06-03.png)
+<img src="./img/06-03.png" title="" alt="" width="579">
 
 ## 7.
 
@@ -175,6 +351,9 @@ Both Alice and Bob now have a shared key, $K = 4046$.
 
 Both Alice and Bob can determine the value of the shared key. The shared key is calculated using the public key of the other party and the secret key of the party itself.
 
+</br>
+</br>
+
 ## 9.
 
 The DH algorithm can also be used for encryption as well using the ElGamal scheme. Demonstrate this encryption scheme using a numerical example as follows.
@@ -217,6 +396,4 @@ Bob derives the shared key:
 
 $K = A^b \mod p = 144^{231} \mod 443 = 321$
 
-Bob decrypts the message:
-
-$M = C \times K^{-1} \mod p = 350 \times 321^{-1} \mod 443 = 215$
+Bob decrypts the message: $M = C \times K^{-1} \mod p = 350 \times 321^{-1} \mod 443 = 215$
