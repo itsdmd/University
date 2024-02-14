@@ -8,19 +8,35 @@ AUT Student ID: **23199710**
 
 ## 1.
 
+### a.
+
+![01a](./img/01-01.png)
+
 Key: 4
 
-Plaintext message: **"A good name is better than good habits"**
+Plaintext message: **A GOOD NAME IS BETTER THAN GOOD HABITS**
 
-![01](./img/01.png)
+### b.
 
-</br>
+Plaintext message: **KNO WLE DGE ISN EVE RWA STE D**
 
-</br>
+Key: **EQUATORIAL**
 
-</br>
+$Ks = 4; 16; 20; 0; 19; 14; 17; 8; 0; 11$
 
-</br>
+![01b](./img/01-02.png)
+
+The cipher text is: **ODI WES UOE TWD YVX FNI SEI T**
+
+### c.
+
+#### i.
+
+![01c i](./img/01-03-01.png)
+
+#### ii.
+
+![01c ii](./img/01-03-02.png)
 
 </br>
 
@@ -32,15 +48,15 @@ Plaintext message: **"A good name is better than good habits"**
 
 ### a.
 
-With 7 bits per character, there are 128 possible values for each character in the password. With 10 such characters in a password, the key space of the password will have the size of 128^10.
+With 7 bits per character, there are $2^7 = 128$ possible values for each character in the password. With 10 such characters in a password, the key space of the password will have the size of $128^{10}$.
 
 ### b.
 
-There are 10 7-bit characters in the password. Therefore, the key length in bits of it is: 10 \* 7 = 70 bits.
+There are 10 7-bit characters in the password. Therefore, the key length in bits of it is: $10 \times 7 = 70$ bits.
 
 ### c.
 
-If only 26 lowercase characters are used, we only need at most 5 bits per character to encode the password. Therefore, the key length in bits in this case will be: 10 \* 5 = 50 bits.
+If only 26 lowercase characters are used, we only need at most 5 bits per character to encode the password. Therefore, the key length in bits in this case will be: $10 \times 5 = 50$ bits.
 
 ### d.
 
@@ -84,20 +100,24 @@ If only 26 lowercase characters are used, we only need at most 5 bits per charac
 
 ## 3.
 
-The bit sequence that appears the most frequent is `00011111`, so using frequency attack, we can assume that this sequence represents letter "e", which has the ASCII encode of `01100101`. Therefore, we can assume that the key of this cipher text is: `0b01100101 - 0b00011111 = 0b01000110`.
+The bit sequence that appears the most frequent is `00011111`, so using frequency attack, we can assume that this sequence represents letter "E", which has the ASCII encode of `01000101`. Therefore, we can assume that the key of this cipher text is: `00011111 XOR 01000101 = 01011010`.
 
 With that key, we can work out the rest of the message by adding it to the bits in the cipher text.
 
--   `0b00010111 + 0b01000110 = 0b01011101 = m`
--   `0b00001110 + 0b01000110 = 0b01010100 = t`
--   `0b00011011 + 0b01000110 = 0b01100001 = a`
--   `0b00010110 + 0b01000110 = 0b01101100 = l`
--   `0b00001100 + 0b01000110 = 0b01110110 = v`
--   `0b00010100 + 0b01000110 = 0b01101110 = n`
+- `00010111 XOR 01011010 = 01001101 = m`
+- `00001110 XOR 01011010 = 01010100 = t`
+- `00011011 XOR 01011010 = 01011010 = a`
+- `00010110 XOR 01011010 = 01001100 = l`
+- `00001100 XOR 01011010 = 01010110 = v`
+- `00010100 XOR 01011010 = 01001110 = n`
 
-The decrypted cipher text is: "meetatelevenam"
+The decrypted cipher text is: **MEETATELEVENAM**
 
-This can be interprteted in plaintext as: "Meet at eleven AM"
+This can be interprteted in plaintext as: **Meet at eleven AM**
+
+</br>
+
+</br>
 
 </br>
 
@@ -247,6 +267,8 @@ Therefore, `notice2.hmac.txt` is the authentic version.
 
 </br>
 
+</br>
+
 ## 6.
 
 ### a.
@@ -275,25 +297,25 @@ $\Rarr \phi(N) = (p - 1) \times (q - 1) = 22 \times 28 = 616$
 
 </br>
 
-Select $e = 3$
+Select $e = 5$
 
-$\Rarr d = e^{-1} \mod \phi(N) = 3^{-1} \mod 616 = 411$
+$\Rarr d = e^{-1} \mod \phi(N) = 5^{-1} \mod 616 = 493$
 
-Public key: $(e, N) = (3, 667)$
+Public key: $(e, N) = (5, 667)$
 
-Private key: $(d, N) = (411, 667)$
+Private key: $(d, N) = (493, 667)$
 
 </br>
 
 Encrypt $M = 513$ using public key:
 
-$C = M^d \mod N = 513^{411} \mod 667 = 198$
+$C = M^e \mod N = 513^{5} \mod 667 = 546$
 
 </br>
 
-Decrypt $C = 198$ using private key:
+Decrypt $C = 546$ using private key:
 
-$M = C^e \mod N = 198^3 \mod 667 = 513$
+$M = C^d \mod N = 546^{493} \mod 667 = 513$
 
 ### b.
 
@@ -354,17 +376,10 @@ Both Alice and Bob can determine the value of the shared key. The shared key is 
 </br>
 </br>
 
+</br>
+</br>
+
 ## 9.
-
-The DH algorithm can also be used for encryption as well using the ElGamal scheme. Demonstrate this encryption scheme using a numerical example as follows.
-
-Alice wish to encrypt a secret message, M = 215 to Bob. They have chosen the parammeters and private keys as follows:
-Bob: private key b = 231, generator G=2, prime modulus p = 443.
-Alice: private key a = 198
-
-Demonstrate how the scheme works by showing what each party computes and sends to each other, showing clearly the cipher texts, and the decrypted messages.
-(i) using the above numbers for M, a, b
-(ii) using your own choice of numbers for M, a, b
 
 ### i.
 
@@ -397,3 +412,35 @@ Bob derives the shared key:
 $K = A^b \mod p = 144^{231} \mod 443 = 321$
 
 Bob decrypts the message: $M = C \times K^{-1} \mod p = 350 \times 321^{-1} \mod 443 = 215$
+
+### ii.
+
+$M = 67, a = 11, b = 13, G = 2, p = 17$
+
+Alice calculates her public key:
+
+$A = G^a \mod p = 2^{11} \mod 17 = 8$
+
+Bob calculates his public key:
+
+$B = G^b \mod p = 2^{13} \mod 17 = 15$
+
+Alice sends her public key, $A = 8$, to Bob.
+
+Bob sends his public key, $B = 15$, to Alice.
+
+Alice computes the shared key:
+
+$K = B^a \mod p = 15^{11} \mod 17 = 9$
+
+Alice encrypts the message:
+
+$C = M \times K \mod p = 67 \times 9 \mod 17 = 8$
+
+Alice sends the cipher text, $C = 8$, to Bob.
+
+Bob derives the shared key:
+
+$K = A^b \mod p = 8^{13} \mod 17 = 9$
+
+Bob decrypts the message: $M = C \times K^{-1} \mod p = 8 \times 9^{-1} \mod 17 = 67$
