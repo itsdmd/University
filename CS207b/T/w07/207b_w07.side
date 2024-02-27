@@ -1,0 +1,1195 @@
+{
+  "id": "52cff5ed-a7f0-44da-988b-2bea734eba1c",
+  "version": "2.0",
+  "name": "207b_w07",
+  "url": "https://www.topcv.vn/tinh-thue-thu-nhap-ca-nhan",
+  "tests": [{
+    "id": "de66060a-1b86-44d7-865b-4c3dfcf09e74",
+    "name": "01",
+    "commands": [{
+      "id": "9e17e9a9-3ef8-41b8-b9d5-c976392ab81e",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.topcv.vn/tinh-thue-thu-nhap-ca-nhan",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9707c8d6-4d82-4e08-bfbf-77f51e8bdf49",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1129x1152",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bea10204-5099-4ea2-bd57-274e4e0e7fc2",
+      "comment": "",
+      "command": "click",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f045ef49-acb5-4cde-a968-c8e864f770ab",
+      "comment": "",
+      "command": "type",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": "20000000"
+    }, {
+      "id": "31b0a691-98ff-4047-89f6-91cd95f00c8e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Tính thuế TNCN",
+      "targets": [
+        ["linkText=Tính thuế TNCN", "linkText"],
+        ["css=.btn-success-custom", "css:finder"],
+        ["xpath=//a[contains(text(),'Tính thuế TNCN')]", "xpath:link"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[3]/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[2]", "xpath:href"],
+        ["xpath=//div/div[3]/div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Tính thuế TNCN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9bef129a-49bb-4b4b-8897-3574f8b232f3",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.text-center:nth-child(5)",
+      "targets": [
+        ["css=.text-center:nth-child(5)", "css:finder"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[4]", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[4]", "xpath:position"]
+      ],
+      "value": "15000"
+    }, {
+      "id": "cba92c76-86b7-48bb-bc07-fb2c9139ea22",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.gross-net-table tr:nth-child(9) > td",
+      "targets": [],
+      "value": "440,000"
+    }]
+  }, {
+    "id": "7ef2db40-82e3-40cd-addb-3b690e1b3006",
+    "name": "02",
+    "commands": [{
+      "id": "2f3e1215-f527-4c8e-8922-71aef18721d2",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.topcv.vn/tinh-thue-thu-nhap-ca-nhan",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9534ed9c-ada5-4284-acb2-aa31d204095f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1129x1152",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f7978f4a-7bf4-41eb-875b-76d3f9d86afa",
+      "comment": "",
+      "command": "click",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4cbd90c2-6acc-4864-a264-412b250d1dbf",
+      "comment": "",
+      "command": "type",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": "20,000,000"
+    }, {
+      "id": "d6ade42e-fa90-42c9-9318-3a7c24c0ec3d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.other > span:nth-child(3)",
+      "targets": [
+        ["css=.other > span:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form-salary']/div[2]/div/label[3]/span[2]", "xpath:idRelative"],
+        ["xpath=//label[3]/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Khác')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8eadcf5a-3bf1-497a-a299-253ca6c77fee",
+      "comment": "",
+      "command": "type",
+      "target": "name=luongDongBaoHiem",
+      "targets": [
+        ["name=luongDongBaoHiem", "name"],
+        ["css=.input-data:nth-child(4) > .border-hover", "css:finder"],
+        ["xpath=//input[@name='luongDongBaoHiem']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2,000,000"
+    }, {
+      "id": "fe784d71-2f43-4c53-b674-cb9b474b5172",
+      "comment": "",
+      "command": "click",
+      "target": "css=.d-flex:nth-child(4)",
+      "targets": [
+        ["css=.d-flex:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[3]", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "468dd75f-5f6d-4231-9c58-f32456ae218a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Tính thuế TNCN",
+      "targets": [
+        ["linkText=Tính thuế TNCN", "linkText"],
+        ["css=.btn-success-custom", "css:finder"],
+        ["xpath=//a[contains(text(),'Tính thuế TNCN')]", "xpath:link"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[3]/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[2]", "xpath:href"],
+        ["xpath=//div/div[3]/div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Tính thuế TNCN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b5785ab1-2cea-4524-a97e-a3c3eab64681",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.text-center:nth-child(5)",
+      "targets": [
+        ["css=.text-center:nth-child(5)", "css:finder"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[4]", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[4]", "xpath:position"]
+      ],
+      "value": "15000"
+    }, {
+      "id": "6db611cb-8bb9-42b9-8b5a-595dbab78a99",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.gross-net-table tr:nth-child(9) > td",
+      "targets": [],
+      "value": "629,000"
+    }]
+  }, {
+    "id": "2752bfee-b955-435b-bb96-7d65a1756ae6",
+    "name": "03",
+    "commands": [{
+      "id": "8671db68-de7d-43aa-9fee-d762132e45c5",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.topcv.vn/tinh-thue-thu-nhap-ca-nhan",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7d0b48e4-c0dc-42cc-a110-4fd7a9ec4bd4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1129x1152",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bdf86140-a668-41d3-b0b7-d370146fcbc7",
+      "comment": "",
+      "command": "click",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "abe219dd-2cf7-4efe-830a-d9c92775cb5c",
+      "comment": "",
+      "command": "type",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": "20,000,000"
+    }, {
+      "id": "be9f663b-9366-4b89-9823-d27b2f4078dc",
+      "comment": "",
+      "command": "click",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0ece0e1a-cd3a-43d5-8030-d7d3a0c6660c",
+      "comment": "",
+      "command": "type",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "bb1647de-22be-48d7-bcce-53944a28e12c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Tính thuế TNCN",
+      "targets": [
+        ["linkText=Tính thuế TNCN", "linkText"],
+        ["css=.btn-success-custom", "css:finder"],
+        ["xpath=//a[contains(text(),'Tính thuế TNCN')]", "xpath:link"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[3]/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[2]", "xpath:href"],
+        ["xpath=//div/div[3]/div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Tính thuế TNCN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6c4d1e78-4fac-483e-b390-990861ae3863",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.text-center:nth-child(5)",
+      "targets": [
+        ["css=.text-center:nth-child(5)", "css:finder"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[4]", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[4]", "xpath:position"]
+      ],
+      "value": "15000"
+    }, {
+      "id": "6c64b17f-8497-4d8a-b946-e8c4dc7bc7e3",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.gross-net-table tr:nth-child(9) > td",
+      "targets": [],
+      "value": "125,000"
+    }]
+  }, {
+    "id": "90fed264-2c8e-4094-adf1-940821e06cb9",
+    "name": "04",
+    "commands": [{
+      "id": "a543fbe6-0de9-4200-b7aa-267616795e55",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.topcv.vn/tinh-thue-thu-nhap-ca-nhan",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "36c1e7dc-c592-41bb-b3cb-e452e962978f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1129x1152",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "df1a1204-161f-4e4c-b329-008918aefc18",
+      "comment": "",
+      "command": "click",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "27bd9775-e3d5-4732-8c21-e8a77c2a63f4",
+      "comment": "",
+      "command": "type",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": "20,000,000"
+    }, {
+      "id": "26bbef76-bcb7-45c6-9335-592b5ed57139",
+      "comment": "",
+      "command": "click",
+      "target": "css=.other > span:nth-child(3)",
+      "targets": [
+        ["css=.other > span:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form-salary']/div[2]/div/label[3]/span[2]", "xpath:idRelative"],
+        ["xpath=//label[3]/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Khác')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad87479e-7448-4d73-b059-2b175db0cddb",
+      "comment": "",
+      "command": "type",
+      "target": "name=luongDongBaoHiem",
+      "targets": [
+        ["name=luongDongBaoHiem", "name"],
+        ["css=.input-data:nth-child(4) > .border-hover", "css:finder"],
+        ["xpath=//input[@name='luongDongBaoHiem']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2,000,000"
+    }, {
+      "id": "ff6b1352-b3a8-4371-9799-9b953cf76255",
+      "comment": "",
+      "command": "click",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "69b6e0a8-fe1f-4d37-bdc8-64410c05e7ca",
+      "comment": "",
+      "command": "type",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "672bfddd-4008-4a8e-ad40-be52f22813cb",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Tính thuế TNCN",
+      "targets": [
+        ["linkText=Tính thuế TNCN", "linkText"],
+        ["css=.btn-success-custom", "css:finder"],
+        ["xpath=//a[contains(text(),'Tính thuế TNCN')]", "xpath:link"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[3]/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[2]", "xpath:href"],
+        ["xpath=//div/div[3]/div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Tính thuế TNCN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "16a5da4e-0449-4ec0-8ca0-390c87c44b77",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.text-center:nth-child(5)",
+      "targets": [
+        ["css=.text-center:nth-child(5)", "css:finder"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[4]", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[4]", "xpath:position"]
+      ],
+      "value": "15000"
+    }, {
+      "id": "b9c84611-2a28-468c-8780-841bd9e7f8b4",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.gross-net-table tr:nth-child(9) > td",
+      "targets": [],
+      "value": "219,500"
+    }]
+  }, {
+    "id": "d21d514a-99a8-4772-8c3d-d3817b675982",
+    "name": "05",
+    "commands": [{
+      "id": "ee6bca07-7b9d-471b-bed2-da6378d9f50e",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.topcv.vn/tinh-thue-thu-nhap-ca-nhan",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8c2fcb33-24ed-4c36-8237-39f24456dcf7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1129x1152",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1e7d1001-b2aa-4625-8ef3-6c18369f2e1a",
+      "comment": "",
+      "command": "click",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "afcc9d9a-b071-4b57-b729-f8a786757987",
+      "comment": "",
+      "command": "type",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": "20,000,000"
+    }, {
+      "id": "54ab128f-da1a-4636-9844-dd5b7d5041c0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.label-input > .radio-inline:nth-child(3)",
+      "targets": [
+        ["css=.label-input > .radio-inline:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form-salary']/div[3]/div/label[3]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/label[3]", "xpath:position"],
+        ["xpath=//label[contains(.,'III')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa421744-278f-4d16-9260-3a50e7219305",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Tính thuế TNCN",
+      "targets": [
+        ["linkText=Tính thuế TNCN", "linkText"],
+        ["css=.btn-success-custom", "css:finder"],
+        ["xpath=//a[contains(text(),'Tính thuế TNCN')]", "xpath:link"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[3]/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[2]", "xpath:href"],
+        ["xpath=//div/div[3]/div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Tính thuế TNCN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3df07190-924d-4d9c-8bc8-c4de71cccb60",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.text-center:nth-child(5)",
+      "targets": [
+        ["css=.text-center:nth-child(5)", "css:finder"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[4]", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[4]", "xpath:position"]
+      ],
+      "value": "15000"
+    }, {
+      "id": "05f9c080-1547-4227-85ec-19be5567f7eb",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.gross-net-table tr:nth-child(9) > td",
+      "targets": [],
+      "value": "440,000"
+    }]
+  }, {
+    "id": "98e49328-6853-4506-bfcd-e568d8cd2971",
+    "name": "06",
+    "commands": [{
+      "id": "29041e74-d0f5-4fc3-8f94-08968973cb20",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.topcv.vn/tinh-thue-thu-nhap-ca-nhan",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "456afb5e-3dd4-4327-b59c-fba60dd63863",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1129x1152",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "66eb34fa-ce09-414b-b5b9-c8bd5556a766",
+      "comment": "",
+      "command": "click",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9073cabc-aca1-42d1-a896-b4fe732c5dbc",
+      "comment": "",
+      "command": "type",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": "20,000,000"
+    }, {
+      "id": "36550c14-773f-4fad-8a8d-d35014770465",
+      "comment": "",
+      "command": "click",
+      "target": "css=.label-input > .radio-inline:nth-child(3)",
+      "targets": [
+        ["css=.label-input > .radio-inline:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form-salary']/div[3]/div/label[3]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/label[3]", "xpath:position"],
+        ["xpath=//label[contains(.,'III')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1be2be34-5bdb-45b4-be6b-31c5b278a73c",
+      "comment": "",
+      "command": "click",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "93ab8af8-ea66-4d6b-a33a-6ca390d22520",
+      "comment": "",
+      "command": "type",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "07c25454-8a7e-4bb5-9f05-352482e47d97",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Tính thuế TNCN",
+      "targets": [
+        ["linkText=Tính thuế TNCN", "linkText"],
+        ["css=.btn-success-custom", "css:finder"],
+        ["xpath=//a[contains(text(),'Tính thuế TNCN')]", "xpath:link"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[3]/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[2]", "xpath:href"],
+        ["xpath=//div/div[3]/div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Tính thuế TNCN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9813818-fa44-4ad2-a8ec-fb97e9ddd598",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.text-center:nth-child(5)",
+      "targets": [
+        ["css=.text-center:nth-child(5)", "css:finder"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[4]", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[4]", "xpath:position"]
+      ],
+      "value": "15000"
+    }, {
+      "id": "1c91b50e-6d42-4cbb-8413-c9c0dfd32a38",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.gross-net-table tr:nth-child(9) > td",
+      "targets": [],
+      "value": "125,000"
+    }]
+  }, {
+    "id": "d03768d6-e5b6-4c25-8867-b051bdd5ad19",
+    "name": "07",
+    "commands": [{
+      "id": "a3c093fa-ac51-4cb9-ae45-34611597fe0f",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.topcv.vn/tinh-thue-thu-nhap-ca-nhan",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "11295db5-eeea-4962-ba50-31bcb5b77d6d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1129x1152",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "25334f62-375b-4bb6-97c7-83847c0c719d",
+      "comment": "",
+      "command": "click",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c580108b-a20f-4220-be83-5a0e842f5d8a",
+      "comment": "",
+      "command": "type",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": "20,000,000"
+    }, {
+      "id": "62244579-3bf6-4ecf-ae8f-e2090d957ab5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.other > span:nth-child(3)",
+      "targets": [
+        ["css=.other > span:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form-salary']/div[2]/div/label[3]/span[2]", "xpath:idRelative"],
+        ["xpath=//label[3]/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Khác')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c2558151-fdb8-40e3-a868-f66c68f67d3b",
+      "comment": "",
+      "command": "type",
+      "target": "name=luongDongBaoHiem",
+      "targets": [
+        ["name=luongDongBaoHiem", "name"],
+        ["css=.input-data:nth-child(4) > .border-hover", "css:finder"],
+        ["xpath=//input[@name='luongDongBaoHiem']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2,000,000"
+    }, {
+      "id": "248f9403-b841-443d-b1ab-367579f09f8e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.label-input > .radio-inline:nth-child(3)",
+      "targets": [
+        ["css=.label-input > .radio-inline:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form-salary']/div[3]/div/label[3]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/label[3]", "xpath:position"],
+        ["xpath=//label[contains(.,'III')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e23e52cc-5f51-42b6-88e8-94385e5e862a",
+      "comment": "",
+      "command": "click",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b176bdc8-f1d6-49f3-91d6-50b4c752e780",
+      "comment": "",
+      "command": "type",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "00125bcc-578c-47a4-8f44-9757a3a8708d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Tính thuế TNCN",
+      "targets": [
+        ["linkText=Tính thuế TNCN", "linkText"],
+        ["css=.btn-success-custom", "css:finder"],
+        ["xpath=//a[contains(text(),'Tính thuế TNCN')]", "xpath:link"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[3]/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[2]", "xpath:href"],
+        ["xpath=//div/div[3]/div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Tính thuế TNCN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b6977ff8-4f17-4aef-8983-eb5050682f8d",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.text-center:nth-child(5)",
+      "targets": [
+        ["css=.text-center:nth-child(5)", "css:finder"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[4]", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[4]", "xpath:position"]
+      ],
+      "value": "15000"
+    }, {
+      "id": "6e4fea79-e95f-4033-b635-e7e1acfb1dbf",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.gross-net-table tr:nth-child(9) > td",
+      "targets": [],
+      "value": "219,500"
+    }]
+  }, {
+    "id": "ca2a138d-32ab-40ee-a607-b9c9e3a64f8a",
+    "name": "08",
+    "commands": [{
+      "id": "88e48e68-14e2-42f2-9da0-46f0ea3af344",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.topcv.vn/tinh-thue-thu-nhap-ca-nhan",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "23995948-cdb9-4576-9033-d673b99c72fb",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1129x1152",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "734c6bea-f1cb-478f-a6c2-77b4f2118dd4",
+      "comment": "",
+      "command": "click",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe29741c-6dfa-4442-af43-2799309a61e0",
+      "comment": "",
+      "command": "type",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": "20,000,000,000,000,000,000,000"
+    }, {
+      "id": "be5e4bb8-1979-4298-904a-15c022cfadaa",
+      "comment": "",
+      "command": "click",
+      "target": "css=.other > span:nth-child(3)",
+      "targets": [
+        ["css=.other > span:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form-salary']/div[2]/div/label[3]/span[2]", "xpath:idRelative"],
+        ["xpath=//label[3]/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Khác')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8db8f129-13ca-4be3-8f4f-6e3a75f51640",
+      "comment": "",
+      "command": "type",
+      "target": "name=luongDongBaoHiem",
+      "targets": [
+        ["name=luongDongBaoHiem", "name"],
+        ["css=.input-data:nth-child(4) > .border-hover", "css:finder"],
+        ["xpath=//input[@name='luongDongBaoHiem']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2,000,000"
+    }, {
+      "id": "cc421bc1-bfd4-40d9-9fee-e62211c40add",
+      "comment": "",
+      "command": "click",
+      "target": "css=.label-input > .radio-inline:nth-child(3)",
+      "targets": [
+        ["css=.label-input > .radio-inline:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form-salary']/div[3]/div/label[3]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/label[3]", "xpath:position"],
+        ["xpath=//label[contains(.,'III')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "abfa26b4-838a-469f-b482-b4fec994daf6",
+      "comment": "",
+      "command": "click",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0dc5edf0-3b79-49d3-8b40-64d120dbc6b9",
+      "comment": "",
+      "command": "type",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "800510cd-261e-4dfd-8665-6b3da9726ab5",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Tính thuế TNCN",
+      "targets": [
+        ["linkText=Tính thuế TNCN", "linkText"],
+        ["css=.btn-success-custom", "css:finder"],
+        ["xpath=//a[contains(text(),'Tính thuế TNCN')]", "xpath:link"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[3]/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[2]", "xpath:href"],
+        ["xpath=//div/div[3]/div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Tính thuế TNCN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8185a1b6-8290-4d2c-9c90-cc75250f8888",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.text-center:nth-child(5)",
+      "targets": [
+        ["css=.text-center:nth-child(5)", "css:finder"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[4]", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[4]", "xpath:position"]
+      ],
+      "value": "15000"
+    }, {
+      "id": "84868347-02a0-45a3-90fe-30d6ac69f30a",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.gross-net-table tr:nth-child(9) > td",
+      "targets": [],
+      "value": "3,228,180,212,883,858,000"
+    }]
+  }, {
+    "id": "39fe19a7-ce4c-401d-bfde-efbc5619651f",
+    "name": "09",
+    "commands": [{
+      "id": "b1199628-1ec6-4e01-b2f9-3b064287a674",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.topcv.vn/tinh-thue-thu-nhap-ca-nhan",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "77042176-83ef-488f-bb88-37fe6ef33d95",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1129x1152",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b7f892f2-91a8-4f53-ae1a-ff12021aeb66",
+      "comment": "",
+      "command": "click",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e909f95-976a-4bf1-a07f-128adfb1858d",
+      "comment": "",
+      "command": "type",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": "-1"
+    }, {
+      "id": "218d7ec2-389e-4a99-ba66-3dd2aece5b79",
+      "comment": "",
+      "command": "click",
+      "target": "css=.other > span:nth-child(3)",
+      "targets": [
+        ["css=.other > span:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form-salary']/div[2]/div/label[3]/span[2]", "xpath:idRelative"],
+        ["xpath=//label[3]/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Khác')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "17ef788c-54eb-47ba-b091-13e754c2c981",
+      "comment": "",
+      "command": "type",
+      "target": "name=luongDongBaoHiem",
+      "targets": [
+        ["name=luongDongBaoHiem", "name"],
+        ["css=.input-data:nth-child(4) > .border-hover", "css:finder"],
+        ["xpath=//input[@name='luongDongBaoHiem']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2,000,000"
+    }, {
+      "id": "f53d8ef6-240d-4eca-afa9-8e85679e39ad",
+      "comment": "",
+      "command": "click",
+      "target": "css=.label-input > .radio-inline:nth-child(3)",
+      "targets": [
+        ["css=.label-input > .radio-inline:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form-salary']/div[3]/div/label[3]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/label[3]", "xpath:position"],
+        ["xpath=//label[contains(.,'III')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "740df925-cca0-40e5-bec0-ff13eeea4e63",
+      "comment": "",
+      "command": "click",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "953ab1b1-ac97-493f-bd33-c4d7720c5742",
+      "comment": "",
+      "command": "type",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "19918543-104b-45fd-ad6a-ea4a3387b5a8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Tính thuế TNCN",
+      "targets": [
+        ["linkText=Tính thuế TNCN", "linkText"],
+        ["css=.btn-success-custom", "css:finder"],
+        ["xpath=//a[contains(text(),'Tính thuế TNCN')]", "xpath:link"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[3]/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[2]", "xpath:href"],
+        ["xpath=//div/div[3]/div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Tính thuế TNCN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3fc0d777-0d4f-4b56-8c31-d10d85507bdc",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.toast",
+      "targets": [
+        ["css=.toast", "css:finder"],
+        ["xpath=//div[@id='toast-container']/div", "xpath:idRelative"],
+        ["xpath=//div[19]/div", "xpath:position"]
+      ],
+      "value": "15000"
+    }]
+  }, {
+    "id": "73118a3d-0983-46a0-91ed-749c32f10f43",
+    "name": "10",
+    "commands": [{
+      "id": "bbec23c8-0f58-4bcb-9852-ba0d1ebd804b",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.topcv.vn/tinh-thue-thu-nhap-ca-nhan",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2d793220-2e18-4801-af37-fcc2ec3e9200",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1129x1152",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa647cce-d76a-42d6-bd49-6bdbcb1ff9bf",
+      "comment": "",
+      "command": "click",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "29c8f5d0-226a-4c1b-9f2b-16cad29aea19",
+      "comment": "",
+      "command": "type",
+      "target": "name=luong",
+      "targets": [
+        ["name=luong", "name"],
+        ["css=.input-salary:nth-child(1) .border-hover", "css:finder"],
+        ["xpath=//input[@name='luong']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/input", "xpath:position"]
+      ],
+      "value": "20,000,000"
+    }, {
+      "id": "8530fcfc-f9c5-4244-ae14-6352e73caeef",
+      "comment": "",
+      "command": "click",
+      "target": "css=.other > span:nth-child(3)",
+      "targets": [
+        ["css=.other > span:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form-salary']/div[2]/div/label[3]/span[2]", "xpath:idRelative"],
+        ["xpath=//label[3]/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Khác')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a08223b-2d32-4a2e-b3ec-b100c6027960",
+      "comment": "",
+      "command": "type",
+      "target": "name=luongDongBaoHiem",
+      "targets": [
+        ["name=luongDongBaoHiem", "name"],
+        ["css=.input-data:nth-child(4) > .border-hover", "css:finder"],
+        ["xpath=//input[@name='luongDongBaoHiem']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "2,000,000"
+    }, {
+      "id": "3641654a-5fc6-42a3-927b-3fe94b8526f0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.label-input > .radio-inline:nth-child(3)",
+      "targets": [
+        ["css=.label-input > .radio-inline:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form-salary']/div[3]/div/label[3]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/label[3]", "xpath:position"],
+        ["xpath=//label[contains(.,'III')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8e8ee1cc-6f91-43df-9127-9c6b750d43b1",
+      "comment": "",
+      "command": "click",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7584e8b4-f7a3-4bf3-a2f2-92c7c380c3ee",
+      "comment": "",
+      "command": "type",
+      "target": "name=nguoiPhuThuoc",
+      "targets": [
+        ["name=nguoiPhuThuoc", "name"],
+        ["css=.input-salary:nth-child(4) .border-hover", "css:finder"],
+        ["xpath=//input[@name='nguoiPhuThuoc']", "xpath:attributes"],
+        ["xpath=//form[@id='form-salary']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": "-1"
+    }, {
+      "id": "0f9f3f01-c72a-4c9e-95f3-dac0743fddd7",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Tính thuế TNCN",
+      "targets": [
+        ["linkText=Tính thuế TNCN", "linkText"],
+        ["css=.btn-success-custom", "css:finder"],
+        ["xpath=//a[contains(text(),'Tính thuế TNCN')]", "xpath:link"],
+        ["xpath=//div[@id='personal-income-tax']/div/div/div/div[3]/div/div/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[2]", "xpath:href"],
+        ["xpath=//div/div[3]/div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Tính thuế TNCN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0552e477-9d3c-4f24-8e19-e5a4fbd431a4",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.toast",
+      "targets": [
+        ["css=.toast", "css:finder"],
+        ["xpath=//div[@id='toast-container']/div", "xpath:idRelative"],
+        ["xpath=//div[19]/div", "xpath:position"]
+      ],
+      "value": "15000"
+    }]
+  }],
+  "suites": [{
+    "id": "6f0859b2-7197-4fc7-860a-598c45f643d8",
+    "name": "Edge cases",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["de66060a-1b86-44d7-865b-4c3dfcf09e74"]
+  }, {
+    "id": "80bf66de-d00a-4547-85d3-d74d40627af2",
+    "name": "Value verification",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://www.topcv.vn/tinh-thue-thu-nhap-ca-nhan"],
+  "plugins": []
+}
